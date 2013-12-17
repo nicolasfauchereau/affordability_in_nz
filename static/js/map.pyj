@@ -1,0 +1,13 @@
+import stdlib
+
+def makeMap():    
+    // Create map 
+    map = L.map('map').setView([-36.84041, 174.73986], 12)
+
+    tilesURL = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
+    L.tileLayer(tilesURL).addTo(map)
+    
+    // Remove 'Leaflet' link from corner of map  
+    map.attributionControl.setPrefix('')
+    
+makeMap()
