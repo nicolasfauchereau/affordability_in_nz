@@ -1,0 +1,1033 @@
+TA,Market.Rent.Area,Property.Type,Bedrooms,2013.Q3
+Auckland,Avondale,Apartment,1,NA
+Auckland,Avondale,Apartment,2,NA
+Auckland,Avondale,Apartment,3,NA
+Auckland,Avondale,Apartment,4,NA
+Auckland,Avondale,Apartment,5+,NA
+Auckland,Avondale,Apartment,Total,NA
+Auckland,Avondale,Flat,1,NA
+Auckland,Avondale,Flat,2,291.5
+Auckland,Avondale,Flat,3,NA
+Auckland,Avondale,Flat,4,NA
+Auckland,Avondale,Flat,5+,NA
+Auckland,Avondale,Flat,Total,322.1428571429
+Auckland,Avondale,House,1,NA
+Auckland,Avondale,House,2,NA
+Auckland,Avondale,House,3,430.8333333333
+Auckland,Avondale,House,4,507.1428571429
+Auckland,Avondale,House,5+,NA
+Auckland,Avondale,House,Total,438.4782608696
+Auckland,Avondale,Total,1,244.2857142857
+Auckland,Avondale,Total,2,308.5714285714
+Auckland,Avondale,Total,3,427.96875
+Auckland,Avondale,Total,4,507.1428571429
+Auckland,Avondale,Total,5+,NA
+Auckland,Avondale,Total,Total,395.7971014493
+Auckland,Balmoral,Apartment,1,NA
+Auckland,Balmoral,Apartment,2,NA
+Auckland,Balmoral,Apartment,3,NA
+Auckland,Balmoral,Apartment,4,NA
+Auckland,Balmoral,Apartment,5+,NA
+Auckland,Balmoral,Apartment,Total,NA
+Auckland,Balmoral,Flat,1,320
+Auckland,Balmoral,Flat,2,372.1428571429
+Auckland,Balmoral,Flat,3,NA
+Auckland,Balmoral,Flat,4,NA
+Auckland,Balmoral,Flat,5+,NA
+Auckland,Balmoral,Flat,Total,370.2173913043
+Auckland,Balmoral,House,1,NA
+Auckland,Balmoral,House,2,NA
+Auckland,Balmoral,House,3,594.6875
+Auckland,Balmoral,House,4,728
+Auckland,Balmoral,House,5+,NA
+Auckland,Balmoral,House,Total,648.0357142857
+Auckland,Balmoral,Total,1,301.5
+Auckland,Balmoral,Total,2,381.875
+Auckland,Balmoral,Total,3,587.7777777778
+Auckland,Balmoral,Total,4,728
+Auckland,Balmoral,Total,5+,NA
+Auckland,Balmoral,Total,Total,513.0188679245
+Auckland,Blockhouse Bay/New Windsor,Apartment,1,NA
+Auckland,Blockhouse Bay/New Windsor,Apartment,2,NA
+Auckland,Blockhouse Bay/New Windsor,Apartment,3,NA
+Auckland,Blockhouse Bay/New Windsor,Apartment,4,NA
+Auckland,Blockhouse Bay/New Windsor,Apartment,5+,NA
+Auckland,Blockhouse Bay/New Windsor,Apartment,Total,NA
+Auckland,Blockhouse Bay/New Windsor,Flat,1,328.75
+Auckland,Blockhouse Bay/New Windsor,Flat,2,342.5
+Auckland,Blockhouse Bay/New Windsor,Flat,3,NA
+Auckland,Blockhouse Bay/New Windsor,Flat,4,NA
+Auckland,Blockhouse Bay/New Windsor,Flat,5+,NA
+Auckland,Blockhouse Bay/New Windsor,Flat,Total,348.2352941176
+Auckland,Blockhouse Bay/New Windsor,House,1,NA
+Auckland,Blockhouse Bay/New Windsor,House,2,363.3333333333
+Auckland,Blockhouse Bay/New Windsor,House,3,455.6944444444
+Auckland,Blockhouse Bay/New Windsor,House,4,518.6363636364
+Auckland,Blockhouse Bay/New Windsor,House,5+,NA
+Auckland,Blockhouse Bay/New Windsor,House,Total,463.0508474576
+Auckland,Blockhouse Bay/New Windsor,Total,1,323.3333333333
+Auckland,Blockhouse Bay/New Windsor,Total,2,352.9166666667
+Auckland,Blockhouse Bay/New Windsor,Total,3,457.1052631579
+Auckland,Blockhouse Bay/New Windsor,Total,4,518.6363636364
+Auckland,Blockhouse Bay/New Windsor,Total,5+,NA
+Auckland,Blockhouse Bay/New Windsor,Total,Total,439.5833333333
+Auckland,Central East,Apartment,1,355.6102564103
+Auckland,Central East,Apartment,2,452.1649484536
+Auckland,Central East,Apartment,3,761
+Auckland,Central East,Apartment,4,NA
+Auckland,Central East,Apartment,5+,NA
+Auckland,Central East,Apartment,Total,391.3130193906
+Auckland,Central East,Flat,1,381.75
+Auckland,Central East,Flat,2,495
+Auckland,Central East,Flat,3,NA
+Auckland,Central East,Flat,4,NA
+Auckland,Central East,Flat,5+,NA
+Auckland,Central East,Flat,Total,460.44
+Auckland,Central East,House,1,NA
+Auckland,Central East,House,2,NA
+Auckland,Central East,House,3,NA
+Auckland,Central East,House,4,NA
+Auckland,Central East,House,5+,NA
+Auckland,Central East,House,Total,NA
+Auckland,Central East,Total,1,349.1806167401
+Auckland,Central East,Total,2,458.2568807339
+Auckland,Central East,Total,3,867.5
+Auckland,Central East,Total,4,NA
+Auckland,Central East,Total,5+,NA
+Auckland,Central East,Total,Total,389.875
+Auckland,Central West,Apartment,1,347.86875
+Auckland,Central West,Apartment,2,414.8175182482
+Auckland,Central West,Apartment,3,604.2857142857
+Auckland,Central West,Apartment,4,446
+Auckland,Central West,Apartment,5+,NA
+Auckland,Central West,Apartment,Total,390.6005154639
+Auckland,Central West,Flat,1,335.7692307692
+Auckland,Central West,Flat,2,443.75
+Auckland,Central West,Flat,3,NA
+Auckland,Central West,Flat,4,NA
+Auckland,Central West,Flat,5+,NA
+Auckland,Central West,Flat,Total,392.9166666667
+Auckland,Central West,House,1,NA
+Auckland,Central West,House,2,NA
+Auckland,Central West,House,3,NA
+Auckland,Central West,House,4,NA
+Auckland,Central West,House,5+,NA
+Auckland,Central West,House,Total,463.3333333333
+Auckland,Central West,Total,1,344.5300546448
+Auckland,Central West,Total,2,416.3945578231
+Auckland,Central West,Total,3,617.3333333333
+Auckland,Central West,Total,4,446
+Auckland,Central West,Total,5+,NA
+Auckland,Central West,Total,Total,386.9727891156
+Auckland,Eden Terrace,Apartment,1,310.4166666667
+Auckland,Eden Terrace,Apartment,2,476.4285714286
+Auckland,Eden Terrace,Apartment,3,NA
+Auckland,Eden Terrace,Apartment,4,NA
+Auckland,Eden Terrace,Apartment,5+,NA
+Auckland,Eden Terrace,Apartment,Total,375.8888888889
+Auckland,Eden Terrace,Flat,1,NA
+Auckland,Eden Terrace,Flat,2,415.7142857143
+Auckland,Eden Terrace,Flat,3,NA
+Auckland,Eden Terrace,Flat,4,NA
+Auckland,Eden Terrace,Flat,5+,NA
+Auckland,Eden Terrace,Flat,Total,415.7142857143
+Auckland,Eden Terrace,House,1,NA
+Auckland,Eden Terrace,House,2,NA
+Auckland,Eden Terrace,House,3,NA
+Auckland,Eden Terrace,House,4,NA
+Auckland,Eden Terrace,House,5+,NA
+Auckland,Eden Terrace,House,Total,NA
+Auckland,Eden Terrace,Total,1,300.3846153846
+Auckland,Eden Terrace,Total,2,456.1904761905
+Auckland,Eden Terrace,Total,3,NA
+Auckland,Eden Terrace,Total,4,NA
+Auckland,Eden Terrace,Total,5+,NA
+Auckland,Eden Terrace,Total,Total,385.7142857143
+Auckland,Ellerslie,Apartment,1,NA
+Auckland,Ellerslie,Apartment,2,NA
+Auckland,Ellerslie,Apartment,3,NA
+Auckland,Ellerslie,Apartment,4,NA
+Auckland,Ellerslie,Apartment,5+,NA
+Auckland,Ellerslie,Apartment,Total,NA
+Auckland,Ellerslie,Flat,1,NA
+Auckland,Ellerslie,Flat,2,363.125
+Auckland,Ellerslie,Flat,3,NA
+Auckland,Ellerslie,Flat,4,NA
+Auckland,Ellerslie,Flat,5+,NA
+Auckland,Ellerslie,Flat,Total,375.4761904762
+Auckland,Ellerslie,House,1,NA
+Auckland,Ellerslie,House,2,NA
+Auckland,Ellerslie,House,3,558.9473684211
+Auckland,Ellerslie,House,4,NA
+Auckland,Ellerslie,House,5+,NA
+Auckland,Ellerslie,House,Total,532.2727272727
+Auckland,Ellerslie,Total,1,NA
+Auckland,Ellerslie,Total,2,366.1363636364
+Auckland,Ellerslie,Total,3,557.8571428571
+Auckland,Ellerslie,Total,4,630
+Auckland,Ellerslie,Total,5+,NA
+Auckland,Ellerslie,Total,Total,473.59375
+Auckland,Epsom,Apartment,1,NA
+Auckland,Epsom,Apartment,2,460.5555555556
+Auckland,Epsom,Apartment,3,NA
+Auckland,Epsom,Apartment,4,NA
+Auckland,Epsom,Apartment,5+,NA
+Auckland,Epsom,Apartment,Total,422.9166666667
+Auckland,Epsom,Flat,1,327.5
+Auckland,Epsom,Flat,2,434.7368421053
+Auckland,Epsom,Flat,3,538.5714285714
+Auckland,Epsom,Flat,4,NA
+Auckland,Epsom,Flat,5+,NA
+Auckland,Epsom,Flat,Total,414.1666666667
+Auckland,Epsom,House,1,NA
+Auckland,Epsom,House,2,592.1428571429
+Auckland,Epsom,House,3,598.9375
+Auckland,Epsom,House,4,798.5714285714
+Auckland,Epsom,House,5+,NA
+Auckland,Epsom,House,Total,615.5609756098
+Auckland,Epsom,Total,1,258.749375
+Auckland,Epsom,Total,2,472.8571428571
+Auckland,Epsom,Total,3,580.5652173913
+Auckland,Epsom,Total,4,796.25
+Auckland,Epsom,Total,5+,NA
+Auckland,Epsom,Total,Total,473.58384
+Auckland,Glen Innes/Pt England/Wai O Taiki,Apartment,1,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Apartment,2,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Apartment,3,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Apartment,4,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Apartment,5+,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Apartment,Total,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Flat,1,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Flat,2,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Flat,3,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Flat,4,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Flat,5+,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Flat,Total,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,House,1,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,House,2,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,House,3,451.1111111111
+Auckland,Glen Innes/Pt England/Wai O Taiki,House,4,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,House,5+,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,House,Total,471.4285714286
+Auckland,Glen Innes/Pt England/Wai O Taiki,Total,1,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Total,2,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Total,3,451.1111111111
+Auckland,Glen Innes/Pt England/Wai O Taiki,Total,4,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Total,5+,NA
+Auckland,Glen Innes/Pt England/Wai O Taiki,Total,Total,474.1666666667
+Auckland,Grey Lynn/Arch Hill,Apartment,1,362.5
+Auckland,Grey Lynn/Arch Hill,Apartment,2,466
+Auckland,Grey Lynn/Arch Hill,Apartment,3,NA
+Auckland,Grey Lynn/Arch Hill,Apartment,4,NA
+Auckland,Grey Lynn/Arch Hill,Apartment,5+,NA
+Auckland,Grey Lynn/Arch Hill,Apartment,Total,477.7272727273
+Auckland,Grey Lynn/Arch Hill,Flat,1,326.5789473684
+Auckland,Grey Lynn/Arch Hill,Flat,2,511.875
+Auckland,Grey Lynn/Arch Hill,Flat,3,NA
+Auckland,Grey Lynn/Arch Hill,Flat,4,NA
+Auckland,Grey Lynn/Arch Hill,Flat,5+,NA
+Auckland,Grey Lynn/Arch Hill,Flat,Total,399.0322580645
+Auckland,Grey Lynn/Arch Hill,House,1,NA
+Auckland,Grey Lynn/Arch Hill,House,2,507.5
+Auckland,Grey Lynn/Arch Hill,House,3,680.8823529412
+Auckland,Grey Lynn/Arch Hill,House,4,842.5
+Auckland,Grey Lynn/Arch Hill,House,5+,NA
+Auckland,Grey Lynn/Arch Hill,House,Total,623.8235294118
+Auckland,Grey Lynn/Arch Hill,Total,1,322.7631578947
+Auckland,Grey Lynn/Arch Hill,Total,2,499.1111111111
+Auckland,Grey Lynn/Arch Hill,Total,3,673.2608695652
+Auckland,Grey Lynn/Arch Hill,Total,4,842.5
+Auckland,Grey Lynn/Arch Hill,Total,5+,NA
+Auckland,Grey Lynn/Arch Hill,Total,Total,495.7628865979
+Auckland,Harbourside,Apartment,1,433.9230769231
+Auckland,Harbourside,Apartment,2,596.4285714286
+Auckland,Harbourside,Apartment,3,905.9090909091
+Auckland,Harbourside,Apartment,4,NA
+Auckland,Harbourside,Apartment,5+,NA
+Auckland,Harbourside,Apartment,Total,519.5679012346
+Auckland,Harbourside,Flat,1,468.3333333333
+Auckland,Harbourside,Flat,2,617.5
+Auckland,Harbourside,Flat,3,NA
+Auckland,Harbourside,Flat,4,NA
+Auckland,Harbourside,Flat,5+,NA
+Auckland,Harbourside,Flat,Total,683.3333333333
+Auckland,Harbourside,House,1,NA
+Auckland,Harbourside,House,2,NA
+Auckland,Harbourside,House,3,649.2857142857
+Auckland,Harbourside,House,4,NA
+Auckland,Harbourside,House,5+,NA
+Auckland,Harbourside,House,Total,640.625
+Auckland,Harbourside,Total,1,354.1262135922
+Auckland,Harbourside,Total,2,598.5416666667
+Auckland,Harbourside,Total,3,806.1111111111
+Auckland,Harbourside,Total,4,NA
+Auckland,Harbourside,Total,5+,NA
+Auckland,Harbourside,Total,Total,476.5470852018
+Auckland,Herne Bay/St Marys,Apartment,1,404.5
+Auckland,Herne Bay/St Marys,Apartment,2,568.3333333333
+Auckland,Herne Bay/St Marys,Apartment,3,NA
+Auckland,Herne Bay/St Marys,Apartment,4,NA
+Auckland,Herne Bay/St Marys,Apartment,5+,NA
+Auckland,Herne Bay/St Marys,Apartment,Total,512.8846153846
+Auckland,Herne Bay/St Marys,Flat,1,344.0909090909
+Auckland,Herne Bay/St Marys,Flat,2,460
+Auckland,Herne Bay/St Marys,Flat,3,NA
+Auckland,Herne Bay/St Marys,Flat,4,NA
+Auckland,Herne Bay/St Marys,Flat,5+,NA
+Auckland,Herne Bay/St Marys,Flat,Total,379.4117647059
+Auckland,Herne Bay/St Marys,House,1,NA
+Auckland,Herne Bay/St Marys,House,2,NA
+Auckland,Herne Bay/St Marys,House,3,971.5384615385
+Auckland,Herne Bay/St Marys,House,4,NA
+Auckland,Herne Bay/St Marys,House,5+,NA
+Auckland,Herne Bay/St Marys,House,Total,989.2857142857
+Auckland,Herne Bay/St Marys,Total,1,342.3076923077
+Auckland,Herne Bay/St Marys,Total,2,546.0526315789
+Auckland,Herne Bay/St Marys,Total,3,859.7058823529
+Auckland,Herne Bay/St Marys,Total,4,NA
+Auckland,Herne Bay/St Marys,Total,5+,NA
+Auckland,Herne Bay/St Marys,Total,Total,596.7605633803
+Auckland,Hillsborough,Apartment,1,NA
+Auckland,Hillsborough,Apartment,2,NA
+Auckland,Hillsborough,Apartment,3,NA
+Auckland,Hillsborough,Apartment,4,NA
+Auckland,Hillsborough,Apartment,5+,NA
+Auckland,Hillsborough,Apartment,Total,NA
+Auckland,Hillsborough,Flat,1,330.8333333333
+Auckland,Hillsborough,Flat,2,385
+Auckland,Hillsborough,Flat,3,NA
+Auckland,Hillsborough,Flat,4,NA
+Auckland,Hillsborough,Flat,5+,NA
+Auckland,Hillsborough,Flat,Total,365.7894736842
+Auckland,Hillsborough,House,1,NA
+Auckland,Hillsborough,House,2,421
+Auckland,Hillsborough,House,3,509.8076923077
+Auckland,Hillsborough,House,4,531.6666666667
+Auckland,Hillsborough,House,5+,NA
+Auckland,Hillsborough,House,Total,490.358490566
+Auckland,Hillsborough,Total,1,302.7777777778
+Auckland,Hillsborough,Total,2,403.9473684211
+Auckland,Hillsborough,Total,3,500.8928571429
+Auckland,Hillsborough,Total,4,564.3333333333
+Auckland,Hillsborough,Total,5+,NA
+Auckland,Hillsborough,Total,Total,456.4567901235
+Auckland,Kingsland,Apartment,1,NA
+Auckland,Kingsland,Apartment,2,475.9090909091
+Auckland,Kingsland,Apartment,3,NA
+Auckland,Kingsland,Apartment,4,NA
+Auckland,Kingsland,Apartment,5+,NA
+Auckland,Kingsland,Apartment,Total,482.6923076923
+Auckland,Kingsland,Flat,1,NA
+Auckland,Kingsland,Flat,2,413.75
+Auckland,Kingsland,Flat,3,NA
+Auckland,Kingsland,Flat,4,NA
+Auckland,Kingsland,Flat,5+,NA
+Auckland,Kingsland,Flat,Total,426.0714285714
+Auckland,Kingsland,House,1,NA
+Auckland,Kingsland,House,2,NA
+Auckland,Kingsland,House,3,553.6363636364
+Auckland,Kingsland,House,4,711
+Auckland,Kingsland,House,5+,NA
+Auckland,Kingsland,House,Total,609.1304347826
+Auckland,Kingsland,Total,1,380
+Auckland,Kingsland,Total,2,455
+Auckland,Kingsland,Total,3,553.6363636364
+Auckland,Kingsland,Total,4,709.1666666667
+Auckland,Kingsland,Total,5+,NA
+Auckland,Kingsland,Total,Total,517.6923076923
+Auckland,Kohimarama,Apartment,1,NA
+Auckland,Kohimarama,Apartment,2,643
+Auckland,Kohimarama,Apartment,3,NA
+Auckland,Kohimarama,Apartment,4,NA
+Auckland,Kohimarama,Apartment,5+,NA
+Auckland,Kohimarama,Apartment,Total,673.5714285714
+Auckland,Kohimarama,Flat,1,271
+Auckland,Kohimarama,Flat,2,460
+Auckland,Kohimarama,Flat,3,NA
+Auckland,Kohimarama,Flat,4,NA
+Auckland,Kohimarama,Flat,5+,NA
+Auckland,Kohimarama,Flat,Total,415.8333333333
+Auckland,Kohimarama,House,1,NA
+Auckland,Kohimarama,House,2,NA
+Auckland,Kohimarama,House,3,621
+Auckland,Kohimarama,House,4,826.4285714286
+Auckland,Kohimarama,House,5+,NA
+Auckland,Kohimarama,House,Total,735.36
+Auckland,Kohimarama,Total,1,293.5714285714
+Auckland,Kohimarama,Total,2,517.5
+Auckland,Kohimarama,Total,3,596.5833333333
+Auckland,Kohimarama,Total,4,849.5
+Auckland,Kohimarama,Total,5+,NA
+Auckland,Kohimarama,Total,Total,612.6226415094
+Auckland,Lynfield,Apartment,1,NA
+Auckland,Lynfield,Apartment,2,NA
+Auckland,Lynfield,Apartment,3,NA
+Auckland,Lynfield,Apartment,4,NA
+Auckland,Lynfield,Apartment,5+,NA
+Auckland,Lynfield,Apartment,Total,NA
+Auckland,Lynfield,Flat,1,NA
+Auckland,Lynfield,Flat,2,364.2857142857
+Auckland,Lynfield,Flat,3,NA
+Auckland,Lynfield,Flat,4,NA
+Auckland,Lynfield,Flat,5+,NA
+Auckland,Lynfield,Flat,Total,347.9166666667
+Auckland,Lynfield,House,1,NA
+Auckland,Lynfield,House,2,380
+Auckland,Lynfield,House,3,455.8333333333
+Auckland,Lynfield,House,4,507.5
+Auckland,Lynfield,House,5+,NA
+Auckland,Lynfield,House,Total,462.1
+Auckland,Lynfield,Total,1,279
+Auckland,Lynfield,Total,2,372.1428571429
+Auckland,Lynfield,Total,3,454.4
+Auckland,Lynfield,Total,4,515.9090909091
+Auckland,Lynfield,Total,5+,NA
+Auckland,Lynfield,Total,Total,440.3125
+Auckland,Meadowbank,Apartment,1,NA
+Auckland,Meadowbank,Apartment,2,NA
+Auckland,Meadowbank,Apartment,3,NA
+Auckland,Meadowbank,Apartment,4,NA
+Auckland,Meadowbank,Apartment,5+,NA
+Auckland,Meadowbank,Apartment,Total,NA
+Auckland,Meadowbank,Flat,1,283.3333333333
+Auckland,Meadowbank,Flat,2,374.5454545455
+Auckland,Meadowbank,Flat,3,NA
+Auckland,Meadowbank,Flat,4,NA
+Auckland,Meadowbank,Flat,5+,NA
+Auckland,Meadowbank,Flat,Total,375.7894736842
+Auckland,Meadowbank,House,1,NA
+Auckland,Meadowbank,House,2,NA
+Auckland,Meadowbank,House,3,580.7142857143
+Auckland,Meadowbank,House,4,NA
+Auckland,Meadowbank,House,5+,NA
+Auckland,Meadowbank,House,Total,611.4285714286
+Auckland,Meadowbank,Total,1,272.2222222222
+Auckland,Meadowbank,Total,2,407.3333333333
+Auckland,Meadowbank,Total,3,598.125
+Auckland,Meadowbank,Total,4,NA
+Auckland,Meadowbank,Total,5+,NA
+Auckland,Meadowbank,Total,Total,476.75
+Auckland,Mission Bay/Orakei,Apartment,1,NA
+Auckland,Mission Bay/Orakei,Apartment,2,NA
+Auckland,Mission Bay/Orakei,Apartment,3,NA
+Auckland,Mission Bay/Orakei,Apartment,4,NA
+Auckland,Mission Bay/Orakei,Apartment,5+,NA
+Auckland,Mission Bay/Orakei,Apartment,Total,NA
+Auckland,Mission Bay/Orakei,Flat,1,NA
+Auckland,Mission Bay/Orakei,Flat,2,428.3333333333
+Auckland,Mission Bay/Orakei,Flat,3,NA
+Auckland,Mission Bay/Orakei,Flat,4,NA
+Auckland,Mission Bay/Orakei,Flat,5+,NA
+Auckland,Mission Bay/Orakei,Flat,Total,430.2173913043
+Auckland,Mission Bay/Orakei,House,1,NA
+Auckland,Mission Bay/Orakei,House,2,500.5555555556
+Auckland,Mission Bay/Orakei,House,3,713.5714285714
+Auckland,Mission Bay/Orakei,House,4,815.7142857143
+Auckland,Mission Bay/Orakei,House,5+,NA
+Auckland,Mission Bay/Orakei,House,Total,668.3823529412
+Auckland,Mission Bay/Orakei,Total,1,273.5714285714
+Auckland,Mission Bay/Orakei,Total,2,465
+Auckland,Mission Bay/Orakei,Total,3,651.8421052632
+Auckland,Mission Bay/Orakei,Total,4,851.25
+Auckland,Mission Bay/Orakei,Total,5+,NA
+Auckland,Mission Bay/Orakei,Total,Total,563.4558823529
+Auckland,Mt Albert/Owairaka,Apartment,1,NA
+Auckland,Mt Albert/Owairaka,Apartment,2,382
+Auckland,Mt Albert/Owairaka,Apartment,3,NA
+Auckland,Mt Albert/Owairaka,Apartment,4,NA
+Auckland,Mt Albert/Owairaka,Apartment,5+,NA
+Auckland,Mt Albert/Owairaka,Apartment,Total,376.6666666667
+Auckland,Mt Albert/Owairaka,Flat,1,255
+Auckland,Mt Albert/Owairaka,Flat,2,359.5714285714
+Auckland,Mt Albert/Owairaka,Flat,3,NA
+Auckland,Mt Albert/Owairaka,Flat,4,NA
+Auckland,Mt Albert/Owairaka,Flat,5+,NA
+Auckland,Mt Albert/Owairaka,Flat,Total,343.78125
+Auckland,Mt Albert/Owairaka,House,1,NA
+Auckland,Mt Albert/Owairaka,House,2,415.9090909091
+Auckland,Mt Albert/Owairaka,House,3,501.6
+Auckland,Mt Albert/Owairaka,House,4,567
+Auckland,Mt Albert/Owairaka,House,5+,NA
+Auckland,Mt Albert/Owairaka,House,Total,496.5094339623
+Auckland,Mt Albert/Owairaka,Total,1,232.6666666667
+Auckland,Mt Albert/Owairaka,Total,2,379.3513513514
+Auckland,Mt Albert/Owairaka,Total,3,488.75
+Auckland,Mt Albert/Owairaka,Total,4,567
+Auckland,Mt Albert/Owairaka,Total,5+,NA
+Auckland,Mt Albert/Owairaka,Total,Total,415.9411764706
+Auckland,Mt Eden,Apartment,1,322.7777777778
+Auckland,Mt Eden,Apartment,2,450.8333333333
+Auckland,Mt Eden,Apartment,3,NA
+Auckland,Mt Eden,Apartment,4,NA
+Auckland,Mt Eden,Apartment,5+,NA
+Auckland,Mt Eden,Apartment,Total,429.75
+Auckland,Mt Eden,Flat,1,309.7
+Auckland,Mt Eden,Flat,2,430
+Auckland,Mt Eden,Flat,3,467.1428571429
+Auckland,Mt Eden,Flat,4,NA
+Auckland,Mt Eden,Flat,5+,NA
+Auckland,Mt Eden,Flat,Total,371.85
+Auckland,Mt Eden,House,1,NA
+Auckland,Mt Eden,House,2,NA
+Auckland,Mt Eden,House,3,636.3888888889
+Auckland,Mt Eden,House,4,733.3333333333
+Auckland,Mt Eden,House,5+,NA
+Auckland,Mt Eden,House,Total,628.0263157895
+Auckland,Mt Eden,Total,1,307.1212121212
+Auckland,Mt Eden,Total,2,445
+Auckland,Mt Eden,Total,3,579.4444444444
+Auckland,Mt Eden,Total,4,778.125
+Auckland,Mt Eden,Total,5+,NA
+Auckland,Mt Eden,Total,Total,440.2325581395
+Auckland,Mt Roskill/Wesley,Apartment,1,NA
+Auckland,Mt Roskill/Wesley,Apartment,2,NA
+Auckland,Mt Roskill/Wesley,Apartment,3,NA
+Auckland,Mt Roskill/Wesley,Apartment,4,NA
+Auckland,Mt Roskill/Wesley,Apartment,5+,NA
+Auckland,Mt Roskill/Wesley,Apartment,Total,NA
+Auckland,Mt Roskill/Wesley,Flat,1,NA
+Auckland,Mt Roskill/Wesley,Flat,2,337.8571428571
+Auckland,Mt Roskill/Wesley,Flat,3,NA
+Auckland,Mt Roskill/Wesley,Flat,4,NA
+Auckland,Mt Roskill/Wesley,Flat,5+,NA
+Auckland,Mt Roskill/Wesley,Flat,Total,335.9090909091
+Auckland,Mt Roskill/Wesley,House,1,NA
+Auckland,Mt Roskill/Wesley,House,2,NA
+Auckland,Mt Roskill/Wesley,House,3,473.6363636364
+Auckland,Mt Roskill/Wesley,House,4,521
+Auckland,Mt Roskill/Wesley,House,5+,NA
+Auckland,Mt Roskill/Wesley,House,Total,480.652173913
+Auckland,Mt Roskill/Wesley,Total,1,NA
+Auckland,Mt Roskill/Wesley,Total,2,362.0833333333
+Auckland,Mt Roskill/Wesley,Total,3,468.3333333333
+Auckland,Mt Roskill/Wesley,Total,4,521
+Auckland,Mt Roskill/Wesley,Total,5+,NA
+Auckland,Mt Roskill/Wesley,Total,Total,433.9473684211
+Auckland,Mt Wellington,Apartment,1,NA
+Auckland,Mt Wellington,Apartment,2,NA
+Auckland,Mt Wellington,Apartment,3,NA
+Auckland,Mt Wellington,Apartment,4,NA
+Auckland,Mt Wellington,Apartment,5+,NA
+Auckland,Mt Wellington,Apartment,Total,364.1428571429
+Auckland,Mt Wellington,Flat,1,NA
+Auckland,Mt Wellington,Flat,2,337.7777777778
+Auckland,Mt Wellington,Flat,3,NA
+Auckland,Mt Wellington,Flat,4,NA
+Auckland,Mt Wellington,Flat,5+,NA
+Auckland,Mt Wellington,Flat,Total,336.7857142857
+Auckland,Mt Wellington,House,1,NA
+Auckland,Mt Wellington,House,2,NA
+Auckland,Mt Wellington,House,3,463.6363636364
+Auckland,Mt Wellington,House,4,NA
+Auckland,Mt Wellington,House,5+,NA
+Auckland,Mt Wellington,House,Total,427.1428571429
+Auckland,Mt Wellington,Total,1,306.6666666667
+Auckland,Mt Wellington,Total,2,348.9333333333
+Auckland,Mt Wellington,Total,3,431
+Auckland,Mt Wellington,Total,4,553
+Auckland,Mt Wellington,Total,5+,NA
+Auckland,Mt Wellington,Total,Total,393.3111111111
+Auckland,Mt Wellington North,Apartment,1,NA
+Auckland,Mt Wellington North,Apartment,2,NA
+Auckland,Mt Wellington North,Apartment,3,NA
+Auckland,Mt Wellington North,Apartment,4,NA
+Auckland,Mt Wellington North,Apartment,5+,NA
+Auckland,Mt Wellington North,Apartment,Total,NA
+Auckland,Mt Wellington North,Flat,1,272.1428571429
+Auckland,Mt Wellington North,Flat,2,356.8181818182
+Auckland,Mt Wellington North,Flat,3,NA
+Auckland,Mt Wellington North,Flat,4,NA
+Auckland,Mt Wellington North,Flat,5+,NA
+Auckland,Mt Wellington North,Flat,Total,332.2727272727
+Auckland,Mt Wellington North,House,1,NA
+Auckland,Mt Wellington North,House,2,NA
+Auckland,Mt Wellington North,House,3,470.3846153846
+Auckland,Mt Wellington North,House,4,NA
+Auckland,Mt Wellington North,House,5+,NA
+Auckland,Mt Wellington North,House,Total,449.7368421053
+Auckland,Mt Wellington North,Total,1,280.5555555556
+Auckland,Mt Wellington North,Total,2,362.8571428571
+Auckland,Mt Wellington North,Total,3,458.3333333333
+Auckland,Mt Wellington North,Total,4,NA
+Auckland,Mt Wellington North,Total,5+,NA
+Auckland,Mt Wellington North,Total,Total,385.4545454545
+Auckland,Newmarket,Apartment,1,330
+Auckland,Newmarket,Apartment,2,519.6875
+Auckland,Newmarket,Apartment,3,NA
+Auckland,Newmarket,Apartment,4,NA
+Auckland,Newmarket,Apartment,5+,NA
+Auckland,Newmarket,Apartment,Total,513.8333333333
+Auckland,Newmarket,Flat,1,341.5384615385
+Auckland,Newmarket,Flat,2,NA
+Auckland,Newmarket,Flat,3,NA
+Auckland,Newmarket,Flat,4,NA
+Auckland,Newmarket,Flat,5+,NA
+Auckland,Newmarket,Flat,Total,383
+Auckland,Newmarket,House,1,NA
+Auckland,Newmarket,House,2,NA
+Auckland,Newmarket,House,3,NA
+Auckland,Newmarket,House,4,NA
+Auckland,Newmarket,House,5+,NA
+Auckland,Newmarket,House,Total,NA
+Auckland,Newmarket,Total,1,331.9047619048
+Auckland,Newmarket,Total,2,498.1578947368
+Auckland,Newmarket,Total,3,773.3333333333
+Auckland,Newmarket,Total,4,NA
+Auckland,Newmarket,Total,5+,NA
+Auckland,Newmarket,Total,Total,477.6785714286
+Auckland,Newton/Grafton,Apartment,1,331.875
+Auckland,Newton/Grafton,Apartment,2,451
+Auckland,Newton/Grafton,Apartment,3,381.1538461538
+Auckland,Newton/Grafton,Apartment,4,NA
+Auckland,Newton/Grafton,Apartment,5+,NA
+Auckland,Newton/Grafton,Apartment,Total,369.2957746479
+Auckland,Newton/Grafton,Flat,1,322.0833333333
+Auckland,Newton/Grafton,Flat,2,NA
+Auckland,Newton/Grafton,Flat,3,NA
+Auckland,Newton/Grafton,Flat,4,NA
+Auckland,Newton/Grafton,Flat,5+,NA
+Auckland,Newton/Grafton,Flat,Total,393.1578947368
+Auckland,Newton/Grafton,House,1,NA
+Auckland,Newton/Grafton,House,2,NA
+Auckland,Newton/Grafton,House,3,NA
+Auckland,Newton/Grafton,House,4,NA
+Auckland,Newton/Grafton,House,5+,NA
+Auckland,Newton/Grafton,House,Total,453.3333333333
+Auckland,Newton/Grafton,Total,1,317.6315789474
+Auckland,Newton/Grafton,Total,2,452.2727272727
+Auckland,Newton/Grafton,Total,3,446.8421052632
+Auckland,Newton/Grafton,Total,4,NA
+Auckland,Newton/Grafton,Total,5+,NA
+Auckland,Newton/Grafton,Total,Total,379.0825688073
+Auckland,Onehunga/Oranga/Te Papapa,Apartment,1,NA
+Auckland,Onehunga/Oranga/Te Papapa,Apartment,2,405
+Auckland,Onehunga/Oranga/Te Papapa,Apartment,3,NA
+Auckland,Onehunga/Oranga/Te Papapa,Apartment,4,NA
+Auckland,Onehunga/Oranga/Te Papapa,Apartment,5+,NA
+Auckland,Onehunga/Oranga/Te Papapa,Apartment,Total,423.4090909091
+Auckland,Onehunga/Oranga/Te Papapa,Flat,1,298.9285714286
+Auckland,Onehunga/Oranga/Te Papapa,Flat,2,388.2954545455
+Auckland,Onehunga/Oranga/Te Papapa,Flat,3,408.3333333333
+Auckland,Onehunga/Oranga/Te Papapa,Flat,4,NA
+Auckland,Onehunga/Oranga/Te Papapa,Flat,5+,NA
+Auckland,Onehunga/Oranga/Te Papapa,Flat,Total,368.0434782609
+Auckland,Onehunga/Oranga/Te Papapa,House,1,NA
+Auckland,Onehunga/Oranga/Te Papapa,House,2,427.3076923077
+Auckland,Onehunga/Oranga/Te Papapa,House,3,525.3571428571
+Auckland,Onehunga/Oranga/Te Papapa,House,4,589.375
+Auckland,Onehunga/Oranga/Te Papapa,House,5+,NA
+Auckland,Onehunga/Oranga/Te Papapa,House,Total,500.8771929825
+Auckland,Onehunga/Oranga/Te Papapa,Total,1,282.6086956522
+Auckland,Onehunga/Oranga/Te Papapa,Total,2,398.6301369863
+Auckland,Onehunga/Oranga/Te Papapa,Total,3,503.6842105263
+Auckland,Onehunga/Oranga/Te Papapa,Total,4,607.2222222222
+Auckland,Onehunga/Oranga/Te Papapa,Total,5+,NA
+Auckland,Onehunga/Oranga/Te Papapa,Total,Total,423.2317073171
+Auckland,Otahuhu,Apartment,1,NA
+Auckland,Otahuhu,Apartment,2,NA
+Auckland,Otahuhu,Apartment,3,NA
+Auckland,Otahuhu,Apartment,4,NA
+Auckland,Otahuhu,Apartment,5+,NA
+Auckland,Otahuhu,Apartment,Total,NA
+Auckland,Otahuhu,Flat,1,262.5
+Auckland,Otahuhu,Flat,2,317.3333333333
+Auckland,Otahuhu,Flat,3,NA
+Auckland,Otahuhu,Flat,4,NA
+Auckland,Otahuhu,Flat,5+,NA
+Auckland,Otahuhu,Flat,Total,296
+Auckland,Otahuhu,House,1,NA
+Auckland,Otahuhu,House,2,NA
+Auckland,Otahuhu,House,3,392.1428571429
+Auckland,Otahuhu,House,4,466
+Auckland,Otahuhu,House,5+,NA
+Auckland,Otahuhu,House,Total,393.2926829268
+Auckland,Otahuhu,Total,1,238.4210526316
+Auckland,Otahuhu,Total,2,335.1388888889
+Auckland,Otahuhu,Total,3,390.6818181818
+Auckland,Otahuhu,Total,4,466
+Auckland,Otahuhu,Total,5+,NA
+Auckland,Otahuhu,Total,Total,338.0165289256
+Auckland,Panmure,Apartment,1,NA
+Auckland,Panmure,Apartment,2,NA
+Auckland,Panmure,Apartment,3,NA
+Auckland,Panmure,Apartment,4,NA
+Auckland,Panmure,Apartment,5+,NA
+Auckland,Panmure,Apartment,Total,NA
+Auckland,Panmure,Flat,1,244.2857142857
+Auckland,Panmure,Flat,2,348.3333333333
+Auckland,Panmure,Flat,3,NA
+Auckland,Panmure,Flat,4,NA
+Auckland,Panmure,Flat,5+,NA
+Auckland,Panmure,Flat,Total,301.875
+Auckland,Panmure,House,1,NA
+Auckland,Panmure,House,2,390.7142857143
+Auckland,Panmure,House,3,471.8181818182
+Auckland,Panmure,House,4,NA
+Auckland,Panmure,House,5+,NA
+Auckland,Panmure,House,Total,433.75
+Auckland,Panmure,Total,1,231.25
+Auckland,Panmure,Total,2,371.7857142857
+Auckland,Panmure,Total,3,459
+Auckland,Panmure,Total,4,NA
+Auckland,Panmure,Total,5+,NA
+Auckland,Panmure,Total,Total,380.7777777778
+Auckland,Parnell,Apartment,1,402.5
+Auckland,Parnell,Apartment,2,624
+Auckland,Parnell,Apartment,3,NA
+Auckland,Parnell,Apartment,4,NA
+Auckland,Parnell,Apartment,5+,NA
+Auckland,Parnell,Apartment,Total,566.935483871
+Auckland,Parnell,Flat,1,366.9078947368
+Auckland,Parnell,Flat,2,513.9473684211
+Auckland,Parnell,Flat,3,NA
+Auckland,Parnell,Flat,4,NA
+Auckland,Parnell,Flat,5+,NA
+Auckland,Parnell,Flat,Total,454.3465909091
+Auckland,Parnell,House,1,NA
+Auckland,Parnell,House,2,563
+Auckland,Parnell,House,3,739.5454545455
+Auckland,Parnell,House,4,NA
+Auckland,Parnell,House,5+,NA
+Auckland,Parnell,House,Total,734.4
+Auckland,Parnell,Total,1,368.2083333333
+Auckland,Parnell,Total,2,562.5641025641
+Auckland,Parnell,Total,3,767.5
+Auckland,Parnell,Total,4,NA
+Auckland,Parnell,Total,5+,NA
+Auckland,Parnell,Total,Total,563.737745098
+Auckland,Penrose/Mt Wellington South,Apartment,1,NA
+Auckland,Penrose/Mt Wellington South,Apartment,2,NA
+Auckland,Penrose/Mt Wellington South,Apartment,3,NA
+Auckland,Penrose/Mt Wellington South,Apartment,4,NA
+Auckland,Penrose/Mt Wellington South,Apartment,5+,NA
+Auckland,Penrose/Mt Wellington South,Apartment,Total,NA
+Auckland,Penrose/Mt Wellington South,Flat,1,NA
+Auckland,Penrose/Mt Wellington South,Flat,2,337.8947368421
+Auckland,Penrose/Mt Wellington South,Flat,3,NA
+Auckland,Penrose/Mt Wellington South,Flat,4,NA
+Auckland,Penrose/Mt Wellington South,Flat,5+,NA
+Auckland,Penrose/Mt Wellington South,Flat,Total,360.8695652174
+Auckland,Penrose/Mt Wellington South,House,1,NA
+Auckland,Penrose/Mt Wellington South,House,2,399.2857142857
+Auckland,Penrose/Mt Wellington South,House,3,462
+Auckland,Penrose/Mt Wellington South,House,4,572
+Auckland,Penrose/Mt Wellington South,House,5+,NA
+Auckland,Penrose/Mt Wellington South,House,Total,464.2682926829
+Auckland,Penrose/Mt Wellington South,Total,1,370
+Auckland,Penrose/Mt Wellington South,Total,2,355.7142857143
+Auckland,Penrose/Mt Wellington South,Total,3,462
+Auckland,Penrose/Mt Wellington South,Total,4,572
+Auckland,Penrose/Mt Wellington South,Total,5+,NA
+Auckland,Penrose/Mt Wellington South,Total,Total,425.0563380282
+Auckland,Ponsonby/Freemans Bay,Apartment,1,406.6666666667
+Auckland,Ponsonby/Freemans Bay,Apartment,2,524
+Auckland,Ponsonby/Freemans Bay,Apartment,3,NA
+Auckland,Ponsonby/Freemans Bay,Apartment,4,NA
+Auckland,Ponsonby/Freemans Bay,Apartment,5+,NA
+Auckland,Ponsonby/Freemans Bay,Apartment,Total,443.4782608696
+Auckland,Ponsonby/Freemans Bay,Flat,1,367.1428571429
+Auckland,Ponsonby/Freemans Bay,Flat,2,522.7777777778
+Auckland,Ponsonby/Freemans Bay,Flat,3,NA
+Auckland,Ponsonby/Freemans Bay,Flat,4,NA
+Auckland,Ponsonby/Freemans Bay,Flat,5+,NA
+Auckland,Ponsonby/Freemans Bay,Flat,Total,451.1111111111
+Auckland,Ponsonby/Freemans Bay,House,1,NA
+Auckland,Ponsonby/Freemans Bay,House,2,657.7777777778
+Auckland,Ponsonby/Freemans Bay,House,3,778.9130434783
+Auckland,Ponsonby/Freemans Bay,House,4,841
+Auckland,Ponsonby/Freemans Bay,House,5+,NA
+Auckland,Ponsonby/Freemans Bay,House,Total,762.3863636364
+Auckland,Ponsonby/Freemans Bay,Total,1,395.8620689655
+Auckland,Ponsonby/Freemans Bay,Total,2,575.8695652174
+Auckland,Ponsonby/Freemans Bay,Total,3,741.8518518519
+Auckland,Ponsonby/Freemans Bay,Total,4,842.1428571429
+Auckland,Ponsonby/Freemans Bay,Total,5+,NA
+Auckland,Ponsonby/Freemans Bay,Total,Total,589.6428571429
+Auckland,Pt Chevalier,Apartment,1,NA
+Auckland,Pt Chevalier,Apartment,2,NA
+Auckland,Pt Chevalier,Apartment,3,NA
+Auckland,Pt Chevalier,Apartment,4,NA
+Auckland,Pt Chevalier,Apartment,5+,NA
+Auckland,Pt Chevalier,Apartment,Total,NA
+Auckland,Pt Chevalier,Flat,1,NA
+Auckland,Pt Chevalier,Flat,2,380.625
+Auckland,Pt Chevalier,Flat,3,NA
+Auckland,Pt Chevalier,Flat,4,NA
+Auckland,Pt Chevalier,Flat,5+,NA
+Auckland,Pt Chevalier,Flat,Total,357.1428571429
+Auckland,Pt Chevalier,House,1,NA
+Auckland,Pt Chevalier,House,2,NA
+Auckland,Pt Chevalier,House,3,645.8333333333
+Auckland,Pt Chevalier,House,4,741.6666666667
+Auckland,Pt Chevalier,House,5+,NA
+Auckland,Pt Chevalier,House,Total,616.3461538462
+Auckland,Pt Chevalier,Total,1,275.3
+Auckland,Pt Chevalier,Total,2,422.0833333333
+Auckland,Pt Chevalier,Total,3,619.2307692308
+Auckland,Pt Chevalier,Total,4,685.7142857143
+Auckland,Pt Chevalier,Total,5+,NA
+Auckland,Pt Chevalier,Total,Total,499.2127659574
+Auckland,Remuera,Apartment,1,NA
+Auckland,Remuera,Apartment,2,NA
+Auckland,Remuera,Apartment,3,NA
+Auckland,Remuera,Apartment,4,NA
+Auckland,Remuera,Apartment,5+,NA
+Auckland,Remuera,Apartment,Total,637.5
+Auckland,Remuera,Flat,1,270.625
+Auckland,Remuera,Flat,2,472.7692307692
+Auckland,Remuera,Flat,3,608
+Auckland,Remuera,Flat,4,NA
+Auckland,Remuera,Flat,5+,NA
+Auckland,Remuera,Flat,Total,465.5517241379
+Auckland,Remuera,House,1,NA
+Auckland,Remuera,House,2,555.5555555556
+Auckland,Remuera,House,3,647.8947368421
+Auckland,Remuera,House,4,755.8823529412
+Auckland,Remuera,House,5+,NA
+Auckland,Remuera,House,Total,683.7037037037
+Auckland,Remuera,Total,1,260.8333333333
+Auckland,Remuera,Total,2,520.962962963
+Auckland,Remuera,Total,3,665.3846153846
+Auckland,Remuera,Total,4,753.6111111111
+Auckland,Remuera,Total,5+,NA
+Auckland,Remuera,Total,Total,608.41
+Auckland,Remuera South/Meadowbank South,Apartment,1,NA
+Auckland,Remuera South/Meadowbank South,Apartment,2,NA
+Auckland,Remuera South/Meadowbank South,Apartment,3,NA
+Auckland,Remuera South/Meadowbank South,Apartment,4,NA
+Auckland,Remuera South/Meadowbank South,Apartment,5+,NA
+Auckland,Remuera South/Meadowbank South,Apartment,Total,NA
+Auckland,Remuera South/Meadowbank South,Flat,1,319
+Auckland,Remuera South/Meadowbank South,Flat,2,400.8333333333
+Auckland,Remuera South/Meadowbank South,Flat,3,NA
+Auckland,Remuera South/Meadowbank South,Flat,4,NA
+Auckland,Remuera South/Meadowbank South,Flat,5+,NA
+Auckland,Remuera South/Meadowbank South,Flat,Total,418.9583333333
+Auckland,Remuera South/Meadowbank South,House,1,NA
+Auckland,Remuera South/Meadowbank South,House,2,NA
+Auckland,Remuera South/Meadowbank South,House,3,718.1965
+Auckland,Remuera South/Meadowbank South,House,4,668.2142857143
+Auckland,Remuera South/Meadowbank South,House,5+,NA
+Auckland,Remuera South/Meadowbank South,House,Total,682.0211363636
+Auckland,Remuera South/Meadowbank South,Total,1,319
+Auckland,Remuera South/Meadowbank South,Total,2,422.6315789474
+Auckland,Remuera South/Meadowbank South,Total,3,680.9572
+Auckland,Remuera South/Meadowbank South,Total,4,663.6666666667
+Auckland,Remuera South/Meadowbank South,Total,5+,NA
+Auckland,Remuera South/Meadowbank South,Total,Total,565.4406493506
+Auckland,Royal Oak/One Tree Hill,Apartment,1,NA
+Auckland,Royal Oak/One Tree Hill,Apartment,2,471
+Auckland,Royal Oak/One Tree Hill,Apartment,3,NA
+Auckland,Royal Oak/One Tree Hill,Apartment,4,NA
+Auckland,Royal Oak/One Tree Hill,Apartment,5+,NA
+Auckland,Royal Oak/One Tree Hill,Apartment,Total,453.5714285714
+Auckland,Royal Oak/One Tree Hill,Flat,1,264
+Auckland,Royal Oak/One Tree Hill,Flat,2,467.5
+Auckland,Royal Oak/One Tree Hill,Flat,3,NA
+Auckland,Royal Oak/One Tree Hill,Flat,4,NA
+Auckland,Royal Oak/One Tree Hill,Flat,5+,NA
+Auckland,Royal Oak/One Tree Hill,Flat,Total,428.7037037037
+Auckland,Royal Oak/One Tree Hill,House,1,NA
+Auckland,Royal Oak/One Tree Hill,House,2,468.75
+Auckland,Royal Oak/One Tree Hill,House,3,559.4736842105
+Auckland,Royal Oak/One Tree Hill,House,4,644
+Auckland,Royal Oak/One Tree Hill,House,5+,NA
+Auckland,Royal Oak/One Tree Hill,House,Total,566.3157894737
+Auckland,Royal Oak/One Tree Hill,Total,1,275.8823529412
+Auckland,Royal Oak/One Tree Hill,Total,2,468.2258064516
+Auckland,Royal Oak/One Tree Hill,Total,3,535
+Auckland,Royal Oak/One Tree Hill,Total,4,636.6666666667
+Auckland,Royal Oak/One Tree Hill,Total,5+,NA
+Auckland,Royal Oak/One Tree Hill,Total,Total,487.2105263158
+Auckland,St Helliers/Glendowie,Apartment,1,NA
+Auckland,St Helliers/Glendowie,Apartment,2,NA
+Auckland,St Helliers/Glendowie,Apartment,3,NA
+Auckland,St Helliers/Glendowie,Apartment,4,NA
+Auckland,St Helliers/Glendowie,Apartment,5+,NA
+Auckland,St Helliers/Glendowie,Apartment,Total,NA
+Auckland,St Helliers/Glendowie,Flat,1,367
+Auckland,St Helliers/Glendowie,Flat,2,437.3076923077
+Auckland,St Helliers/Glendowie,Flat,3,NA
+Auckland,St Helliers/Glendowie,Flat,4,NA
+Auckland,St Helliers/Glendowie,Flat,5+,NA
+Auckland,St Helliers/Glendowie,Flat,Total,439.7916666667
+Auckland,St Helliers/Glendowie,House,1,NA
+Auckland,St Helliers/Glendowie,House,2,486.6666666667
+Auckland,St Helliers/Glendowie,House,3,645.8333333333
+Auckland,St Helliers/Glendowie,House,4,877.3529411765
+Auckland,St Helliers/Glendowie,House,5+,NA
+Auckland,St Helliers/Glendowie,House,Total,723.3333333333
+Auckland,St Helliers/Glendowie,Total,1,374.5454545455
+Auckland,St Helliers/Glendowie,Total,2,449.7826086957
+Auckland,St Helliers/Glendowie,Total,3,645.8333333333
+Auckland,St Helliers/Glendowie,Total,4,877.3529411765
+Auckland,St Helliers/Glendowie,Total,5+,NA
+Auckland,St Helliers/Glendowie,Total,Total,625.2564102564
+Auckland,St Johns,Apartment,1,NA
+Auckland,St Johns,Apartment,2,NA
+Auckland,St Johns,Apartment,3,NA
+Auckland,St Johns,Apartment,4,NA
+Auckland,St Johns,Apartment,5+,NA
+Auckland,St Johns,Apartment,Total,366.4285714286
+Auckland,St Johns,Flat,1,NA
+Auckland,St Johns,Flat,2,363
+Auckland,St Johns,Flat,3,NA
+Auckland,St Johns,Flat,4,NA
+Auckland,St Johns,Flat,5+,NA
+Auckland,St Johns,Flat,Total,375.5263157895
+Auckland,St Johns,House,1,NA
+Auckland,St Johns,House,2,NA
+Auckland,St Johns,House,3,542.1428571429
+Auckland,St Johns,House,4,717.5
+Auckland,St Johns,House,5+,NA
+Auckland,St Johns,House,Total,546.6666666667
+Auckland,St Johns,Total,1,236.875
+Auckland,St Johns,Total,2,361.25
+Auckland,St Johns,Total,3,530.625
+Auckland,St Johns,Total,4,686.875
+Auckland,St Johns,Total,5+,NA
+Auckland,St Johns,Total,Total,448.3333333333
+Auckland,St Lukes/Sandringham,Apartment,1,NA
+Auckland,St Lukes/Sandringham,Apartment,2,409.1666666667
+Auckland,St Lukes/Sandringham,Apartment,3,NA
+Auckland,St Lukes/Sandringham,Apartment,4,NA
+Auckland,St Lukes/Sandringham,Apartment,5+,NA
+Auckland,St Lukes/Sandringham,Apartment,Total,431.875
+Auckland,St Lukes/Sandringham,Flat,1,277.7272727273
+Auckland,St Lukes/Sandringham,Flat,2,362.4137931034
+Auckland,St Lukes/Sandringham,Flat,3,NA
+Auckland,St Lukes/Sandringham,Flat,4,NA
+Auckland,St Lukes/Sandringham,Flat,5+,NA
+Auckland,St Lukes/Sandringham,Flat,Total,342.619047619
+Auckland,St Lukes/Sandringham,House,1,NA
+Auckland,St Lukes/Sandringham,House,2,NA
+Auckland,St Lukes/Sandringham,House,3,560.9615384615
+Auckland,St Lukes/Sandringham,House,4,660
+Auckland,St Lukes/Sandringham,House,5+,NA
+Auckland,St Lukes/Sandringham,House,Total,556.0810810811
+Auckland,St Lukes/Sandringham,Total,1,243.2
+Auckland,St Lukes/Sandringham,Total,2,374.4736842105
+Auckland,St Lukes/Sandringham,Total,3,560.1785714286
+Auckland,St Lukes/Sandringham,Total,4,660
+Auckland,St Lukes/Sandringham,Total,5+,NA
+Auckland,St Lukes/Sandringham,Total,Total,426.3267326733
+Auckland,Three Kings,Apartment,1,NA
+Auckland,Three Kings,Apartment,2,NA
+Auckland,Three Kings,Apartment,3,NA
+Auckland,Three Kings,Apartment,4,NA
+Auckland,Three Kings,Apartment,5+,NA
+Auckland,Three Kings,Apartment,Total,NA
+Auckland,Three Kings,Flat,1,NA
+Auckland,Three Kings,Flat,2,382.8571428571
+Auckland,Three Kings,Flat,3,NA
+Auckland,Three Kings,Flat,4,NA
+Auckland,Three Kings,Flat,5+,NA
+Auckland,Three Kings,Flat,Total,372.5
+Auckland,Three Kings,House,1,NA
+Auckland,Three Kings,House,2,NA
+Auckland,Three Kings,House,3,518.5
+Auckland,Three Kings,House,4,NA
+Auckland,Three Kings,House,5+,NA
+Auckland,Three Kings,House,Total,496.1764705882
+Auckland,Three Kings,Total,1,NA
+Auckland,Three Kings,Total,2,406.3636363636
+Auckland,Three Kings,Total,3,518.5
+Auckland,Three Kings,Total,4,NA
+Auckland,Three Kings,Total,5+,NA
+Auckland,Three Kings,Total,Total,424.8333333333
+Auckland,Waiheke Island,Apartment,1,NA
+Auckland,Waiheke Island,Apartment,2,NA
+Auckland,Waiheke Island,Apartment,3,NA
+Auckland,Waiheke Island,Apartment,4,NA
+Auckland,Waiheke Island,Apartment,5+,NA
+Auckland,Waiheke Island,Apartment,Total,NA
+Auckland,Waiheke Island,Flat,1,351
+Auckland,Waiheke Island,Flat,2,NA
+Auckland,Waiheke Island,Flat,3,NA
+Auckland,Waiheke Island,Flat,4,NA
+Auckland,Waiheke Island,Flat,5+,NA
+Auckland,Waiheke Island,Flat,Total,392.5
+Auckland,Waiheke Island,House,1,295
+Auckland,Waiheke Island,House,2,379.4583333333
+Auckland,Waiheke Island,House,3,523.1578947368
+Auckland,Waiheke Island,House,4,NA
+Auckland,Waiheke Island,House,5+,NA
+Auckland,Waiheke Island,House,Total,433.8666666667
+Auckland,Waiheke Island,Total,1,294.6666666667
+Auckland,Waiheke Island,Total,2,398.5666666667
+Auckland,Waiheke Island,Total,3,523.1578947368
+Auckland,Waiheke Island,Total,4,NA
+Auckland,Waiheke Island,Total,5+,NA
+Auckland,Waiheke Island,Total,Total,429.525
+Auckland,Waterview/Avondale Heights,Apartment,1,NA
+Auckland,Waterview/Avondale Heights,Apartment,2,NA
+Auckland,Waterview/Avondale Heights,Apartment,3,NA
+Auckland,Waterview/Avondale Heights,Apartment,4,NA
+Auckland,Waterview/Avondale Heights,Apartment,5+,NA
+Auckland,Waterview/Avondale Heights,Apartment,Total,NA
+Auckland,Waterview/Avondale Heights,Flat,1,NA
+Auckland,Waterview/Avondale Heights,Flat,2,NA
+Auckland,Waterview/Avondale Heights,Flat,3,NA
+Auckland,Waterview/Avondale Heights,Flat,4,NA
+Auckland,Waterview/Avondale Heights,Flat,5+,NA
+Auckland,Waterview/Avondale Heights,Flat,Total,328
+Auckland,Waterview/Avondale Heights,House,1,NA
+Auckland,Waterview/Avondale Heights,House,2,369.375
+Auckland,Waterview/Avondale Heights,House,3,447.5
+Auckland,Waterview/Avondale Heights,House,4,534.2857142857
+Auckland,Waterview/Avondale Heights,House,5+,NA
+Auckland,Waterview/Avondale Heights,House,Total,459.1666666667
+Auckland,Waterview/Avondale Heights,Total,1,280.8333333333
+Auckland,Waterview/Avondale Heights,Total,2,366.3636363636
+Auckland,Waterview/Avondale Heights,Total,3,440.7142857143
+Auckland,Waterview/Avondale Heights,Total,4,534.2857142857
+Auckland,Waterview/Avondale Heights,Total,5+,NA
+Auckland,Waterview/Avondale Heights,Total,Total,431.25
+Auckland,Western Springs/Morningside,Apartment,1,NA
+Auckland,Western Springs/Morningside,Apartment,2,436.875
+Auckland,Western Springs/Morningside,Apartment,3,NA
+Auckland,Western Springs/Morningside,Apartment,4,NA
+Auckland,Western Springs/Morningside,Apartment,5+,NA
+Auckland,Western Springs/Morningside,Apartment,Total,453.3333333333
+Auckland,Western Springs/Morningside,Flat,1,281.25
+Auckland,Western Springs/Morningside,Flat,2,380.3571428571
+Auckland,Western Springs/Morningside,Flat,3,NA
+Auckland,Western Springs/Morningside,Flat,4,NA
+Auckland,Western Springs/Morningside,Flat,5+,NA
+Auckland,Western Springs/Morningside,Flat,Total,337.8
+Auckland,Western Springs/Morningside,House,1,NA
+Auckland,Western Springs/Morningside,House,2,NA
+Auckland,Western Springs/Morningside,House,3,635.5555555556
+Auckland,Western Springs/Morningside,House,4,NA
+Auckland,Western Springs/Morningside,House,5+,NA
+Auckland,Western Springs/Morningside,House,Total,655.625
+Auckland,Western Springs/Morningside,Total,1,281.25
+Auckland,Western Springs/Morningside,Total,2,405.625
+Auckland,Western Springs/Morningside,Total,3,606.25
+Auckland,Western Springs/Morningside,Total,4,617
+Auckland,Western Springs/Morningside,Total,5+,NA
+Auckland,Western Springs/Morningside,Total,Total,463.7962962963
+Auckland,Westmere/Surrey Crescent,Apartment,1,490.8333333333
+Auckland,Westmere/Surrey Crescent,Apartment,2,721.875
+Auckland,Westmere/Surrey Crescent,Apartment,3,NA
+Auckland,Westmere/Surrey Crescent,Apartment,4,NA
+Auckland,Westmere/Surrey Crescent,Apartment,5+,NA
+Auckland,Westmere/Surrey Crescent,Apartment,Total,601.9444444444
+Auckland,Westmere/Surrey Crescent,Flat,1,NA
+Auckland,Westmere/Surrey Crescent,Flat,2,405
+Auckland,Westmere/Surrey Crescent,Flat,3,NA
+Auckland,Westmere/Surrey Crescent,Flat,4,NA
+Auckland,Westmere/Surrey Crescent,Flat,5+,NA
+Auckland,Westmere/Surrey Crescent,Flat,Total,480.625
+Auckland,Westmere/Surrey Crescent,House,1,NA
+Auckland,Westmere/Surrey Crescent,House,2,NA
+Auckland,Westmere/Surrey Crescent,House,3,679.3333333333
+Auckland,Westmere/Surrey Crescent,House,4,NA
+Auckland,Westmere/Surrey Crescent,House,5+,NA
+Auckland,Westmere/Surrey Crescent,House,Total,647.6923076923
+Auckland,Westmere/Surrey Crescent,Total,1,422.5
+Auckland,Westmere/Surrey Crescent,Total,2,599.6666666667
+Auckland,Westmere/Surrey Crescent,Total,3,670.2631578947
+Auckland,Westmere/Surrey Crescent,Total,4,NA
+Auckland,Westmere/Surrey Crescent,Total,5+,NA
+Auckland,Westmere/Surrey Crescent,Total,Total,598.7288135593
