@@ -1,0 +1,64 @@
+import stdlib
+
+def makeMap():    
+    // Create map 
+    map = L.map('map').setView([-36.84041, 174.73986], 12)
+
+    tilesURL = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
+    L.tileLayer(tilesURL).addTo(map)
+    
+    // Remove 'Leaflet' link from corner of map  
+    map.attributionControl.setPrefix('')
+    
+    // Define data bins and labels.
+    // Assume no-data entries map to nonpositive numbers.
+    BINS = [0, 0.25, 0.5, 0.75, 1]
+    LABELS = ['No data', '0--25% (affordable)', '26--50%', '51--75%', 
+              '75--100%']
+
+    // Define color scheme using http://colorbrewer2.org/js/. 
+    // Order colors least-to-most intense, but begin with gray, 
+    // the no-data color.
+    // 4-class OrRd:
+    COLORS = ['#969696', '#fef0d9', '#fdcc8a', '#fc8d59', '#d7301f']
+    // 4-class YlGnBu:
+    // COLORS = ['#969696', '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8']
+
+    def getColor(x):
+        for (i, grade) in enumerate(BINS):
+            if x <= grade:
+                return COLORS[i]
+
+    // Add a legend
+    legend = L.control({position: 'bottomright'});
+    legend.onAdd = def(map):
+        div = L.DomUtil.create('div', 'info legend')
+
+        // Loop through our density intervals and generate a label with a colored square for each interval
+        for i in range(len(LABELS)):
+            div.innerHTML += '<i style="background:' + getColor(BINS[i]) +\
+              '"></i> ' + LABELS[i] + '<br>'
+        return div
+
+    legend.addTo(map)
+
+    // Define polygon styles
+    def myStyle(feature):
+        c = getColor(feature.properties.rent/500)
+        return {
+          'fillColor': c,
+          'fillOpacity': 0.7,
+          'color': c,
+          'weight': 1,
+          'opacity': 0.7,
+          //'dashArray': '3',
+          
+        }
+
+    // Load polygons
+    d3.json("test.geojson", def(error, collection):
+        console.log('hello', collection)
+        L.geoJson(collection, {'style': myStyle}).addTo(map)
+    )
+
+makeMap()

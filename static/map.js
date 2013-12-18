@@ -15,6 +15,38 @@
             }
         }
     }
+    function enumerate(item) {
+        var arr = [];
+        for (var i = 0; i < item.length; i++) {
+            arr[arr.length] = [i, item[i]];
+        }
+        return arr;
+    }
+    function range(start, stop, step) {
+        if (arguments.length <= 1) {
+            stop = start || 0;
+            start = 0;
+        }
+        step = arguments[2] || 1;
+        var length = Math.max (Math.ceil ((stop - start) / step) , 0);
+        var idx = 0;
+        var range = new Array(length);
+        while (idx < length) {
+            range[idx++] = start;
+            start += step;
+        }
+        return range;
+    }
+    function len(obj) {
+        if (obj instanceof Array || typeof obj === "string") return obj.length;
+        else {
+            var count = 0;
+            for (var i in obj) {
+                if (obj.hasOwnProperty(i)) count++;
+            }
+            return count;
+        }
+    }
     _$rapyd$_unbindAll(this, true);
     var JSON, str;
         JSON = JSON || {};
@@ -281,11 +313,59 @@
 
     function makeMap() {
         _$rapyd$_unbindAll(this, true);
-        var map, tilesURL;
+        var map, tilesURL, BINS, LABELS, COLORS, legend;
         map = L.map("map").setView([ -36.84041, 174.73986 ], 12);
         tilesURL = "http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png";
         L.tileLayer(tilesURL).addTo(map);
         map.attributionControl.setPrefix("");
+        BINS = [ 0, .25, .5, .75, 1 ];
+        LABELS = [ "No data", "0--25% (affordable)", "26--50%", "51--75%", "75--100%" ];
+        COLORS = [ "#969696", "#fef0d9", "#fdcc8a", "#fc8d59", "#d7301f" ];
+        function getColor(x) {
+            _$rapyd$_unbindAll(this, true);
+            var i, grade;
+            var _$rapyd$_Iter5 = enumerate(BINS);
+            for (var _$rapyd$_Index5 = 0; _$rapyd$_Index5 < _$rapyd$_Iter5.length; _$rapyd$_Index5++) {
+                _$rapyd$_Unpack = _$rapyd$_Iter5[_$rapyd$_Index5];
+                i = _$rapyd$_Unpack[0];
+                grade = _$rapyd$_Unpack[1];
+                if (x <= grade) {
+                    return COLORS[i];
+                }
+            }
+        }
+        legend = L.control({
+            position: "bottomright"
+        });
+        legend.onAdd = function(map) {
+            _$rapyd$_unbindAll(this, true);
+            var div, i;
+            div = L.DomUtil.create("div", "info legend");
+            for (i = 0; i < len(LABELS); i++) {
+                div.innerHTML += '<i style="background:' + getColor(BINS[i]) + '"></i> ' + LABELS[i] + "<br>";
+            }
+            return div;
+        };
+        legend.addTo(map);
+        function myStyle(feature) {
+            _$rapyd$_unbindAll(this, true);
+            var c;
+            c = getColor(feature.properties.rent / 500);
+            return {
+                "fillColor": c,
+                "fillOpacity": .7,
+                "color": c,
+                "weight": 1,
+                "opacity": .7
+            };
+        }
+        d3.json("test.geojson", function(error, collection) {
+            _$rapyd$_unbindAll(this, true);
+            console.log("hello", collection);
+            L.geoJson(collection, {
+                "style": myStyle
+            }).addTo(map);
+        });
     }
 
     makeMap();
