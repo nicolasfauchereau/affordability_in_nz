@@ -11,8 +11,8 @@ If our project becomes too complex for that, then we can switch to `this feature
 
 Notes
 ========
-- Modelling the map after the `London one <http://www.ft.com/cms/s/2/ad4ef6a4-503d-11e3-befe-00144feabdc0.html>`_ made by the Financial Times
+- Inspiration comes from `the Financial Times London rent map <http://www.ft.com/cms/s/2/ad4ef6a4-503d-11e3-befe-00144feabdc0.html>`_
 - Mean rents come from `this NZ government CSV <http://utilities.dbh.govt.nz/userfiles/open-data/mean-rents.csv>`_
 - A good site for creating test geojson files is `geojson.io <http://geojson.io>`_
-- Trello board for the project is `here <https://trello.com/b/93UFI6M3/market-rent-map>`_
+- The Trello board for this map project is `here <https://trello.com/b/93UFI6M3/market-rent-map>`_
 
