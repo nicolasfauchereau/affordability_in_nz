@@ -313,13 +313,13 @@
 
     function makeMap() {
         _$rapyd$_unbindAll(this, true);
-        var map, tilesURL, BINS, LABELS, COLORS, legend;
+        var map, tilesURL, BINS, LABELS, COLORS, legend, suburbs;
         map = L.map("map").setView([ -36.84041, 174.73986 ], 12);
         tilesURL = "http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png";
         L.tileLayer(tilesURL).addTo(map);
         map.attributionControl.setPrefix("");
-        BINS = [ 0, .25, .5, .75, 1 ];
-        LABELS = [ "No data", "0--25% (affordable)", "26--50%", "51--75%", "75--100%" ];
+        BINS = [ 0, .25, .5, .75, 1e10 ];
+        LABELS = [ "No data", "0&ndash;25% (affordable)", "26&ndash;50%", "51&ndash;75%", "> 75%" ];
         COLORS = [ "#969696", "#fef0d9", "#fdcc8a", "#fc8d59", "#d7301f" ];
         function getColor(x) {
             _$rapyd$_unbindAll(this, true);
@@ -347,10 +347,17 @@
             return div;
         };
         legend.addTo(map);
+        function annualRentFraction(weeklyRent) {
+            _$rapyd$_unbindAll(this, true);
+            var grossAnnualIncome;
+            grossAnnualIncome = $("#amount").val();
+            return 52 * weeklyRent / grossAnnualIncome;
+        }
         function myStyle(feature) {
             _$rapyd$_unbindAll(this, true);
-            var c;
-            c = getColor(feature.properties.rent / 500);
+            var f, c;
+            f = annualRentFraction(feature.properties.weeklyRent);
+            c = getColor(f);
             return {
                 "fillColor": c,
                 "fillOpacity": .7,
@@ -359,12 +366,28 @@
                 "opacity": .7
             };
         }
+        suburbs = L.geoJson().addTo(map);
         d3.json("test.geojson", function(error, collection) {
             _$rapyd$_unbindAll(this, true);
-            console.log("hello", collection);
-            L.geoJson(collection, {
-                "style": myStyle
-            }).addTo(map);
+            suburbs.addData(collection);
+            suburbs.setStyle(myStyle);
+        });
+        $(function() {
+            _$rapyd$_unbindAll(this, true);
+            $("#slider-vertical").slider({
+                "orientation": "vertical",
+                "range": "min",
+                "min": 100,
+                "max": 1e5,
+                "value": 25e3,
+                "step": 100,
+                "slide": function(event, ui) {
+                    _$rapyd$_unbindAll(this, true);
+                    $("#amount").val(ui.value);
+                    suburbs.setStyle(myStyle);
+                }
+            });
+            $("#amount").val($("#slider-vertical").slider("value"));
         });
     }
 

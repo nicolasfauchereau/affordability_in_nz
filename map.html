@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auckland Market Rent 2013 Q3</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <link rel="stylesheet" href="map.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+</head>
+<body>
+    <h1>Auckland Market Rent 2013 Q3</h1>
+    <div id="left">
+        <div id="map"></div>
+    </div>
+    <div id="right">
+        <div class="container">
+            <p>How much of your annual salary do you need to spend to rent accommodation in Auckland?</p>            
+            <p>
+                <label for="amount">Gross annual salary<br>$</label>
+                <input type="text" id="amount" style="border:0; color: red; font-weight:bold">
+            </p>
+            <div id="slider-vertical" style="height:200px; margin: -1em 0em 1em 0em;"></div>
+            <p>Property type</p>
+            <p>Number of bedrooms</p>
+        </div>
+    </div>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>

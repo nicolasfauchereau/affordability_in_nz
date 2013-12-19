@@ -12,9 +12,9 @@ def makeMap():
     
     // Define data bins and labels.
     // Assume no-data entries map to nonpositive numbers.
-    BINS = [0, 0.25, 0.5, 0.75, 1]
-    LABELS = ['No data', '0--25% (affordable)', '26--50%', '51--75%', 
-              '75--100%']
+    BINS = [0, 0.25, 0.5, 0.75, 10e9]
+    LABELS = ['No data', '0&ndash;25% (affordable)', '26&ndash;50%', 
+      '51&ndash;75%', '> 75%']
 
     // Define color scheme using http://colorbrewer2.org/js/. 
     // Order colors least-to-most intense, but begin with gray, 
@@ -29,7 +29,7 @@ def makeMap():
             if x <= grade:
                 return COLORS[i]
 
-    // Add a legend
+    // Add a legend to the map
     legend = L.control({position: 'bottomright'});
     legend.onAdd = def(map):
         div = L.DomUtil.create('div', 'info legend')
@@ -42,23 +42,47 @@ def makeMap():
 
     legend.addTo(map)
 
+
+    def annualRentFraction(weeklyRent):
+        grossAnnualIncome = $('#amount').val()
+        return 52*weeklyRent/grossAnnualIncome
+
     // Define polygon styles
     def myStyle(feature):
-        c = getColor(feature.properties.rent/500)
+        f = annualRentFraction(feature.properties.weeklyRent)
+        c = getColor(f)
         return {
           'fillColor': c,
           'fillOpacity': 0.7,
           'color': c,
           'weight': 1,
           'opacity': 0.7,
-          //'dashArray': '3',
-          
         }
 
     // Load polygons
+    suburbs = L.geoJson().addTo(map) 
     d3.json("test.geojson", def(error, collection):
-        console.log('hello', collection)
-        L.geoJson(collection, {'style': myStyle}).addTo(map)
+        suburbs.addData(collection)
+        suburbs.setStyle(myStyle)
+    )
+
+    // Build an income slider widget and connect
+    $(def():
+        $( "#slider-vertical" ).slider({
+            'orientation': 'vertical',
+            'range': 'min',
+            'min': 100,
+            'max': 100000,
+            'value': 25000,
+            'step': 100,
+            'slide': def(event, ui): 
+                // Update income display
+                $('#amount').val(ui.value)
+                // Recolor suburbs
+                suburbs.setStyle(myStyle)
+            ,
+        })
+        $('#amount').val($('#slider-vertical').slider('value'))
     )
 
 makeMap()
