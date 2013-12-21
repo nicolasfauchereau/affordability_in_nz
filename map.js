@@ -15,6 +15,13 @@
             }
         }
     }
+    function reversed(arr) {
+        var tmp = [];
+        for (var i = arr.length - 1; i >= 0; i--) {
+            tmp.push(arr[i]);
+        }
+        return tmp;
+    }
     function enumerate(item) {
         var arr = [];
         for (var i = 0; i < item.length; i++) {
@@ -319,8 +326,8 @@
         L.tileLayer(tilesURL).addTo(map);
         map.attributionControl.setPrefix("");
         BINS = [ 0, .25, .5, .75, 1e10 ];
-        LABELS = [ "No data", "0&ndash;25% (affordable)", "26&ndash;50%", "51&ndash;75%", "> 75%" ];
-        COLORS = [ "#969696", "#fef0d9", "#fdcc8a", "#fc8d59", "#d7301f" ];
+        LABELS = [ "No data", "0&ndash;25% (affordable)", "26&ndash;50%", "51&ndash;75%", "76%+" ];
+        COLORS = reversed([ "#d7191c", "#fdae61", "#abdda4", "#2b83ba", "gray" ]);
         function getColor(x) {
             _$rapyd$_unbindAll(this, true);
             var i, grade;
@@ -348,7 +355,7 @@
         };
         legend.addTo(map);
         suburbs = L.geoJson().addTo(map);
-        d3.json("test.geojson", function(error, collection) {
+        $.getJSON("test.geojson", function(collection) {
             _$rapyd$_unbindAll(this, true);
             suburbs.addData(collection);
             suburbs.setStyle(myStyle);

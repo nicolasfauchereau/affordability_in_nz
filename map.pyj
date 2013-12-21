@@ -15,13 +15,15 @@ def makeMap():
     // Assume no-data entries map to nonpositive numbers.
     BINS = [0, 0.25, 0.5, 0.75, 10e9]
     LABELS = ['No data', '0&ndash;25% (affordable)', '26&ndash;50%', 
-      '51&ndash;75%', '> 75%']
+      '51&ndash;75%', '76%+']
 
     // Define color scheme using http://colorbrewer2.org/js/. 
     // Order colors least-to-most intense, but begin with gray, 
     // the no-data color.
+    // 4-class Spectral:
+    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', 'gray'])
     // 4-class OrRd:
-    COLORS = ['#969696', '#fef0d9', '#fdcc8a', '#fc8d59', '#d7301f']
+    // COLORS = ['#969696', '#fef0d9', '#fdcc8a', '#fc8d59', '#d7301f']
     // 4-class YlGnBu:
     // COLORS = ['#969696', '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8']
 
@@ -45,7 +47,7 @@ def makeMap():
 
     // Load polygons
     suburbs = L.geoJson().addTo(map) 
-    d3.json("test.geojson", def(error, collection):
+    $.getJSON("test.geojson", def(collection):
         suburbs.addData(collection)
         suburbs.setStyle(myStyle)
     )
