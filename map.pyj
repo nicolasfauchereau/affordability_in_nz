@@ -43,13 +43,20 @@ def makeMap():
     legend.addTo(map)
 
 
-    def annualRentFraction(weeklyRent):
-        grossAnnualIncome = $('#amount').val()
-        return 52*weeklyRent/grossAnnualIncome
-
     // Define polygon styles
     def myStyle(feature):
-        f = annualRentFraction(feature.properties.weeklyRent)
+        // Get gross annual income, strip off the dollar sign and comma,
+        // and convert to integer
+        grossAnnualIncome = int($('#income').val()
+          .replace('$', '').replace(',',''))
+        propertyType = $('#propertyType').val()
+        numBedrooms = $('#numBedrooms').val()
+        weeklyRent = feature.properties[propertyType][numBedrooms]
+        console.log('grossAnnualIncome=', grossAnnualIncome)
+        console.log('propertyType, numBedrooms, weeklyRent=', 
+            propertyType, numBedrooms, weeklyRent)
+        // Get fraction of annual income spent on rent
+        f = 52*weeklyRent/grossAnnualIncome
         c = getColor(f)
         return {
           'fillColor': c,
@@ -66,7 +73,7 @@ def makeMap():
         suburbs.setStyle(myStyle)
     )
 
-    // Build an income slider widget and connect
+    // Income slider widget
     $(def():
         $( "#slider-vertical" ).slider({
             'orientation': 'vertical',
@@ -77,12 +84,46 @@ def makeMap():
             'step': 100,
             'slide': def(event, ui): 
                 // Update income display
-                $('#amount').val(ui.value)
+                $('#income').val(d3.format('$,')(ui.value))
                 // Recolor suburbs
                 suburbs.setStyle(myStyle)
             ,
         })
-        $('#amount').val($('#slider-vertical').slider('value'))
+        // Initialize slider
+        $('#income').val(d3.format('$,')($('#slider-vertical')
+            .slider('value')))
     )
+
+    // Property type selector widget
+    $(def():
+        $("#propertyType").selectable({
+            'selected': def(event, ui):
+                // Update property type
+                $('#propertyType').val(ui.selected.id)
+                // Recolor suburbs
+                suburbs.setStyle(myStyle)
+        })
+    )
+    // Initialize select
+    item = $('#propertyType li:eq(1)')
+    item.addClass('ui-selected')
+    $('#propertyType').val(item[0].id)
+
+    
+    // Number of bedrooms selector widget
+    $(def():
+        $("#numBedrooms").selectable({
+            'selected': def(event, ui):
+                // Update nuber of bedrooms
+                $('#numBedrooms').val(ui.selected.id)
+                // Recolor suburbs
+                suburbs.setStyle(myStyle)
+        })
+    )
+    // Initialize select
+    item = $('#numBedrooms li:eq(1)')
+    item.addClass('ui-selected')
+    $('#numBedrooms').val(item[0].id)
+ 
 
 makeMap()

@@ -18,12 +18,25 @@
         <div class="container">
             <p>How much of your annual salary do you need to spend to rent accommodation in Auckland?</p>            
             <p>
-                <label for="amount">Gross annual salary<br>$</label>
-                <input type="text" id="amount" style="border:0; color: red; font-weight:bold">
+                <label for="income">Gross annual salary<br></label>
+                <input type="text" id="income">
             </p>
-            <div id="slider-vertical" style="height:200px; margin: -1em 0em 1em 0em;"></div>
-            <p>Property type</p>
-            <p>Number of bedrooms</p>
+            <div id="slider-vertical"></div>
+
+            Property type
+            <ol id="propertyType">
+                <li class="ui-state-default" id="house">house</li>
+                <li class="ui-state-default" id="flat">flat</li>
+            </ol><br>
+
+            Number of bedrooms
+            <ol id="numBedrooms">
+                <li class="ui-state-default" id="1">1</li>
+                <li class="ui-state-default" id="2">2</li>
+                <li class="ui-state-default" id="3">3</li>
+                <li class="ui-state-default" id="4">4</li>
+            </ol><br>
+
         </div>
     </div>
 

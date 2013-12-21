@@ -313,7 +313,7 @@
 
     function makeMap() {
         _$rapyd$_unbindAll(this, true);
-        var map, tilesURL, BINS, LABELS, COLORS, legend, suburbs;
+        var map, tilesURL, BINS, LABELS, COLORS, legend, suburbs, item, item;
         map = L.map("map").setView([ -36.84041, 174.73986 ], 12);
         tilesURL = "http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png";
         L.tileLayer(tilesURL).addTo(map);
@@ -347,16 +347,16 @@
             return div;
         };
         legend.addTo(map);
-        function annualRentFraction(weeklyRent) {
-            _$rapyd$_unbindAll(this, true);
-            var grossAnnualIncome;
-            grossAnnualIncome = $("#amount").val();
-            return 52 * weeklyRent / grossAnnualIncome;
-        }
         function myStyle(feature) {
             _$rapyd$_unbindAll(this, true);
-            var f, c;
-            f = annualRentFraction(feature.properties.weeklyRent);
+            var grossAnnualIncome, propertyType, numBedrooms, weeklyRent, f, c;
+            grossAnnualIncome = parseInt($("#income").val().replace("$", "").replace(",", ""));
+            propertyType = $("#propertyType").val();
+            numBedrooms = $("#numBedrooms").val();
+            weeklyRent = feature.properties[propertyType][numBedrooms];
+            console.log("grossAnnualIncome=", grossAnnualIncome);
+            console.log("propertyType, numBedrooms, weeklyRent=", propertyType, numBedrooms, weeklyRent);
+            f = 52 * weeklyRent / grossAnnualIncome;
             c = getColor(f);
             return {
                 "fillColor": c,
@@ -383,12 +383,38 @@
                 "step": 100,
                 "slide": function(event, ui) {
                     _$rapyd$_unbindAll(this, true);
-                    $("#amount").val(ui.value);
+                    $("#income").val(d3.format("$,")(ui.value));
                     suburbs.setStyle(myStyle);
                 }
             });
-            $("#amount").val($("#slider-vertical").slider("value"));
+            $("#income").val(d3.format("$,")($("#slider-vertical").slider("value")));
         });
+        $(function() {
+            _$rapyd$_unbindAll(this, true);
+            $("#propertyType").selectable({
+                "selected": function(event, ui) {
+                    _$rapyd$_unbindAll(this, true);
+                    $("#propertyType").val(ui.selected.id);
+                    suburbs.setStyle(myStyle);
+                }
+            });
+        });
+        item = $("#propertyType li:eq(1)");
+        item.addClass("ui-selected");
+        $("#propertyType").val(item[0].id);
+        $(function() {
+            _$rapyd$_unbindAll(this, true);
+            $("#numBedrooms").selectable({
+                "selected": function(event, ui) {
+                    _$rapyd$_unbindAll(this, true);
+                    $("#numBedrooms").val(ui.selected.id);
+                    suburbs.setStyle(myStyle);
+                }
+            });
+        });
+        item = $("#numBedrooms li:eq(1)");
+        item.addClass("ui-selected");
+        $("#numBedrooms").val(item[0].id);
     }
 
     makeMap();
