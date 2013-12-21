@@ -4,6 +4,7 @@ def makeMap():
     // Create map 
     map = L.map('map').setView([-36.84041, 174.73986], 12)
 
+    // Get tiles from Github
     tilesURL = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
     L.tileLayer(tilesURL).addTo(map)
     
@@ -42,13 +43,21 @@ def makeMap():
 
     legend.addTo(map)
 
+    // Load polygons
+    suburbs = L.geoJson().addTo(map) 
+    d3.json("test.geojson", def(error, collection):
+        suburbs.addData(collection)
+        suburbs.setStyle(myStyle)
+    )
 
-    // Define polygon styles
+    // Define polygon styles. Calculate rent fractions herein.
     def myStyle(feature):
-        // Get gross annual income, strip off the dollar sign and comma,
-        // and convert to integer
+        // Get gross annual income from page, 
+        // strip off the dollar sign and comma, and convert to an integer
         grossAnnualIncome = int($('#income').val()
           .replace('$', '').replace(',',''))
+        // Get property type and number of bedrooms from page, 
+        // and get corresponding rent from GeoJSON feature
         propertyType = $('#propertyType').val()
         numBedrooms = $('#numBedrooms').val()
         weeklyRent = feature.properties[propertyType][numBedrooms]
@@ -57,6 +66,7 @@ def makeMap():
             propertyType, numBedrooms, weeklyRent)
         // Get fraction of annual income spent on rent
         f = 52*weeklyRent/grossAnnualIncome
+        // Color the polygon accordingly
         c = getColor(f)
         return {
           'fillColor': c,
@@ -66,14 +76,7 @@ def makeMap():
           'opacity': 0.7,
         }
 
-    // Load polygons
-    suburbs = L.geoJson().addTo(map) 
-    d3.json("test.geojson", def(error, collection):
-        suburbs.addData(collection)
-        suburbs.setStyle(myStyle)
-    )
-
-    // Income slider widget
+    // Add an income slider widget
     $(def():
         $( "#slider-vertical" ).slider({
             'orientation': 'vertical',
@@ -94,7 +97,7 @@ def makeMap():
             .slider('value')))
     )
 
-    // Property type selector widget
+    // Add a property type selector widget
     $(def():
         $("#propertyType").selectable({
             'selected': def(event, ui):
@@ -104,13 +107,13 @@ def makeMap():
                 suburbs.setStyle(myStyle)
         })
     )
-    // Initialize select
+    // Initialize selector
     item = $('#propertyType li:eq(1)')
     item.addClass('ui-selected')
     $('#propertyType').val(item[0].id)
 
     
-    // Number of bedrooms selector widget
+    // Add a number-of-bedrooms selector widget
     $(def():
         $("#numBedrooms").selectable({
             'selected': def(event, ui):
@@ -120,10 +123,9 @@ def makeMap():
                 suburbs.setStyle(myStyle)
         })
     )
-    // Initialize select
+    // Initialize selector
     item = $('#numBedrooms li:eq(1)')
     item.addClass('ui-selected')
     $('#numBedrooms').val(item[0].id)
  
-
 makeMap()

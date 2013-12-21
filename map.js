@@ -347,6 +347,12 @@
             return div;
         };
         legend.addTo(map);
+        suburbs = L.geoJson().addTo(map);
+        d3.json("test.geojson", function(error, collection) {
+            _$rapyd$_unbindAll(this, true);
+            suburbs.addData(collection);
+            suburbs.setStyle(myStyle);
+        });
         function myStyle(feature) {
             _$rapyd$_unbindAll(this, true);
             var grossAnnualIncome, propertyType, numBedrooms, weeklyRent, f, c;
@@ -366,12 +372,6 @@
                 "opacity": .7
             };
         }
-        suburbs = L.geoJson().addTo(map);
-        d3.json("test.geojson", function(error, collection) {
-            _$rapyd$_unbindAll(this, true);
-            suburbs.addData(collection);
-            suburbs.setStyle(myStyle);
-        });
         $(function() {
             _$rapyd$_unbindAll(this, true);
             $("#slider-vertical").slider({
