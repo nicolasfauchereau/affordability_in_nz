@@ -3,6 +3,7 @@ A market rent map for Auckland.
 Requirements
 ============
 - `RapydScript <https://bitbucket.org/pyjeon/rapydscript>`_
+- `RapydCSS <https://bitbucket.org/pyjeon/rapydcss>`_
 
 Git Workflow
 =============
