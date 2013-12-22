@@ -26,6 +26,7 @@ def makeMap():
     // COLORS = ['#969696', '#fef0d9', '#fdcc8a', '#fc8d59', '#d7301f']
     // 4-class YlGnBu:
     // COLORS = ['#969696', '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8']
+    MEDIAN_ANNUAL_INCOME = 575*52
 
     def getColor(x):
         for (i, grade) in enumerate(BINS):
@@ -37,7 +38,7 @@ def makeMap():
     legend.onAdd = def(map):
         div = L.DomUtil.create('div', 'info legend')
 
-        // Loop through our density intervals and generate a label with a colored square for each interval
+        // Loop through our density interrange and generate a label with a colored square for each interval
         for i in range(len(LABELS)):
             div.innerHTML += '<i style="background:' + getColor(BINS[i]) +\
               '"></i> ' + LABELS[i] + '<br>'
@@ -52,12 +53,22 @@ def makeMap():
         suburbs.setStyle(myStyle)
     )
 
+    // Format gross annual income
+    def int_to_dollar_str(x, inverse=False):
+        // Convert the integer `x` into a string with commas as
+        // thousands separators and prepend a dollar sign.
+        // If `inverse` is True, then assume `x` has the output format
+        // mentioned above, and convert it back to an integer.
+        if not inverse:
+            return '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        else:
+            return int(x.replace('$', '').replace(',',''))
+
     // Define polygon styles. Calculate rent fractions herein.
     def myStyle(feature):
         // Get gross annual income from page, 
         // strip off the dollar sign and comma, and convert to an integer
-        grossAnnualIncome = int($('#income').val()
-          .replace('$', '').replace(',',''))
+        grossAnnualIncome = int_to_dollar_str($('#income').val(), inverse=True)
         // Get property type and number of bedrooms from page, 
         // and get corresponding rent from GeoJSON feature
         propertyType = $('#propertyType').val()
@@ -78,6 +89,7 @@ def makeMap():
           'opacity': 0.7,
         }
 
+
     // Add an income slider widget
     $(def():
         $( "#slider-vertical" ).slider({
@@ -85,19 +97,28 @@ def makeMap():
             'range': 'min',
             'min': 100,
             'max': 100000,
-            'value': 25000,
+            'value': MEDIAN_ANNUAL_INCOME,
             'step': 100,
             'slide': def(event, ui): 
                 // Update income display
-                $('#income').val(d3.format('$,')(ui.value))
+                $('#income').val(int_to_dollar_str(ui.value))
                 // Recolor suburbs
                 suburbs.setStyle(myStyle)
             ,
         })
-        // Initialize slider
-        $('#income').val(d3.format('$,')($('#slider-vertical')
-            .slider('value')))
+        // Initialize slider and add a label by the median annual income mark
+        sv = $('#slider-vertical')
+        $('#income').val(int_to_dollar_str(sv.slider('value')))
+        min = sv.slider( "option", "min" )
+        range = sv.slider( "option", "max" ) - min
+        el = $('<label>&larr; NZ median annual income (' +\
+          int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ')</label>').css(
+          'bottom', (MEDIAN_ANNUAL_INCOME/range*100) +'%');
+        // Add the element inside #slider
+        $("#slider-vertical").append(el)
     )
+    
+
 
     // Add a property type selector widget
     $(def():

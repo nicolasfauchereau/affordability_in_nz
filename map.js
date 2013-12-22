@@ -320,7 +320,7 @@
 
     function makeMap() {
         _$rapyd$_unbindAll(this, true);
-        var map, tilesURL, BINS, LABELS, COLORS, legend, suburbs, item, item;
+        var map, tilesURL, BINS, LABELS, COLORS, MEDIAN_ANNUAL_INCOME, legend, suburbs, item, item;
         map = L.map("map").setView([ -36.84041, 174.73986 ], 12);
         tilesURL = "http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png";
         L.tileLayer(tilesURL).addTo(map);
@@ -328,6 +328,7 @@
         BINS = [ 0, .25, .5, .75, 1e10 ];
         LABELS = [ "No data", "0&ndash;25% (affordable)", "26&ndash;50%", "51&ndash;75%", "76%+" ];
         COLORS = reversed([ "#d7191c", "#fdae61", "#abdda4", "#2b83ba", "gray" ]);
+        MEDIAN_ANNUAL_INCOME = 575 * 52;
         function getColor(x) {
             _$rapyd$_unbindAll(this, true);
             var i, grade;
@@ -360,10 +361,19 @@
             suburbs.addData(collection);
             suburbs.setStyle(myStyle);
         });
+        function int_to_dollar_str(x, inverse) {
+            if (typeof inverse === "undefined") inverse = false;
+            _$rapyd$_unbindAll(this, true);
+            if (!inverse) {
+                return "$" + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            } else {
+                return parseInt(x.replace("$", "").replace(",", ""));
+            }
+        }
         function myStyle(feature) {
             _$rapyd$_unbindAll(this, true);
             var grossAnnualIncome, propertyType, numBedrooms, weeklyRent, f, c;
-            grossAnnualIncome = parseInt($("#income").val().replace("$", "").replace(",", ""));
+            grossAnnualIncome = int_to_dollar_str($("#income").val(), inverse = true);
             propertyType = $("#propertyType").val();
             numBedrooms = $("#numBedrooms").val();
             weeklyRent = feature.properties[propertyType][numBedrooms];
@@ -381,20 +391,26 @@
         }
         $(function() {
             _$rapyd$_unbindAll(this, true);
+            var sv, min, range, el;
             $("#slider-vertical").slider({
                 "orientation": "vertical",
                 "range": "min",
                 "min": 100,
                 "max": 1e5,
-                "value": 25e3,
+                "value": MEDIAN_ANNUAL_INCOME,
                 "step": 100,
                 "slide": function(event, ui) {
                     _$rapyd$_unbindAll(this, true);
-                    $("#income").val(d3.format("$,")(ui.value));
+                    $("#income").val(int_to_dollar_str(ui.value));
                     suburbs.setStyle(myStyle);
                 }
             });
-            $("#income").val(d3.format("$,")($("#slider-vertical").slider("value")));
+            sv = $("#slider-vertical");
+            $("#income").val(int_to_dollar_str(sv.slider("value")));
+            min = sv.slider("option", "min");
+            range = sv.slider("option", "max") - min;
+            el = $("<label>&larr; NZ median annual income (" + int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ")</label>").css("bottom", MEDIAN_ANNUAL_INCOME / range * 100 + "%");
+            $("#slider-vertical").append(el);
         });
         $(function() {
             _$rapyd$_unbindAll(this, true);

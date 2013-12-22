@@ -15,9 +15,9 @@
     </div>
     <div id="right">
         <div class="container">
-            <p>How much of your annual salary do you need to spend to rent accommodation in Auckland?</p>            
+            <p>How much of your annual income do you need to spend to rent accommodation in Auckland?</p>            
             <p>
-                <label for="income">Gross annual salary<br></label>
+                <label for="income">Gross annual income</label>
                 <input type="text" id="income">
             </p>
             <div id="slider-vertical"></div>
@@ -41,13 +41,15 @@
         </div>
     </div>
 
-    <div id="footnote">
-        Rent data based on 2013 Q3 Auckland entries of   
-        <a href="utilities.dbh.govt.nz/userfiles/open-data/mean-rents.csv">the mean market weekly rent CSV</a> provided by the New Zealand Ministry of Business, Innovation and Employment  
-    </div>
+    <section id="data">
+        <h1>Data</h1>
+        Rent data from 2013 Q3 entries of 
+        <a href="http://utilities.dbh.govt.nz/userfiles/open-data/mean-rents.csv">detailed mean rents CSV</a>.<br>
+        NZ mean annual income from 
+        <a href="http://www.stats.govt.nz/~/media/Statistics/Browse%20for%20stats/NZIncomeSurvey/HOTPJun13qtr/NZIncomeSurveyJun13qtrHOTP.pdf">June 2013 NZ income survey</a>.
+    </section>
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="map.js"></script>
