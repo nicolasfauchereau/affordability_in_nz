@@ -22,13 +22,6 @@
         }
         return tmp;
     }
-    function enumerate(item) {
-        var arr = [];
-        for (var i = 0; i < item.length; i++) {
-            arr[arr.length] = [i, item[i]];
-        }
-        return arr;
-    }
     function range(start, stop, step) {
         if (arguments.length <= 1) {
             stop = start || 0;
@@ -53,6 +46,13 @@
             }
             return count;
         }
+    }
+    function enumerate(item) {
+        var arr = [];
+        for (var i = 0; i < item.length; i++) {
+            arr[arr.length] = [i, item[i]];
+        }
+        return arr;
     }
     _$rapyd$_unbindAll(this, true);
     var JSON, str;
@@ -320,7 +320,7 @@
 
     function makeMap() {
         _$rapyd$_unbindAll(this, true);
-        var map, tilesURL, BINS, LABELS, COLORS, MEDIAN_ANNUAL_INCOME, legend, suburbs, item, item;
+        var map, tilesURL, BINS, LABELS, COLORS, MEDIAN_ANNUAL_INCOME, suburbs, info, legend, item, item;
         map = L.map("map").setView([ -36.84041, 174.73986 ], 12);
         tilesURL = "http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png";
         L.tileLayer(tilesURL).addTo(map);
@@ -329,19 +329,26 @@
         LABELS = [ "No data", "0&ndash;25% (affordable)", "26&ndash;50%", "51&ndash;75%", "76%+" ];
         COLORS = reversed([ "#d7191c", "#fdae61", "#abdda4", "#2b83ba", "gray" ]);
         MEDIAN_ANNUAL_INCOME = 575 * 52;
-        function getColor(x) {
+        suburbs = null;
+        info = L.control();
+        info.onAdd = function(map) {
             _$rapyd$_unbindAll(this, true);
-            var i, grade;
-            var _$rapyd$_Iter5 = enumerate(BINS);
-            for (var _$rapyd$_Index5 = 0; _$rapyd$_Index5 < _$rapyd$_Iter5.length; _$rapyd$_Index5++) {
-                _$rapyd$_Unpack = _$rapyd$_Iter5[_$rapyd$_Index5];
-                i = _$rapyd$_Unpack[0];
-                grade = _$rapyd$_Unpack[1];
-                if (x <= grade) {
-                    return COLORS[i];
-                }
+            this._div = L.DomUtil.create("div", "info");
+            this.update();
+            return this._div;
+        };
+        info.update = function(props) {
+            _$rapyd$_unbindAll(this, true);
+            var message, message, message;
+            if (props) {
+                message = "<h4>" + props.name + "</h4>Some stats such as suburb area and population";
+            } else {
+                message = "<h4>Suburb Info</h4>Hover over a suburb";
             }
-        }
+            message += "<br>";
+            this._div.innerHTML = message;
+        };
+        info.addTo(map);
         legend = L.control({
             position: "bottomright"
         });
@@ -355,12 +362,19 @@
             return div;
         };
         legend.addTo(map);
-        suburbs = L.geoJson().addTo(map);
-        $.getJSON("test.geojson", function(collection) {
+        function getColor(x) {
             _$rapyd$_unbindAll(this, true);
-            suburbs.addData(collection);
-            suburbs.setStyle(myStyle);
-        });
+            var i, grade;
+            var _$rapyd$_Iter5 = enumerate(BINS);
+            for (var _$rapyd$_Index5 = 0; _$rapyd$_Index5 < _$rapyd$_Iter5.length; _$rapyd$_Index5++) {
+                _$rapyd$_Unpack = _$rapyd$_Iter5[_$rapyd$_Index5];
+                i = _$rapyd$_Unpack[0];
+                grade = _$rapyd$_Unpack[1];
+                if (x <= grade) {
+                    return COLORS[i];
+                }
+            }
+        }
         function int_to_dollar_str(x, inverse) {
             if (typeof inverse === "undefined") inverse = false;
             _$rapyd$_unbindAll(this, true);
@@ -370,7 +384,7 @@
                 return parseInt(x.replace("$", "").replace(",", ""));
             }
         }
-        function myStyle(feature) {
+        function style(feature) {
             _$rapyd$_unbindAll(this, true);
             var grossAnnualIncome, propertyType, numBedrooms, weeklyRent, f, c;
             grossAnnualIncome = int_to_dollar_str($("#income").val(), inverse = true);
@@ -389,6 +403,47 @@
                 "opacity": .7
             };
         }
+        function highlightFeature(e) {
+            _$rapyd$_unbindAll(this, true);
+            var layer;
+            layer = e.target;
+            layer.setStyle({
+                "weight": 5,
+                "color": "#666",
+                "dashArray": "",
+                "fillOpacity": .7
+            });
+            if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+            }
+            info.update(layer.feature.properties);
+        }
+        function resetHighlight(e) {
+            _$rapyd$_unbindAll(this, true);
+            var layer;
+            layer = e.target;
+            suburbs.resetStyle(layer);
+            info.update();
+        }
+        function zoomToFeature(e) {
+            _$rapyd$_unbindAll(this, true);
+            map.fitBounds(e.target.getBounds());
+        }
+        function onEachFeature(feature, layer) {
+            _$rapyd$_unbindAll(this, true);
+            layer.on({
+                "mouseover": highlightFeature,
+                "mouseout": resetHighlight,
+                "click": zoomToFeature
+            });
+        }
+        $.getJSON("test.geojson", function(collection) {
+            _$rapyd$_unbindAll(this, true);
+            suburbs = L.geoJson(collection, {
+                style: style,
+                onEachFeature: onEachFeature
+            }).addTo(map);
+        });
         $(function() {
             _$rapyd$_unbindAll(this, true);
             var sv, min, range, el;
@@ -402,7 +457,7 @@
                 "slide": function(event, ui) {
                     _$rapyd$_unbindAll(this, true);
                     $("#income").val(int_to_dollar_str(ui.value));
-                    suburbs.setStyle(myStyle);
+                    suburbs.setStyle(style);
                 }
             });
             sv = $("#slider-vertical");
@@ -418,7 +473,7 @@
                 "selected": function(event, ui) {
                     _$rapyd$_unbindAll(this, true);
                     $("#propertyType").val(ui.selected.id);
-                    suburbs.setStyle(myStyle);
+                    suburbs.setStyle(style);
                 }
             });
         });
@@ -431,7 +486,7 @@
                 "selected": function(event, ui) {
                     _$rapyd$_unbindAll(this, true);
                     $("#numBedrooms").val(ui.selected.id);
-                    suburbs.setStyle(myStyle);
+                    suburbs.setStyle(style);
                 }
             });
         });

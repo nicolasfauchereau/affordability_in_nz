@@ -28,10 +28,26 @@ def makeMap():
     // COLORS = ['#969696', '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8']
     MEDIAN_ANNUAL_INCOME = 575*52
 
-    def getColor(x):
-        for (i, grade) in enumerate(BINS):
-            if x <= grade:
-                return COLORS[i]
+    suburbs = None
+
+    // Add a suburb info box to the map
+    info = L.control()
+    info.onAdd = def(map):
+        this._div = L.DomUtil.create('div', 'info')
+        this.update()
+        return this._div
+
+    info.update = def(props):
+        if props:
+            message = '<h4>' + props.name +\
+              '</h4>Some stats such as suburb area and population'
+        else:
+            message = '<h4>Suburb Info</h4>Hover over a suburb'
+        message += '<br>'
+        // Update the control based on feature properties passed
+        this._div.innerHTML = message
+    
+    info.addTo(map)
 
     // Add a legend to the map
     legend = L.control({position: 'bottomright'});
@@ -43,17 +59,15 @@ def makeMap():
             div.innerHTML += '<i style="background:' + getColor(BINS[i]) +\
               '"></i> ' + LABELS[i] + '<br>'
         return div
-
+    
     legend.addTo(map)
 
-    // Load polygons
-    suburbs = L.geoJson().addTo(map) 
-    $.getJSON("test.geojson", def(collection):
-        suburbs.addData(collection)
-        suburbs.setStyle(myStyle)
-    )
+    // Define suburb styles
+    def getColor(x):
+        for (i, grade) in enumerate(BINS):
+            if x <= grade:
+                return COLORS[i]
 
-    // Format gross annual income
     def int_to_dollar_str(x, inverse=False):
         // Convert the integer `x` into a string with commas as
         // thousands separators and prepend a dollar sign.
@@ -63,9 +77,8 @@ def makeMap():
             return '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         else:
             return int(x.replace('$', '').replace(',',''))
-
-    // Define polygon styles. Calculate rent fractions herein.
-    def myStyle(feature):
+    
+    def style(feature):
         // Get gross annual income from page, 
         // strip off the dollar sign and comma, and convert to an integer
         grossAnnualIncome = int_to_dollar_str($('#income').val(), inverse=True)
@@ -89,6 +102,42 @@ def makeMap():
           'opacity': 0.7,
         }
 
+    // Define suburb mouseover etc.
+    def highlightFeature(e):
+        layer = e.target
+        layer.setStyle({
+            'weight': 5,
+            'color': '#666',
+            'dashArray': '',
+            'fillOpacity': 0.7,
+        })
+        if not L.Browser.ie and not L.Browser.opera:
+            layer.bringToFront()
+        info.update(layer.feature.properties)
+
+    def resetHighlight(e):
+        layer = e.target
+        suburbs.resetStyle(layer)
+        info.update()
+
+    def zoomToFeature(e):
+        map.fitBounds(e.target.getBounds())
+    
+    def onEachFeature(feature, layer):
+        layer.on({
+            'mouseover': highlightFeature,
+            'mouseout': resetHighlight,
+            'click': zoomToFeature,
+        })
+
+    // Load suburbs
+    $.getJSON("test.geojson", def(collection):
+        nonlocal suburbs
+        suburbs = L.geoJson(collection, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map)    
+    )
 
     // Add an income slider widget
     $(def():
@@ -103,7 +152,7 @@ def makeMap():
                 // Update income display
                 $('#income').val(int_to_dollar_str(ui.value))
                 // Recolor suburbs
-                suburbs.setStyle(myStyle)
+                suburbs.setStyle(style)
             ,
         })
         // Initialize slider and add a label by the median annual income mark
@@ -118,8 +167,6 @@ def makeMap():
         $("#slider-vertical").append(el)
     )
     
-
-
     // Add a property type selector widget
     $(def():
         $("#propertyType").selectable({
@@ -127,7 +174,7 @@ def makeMap():
                 // Update property type
                 $('#propertyType').val(ui.selected.id)
                 // Recolor suburbs
-                suburbs.setStyle(myStyle)
+                suburbs.setStyle(style)
         })
     )
     // Initialize selector
@@ -143,7 +190,7 @@ def makeMap():
                 // Update nuber of bedrooms
                 $('#numBedrooms').val(ui.selected.id)
                 // Recolor suburbs
-                suburbs.setStyle(myStyle)
+                suburbs.setStyle(style)
         })
     )
     // Initialize selector

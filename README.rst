@@ -2,8 +2,8 @@ A market rent map for Auckland.
 
 Requirements
 ============
-- `RapydScript <https://bitbucket.org/pyjeon/rapydscript>`_
-- `RapydCSS <https://bitbucket.org/pyjeon/rapydcss>`_
+- `RapydScript <https://bitbucket.org/pyjeon/rapydscript>`_ for compiling RapydScript (.pyj) files to JavaScript
+- `RapydCSS <https://bitbucket.org/pyjeon/rapydcss>`_ for compiling RapydCSS (.sass) files to CSS
 
 Git Workflow
 =============
