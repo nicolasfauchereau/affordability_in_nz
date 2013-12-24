@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
 </head>
 <body>
-    <div id="left">
+    <div id="map-container">
         <div id="map"></div>
     </div>
-    <div id="right">
+    <div id="sidebar-container">
         <div class="container">
             <p>How much of your annual income do you need to spend to rent accommodation in Auckland?</p>            
             <p>
@@ -22,15 +22,15 @@
             </p>
             <div id="slider-vertical"></div>
 
-            Property type
-            <ol id="propertyType">
+            Dwelling type<br>
+            <ol id="property-type">
                 <li class="ui-state-default" id="house">house</li>
                 <li class="ui-state-default" id="flat">flat</li>
                 <li class="ui-state-default" id="apartment">apartment</li>
             </ol><br>
 
-            Number of bedrooms
-            <ol id="numBedrooms">
+            #Bedrooms in dwelling<br>
+            <ol id="num-bedrooms">
                 <li class="ui-state-default" id="1">1</li>
                 <li class="ui-state-default" id="2">2</li>
                 <li class="ui-state-default" id="3">3</li>
@@ -41,15 +41,15 @@
         </div>
     </div>
 
-    <section id="data">
+    <section id="notes">
         <h2>Notes</h2>
         <ul>
         <li>Rents sourced from the 2013 Q3 entries of 
         <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">detailed mean rents</a> provided by the NZ Ministry of Business, Innovation and Employment</li>
-        <li>Mean annual income sourced from the 
+        <li>Median annual income of employed Aucklanders sourced from the 
         <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/NZIncomeSurvey_HOTPJun13qtr.aspx">June 2013 income survey</a> provided by Statistics NZ</li>
         <li>Suburb polygons sourced from ...</li>
-        <li>Chloropleth map created by Alex Raichev and Abhishek Reddy</li>
+        <li>Map created by Alex Raichev and Abhishek Reddy
     </ul>
     </section>
 

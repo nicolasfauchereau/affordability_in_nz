@@ -12,7 +12,7 @@ def makeMap():
     map.attributionControl.setPrefix('')
     
     // Define data bins and labels.
-    // Assume no-data entries map to nonpositive numbers.
+    // Assume no-data entries map to nonpositive.
     BINS = [0, 0.25, 0.5, 0.75, 10e9]
     LABELS = ['No data', '0&ndash;25% (affordable)', '26&ndash;50%', 
       '51&ndash;75%', '76%+']
@@ -26,7 +26,7 @@ def makeMap():
     // COLORS = ['#969696', '#fef0d9', '#fdcc8a', '#fc8d59', '#d7301f']
     // 4-class YlGnBu:
     // COLORS = ['#969696', '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8']
-    MEDIAN_ANNUAL_INCOME = 575*52
+    MEDIAN_ANNUAL_INCOME = 882*52
 
     suburbs = None
 
@@ -37,10 +37,13 @@ def makeMap():
         this.update()
         return this._div
 
-    info.update = def(props):
-        if props:
-            message = '<h4>' + props.name +\
-              '</h4>Some stats such as suburb area and population'
+    info.update = def(feature=None):
+        if feature:
+            message = '<h4>' + feature.properties.name + '</h4>' +\
+            'Weekly rent per bedroom: ' +\
+            getWeeklyRent(feature, string=True) + '<br>' +\
+            'Fraction of annual income: ' +\
+            getRentFraction(feature, string=True) + '<br>'
         else:
             message = '<h4>Suburb Info</h4>Hover over a suburb'
         message += '<br>'
@@ -55,18 +58,61 @@ def makeMap():
         div = L.DomUtil.create('div', 'info legend')
 
         // Loop through our density interrange and generate a label with a colored square for each interval
-        for i in range(len(LABELS)):
+        for i in reversed(range(len(LABELS))):
             div.innerHTML += '<i style="background:' + getColor(BINS[i]) +\
               '"></i> ' + LABELS[i] + '<br>'
         return div
     
     legend.addTo(map)
 
-    // Define suburb styles
-    def getColor(x):
-        for (i, grade) in enumerate(BINS):
-            if x <= grade:
-                return COLORS[i]
+    // Define suburb styles    
+    def getGrossAnnualIncome(string=False):
+        // Return the gross annual income currently selected.
+        // If `string == True`, then stringify the number using 
+        // `int_to_dollar_str()`. 
+        result = $('#income').val() // Formatted string
+        if not string:
+            // Convert to integer
+            result = int_to_dollar_str(result, inverse=True)
+        return result
+
+    def getWeeklyRent(feature, string=False):
+        // Return the weekly rent for this suburb/feature based on
+        // the currently selected property type and number of bedrooms.
+        // If `string == True`, then stringify the number using 
+        // `int_to_dollar_str()`.         
+        // If the given feature has negative or undefined rent,
+        // then return -1 (if `string == False`) or 
+        // 'No data' (if `string == True`).
+        propertyType = $('#property-type').val()
+        numBedrooms = $('#num-bedrooms').val()
+        result = feature.properties[propertyType][numBedrooms]
+        if result >= 0:
+            if string:
+                result = int_to_dollar_str(result)
+        else:
+            console.log('string=', string)
+            if string:
+                result = 'No data'
+            else:
+                result = -1
+        return result
+
+    def getRentFraction(feature, string=False, ndigits=2):
+        // Return the fraction of annual income spent on rent
+        // for this suburb/feature rounded to `ndigits` decimal places
+        // If the given feature has undefined rent and `string == True`,
+        // then retun 'No data'.
+        result = 52*getWeeklyRent(feature)/getGrossAnnualIncome()
+        if result >= 0:
+            if string:
+                result = int(result*100) + '%'
+            else:
+                result = float(result.toFixed(ndigits))
+        else:
+            if string:
+                result = 'No data' 
+        return result 
 
     def int_to_dollar_str(x, inverse=False):
         // Convert the integer `x` into a string with commas as
@@ -77,23 +123,14 @@ def makeMap():
             return '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         else:
             return int(x.replace('$', '').replace(',',''))
+
+    def getColor(x):
+        for (i, grade) in enumerate(BINS):
+            if x <= grade:
+                return COLORS[i]
     
     def style(feature):
-        // Get gross annual income from page, 
-        // strip off the dollar sign and comma, and convert to an integer
-        grossAnnualIncome = int_to_dollar_str($('#income').val(), inverse=True)
-        // Get property type and number of bedrooms from page, 
-        // and get corresponding rent from GeoJSON feature
-        propertyType = $('#propertyType').val()
-        numBedrooms = $('#numBedrooms').val()
-        weeklyRent = feature.properties[propertyType][numBedrooms]
-        console.log('grossAnnualIncome=', grossAnnualIncome)
-        console.log('propertyType, numBedrooms, weeklyRent=', 
-            propertyType, numBedrooms, weeklyRent)
-        // Get fraction of annual income spent on rent
-        f = 52*weeklyRent/grossAnnualIncome
-        // Color the polygon accordingly
-        c = getColor(f)
+        c = getColor(getRentFraction(feature))
         return {
           'fillColor': c,
           'fillOpacity': 0.7,
@@ -113,7 +150,7 @@ def makeMap():
         })
         if not L.Browser.ie and not L.Browser.opera:
             layer.bringToFront()
-        info.update(layer.feature.properties)
+        info.update(layer.feature)
 
     def resetHighlight(e):
         layer = e.target
@@ -155,47 +192,47 @@ def makeMap():
                 suburbs.setStyle(style)
             ,
         })
-        // Initialize slider and add a label by the median annual income mark
+        // Initialize slider 
         sv = $('#slider-vertical')
         $('#income').val(int_to_dollar_str(sv.slider('value')))
+        // Label the median annual income point on slider
         min = sv.slider( "option", "min" )
         range = sv.slider( "option", "max" ) - min
-        el = $('<label>&larr; NZ median annual income (' +\
+        el = $('<label><span id="arrow">&larr;</span>' +\
+          'Median annual income<br>of employed Aucklanders<br>(' +\
           int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ')</label>').css(
           'bottom', (MEDIAN_ANNUAL_INCOME/range*100) +'%');
-        // Add the element inside #slider
         $("#slider-vertical").append(el)
     )
     
     // Add a property type selector widget
     $(def():
-        $("#propertyType").selectable({
+        $("#property-type").selectable({
             'selected': def(event, ui):
                 // Update property type
-                $('#propertyType').val(ui.selected.id)
+                $('#property-type').val(ui.selected.id)
                 // Recolor suburbs
                 suburbs.setStyle(style)
         })
     )
     // Initialize selector
-    item = $('#propertyType li:eq(1)')
+    item = $('#property-type li:eq(1)')
     item.addClass('ui-selected')
-    $('#propertyType').val(item[0].id)
+    $('#property-type').val(item[0].id)
 
-    
     // Add a number-of-bedrooms selector widget
     $(def():
-        $("#numBedrooms").selectable({
+        $("#num-bedrooms").selectable({
             'selected': def(event, ui):
                 // Update nuber of bedrooms
-                $('#numBedrooms').val(ui.selected.id)
+                $('#num-bedrooms').val(ui.selected.id)
                 // Recolor suburbs
                 suburbs.setStyle(style)
         })
     )
     // Initialize selector
-    item = $('#numBedrooms li:eq(1)')
+    item = $('#num-bedrooms li:eq(1)')
     item.addClass('ui-selected')
-    $('#numBedrooms').val(item[0].id)
+    $('#num-bedrooms').val(item[0].id)
  
 makeMap()

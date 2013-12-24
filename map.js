@@ -328,7 +328,7 @@
         BINS = [ 0, .25, .5, .75, 1e10 ];
         LABELS = [ "No data", "0&ndash;25% (affordable)", "26&ndash;50%", "51&ndash;75%", "76%+" ];
         COLORS = reversed([ "#d7191c", "#fdae61", "#abdda4", "#2b83ba", "gray" ]);
-        MEDIAN_ANNUAL_INCOME = 575 * 52;
+        MEDIAN_ANNUAL_INCOME = 882 * 52;
         suburbs = null;
         info = L.control();
         info.onAdd = function(map) {
@@ -337,11 +337,12 @@
             this.update();
             return this._div;
         };
-        info.update = function(props) {
+        info.update = function(feature) {
+            if (typeof feature === "undefined") feature = null;
             _$rapyd$_unbindAll(this, true);
             var message, message, message;
-            if (props) {
-                message = "<h4>" + props.name + "</h4>Some stats such as suburb area and population";
+            if (feature) {
+                message = "<h4>" + feature.properties.name + "</h4>" + "Weekly rent per bedroom: " + getWeeklyRent(feature, string = true) + "<br>" + "Fraction of annual income: " + getRentFraction(feature, string = true) + "<br>";
             } else {
                 message = "<h4>Suburb Info</h4>Hover over a suburb";
             }
@@ -356,24 +357,63 @@
             _$rapyd$_unbindAll(this, true);
             var div, i;
             div = L.DomUtil.create("div", "info legend");
-            for (i = 0; i < len(LABELS); i++) {
+            var _$rapyd$_Iter5 = reversed(range(len(LABELS)));
+            for (var _$rapyd$_Index5 = 0; _$rapyd$_Index5 < _$rapyd$_Iter5.length; _$rapyd$_Index5++) {
+                i = _$rapyd$_Iter5[_$rapyd$_Index5];
                 div.innerHTML += '<i style="background:' + getColor(BINS[i]) + '"></i> ' + LABELS[i] + "<br>";
             }
             return div;
         };
         legend.addTo(map);
-        function getColor(x) {
+        function getGrossAnnualIncome(string) {
+            if (typeof string === "undefined") string = false;
             _$rapyd$_unbindAll(this, true);
-            var i, grade;
-            var _$rapyd$_Iter5 = enumerate(BINS);
-            for (var _$rapyd$_Index5 = 0; _$rapyd$_Index5 < _$rapyd$_Iter5.length; _$rapyd$_Index5++) {
-                _$rapyd$_Unpack = _$rapyd$_Iter5[_$rapyd$_Index5];
-                i = _$rapyd$_Unpack[0];
-                grade = _$rapyd$_Unpack[1];
-                if (x <= grade) {
-                    return COLORS[i];
+            var result, result;
+            result = $("#income").val();
+            if (!string) {
+                result = int_to_dollar_str(result, inverse = true);
+            }
+            return result;
+        }
+        function getWeeklyRent(feature, string) {
+            if (typeof string === "undefined") string = false;
+            _$rapyd$_unbindAll(this, true);
+            var propertyType, numBedrooms, result, result, result, result;
+            propertyType = $("#property-type").val();
+            numBedrooms = $("#num-bedrooms").val();
+            result = feature.properties[propertyType][numBedrooms];
+            if (result >= 0) {
+                if (string) {
+                    result = int_to_dollar_str(result);
+                }
+            } else {
+                console.log("string=", string);
+                if (string) {
+                    result = "No data";
+                } else {
+                    result = -1;
                 }
             }
+            return result;
+        }
+        function getRentFraction(feature, string, ndigits) {
+            if (typeof string === "undefined") string = false;
+            if (typeof ndigits === "undefined") ndigits = 2;
+            _$rapyd$_unbindAll(this, true);
+            var result, result, result, result;
+            result = 52 * getWeeklyRent(feature) / getGrossAnnualIncome();
+            if (result >= 0) {
+                if (string) {
+                    result = parseInt(result * 100) + "%";
+                } else {
+                    result = parseFloat(result.toFixed(ndigits));
+                }
+            } else {
+                if (string) {
+                    result = "No data";
+                }
+            }
+            return result;
         }
         function int_to_dollar_str(x, inverse) {
             if (typeof inverse === "undefined") inverse = false;
@@ -384,17 +424,23 @@
                 return parseInt(x.replace("$", "").replace(",", ""));
             }
         }
+        function getColor(x) {
+            _$rapyd$_unbindAll(this, true);
+            var i, grade;
+            var _$rapyd$_Iter6 = enumerate(BINS);
+            for (var _$rapyd$_Index6 = 0; _$rapyd$_Index6 < _$rapyd$_Iter6.length; _$rapyd$_Index6++) {
+                _$rapyd$_Unpack = _$rapyd$_Iter6[_$rapyd$_Index6];
+                i = _$rapyd$_Unpack[0];
+                grade = _$rapyd$_Unpack[1];
+                if (x <= grade) {
+                    return COLORS[i];
+                }
+            }
+        }
         function style(feature) {
             _$rapyd$_unbindAll(this, true);
-            var grossAnnualIncome, propertyType, numBedrooms, weeklyRent, f, c;
-            grossAnnualIncome = int_to_dollar_str($("#income").val(), inverse = true);
-            propertyType = $("#propertyType").val();
-            numBedrooms = $("#numBedrooms").val();
-            weeklyRent = feature.properties[propertyType][numBedrooms];
-            console.log("grossAnnualIncome=", grossAnnualIncome);
-            console.log("propertyType, numBedrooms, weeklyRent=", propertyType, numBedrooms, weeklyRent);
-            f = 52 * weeklyRent / grossAnnualIncome;
-            c = getColor(f);
+            var c;
+            c = getColor(getRentFraction(feature));
             return {
                 "fillColor": c,
                 "fillOpacity": .7,
@@ -416,7 +462,7 @@
             if (!L.Browser.ie && !L.Browser.opera) {
                 layer.bringToFront();
             }
-            info.update(layer.feature.properties);
+            info.update(layer.feature);
         }
         function resetHighlight(e) {
             _$rapyd$_unbindAll(this, true);
@@ -464,35 +510,35 @@
             $("#income").val(int_to_dollar_str(sv.slider("value")));
             min = sv.slider("option", "min");
             range = sv.slider("option", "max") - min;
-            el = $("<label>&larr; NZ median annual income (" + int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ")</label>").css("bottom", MEDIAN_ANNUAL_INCOME / range * 100 + "%");
+            el = $('<label><span id="arrow">&larr;</span>' + "Median annual income<br>of employed Aucklanders<br>(" + int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ")</label>").css("bottom", MEDIAN_ANNUAL_INCOME / range * 100 + "%");
             $("#slider-vertical").append(el);
         });
         $(function() {
             _$rapyd$_unbindAll(this, true);
-            $("#propertyType").selectable({
+            $("#property-type").selectable({
                 "selected": function(event, ui) {
                     _$rapyd$_unbindAll(this, true);
-                    $("#propertyType").val(ui.selected.id);
+                    $("#property-type").val(ui.selected.id);
                     suburbs.setStyle(style);
                 }
             });
         });
-        item = $("#propertyType li:eq(1)");
+        item = $("#property-type li:eq(1)");
         item.addClass("ui-selected");
-        $("#propertyType").val(item[0].id);
+        $("#property-type").val(item[0].id);
         $(function() {
             _$rapyd$_unbindAll(this, true);
-            $("#numBedrooms").selectable({
+            $("#num-bedrooms").selectable({
                 "selected": function(event, ui) {
                     _$rapyd$_unbindAll(this, true);
-                    $("#numBedrooms").val(ui.selected.id);
+                    $("#num-bedrooms").val(ui.selected.id);
                     suburbs.setStyle(style);
                 }
             });
         });
-        item = $("#numBedrooms li:eq(1)");
+        item = $("#num-bedrooms li:eq(1)");
         item.addClass("ui-selected");
-        $("#numBedrooms").val(item[0].id);
+        $("#num-bedrooms").val(item[0].id);
     }
 
     makeMap();
