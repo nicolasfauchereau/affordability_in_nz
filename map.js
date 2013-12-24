@@ -326,7 +326,7 @@
         L.tileLayer(tilesURL).addTo(map);
         map.attributionControl.setPrefix("");
         BINS = [ 0, .25, .5, .75, 1e10 ];
-        LABELS = [ "No data", "0&ndash;25% (affordable)", "26&ndash;50%", "51&ndash;75%", "76%+" ];
+        LABELS = [ "n/a", "0&ndash;25%", "26&ndash;50%", "51&ndash;75%", "76%+" ];
         COLORS = reversed([ "#d7191c", "#fdae61", "#abdda4", "#2b83ba", "gray" ]);
         MEDIAN_ANNUAL_INCOME = 882 * 52;
         suburbs = null;
@@ -340,13 +340,12 @@
         info.update = function(feature) {
             if (typeof feature === "undefined") feature = null;
             _$rapyd$_unbindAll(this, true);
-            var message, message, message;
+            var message, message;
             if (feature) {
                 message = "<h4>" + feature.properties.name + "</h4>" + "Weekly rent per bedroom: " + getWeeklyRent(feature, string = true) + "<br>" + "Fraction of annual income: " + getRentFraction(feature, string = true) + "<br>";
             } else {
                 message = "<h4>Suburb Info</h4>Hover over a suburb";
             }
-            message += "<br>";
             this._div.innerHTML = message;
         };
         info.addTo(map);
@@ -389,7 +388,7 @@
             } else {
                 console.log("string=", string);
                 if (string) {
-                    result = "No data";
+                    result = "n/a";
                 } else {
                     result = -1;
                 }
@@ -404,13 +403,13 @@
             result = 52 * getWeeklyRent(feature) / getGrossAnnualIncome();
             if (result >= 0) {
                 if (string) {
-                    result = parseInt(result * 100) + "%";
+                    result = Math.ceil(result * 100) + "%";
                 } else {
                     result = parseFloat(result.toFixed(ndigits));
                 }
             } else {
                 if (string) {
-                    result = "No data";
+                    result = "n/a";
                 }
             }
             return result;
@@ -446,7 +445,7 @@
                 "fillOpacity": .7,
                 "color": c,
                 "weight": 1,
-                "opacity": .7
+                "opacity": .8
             };
         }
         function highlightFeature(e) {
@@ -455,9 +454,7 @@
             layer = e.target;
             layer.setStyle({
                 "weight": 5,
-                "color": "#666",
-                "dashArray": "",
-                "fillOpacity": .7
+                "opacity": 1
             });
             if (!L.Browser.ie && !L.Browser.opera) {
                 layer.bringToFront();
@@ -510,7 +507,7 @@
             $("#income").val(int_to_dollar_str(sv.slider("value")));
             min = sv.slider("option", "min");
             range = sv.slider("option", "max") - min;
-            el = $('<label><span id="arrow">&larr;</span>' + "Median annual income<br>of employed Aucklanders<br>(" + int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ")</label>").css("bottom", MEDIAN_ANNUAL_INCOME / range * 100 + "%");
+            el = $('<label><span id="arrow">&larr;</span>' + "Median annual income<br>of employed Aucklanders<br>(" + int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ")</label>").css("top", MEDIAN_ANNUAL_INCOME / range * 100 + "%");
             $("#slider-vertical").append(el);
         });
         $(function() {

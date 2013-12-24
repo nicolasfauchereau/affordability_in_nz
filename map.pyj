@@ -14,18 +14,15 @@ def makeMap():
     // Define data bins and labels.
     // Assume no-data entries map to nonpositive.
     BINS = [0, 0.25, 0.5, 0.75, 10e9]
-    LABELS = ['No data', '0&ndash;25% (affordable)', '26&ndash;50%', 
-      '51&ndash;75%', '76%+']
-
+    LABELS = ['n/a', '0&ndash;25%', '26&ndash;50%', '51&ndash;75%', '76%+']
     // Define color scheme using http://colorbrewer2.org/js/. 
     // Order colors least-to-most intense, but begin with gray, 
     // the no-data color.
     // 4-class Spectral:
     COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', 'gray'])
-    // 4-class OrRd:
-    // COLORS = ['#969696', '#fef0d9', '#fdcc8a', '#fc8d59', '#d7301f']
-    // 4-class YlGnBu:
-    // COLORS = ['#969696', '#ffffcc', '#a1dab4', '#41b6c4', '#225ea8']
+    // 5-class Spectral:
+    // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
+    // 'gray'])
     MEDIAN_ANNUAL_INCOME = 882*52
 
     suburbs = None
@@ -46,7 +43,6 @@ def makeMap():
             getRentFraction(feature, string=True) + '<br>'
         else:
             message = '<h4>Suburb Info</h4>Hover over a suburb'
-        message += '<br>'
         // Update the control based on feature properties passed
         this._div.innerHTML = message
     
@@ -83,7 +79,7 @@ def makeMap():
         // `int_to_dollar_str()`.         
         // If the given feature has negative or undefined rent,
         // then return -1 (if `string == False`) or 
-        // 'No data' (if `string == True`).
+        // 'n/a' (if `string == True`).
         propertyType = $('#property-type').val()
         numBedrooms = $('#num-bedrooms').val()
         result = feature.properties[propertyType][numBedrooms]
@@ -93,7 +89,7 @@ def makeMap():
         else:
             console.log('string=', string)
             if string:
-                result = 'No data'
+                result = 'n/a'
             else:
                 result = -1
         return result
@@ -102,16 +98,16 @@ def makeMap():
         // Return the fraction of annual income spent on rent
         // for this suburb/feature rounded to `ndigits` decimal places
         // If the given feature has undefined rent and `string == True`,
-        // then retun 'No data'.
+        // then retun 'n/a'.
         result = 52*getWeeklyRent(feature)/getGrossAnnualIncome()
         if result >= 0:
             if string:
-                result = int(result*100) + '%'
+                result = Math.ceil(result*100) + '%'
             else:
                 result = float(result.toFixed(ndigits))
         else:
             if string:
-                result = 'No data' 
+                result = 'n/a' 
         return result 
 
     def int_to_dollar_str(x, inverse=False):
@@ -136,7 +132,7 @@ def makeMap():
           'fillOpacity': 0.7,
           'color': c,
           'weight': 1,
-          'opacity': 0.7,
+          'opacity': 0.8,
         }
 
     // Define suburb mouseover etc.
@@ -144,9 +140,7 @@ def makeMap():
         layer = e.target
         layer.setStyle({
             'weight': 5,
-            'color': '#666',
-            'dashArray': '',
-            'fillOpacity': 0.7,
+            'opacity': 1,
         })
         if not L.Browser.ie and not L.Browser.opera:
             layer.bringToFront()
@@ -201,7 +195,7 @@ def makeMap():
         el = $('<label><span id="arrow">&larr;</span>' +\
           'Median annual income<br>of employed Aucklanders<br>(' +\
           int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ')</label>').css(
-          'bottom', (MEDIAN_ANNUAL_INCOME/range*100) +'%');
+          'top', (MEDIAN_ANNUAL_INCOME/range*100) +'%');
         $("#slider-vertical").append(el)
     )
     

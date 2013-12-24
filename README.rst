@@ -13,6 +13,7 @@ If our project becomes too complex for that, then we can switch to `this feature
 Notes
 ========
 - Inspiration comes from `the Financial Times London rent map <http://www.ft.com/cms/s/2/ad4ef6a4-503d-11e3-befe-00144feabdc0.html>`_
+- Compare to `this map <http://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=10881119>`_ in the NZ Herald
 - Mean rents come from `this NZ government CSV <http://utilities.dbh.govt.nz/userfiles/open-data/mean-rents.csv>`_
 - Create geojson graphically at `geojson.io <http://geojson.io>`_
 - Validate geojson files at `geojsonlint.com <http://geojsonlint.com/>`_
