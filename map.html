@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Auckland Market Rent 2013 Q3</title>
+    <title>Auckland Rent-Income Ratio (2013 Q3)</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
     <link rel="stylesheet" href="map.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="map.css">
 </head>
 <body>
-    <div id="map-container">
+    <h1>Auckland Rent-Income Ratio (2013 Q3)</h1>  
+    <p>How much of your gross annual income do you need to spend to rent accommodation in Auckland?</p>  
+    <div id="container">
         <div id="map"></div>
-    </div>
-    <div id="sidebar-container">
-        <div class="container">
-            <p>How much of your annual income do you need to spend to rent accommodation in Auckland?</p>            
+        <div id="sidebar">
             <p>
                 <label for="income">Gross annual income</label>
                 <input type="text" id="income">
@@ -37,20 +36,19 @@
                 <li class="ui-state-default" id="4">4</li>
                 <li class="ui-state-default" id="5+">5+</li>
             </ol><br>
-
         </div>
     </div>
 
     <section id="notes">
         <h2>Notes</h2>
         <ul>
-        <li>Rents sourced from the 2013 Q3 entries of 
-        <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">detailed mean rents</a> provided by the NZ Ministry of Business, Innovation and Employment</li>
-        <li>Median annual income of employed Aucklanders sourced from the 
-        <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/NZIncomeSurvey_HOTPJun13qtr.aspx">June 2013 income survey</a> provided by Statistics NZ</li>
-        <li>Suburb polygons sourced from ...</li>
-        <li>Map created by Alex Raichev and Abhishek Reddy
-    </ul>
+            <li>Rents sourced from the 2013 Q3 entries of 
+            <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">detailed mean rents</a> provided by the NZ Ministry of Business, Innovation and Employment</li>
+            <li>Median annual income of employed Aucklanders sourced from the 
+            <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/NZIncomeSurvey_HOTPJun13qtr.aspx">June 2013 income survey</a> provided by Statistics NZ</li>
+            <li>Suburb polygons sourced from ...</li>
+            <li>Map created by Alex Raichev and Abhishek Reddy
+        </ul>
     </section>
 
     <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>

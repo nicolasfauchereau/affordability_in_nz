@@ -1,27 +1,41 @@
-$sidebar-highlight-color: #d7191c
+$highlight-color: #d7191c
 $opacity: 0.8
 $font-size: 16px 
 $small-font-size: 12px
+$background-color: #f9f9f9
 
 body
-    margin: 40px 20px
-    font-family: Helvetica, sans-serif
+    margin: 40px auto
+    padding: 0px
+    width: 75%
+    font-family: 'Open Sans'
     font-size: $font-size
-    line-height: 1.2
+    line-height: 1.3
+h1, h2, h3, h4, h5, h6
+    font-weight: 500
+    line-height: 1
+    color: inherit
+a
+    color: royalblue
+    text-decoration: none
+a:hover, a:active
+    text-decoration: underline
 p 
     margin: 0 0 1.2em 0
-#map-container
-    float: left
-    width: 70%
-#sidebar-container
-    float: right
-    width: 30%
-.container
-    margin: 0 0 1em 1.2em
-#map
+#container
     width: 100%
     height: 500px
-    border-radius: 5px
+    border: 1px solid #ddd
+    padding: 10px
+    background-color: $background-color
+#map
+    float: left
+    width: 70%
+    height: 500px
+#sidebar
+    float: right
+    width: 27%
+    padding-left: 1em
 .info  
     padding: 6px 8px
     width: 180px
@@ -29,7 +43,6 @@ p
     background: rgba(255, 255, 255, 1)
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2)
     border-radius: 5px
-    color: #555
     font-size: $small-font-size
     text-align: left
     h4
@@ -55,28 +68,29 @@ p
         margin-left: -10px
 #income
     border:0 
-    color: $sidebar-highlight-color 
+    width: 150px
+    color: $highlight-color 
     opacity: $opacity
     font-size: 150%
     font-weight: bold
+    background-color: $background-color
 #property-type, #num-bedrooms
     list-style-type: none 
     margin: 0.4em 0em 3em 0em 
     padding: 0 
-    width: 450px 
     li
-        margin: 0px 5px 0px 0px
+        display: inline
+        margin: 0px 3px 3px 0px
         padding: 3px 8px 
         float: left 
         height: 20px 
         text-align: center 
         border-radius: 5px
     .ui-selecting  
-        background: #FECA40 
+        background: $highlight-color
     .ui-selected 
-        background: $sidebar-highlight-color 
+        background: $highlight-color 
         opacity: $opacity
         color: white 
 #notes
     clear: both
-    padding-top: 1em
