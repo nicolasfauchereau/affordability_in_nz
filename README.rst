@@ -17,5 +17,5 @@ Notes
 - Mean rents come from `this NZ government CSV <http://utilities.dbh.govt.nz/userfiles/open-data/mean-rents.csv>`_
 - Create geojson graphically at `geojson.io <http://geojson.io>`_
 - Validate geojson files at `geojsonlint.com <http://geojsonlint.com/>`_
-- The Trello board for this map project is `here <https://trello.com/b/93UFI6M3/market-rent-map>`_
+- The Trello board for this map project is `here <https://trello.com/b/93UFI6M3/rent-map>`_
 - Got the Auckland 2006 census area units shape file from `NZ Stats <http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx>`_, simplified and shrunk the shape file with `Mapshaper <http://mapshaper.org/>`_, converted it to GeoJSON with ``ogr2ogr -f geoJSON AU_TA_Auckland_CC.geojson AU_TA_Auckland_CC.shp -t_srs EPSG:4326``, deleted extraneous polygons with `geojson.io <http://geojson.io/#map=12/-36.8964/174.8318>`_
