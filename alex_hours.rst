@@ -7,3 +7,4 @@ Alex's project hours (date / hours / comments)
 - 24 Dec 2013 / 3 / Added some stats to suburb hover text. Removed NA values from test.geojson and assumed absent values are NA. Marked median annual income of employed Aucklanders. Restyled a little.
 - 25 Dec 2013 / 2 / Restyled
 - 14 Jan 2014 / 2 / Created GeoJSON file of suburbs
+- 15 Jan 2014 / 1 / Compiled list of rent suburbs and census area units
