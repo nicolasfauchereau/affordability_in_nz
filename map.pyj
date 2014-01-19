@@ -2,7 +2,7 @@ import stdlib
 
 def makeMap():    
     // Create map 
-    map = L.map('map').setView([-36.84041, 174.73986], 12)
+    map = L.map('map').setView([-36.84041, 174.73986], 11)
 
     // Get tiles from Github
     tilesURL = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
@@ -19,7 +19,7 @@ def makeMap():
     // Order colors least-to-most intense, but begin with gray, 
     // the no-data color.
     // 4-class Spectral:
-    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', 'gray'])
+    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', '#aaa'])
     // 5-class Spectral:
     // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
     // 'gray'])
@@ -36,11 +36,11 @@ def makeMap():
 
     info.update = def(feature=None):
         if feature:
-            message = '<h4>' + feature.properties.name + '</h4>' +\
+            message = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
             'Weekly rent per bedroom: ' +\
-            getWeeklyRent(feature, string=True) + '<br>' +\
+            getWeeklyRent(feature, 0, True) + '<br>' +\
             'Fraction of annual income: ' +\
-            getRentFraction(feature, string=True) + '<br>'
+            getRentFraction(feature, 2, True) + '<br>'
         else:
             message = '<h4>Suburb Info</h4>Hover over a suburb'
         // Update the control based on feature properties passed
@@ -65,41 +65,46 @@ def makeMap():
     def getGrossAnnualIncome(string=False):
         // Return the gross annual income currently selected.
         // If `string == True`, then stringify the number using 
-        // `int_to_dollar_str()`. 
+        // `numToDollarStr()`. 
         result = $('#income').val() // Formatted string
         if not string:
             // Convert to integer
-            result = int_to_dollar_str(result, inverse=True)
+            result = numToDollarStr(result, 0, True)
         return result
 
-    def getWeeklyRent(feature, string=False):
+    def getWeeklyRent(feature, ndigits=0, string=False):
         // Return the weekly rent for this suburb/feature based on
         // the currently selected property type and number of bedrooms.
         // If `string == True`, then stringify the number using 
-        // `int_to_dollar_str()`.         
+        // `numToDollarStr()`.         
         // If the given feature has negative or undefined rent,
         // then return -1 (if `string == False`) or 
         // 'n/a' (if `string == True`).
+        // Round rent to the ndigits decimal places.
         propertyType = $('#property-type').val()
         numBedrooms = $('#num-bedrooms').val()
-        result = feature.properties[propertyType][numBedrooms]
+        if feature.properties.rent_by_nbedrooms_by_property != 'NA':
+            result = float(feature.properties.rent_by_nbedrooms_by_property[
+              propertyType][numBedrooms])
+        else:
+            result = -1
         if result >= 0:
             if string:
-                result = int_to_dollar_str(result)
+                result = numToDollarStr(result, ndigits, False)
         else:
-            console.log('string=', string)
             if string:
                 result = 'n/a'
             else:
                 result = -1
         return result
 
-    def getRentFraction(feature, string=False, ndigits=2):
+    def getRentFraction(feature, ndigits=2, string=False):
         // Return the fraction of annual income spent on rent
         // for this suburb/feature rounded to `ndigits` decimal places
         // If the given feature has undefined rent and `string == True`,
         // then retun 'n/a'.
-        result = 52*getWeeklyRent(feature)/getGrossAnnualIncome()
+        result = 52*getWeeklyRent(feature, ndigits, False)/\
+          getGrossAnnualIncome()
         if result >= 0:
             if string:
                 result = Math.ceil(result*100) + '%'
@@ -110,13 +115,21 @@ def makeMap():
                 result = 'n/a' 
         return result 
 
-    def int_to_dollar_str(x, inverse=False):
-        // Convert the integer `x` into a string with commas as
+    def numToDollarStr(x, ndigits=0, inverse=False):
+        // Convert the float `x` into a string with commas as
         // thousands separators and prepend a dollar sign.
         // If `inverse` is True, then assume `x` has the output format
         // mentioned above, and convert it back to an integer.
+        // Round numbers to ``ndigits`` decimal places
         if not inverse:
-            return '$' + x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            y = x.toFixed(ndigits)
+            dollars, cents = y.split('.')
+            // Insert separating commas
+            dollars = dollars.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            if ndigits:
+                return '$' + dollars + '.' + cents 
+            else:
+                return '$' + dollars
         else:
             return int(x.replace('$', '').replace(',',''))
 
@@ -139,7 +152,7 @@ def makeMap():
     def highlightFeature(e):
         layer = e.target
         layer.setStyle({
-            'weight': 5,
+            'weight': 8,
             'opacity': 1,
         })
         if not L.Browser.ie and not L.Browser.opera:
@@ -162,7 +175,7 @@ def makeMap():
         })
 
     // Load suburbs
-    $.getJSON("test.geojson", def(collection):
+    $.getJSON("data/AU_TA_Auckland_CC_with_rents.geojson", def(collection):
         nonlocal suburbs
         suburbs = L.geoJson(collection, {
             style: style,
@@ -181,21 +194,22 @@ def makeMap():
             'step': 100,
             'slide': def(event, ui): 
                 // Update income display
-                $('#income').val(int_to_dollar_str(ui.value))
+                $('#income').val(numToDollarStr(ui.value))
                 // Recolor suburbs
                 suburbs.setStyle(style)
             ,
         })
         // Initialize slider 
         sv = $('#slider-vertical')
-        $('#income').val(int_to_dollar_str(sv.slider('value')))
+        $('#income').val(numToDollarStr(sv.slider('value')))
         // Label the median annual income point on slider
         min = sv.slider( "option", "min" )
         range = sv.slider( "option", "max" ) - min
+        console.log('range=', range, MEDIAN_ANNUAL_INCOME/range*100)
         el = $('<label><span id="arrow">&larr;</span>' +\
           'Median annual income<br>of employed Aucklanders<br>(' +\
-          int_to_dollar_str(MEDIAN_ANNUAL_INCOME) + ')</label>').css(
-          'top', (MEDIAN_ANNUAL_INCOME/range*100) +'%');
+          numToDollarStr(MEDIAN_ANNUAL_INCOME) + ')</label>').css(
+          'bottom', (MEDIAN_ANNUAL_INCOME/range*100) +'%');
         $("#slider-vertical").append(el)
     )
     
@@ -230,3 +244,12 @@ def makeMap():
     $('#num-bedrooms').val(item[0].id)
  
 makeMap()
+
+def f(x, kwarg1=True, kwarg2='hello'):
+    return str(x) + str(kwarg1) + kwarg2
+console.log('=================================')
+console.log(f(1))
+console.log(f(1, kwarg2='bye'))
+console.log(f(1, kwarg1=False))
+console.log(f(1, kwarg1=False, kwarg2='yowza'))
+console.log(f(1, kwarg2='yowza', kwarg1=False))
