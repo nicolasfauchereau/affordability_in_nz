@@ -1,5 +1,7 @@
 import stdlib
 
+dataFileName = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
+
 def makeMap():    
     // Create map 
     map = L.map('map').setView([-36.84041, 174.73986], 11)
@@ -19,7 +21,7 @@ def makeMap():
     // Order colors least-to-most intense, but begin with gray, 
     // the no-data color.
     // 4-class Spectral:
-    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', '#aaa'])
+    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', '#bbb'])
     // 5-class Spectral:
     // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
     // 'gray'])
@@ -84,8 +86,12 @@ def makeMap():
         propertyType = $('#property-type').val()
         numBedrooms = $('#num-bedrooms').val()
         if feature.properties.rent_by_nbedrooms_by_property != 'NA':
-            result = float(feature.properties.rent_by_nbedrooms_by_property[
+            rent = float(feature.properties.rent_by_nbedrooms_by_property[
               propertyType][numBedrooms])
+            if numBedrooms == "5+":
+                result = rent/5
+            else:
+                result = rent/numBedrooms
         else:
             result = -1
         if result >= 0:
@@ -145,7 +151,7 @@ def makeMap():
           'fillOpacity': 0.7,
           'color': c,
           'weight': 1,
-          'opacity': 0.8,
+          'opacity': 1,
         }
 
     // Define suburb mouseover etc.
@@ -175,7 +181,7 @@ def makeMap():
         })
 
     // Load suburbs
-    $.getJSON("data/AU_TA_Auckland_CC_with_rents.geojson", def(collection):
+    $.getJSON(dataFileName, def(collection):
         nonlocal suburbs
         suburbs = L.geoJson(collection, {
             style: style,
@@ -244,6 +250,8 @@ def makeMap():
     $('#num-bedrooms').val(item[0].id)
  
 makeMap()
+
+# Testing Rapydscript optional arguments
 
 def f(x, kwarg1=True, kwarg2='hello'):
     return str(x) + str(kwarg1) + kwarg2
