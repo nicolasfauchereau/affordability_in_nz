@@ -1,6 +1,7 @@
 import stdlib
 
-dataFileName = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
+//dataFileName = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
+dataFileName = 'data/Auckland_AUs_2013_small_with_rents.geojson'
 
 def makeMap():    
     // Create map 

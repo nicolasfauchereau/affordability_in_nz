@@ -4,7 +4,7 @@
     <title>Auckland Rent-Income Ratio (2013 Q3)</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
     <link rel="stylesheet" href="map.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="map.css">
@@ -46,12 +46,18 @@
             <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">detailed mean rents</a> provided by the NZ Ministry of Business, Innovation and Employment</li>
             <li>Median annual income of employed Aucklanders sourced from the 
             <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/NZIncomeSurvey_HOTPJun13qtr.aspx">June 2013 income survey</a> provided by Statistics NZ</li>
-            <li>Suburb polygons sourced from ...</li>
-            <li>Map created by Alex Raichev and Abhishek Reddy
+            <li>Auckland 2013 area units sourced from ... and simplified via 
+            <a href="http://www.mapshaper.org/">Mapshaper</a></li>
+            <li>Since the suburbs of the rent data don't match the area units 
+            (see <a href="http://www.landlords.co.nz/ask-an-expert/zones-for-market-rent-stats-2169">this thread for details</a>), 
+            we did our best to map the area units to suburbs in a 
+            many-to-one fashion as detailed in
+            <a href='data/aus_and_suburbs.csv'>this CSV file</a> 
+            <li>Map created by Alex Raichev and Abhishek Reddy</li>
         </ul>
     </section>
 
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="map.js"></script>

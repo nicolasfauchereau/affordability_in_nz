@@ -2,44 +2,44 @@
 Abbotts Park,
 Aiguilles Island,
 Akarana,
-Albany,
+Albany,Albany
 Algies Bay,
 Ambury,
 Aorere,
 Arahanga,
-Arch Hill,
-Ardmore,
+Arch Hill,Grey Lynn/Arch Hill
+Ardmore,Takanini/Ardmore
 Armour Bay,
 Army Bay,
-Auckland Central East,
-Auckland Central West,
-Auckland Harbourside,
-Avondale South,
-Avondale West,
+Auckland Central East,Central East
+Auckland Central West,Central West
+Auckland Harbourside,Harbourside
+Avondale South,Avondale
+Avondale West,Avondale
 Awaruku,
 Awhitu,
-Balmoral,
+Balmoral,Balmoral
 Baverstock Oaks,
 Bayswater,
-Beachhaven North,
-Beachhaven South,
+Beachhaven North,Beachhaven/Birkdale
+Beachhaven South,Beachhaven/Birkdale
 Beachlands-Maraetai,
 Beaumont,
 Birdwood East,
 Birdwood West,
-Birkdale North,
-Birkdale South,
-Birkenhead East,
+Birkdale North,Beachhaven/Birkdale
+Birkdale South,Beachhaven/Birkdale
+Birkenhead East,Chatswood/Birkenhead/Northcote Point
 Bleakhouse,
 Bledisloe Park,
-Blockhouse Bay,
+Blockhouse Bay,Blockhouse Bay/New Windsor
 Bombay,
 Bremner,
-Browns Bay,
+Browns Bay,Browns Bay
 Browns Island,
 Buckland,
-Bucklands Beach South,
-Bucklands and Eastern Beaches,
+Bucklands Beach South,Bucklands Beach
+Bucklands and Eastern Beaches,Bucklands Beach
 Burbank,
 Burswood,
 Campbells Bay,
@@ -49,27 +49,27 @@ Castor Bay,
 Chelsea,
 Clendon North,
 Clendon South,
-Clevedon,
+Clevedon,Maraetai/Clevedon
 Clover Park,
 Cockle Bay,
 Crown Hill,
 Crum Park,
 Dairy Flat-Redvale,
-Dannemora,
+Dannemora,Dannemora
 Dingwall,
 Donegal Park,
-Drury,
+Drury,Papakura/Drury/Karaka
 Durham Green,
 Eden Road-Hill Top,
-Eden Terrace,
+Eden Terrace,Eden Terrace
 Edgewater,
 Edmonton,
-Ellerslie North,
-Ellerslie South,
+Ellerslie North,Ellerslie
+Ellerslie South,Ellerslie
 Elsmore Park,
-Epsom Central,
-Epsom North,
-Epsom South,
+Epsom Central,Epsom
+Epsom North,Epsom
+Epsom South,Epsom
 Fairburn,
 Fairdene,
 Fairview,
@@ -79,33 +79,33 @@ Favona West,
 Ferguson,
 Ferndale,
 Forrest Hill,
-Freemans Bay,
+Freemans Bay,Ponsonby/Freemans Bay
 Fruitvale,
 Glamorgan,
-Glen Eden East,
-Glen Innes East,
-Glen Innes North,
-Glen Innes West,
+Glen Eden East,Glen Eden
+Glen Innes East,Glen Innes/Pt England/Wai O Taiki
+Glen Innes North,Glen Innes/Pt England/Wai O Taiki
+Glen Innes West,Glen Innes/Pt England/Wai O Taiki
 Glenavon,
 Glenbrook,
-Glendene North,
-Glendene South,
-Glendhu,
-Glendowie,
-Glenfield Central,
-Glenfield North,
+Glendene North,Glendene
+Glendene South,Glendene
+Glendhu,Glendhu/Glenfield
+Glendowie,St Helliers/Glendowie
+Glenfield Central,Glendhu/Glenfield
+Glenfield North,Wairau Park/Glenfield North
 Golfland,
-Grafton East,
-Grafton West,
+Grafton East,Newton/Grafton
+Grafton West,Newton/Grafton
 Grange,
 Great Barrier Island,
 Green Bay,
-Greenhithe,
+Greenhithe,Greenhithe/Unsworth Heights
 Greenmount,
-Grey Lynn East,
-Grey Lynn West,
-Gulf Harbour,
-Half Moon Bay,
+Grey Lynn East,Grey Lynn/Arch Hill
+Grey Lynn West,Grey Lynn/Arch Hill
+Gulf Harbour,Gulf Harbour
+Half Moon Bay,Half Moon Bay/Farm Cove
 Hamlin,
 Harania East,
 Harania North,
@@ -114,24 +114,24 @@ Hatfields Beach,
 Hauraki,
 Helensville,
 Helensville South,
-Henderson North,
-Henderson South,
-Henderson West,
+Henderson North,Henderson
+Henderson South,Henderson
+Henderson West,Henderson
 Herald,
-Herne Bay,
+Herne Bay,Herne Bay/St Marys
 Highbrook,
-Highland Park,
+Highland Park,Highland Park
 Hillpark,
-Hillsborough East,
-Hillsborough West,
+Hillsborough East,Hillsborough
+Hillsborough West,Hillsborough
 Hingaia,
 Hobsonville East,
 Hobsonville South,
 Homai East,
 Homai West,
-Howick Central,
-Howick South,
-Howick West,
+Howick Central,Howick
+Howick South,Howick
+Howick West,Howick
 Huapai,
 Hunua,
 Hyperion,
@@ -145,17 +145,17 @@ Kauri Park,
 Kaurilands,
 Kawakawa-Orere,
 Kawau,
-Kelston Central,
+Kelston Central,Kelston
 Kilkenny,
 Kingdale,
 Kingseat,
-Kingsland,
-Kohimarama East,
-Kohimarama West,
+Kingsland,Kingsland
+Kohimarama East,Kohimarama
+Kohimarama West,Kohimarama
 Kohuora,
 Konini,
-Kumeu East,
-Kumeu West,
+Kumeu East,Rewiti/Kumeu/Riverhead
+Kumeu West,Rewiti/Kumeu/Riverhead
 Laingholm,
 Lake Pupuke,
 Leabank,
@@ -163,165 +163,165 @@ Leigh,
 Little Barrier Island,
 Long Bay,
 Lucken Point,
-Lynfield North,
-Lynfield South,
+Lynfield North,Lynfield
+Lynfield South,Lynfield
 Lynnmall,
 Mahurangi,
-Mairangi Bay,
-Mangere Bridge,
-Mangere Central,
-Mangere East,
-Mangere South,
-Mangere Station,
+Mairangi Bay,Rothesay/Murrays/Mairangi Bays
+Mangere Bridge,Mangere Bridge/Airport
+Mangere Central,Mangere
+Mangere East,Mangere East
+Mangere South,Mangere
+Mangere Station,Mangere
 Manly,
-Manukau Central,
-Manurewa Central,
-Manurewa East,
+Manukau Central,Manukau Central
+Manurewa Central,Manurewa North
+Manurewa East,Manukau Heights and Manurewa Heights
 Mascot,
-Massey Park,
-Massey West,
+Massey Park,Massey/Royal Heights
+Massey West,Massey/Royal Heights
 Matakana,
 Matheson Bay,
 Matipo,
 Maungawhau,
 McLaren Park,
 Mcleod,
-Meadowbank North,
-Meadowbank South,
+Meadowbank North,Meadowbank
+Meadowbank South,Remuera South/Meadowbank South
 Meadowland,
 Mellons Bay,
 Middlemore,
 Mill Road,
 Millhouse,
-Mission Bay,
+Mission Bay,Mission Bay/Orakei
 Mission Heights,
 Mokohinau Island,
 Monarch Park,
-Mt Albert Central,
-Mt Eden East,
-Mt Eden North,
-Mt Eden South,
+Mt Albert Central,Mt Albert/Owairaka
+Mt Eden East,Mt Eden
+Mt Eden North,Mt Eden
+Mt Eden South,Mt Eden
 Mt Hobson,
 Mt St John,
 Mt Victoria,
-Mt Wellington Domain,
-Mt Wellington North,
-Mt Wellington South,
-Mt Wellington West,
+Mt Wellington Domain,Mt Wellington
+Mt Wellington North,Mt Wellington North
+Mt Wellington South,Penrose/Mt Wellington South
+Mt Wellington West,Mt Wellington
 Muriwai Beach,
 Muriwai Valley,
-Murrays Bay,
+Murrays Bay,Rothesay/Murrays/Mairangi Bays
 Murvale,
 Narrow Neck,
-New Lynn North,
-New Lynn South,
-New Windsor,
-Newmarket,
-Newton,
-North Harbour East,
-North Harbour West,
-Northcote South,
+New Lynn North,New Lynn
+New Lynn South,New Lynn
+New Windsor,Blockhouse Bay/New Windsor
+Newmarket,Newmarket
+Newton,Newton/Grafton
+North Harbour East,North Harbour/Pine Hill
+North Harbour West,North Harbour/Pine Hill
+Northcote South,Hillcrest/Northcote
 Northcross,
 Oaktree,
 Ocean View,
 Omaha,
-One Tree Hill Central,
-One Tree Hill East,
-Onehunga North East,
-Onehunga North West,
-Onehunga South East,
-Onehunga South West,
+One Tree Hill Central,Royal Oak/One Tree Hill
+One Tree Hill East,Royal Oak/One Tree Hill
+Onehunga North East,Onehunga/Oranga/Te Papapa
+Onehunga North West,Onehunga/Oranga/Te Papapa
+Onehunga South East,Onehunga/Oranga/Te Papapa
+Onehunga South West,Onehunga/Oranga/Te Papapa
 Opaheke,
 Opanuku,
-Orakei North,
-Orakei South,
-Oranga,
+Orakei North,Mission Bay/Orakei
+Orakei South,Mission Bay/Orakei
+Oranga,Onehunga/Oranga/Te Papapa
 Oratia,
 Oratia West,
-Orewa,
-Orewa West,
+Orewa,Orewa/Whangaparaoa
+Orewa West,Orewa/Whangaparaoa
 Ormiston,
-Otahuhu East,
-Otahuhu North,
-Otahuhu West,
-Otara East,
-Otara North,
-Otara South,
-Otara West,
+Otahuhu East,Otahuhu
+Otahuhu North,Otahuhu
+Otahuhu West,Otahuhu
+Otara East,Otara
+Otara North,Otara
+Otara South,Otara
+Otara West,Otara
 Otimai,
-Owairaka East,
-Owairaka West,
+Owairaka East,Mt Albert/Owairaka
+Owairaka West,Mt Albert/Owairaka
 Paerata-Cape Hill,
 Pahurehure,
-Pakuranga Central,
-Pakuranga East,
-Pakuranga North,
+Pakuranga Central,Pakuranga
+Pakuranga East,Pakuranga
+Pakuranga North,Pakuranga
 Palm Heights,
-Panmure Basin,
-Papakura Central,
-Papakura East,
-Papakura North,
-Papakura North East,
-Papakura South,
+Panmure Basin,Panmure
+Papakura Central,Papakura/Drury/Karaka
+Papakura East,Papakura/Drury/Karaka
+Papakura North,Papakura/Drury/Karaka
+Papakura North East,Papakura/Drury/Karaka
+Papakura South,Papakura/Drury/Karaka
 Paparata,
-Papatoetoe Central,
-Papatoetoe East,
-Papatoetoe North,
-Papatoetoe West,
+Papatoetoe Central,Papatoetoe South
+Papatoetoe East,Papatoetoe South
+Papatoetoe North,Papatoetoe North
+Papatoetoe West,Papatoetoe West
 Parakai Rural,
 Parakai Urban,
 Paremoremo East,
 Paremoremo West,
-Parnell East,
-Parnell West,
+Parnell East,Parnell
+Parnell West,Parnell
 Parrs Park,
 Parrs Park West,
 Patumahoe,
-Penrose,
+Penrose,Penrose/Mt Wellington South
 Pigeon Mountain North,
 Pigeon Mountain South,
-Pinehill,
-Point Chevalier East,
-Point Chevalier South,
-Point Chevalier West,
-Point England,
+Pinehill,North Harbour/Pine Hill
+Point Chevalier East,Pt Chevalier
+Point Chevalier South,Pt Chevalier
+Point Chevalier West,Pt Chevalier
+Point England,Glen Innes/Pt England/Wai O Taiki
 Point View,
 Point Wells,
-Ponsonby East,
-Ponsonby West,
+Ponsonby East,Ponsonby/Freemans Bay
+Ponsonby West,Ponsonby/Freemans Bay
 Puhinui North,
 Puhinui South,
-Pukekohe North,
-Pukekohe West,
+Pukekohe North,Pukekohe/Tuakau
+Pukekohe West,Pukekohe/Tuakau
 Rakitu Island,
 Randwick Park,
-Ranui Domain,
-Ranui South,
+Ranui Domain,Ranui
+Ranui South,Ranui
 Red Beach East,
 Red Beach West,
 Red Hill,
 Redoubt East,
 Redoubt North,
 Redoubt South,
-Remuera South,
-Remuera West,
+Remuera South,Remuera South/Meadowbank South
+Remuera West,Remuera
 Rewarewa,
-Rewiti,
-Riverhead,
-Riverhead Urban,
+Rewiti,Rewiti/Kumeu/Riverhead
+Riverhead,Rewiti/Kumeu/Riverhead
+Riverhead Urban,Rewiti/Kumeu/Riverhead
 Roberton,
 Rongomai,
 Rosebank,
 Rosehill,
-Rothesay Bay,
+Rothesay Bay,Rothesay/Murrays/Mairangi Bays
 Rowandale,
-Royal Heights,
-Royal Oak,
+Royal Heights,Massey/Royal Heights
+Royal Oak,Royal Oak/One Tree Hill
 Royal Road West,
 Runciman,
-Sandringham East,
-Sandringham North,
-Sandringham West,
+Sandringham East,St Lukes/Sandringham
+Sandringham North,St Lukes/Sandringham
+Sandringham West,St Lukes/Sandringham
 Seacliffe,
 Shelly Park,
 Sherbourne,
@@ -332,11 +332,11 @@ Snells Beach,
 South Head,
 South Waiuku,
 Springleigh,
-St Heliers,
-St Johns,
-St Lukes,
-St Lukes North,
-St Marys,
+St Heliers,St Helliers/Glendowie
+St Johns,St Johns
+St Lukes,St Lukes/Sandringham
+St Lukes North,St Lukes/Sandringham
+St Marys,Herne Bay/St Marys
 Stanley Bay,
 Stanmore Bay East,
 Stanmore Bay West,
@@ -346,37 +346,37 @@ Stonefields,
 Sturges North,
 Sunnybrae,
 Sunnyhills,
-Sunnynook,
+Sunnynook,Sunnynook/Westlake
 Sunnyvale,
-Surrey Crescent,
+Surrey Crescent,Westmere/Surrey Crescent
 Swanson,
 Swanson South,
 Tahekeroa,
-Takanini North,
-Takanini South,
-Takanini West,
-Takapuna Central,
+Takanini North,Takanini/Ardmore
+Takanini South,Takanini/Ardmore
+Takanini West,Takanini/Ardmore
+Takapuna Central,Takapuna
 Tamaki,
 Tangutu,
 Target Road,
 Tauhoa-Puhoi,
 Taupaki,
-Te Atatu Central,
-Te Papapa,
-Three Kings,
-Titirangi South,
-Torbay,
+Te Atatu Central,Te Atatu
+Te Papapa,Onehunga/Oranga/Te Papapa
+Three Kings,Three Kings
+Titirangi South,Titirangi
+Torbay,Torbay
 Totara Heights,
 Tuff Crater,
 Turanga,
-Unsworth Heights,
+Unsworth Heights,Greenhithe/Unsworth Heights
 Urlich,
 Vipond,
 Viscount,
 Wade Heads,
 Waiake,
 Waiata,
-Waiheke Island,
+Waiheke Island,Waiheke Island
 Waikowhai East,
 Waikowhai West,
 Waima,
@@ -387,24 +387,24 @@ Waipareira West,
 Waitakere,
 Waitakere West,
 Waitaramoa,
-Waiuku East,
-Waiuku West,
+Waiuku East,Waiuku
+Waiuku West,Waiuku
 Waiwera,
 Wakeling,
 Walmsley,
-Warkworth,
-Waterview,
+Warkworth,Wellsford/Warkworth/Helensville
+Waterview,Waterview/Avondale Heights
 Wattle Farm,
 Weiti River,
-Wellsford,
-Wesley,
-West Harbour,
+Wellsford,Wellsford/Warkworth/Helensville
+Wesley,Mt Roskill/Wesley
+West Harbour,West Harbour
 Westgate,
 Westlake,
-Westmere,
-Weymouth East,
-Weymouth West,
-Whangapouri Creek,
+Westmere,Westmere/Surrey Crescent
+Weymouth East,Weymouth
+Weymouth West,Weymouth
+Whangapouri Creek,Orewa/Whangaparaoa
 Whenuapai West,
 Windsor Park,
 Windy Ridge,

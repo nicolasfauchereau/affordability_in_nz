@@ -36,6 +36,7 @@ with open(rent_csv, 'rb') as csv_file:
           prop].keys():
             rent_by_nbedrooms_by_property_by_suburb[au][prop][nbedrooms] = rent
 
+"""
 # Print rent suburbs for reference
 suburbs = sorted(rent_by_nbedrooms_by_property_by_suburb.keys())
 print('rent suburbs ({!s}): '.format(len(suburbs)))
@@ -52,32 +53,33 @@ print('aus ({!s}): '.format(len(aus)))
 for au in aus:
     print(au)
 print()
+"""
 
-# # Use aus_and_suburbs.csv to convert the dictionary keys 
-# # from rent suburb to AU 
-# rent_by_nbedrooms_by_property_by_au = dict()
-# with open(aus_and_suburbs_csv, 'rb') as csv_file:
-#     reader = csv.reader(csv_file)
-#     reader.next() # Skip header row
-#     for row in reader:
-#         au, suburb = row
-#         if suburb:
-#             rent_by_nbedrooms_by_property_by_au[au] =\
-#               rent_by_nbedrooms_by_property_by_suburb[suburb]
-#         else:
-#             # No data
-#             rent_by_nbedrooms_by_property_by_au[au] = 'NA'
+# Use aus_and_suburbs.csv to convert the dictionary keys 
+# from rent suburb to AU 
+rent_by_nbedrooms_by_property_by_au = dict()
+with open(aus_and_suburbs_csv, 'rb') as csv_file:
+    reader = csv.reader(csv_file)
+    reader.next() # Skip header row
+    for row in reader:
+        au, suburb = row
+        if suburb:
+            rent_by_nbedrooms_by_property_by_au[au] =\
+              rent_by_nbedrooms_by_property_by_suburb[suburb]
+        else:
+            # No data
+            rent_by_nbedrooms_by_property_by_au[au] = 'NA'
 
 
-# # Add rent data to geometry data from geodata_geojson 
-# # and save the result to unified_geojson
-# with open(geodata_geojson, 'rb') as json_file:
-#     geodata = json.load(json_file)
+# Add rent data to geometry data from geodata_geojson 
+# and save the result to unified_geojson
+with open(geodata_geojson, 'rb') as json_file:
+    geodata = json.load(json_file)
 
-# for feature in geodata['features']:
-#     props = feature['properties']
-#     props['rent_by_nbedrooms_by_property'] =\
-#       rent_by_nbedrooms_by_property_by_au[props['AU_NAME']]
+for feature in geodata['features']:
+    props = feature['properties']
+    props['rent_by_nbedrooms_by_property'] =\
+      rent_by_nbedrooms_by_property_by_au[props['AU_NAME']]
 
-# with open(unified_geojson, 'w') as json_file:
-#     json.dump(geodata, json_file)
+with open(unified_geojson, 'w') as json_file:
+    json.dump(geodata, json_file)
