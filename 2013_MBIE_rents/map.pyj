@@ -1,7 +1,7 @@
 import stdlib
 
 //dataFileName = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
-dataFileName = 'data/Auckland_AUs_2013_small_with_rents.geojson'
+dataFileName = 'data/Auckland_AUs_2013_with_rents.geojson'
 
 def makeMap():    
     // Create map 
@@ -251,14 +251,3 @@ def makeMap():
     $('#num-bedrooms').val(item[0].id)
  
 makeMap()
-
-# Testing Rapydscript optional arguments
-
-def f(x, kwarg1=True, kwarg2='hello'):
-    return str(x) + str(kwarg1) + kwarg2
-console.log('=================================')
-console.log(f(1))
-console.log(f(1, kwarg2='bye'))
-console.log(f(1, kwarg1=False))
-console.log(f(1, kwarg1=False, kwarg2='yowza'))
-console.log(f(1, kwarg2='yowza', kwarg1=False))
