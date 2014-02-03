@@ -10,3 +10,4 @@ Alex's project hours (date / hours / comments)
 - 15 Jan 2014 / 1 / Compiled list of rent suburbs and census area units
 - 19 Jan 2014 / 3 / Added rent data to GeoJSON file of center city area units. Got prototype map working.
 - 21 Jan 2014 / 1 / Started working on 2013 Auckland area units, the super city! 
+- 3 Feb 2014 / 1 / Aggregated hours from previous little bits.
