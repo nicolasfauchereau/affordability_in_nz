@@ -7,7 +7,7 @@ def makeMap():
     // Create map 
     clon = 174.73986
     clat = -36.74041
-    eps = 0.05
+    eps = 0.8
     map = L.map('map', {
         'center': [clat, clon],
         'zoom': 9,
