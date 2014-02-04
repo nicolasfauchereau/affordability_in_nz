@@ -21,6 +21,13 @@
             </p>
             <div id="slider-vertical"></div>
 
+            Dwelling type<br>
+            <ol id="property-type">
+                <li class="ui-state-default" id="House">house</li>
+                <li class="ui-state-default" id="Flat">flat</li>
+                <li class="ui-state-default" id="Apartment">apartment</li>
+            </ol><br>
+
             #Bedrooms in dwelling<br>
             <ol id="num-bedrooms">
                 <li class="ui-state-default" id="1">1</li>

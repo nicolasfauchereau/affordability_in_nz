@@ -5,19 +5,11 @@ dataFileName = 'data/Auckland_AUs_2013_with_rents.geojson'
 
 def makeMap():    
     // Create map 
-    clon = 174.73986
-    clat = -36.74041
-    eps = 0.05
-    map = L.map('map', {
-        'center': [clat, clon],
-        'zoom': 9,
-        'minZoom': 9,
-        'maxBounds': [[clat - eps , clon - eps], [clat + eps, clon + eps]],
-    })
+    map = L.map('map').setView([-36.84041, 174.73986], 11)
 
     // Get tiles from Github
     tilesURL = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
-    //L.tileLayer(tilesURL).addTo(map)
+    L.tileLayer(tilesURL).addTo(map)
     
     // Remove 'Leaflet' link from corner of map  
     map.attributionControl.setPrefix('')
@@ -92,9 +84,11 @@ def makeMap():
         // then return -1 (if `string == False`) or 
         // 'n/a' (if `string == True`).
         // Round rent to the ndigits decimal places.
+        propertyType = $('#property-type').val()
         numBedrooms = $('#num-bedrooms').val()
-        if feature.properties.rent_by_nbedrooms != 'NA':
-            rent = float(feature.properties.rent_by_nbedrooms[numBedrooms])
+        if feature.properties.rent_by_nbedrooms_by_property != 'NA':
+            rent = float(feature.properties.rent_by_nbedrooms_by_property[
+              propertyType][numBedrooms])
             if numBedrooms == "5+":
                 result = rent/5
             else:
@@ -156,7 +150,7 @@ def makeMap():
         return {
           'fillColor': c,
           'fillOpacity': 0.7,
-          'color': 'white',
+          'color': c,
           'weight': 1,
           'opacity': 1,
         }
@@ -165,9 +159,8 @@ def makeMap():
     def highlightFeature(e):
         layer = e.target
         layer.setStyle({
-            'color': 'black',
-            // 'weight': 8,
-            // 'opacity': 1,
+            'weight': 8,
+            'opacity': 1,
         })
         if not L.Browser.ie and not L.Browser.opera:
             layer.bringToFront()
@@ -227,6 +220,21 @@ def makeMap():
         $("#slider-vertical").append(el)
     )
     
+    // Add a property type selector widget
+    $(def():
+        $("#property-type").selectable({
+            'selected': def(event, ui):
+                // Update property type
+                $('#property-type').val(ui.selected.id)
+                // Recolor suburbs
+                suburbs.setStyle(style)
+        })
+    )
+    // Initialize selector
+    item = $('#property-type li:eq(1)')
+    item.addClass('ui-selected')
+    $('#property-type').val(item[0].id)
+
     // Add a number-of-bedrooms selector widget
     $(def():
         $("#num-bedrooms").selectable({
