@@ -7,12 +7,11 @@ def makeMap():
     // Create map 
     clon = 174.73986
     clat = -36.74041
-    eps = 0.8
     map = L.map('map', {
         'center': [clat, clon],
         'zoom': 9,
         'minZoom': 9,
-        'maxBounds': [[clat - eps , clon - eps], [clat + eps, clon + eps]],
+        'maxBounds': [[clat - 0.8 , clon - 0.8], [clat + 0.8, clon + 1.1]],
     })
 
     // Get tiles from Github
@@ -38,31 +37,10 @@ def makeMap():
 
     suburbs = None
 
-    // Add a suburb info box to the map
-    info = L.control()
-    info.onAdd = def(map):
-        this._div = L.DomUtil.create('div', 'info')
-        this.update()
-        return this._div
-
-    info.update = def(feature=None):
-        if feature:
-            message = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
-            'Weekly rent per bedroom: ' +\
-            getWeeklyRent(feature, 0, True) + '<br>' +\
-            'Fraction of annual income: ' +\
-            getRentFraction(feature, 2, True) + '<br>'
-        else:
-            message = '<h4>Suburb Info</h4>Hover over a suburb'
-        // Update the control based on feature properties passed
-        this._div.innerHTML = message
-    
-    info.addTo(map)
-
     // Add a legend to the map
     legend = L.control({position: 'bottomright'});
     legend.onAdd = def(map):
-        div = L.DomUtil.create('div', 'info legend')
+        div = L.DomUtil.create('div', 'legend')
 
         // Loop through our density interrange and generate a label with a colored square for each interval
         for i in reversed(range(len(LABELS))):
@@ -164,6 +142,7 @@ def makeMap():
     // Define suburb mouseover etc.
     def highlightFeature(e):
         layer = e.target
+        feature = layer.feature
         layer.setStyle({
             'color': 'black',
             // 'weight': 8,
@@ -171,13 +150,26 @@ def makeMap():
         })
         if not L.Browser.ie and not L.Browser.opera:
             layer.bringToFront()
-        info.update(layer.feature)
+        popupContent = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
+            'Weekly rent per bedroom: ' +\
+            getWeeklyRent(feature, 0, True) + '<br>' +\
+            'Fraction of annual income: ' +\
+            getRentFraction(feature, 2, True) + '<br>'
+        layer.bindPopup(popupContent, {
+            'offset': L.point(0, 120),
+            'closeButton': false,
+        }).openPopup()
 
     def resetHighlight(e):
         layer = e.target
         suburbs.resetStyle(layer)
-        info.update()
-
+        layer._map.closePopup()
+        // if layer._map._popup:
+        //     console.log('popup=', layer._map._popup)
+        //     layer._map.closePopup()
+        // else:
+        //     console.log('Whoops, layer=', layer)
+            
     def zoomToFeature(e):
         map.fitBounds(e.target.getBounds())
     
@@ -187,6 +179,7 @@ def makeMap():
             'mouseout': resetHighlight,
             'click': zoomToFeature,
         })
+        console.log('layer=', layer)
 
     // Load suburbs
     $.getJSON(dataFileName, def(collection):
@@ -219,7 +212,6 @@ def makeMap():
         // Label the median annual income point on slider
         min = sv.slider( "option", "min" )
         range = sv.slider( "option", "max" ) - min
-        console.log('range=', range, MEDIAN_ANNUAL_INCOME/range*100)
         el = $('<label><span id="arrow">&larr;</span>' +\
           'Median annual income<br>of employed Aucklanders<br>(' +\
           numToDollarStr(MEDIAN_ANNUAL_INCOME) + ')</label>').css(
