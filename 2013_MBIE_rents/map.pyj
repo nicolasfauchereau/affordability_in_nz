@@ -1,16 +1,18 @@
 import stdlib
 
-//dataFileName = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
-dataFileName = 'data/Auckland_AUs_2013_with_rents.geojson'
+//geoDataFile = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
+geoDataFile = 'data/Auckland_AUs_2013.geojson'
+rentDataFile = 'data/mean_rents_by_nbedrooms_by_au.json'
 
 def makeMap():    
     // Create map 
-    clon = 174.73986
-    clat = -36.74041
+    clon = 174.739869
+    clat = -36.840417
     map = L.map('map', {
         'center': [clat, clon],
-        'zoom': 9,
-        'minZoom': 9,
+        'zoom': 10,
+        'minZoom': 8,
+        'maxZoom': 13,
         'maxBounds': [[clat - 0.8 , clon - 0.8], [clat + 0.8, clon + 1.1]],
     })
 
@@ -21,6 +23,23 @@ def makeMap():
     // Remove 'Leaflet' link from corner of map  
     map.attributionControl.setPrefix('')
     
+    // Get data
+    aus = None
+    rentByNbedroomsByAu = None
+
+    $.getJSON(rentDataFile, def(data):
+        nonlocal rentByNbedroomsByAu
+        rentByNbedroomsByAu = data
+    )
+
+    $.getJSON(geoDataFile, def(collection):
+        nonlocal aus
+        aus = L.geoJson(collection, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map)    
+    )
+
     // Define data bins and labels.
     // Assume no-data entries map to nonpositive.
     BINS = [0, 0.25, 0.5, 0.75, 10e9]
@@ -29,13 +48,12 @@ def makeMap():
     // Order colors least-to-most intense, but begin with gray, 
     // the no-data color.
     // 4-class Spectral:
-    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', '#bbb'])
+    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', '#ccc'])
     // 5-class Spectral:
     // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
     // 'gray'])
     MEDIAN_ANNUAL_INCOME = 882*52
 
-    suburbs = None
 
     // Add a legend to the map
     legend = L.control({position: 'bottomright'});
@@ -62,7 +80,7 @@ def makeMap():
         return result
 
     def getWeeklyRent(feature, ndigits=0, string=False):
-        // Return the weekly rent for this suburb/feature based on
+        // Return the weekly rent for this au/feature based on
         // the currently selected property type and number of bedrooms.
         // If `string == True`, then stringify the number using 
         // `numToDollarStr()`.         
@@ -71,8 +89,9 @@ def makeMap():
         // 'n/a' (if `string == True`).
         // Round rent to the ndigits decimal places.
         numBedrooms = $('#num-bedrooms').val()
-        if feature.properties.rent_by_nbedrooms != 'NA':
-            rent = float(feature.properties.rent_by_nbedrooms[numBedrooms])
+        auName = feature.properties.AU_NAME 
+        if rentByNbedroomsByAu[auName] != 'NA':
+            rent = float(rentByNbedroomsByAu[auName][numBedrooms])
             if numBedrooms == "5+":
                 result = rent/5
             else:
@@ -145,16 +164,16 @@ def makeMap():
         feature = layer.feature
         layer.setStyle({
             'color': 'black',
-            // 'weight': 8,
-            // 'opacity': 1,
         })
         if not L.Browser.ie and not L.Browser.opera:
             layer.bringToFront()
         popupContent = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
-            'Weekly rent per bedroom: ' +\
-            getWeeklyRent(feature, 0, True) + '<br>' +\
-            'Fraction of annual income: ' +\
-            getRentFraction(feature, 2, True) + '<br>'
+            '<table>' +\
+            '<tr><td>Weekly rent per bedroom</td><td>' +\
+            getWeeklyRent(feature, 0, True) + '</td></tr>' +\
+            '<tr><td>Fraction of annual income</td><td>' +\
+            getRentFraction(feature, 2, True) + '</td></tr>' +\
+            '</table>'
         layer.bindPopup(popupContent, {
             'offset': L.point(0, 120),
             'closeButton': false,
@@ -162,13 +181,8 @@ def makeMap():
 
     def resetHighlight(e):
         layer = e.target
-        suburbs.resetStyle(layer)
+        aus.resetStyle(layer)
         layer._map.closePopup()
-        // if layer._map._popup:
-        //     console.log('popup=', layer._map._popup)
-        //     layer._map.closePopup()
-        // else:
-        //     console.log('Whoops, layer=', layer)
             
     def zoomToFeature(e):
         map.fitBounds(e.target.getBounds())
@@ -179,16 +193,6 @@ def makeMap():
             'mouseout': resetHighlight,
             'click': zoomToFeature,
         })
-        console.log('layer=', layer)
-
-    // Load suburbs
-    $.getJSON(dataFileName, def(collection):
-        nonlocal suburbs
-        suburbs = L.geoJson(collection, {
-            style: style,
-            onEachFeature: onEachFeature
-        }).addTo(map)    
-    )
 
     // Add an income slider widget
     $(def():
@@ -202,8 +206,8 @@ def makeMap():
             'slide': def(event, ui): 
                 // Update income display
                 $('#income').val(numToDollarStr(ui.value))
-                // Recolor suburbs
-                suburbs.setStyle(style)
+                // Recolor aus
+                aus.setStyle(style)
             ,
         })
         // Initialize slider 
@@ -225,8 +229,8 @@ def makeMap():
             'selected': def(event, ui):
                 // Update nuber of bedrooms
                 $('#num-bedrooms').val(ui.selected.id)
-                // Recolor suburbs
-                suburbs.setStyle(style)
+                // Recolor aus
+                aus.setStyle(style)
         })
     )
     // Initialize selector

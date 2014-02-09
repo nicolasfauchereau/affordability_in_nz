@@ -27,6 +27,7 @@ body
     margin: 40px auto
     padding: 0px
     width: 75%
+    color: black
 h1, h2, h3, h4, h5, h6
     font-weight: 500
     line-height: 1
@@ -38,6 +39,11 @@ a:hover, a:active
     text-decoration: underline
 p 
     margin: 0 0 1.2em 0
+table
+    border-collapse: collapse
+    width: 100%
+    td + td
+        text-align: right
 #container
     width: 100%
     height: 400px
@@ -80,18 +86,18 @@ p
     font-size: 150%
     font-weight: bold
     background-color: $background-color
-#property-type, #num-bedrooms
+#num-bedrooms, #property-type
     list-style-type: none 
     margin: 0.4em 0em 3em 0em 
     padding: 0 
     li
-        display: inline
         margin: 0px 3px 3px 0px
         padding: 3px 8px 
         float: left 
         height: 20px 
         text-align: center 
-        border-radius: 5px
+        border-radius: $border-radius
+        color: inherit
     .ui-selecting  
         background: $highlight-color
     .ui-selected 
@@ -101,15 +107,6 @@ p
 #notes
     clear: both
 
-/*
-.leaflet-label
-    @include font($small-font-size)
-    @include box
-.leaflet-label:before, .leaflet-label:after  
-    border: none
-    left: 0
-    right: 0
-*/
 .leaflet-container
     background: $background-color !important
 .leaflet-popup-content
@@ -123,3 +120,12 @@ p
     border-radius: $border-radius
 .leaflet-popup-content-wrapper, .leaflet-popup-tip 
     box-shadow: None
+/*
+.leaflet-label
+    @include font($small-font-size)
+    @include box
+.leaflet-label:before, .leaflet-label:after  
+    border: none
+    left: 0
+    right: 0
+*/
