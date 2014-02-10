@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
     <link rel="stylesheet" href="leaflet.label.css" />    
-    <link rel="stylesheet" href="map.css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Auckland Rent-Income Ratio (2013 Q3)</h1>  
@@ -17,12 +16,12 @@
         <div id="map"></div>
         <div id="sidebar">
             <p>
-                <label for="income">Gross annual income</label><br>
+                <label for="income">Set you gross annual income</label><br>
                 <input type="text" id="income" readonly>
             </p>
             <div id="slider-vertical"></div>
 
-            #Bedrooms in dwelling<br>
+            Choose #bedrooms in dwelling<br>
             <ol id="num-bedrooms">
                 <li class="ui-state-default" id="1">1</li>
                 <li class="ui-state-default" id="2">2</li>
@@ -37,9 +36,7 @@
         <h2>Notes</h2>
         <ul>
             <li>Auckland 2013 census area units sourced from Statistics New Zealand 
-            <a href="http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx">here</a> 
-            and simplified via 
-            <a href="http://www.mapshaper.org/">Mapshaper</a></li>
+            <a href="http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx">here</a>
             <li>Rents sourced from the New Zealand Ministry of Business, Innovation and Employment from the detailed mean rents file 
             <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">here</a></li>
             <li>Since the suburbs of the rent data don't match the census area units 
