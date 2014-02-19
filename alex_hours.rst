@@ -12,3 +12,4 @@ Alex's project hours (date / hours / comments)
 - 21 Jan 2014 / 1 / Started working on 2013 Auckland area units, the super city! 
 - 3 Feb 2014 / 1 / Aggregated hours from previous little bits
 - 9 Feb 2014 / 2 / Refactored code and UI
+- 19 Feb 2014 / 1.5 / Started on new plan. Computed AU centroids.
