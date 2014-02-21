@@ -1,0 +1,253 @@
+import stdlib
+
+//dataFileName = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
+dataFileName = 'data/Auckland_AUs_2013_with_rents.geojson'
+
+def makeMap():    
+    // Create map 
+    map = L.map('map').setView([-36.84041, 174.73986], 11)
+
+    // Get tiles from Github
+    tilesURL = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
+    L.tileLayer(tilesURL).addTo(map)
+    
+    // Remove 'Leaflet' link from corner of map  
+    map.attributionControl.setPrefix('')
+    
+    // Define data bins and labels.
+    // Assume no-data entries map to nonpositive.
+    BINS = [0, 0.25, 0.5, 0.75, 10e9]
+    LABELS = ['n/a', '0&ndash;25%', '26&ndash;50%', '51&ndash;75%', '76%+']
+    // Define color scheme using http://colorbrewer2.org/js/. 
+    // Order colors least-to-most intense, but begin with gray, 
+    // the no-data color.
+    // 4-class Spectral:
+    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', '#bbb'])
+    // 5-class Spectral:
+    // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
+    // 'gray'])
+    MEDIAN_ANNUAL_INCOME = 882*52
+
+    suburbs = None
+
+    // Add a suburb info box to the map
+    info = L.control()
+    info.onAdd = def(map):
+        this._div = L.DomUtil.create('div', 'info')
+        this.update()
+        return this._div
+
+    info.update = def(feature=None):
+        if feature:
+            message = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
+            'Weekly rent per bedroom: ' +\
+            getWeeklyRent(feature, 0, True) + '<br>' +\
+            'Fraction of annual income: ' +\
+            getRentFraction(feature, 2, True) + '<br>'
+        else:
+            message = '<h4>Suburb Info</h4>Hover over a suburb'
+        // Update the control based on feature properties passed
+        this._div.innerHTML = message
+    
+    info.addTo(map)
+
+    // Add a legend to the map
+    legend = L.control({position: 'bottomright'});
+    legend.onAdd = def(map):
+        div = L.DomUtil.create('div', 'info legend')
+
+        // Loop through our density interrange and generate a label with a colored square for each interval
+        for i in reversed(range(len(LABELS))):
+            div.innerHTML += '<i style="background:' + getColor(BINS[i]) +\
+              '"></i> ' + LABELS[i] + '<br>'
+        return div
+    
+    legend.addTo(map)
+
+    // Define suburb styles    
+    def getGrossAnnualIncome(string=False):
+        // Return the gross annual income currently selected.
+        // If `string == True`, then stringify the number using 
+        // `numToDollarStr()`. 
+        result = $('#income').val() // Formatted string
+        if not string:
+            // Convert to integer
+            result = numToDollarStr(result, 0, True)
+        return result
+
+    def getWeeklyRent(feature, ndigits=0, string=False):
+        // Return the weekly rent for this suburb/feature based on
+        // the currently selected property type and number of bedrooms.
+        // If `string == True`, then stringify the number using 
+        // `numToDollarStr()`.         
+        // If the given feature has negative or undefined rent,
+        // then return -1 (if `string == False`) or 
+        // 'n/a' (if `string == True`).
+        // Round rent to the ndigits decimal places.
+        propertyType = $('#property-type').val()
+        numBedrooms = $('#num-bedrooms').val()
+        if feature.properties.rent_by_nbedrooms_by_property != 'NA':
+            rent = float(feature.properties.rent_by_nbedrooms_by_property[
+              propertyType][numBedrooms])
+            if numBedrooms == "5+":
+                result = rent/5
+            else:
+                result = rent/numBedrooms
+        else:
+            result = -1
+        if result >= 0:
+            if string:
+                result = numToDollarStr(result, ndigits, False)
+        else:
+            if string:
+                result = 'n/a'
+            else:
+                result = -1
+        return result
+
+    def getRentFraction(feature, ndigits=2, string=False):
+        // Return the fraction of annual income spent on rent
+        // for this suburb/feature rounded to `ndigits` decimal places
+        // If the given feature has undefined rent and `string == True`,
+        // then retun 'n/a'.
+        result = 52*getWeeklyRent(feature, ndigits, False)/\
+          getGrossAnnualIncome()
+        if result >= 0:
+            if string:
+                result = Math.ceil(result*100) + '%'
+            else:
+                result = float(result.toFixed(ndigits))
+        else:
+            if string:
+                result = 'n/a' 
+        return result 
+
+    def numToDollarStr(x, ndigits=0, inverse=False):
+        // Convert the float `x` into a string with commas as
+        // thousands separators and prepend a dollar sign.
+        // If `inverse` is True, then assume `x` has the output format
+        // mentioned above, and convert it back to an integer.
+        // Round numbers to ``ndigits`` decimal places
+        if not inverse:
+            y = x.toFixed(ndigits)
+            dollars, cents = y.split('.')
+            // Insert separating commas
+            dollars = dollars.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            if ndigits:
+                return '$' + dollars + '.' + cents 
+            else:
+                return '$' + dollars
+        else:
+            return int(x.replace('$', '').replace(',',''))
+
+    def getColor(x):
+        for (i, grade) in enumerate(BINS):
+            if x <= grade:
+                return COLORS[i]
+    
+    def style(feature):
+        c = getColor(getRentFraction(feature))
+        return {
+          'fillColor': c,
+          'fillOpacity': 0.7,
+          'color': c,
+          'weight': 1,
+          'opacity': 1,
+        }
+
+    // Define suburb mouseover etc.
+    def highlightFeature(e):
+        layer = e.target
+        layer.setStyle({
+            'weight': 8,
+            'opacity': 1,
+        })
+        if not L.Browser.ie and not L.Browser.opera:
+            layer.bringToFront()
+        info.update(layer.feature)
+
+    def resetHighlight(e):
+        layer = e.target
+        suburbs.resetStyle(layer)
+        info.update()
+
+    def zoomToFeature(e):
+        map.fitBounds(e.target.getBounds())
+    
+    def onEachFeature(feature, layer):
+        layer.on({
+            'mouseover': highlightFeature,
+            'mouseout': resetHighlight,
+            'click': zoomToFeature,
+        })
+
+    // Load suburbs
+    $.getJSON(dataFileName, def(collection):
+        nonlocal suburbs
+        suburbs = L.geoJson(collection, {
+            style: style,
+            onEachFeature: onEachFeature
+        }).addTo(map)    
+    )
+
+    // Add an income slider widget
+    $(def():
+        $( "#slider-vertical" ).slider({
+            'orientation': 'vertical',
+            'range': 'min',
+            'min': 100,
+            'max': 100000,
+            'value': MEDIAN_ANNUAL_INCOME,
+            'step': 100,
+            'slide': def(event, ui): 
+                // Update income display
+                $('#income').val(numToDollarStr(ui.value))
+                // Recolor suburbs
+                suburbs.setStyle(style)
+            ,
+        })
+        // Initialize slider 
+        sv = $('#slider-vertical')
+        $('#income').val(numToDollarStr(sv.slider('value')))
+        // Label the median annual income point on slider
+        min = sv.slider( "option", "min" )
+        range = sv.slider( "option", "max" ) - min
+        console.log('range=', range, MEDIAN_ANNUAL_INCOME/range*100)
+        el = $('<label><span id="arrow">&larr;</span>' +\
+          'Median annual income<br>of employed Aucklanders<br>(' +\
+          numToDollarStr(MEDIAN_ANNUAL_INCOME) + ')</label>').css(
+          'bottom', (MEDIAN_ANNUAL_INCOME/range*100) +'%');
+        $("#slider-vertical").append(el)
+    )
+    
+    // Add a property type selector widget
+    $(def():
+        $("#property-type").selectable({
+            'selected': def(event, ui):
+                // Update property type
+                $('#property-type').val(ui.selected.id)
+                // Recolor suburbs
+                suburbs.setStyle(style)
+        })
+    )
+    // Initialize selector
+    item = $('#property-type li:eq(1)')
+    item.addClass('ui-selected')
+    $('#property-type').val(item[0].id)
+
+    // Add a number-of-bedrooms selector widget
+    $(def():
+        $("#num-bedrooms").selectable({
+            'selected': def(event, ui):
+                // Update nuber of bedrooms
+                $('#num-bedrooms').val(ui.selected.id)
+                // Recolor suburbs
+                suburbs.setStyle(style)
+        })
+    )
+    // Initialize selector
+    item = $('#num-bedrooms li:eq(1)')
+    item.addClass('ui-selected')
+    $('#num-bedrooms').val(item[0].id)
+ 
+makeMap()

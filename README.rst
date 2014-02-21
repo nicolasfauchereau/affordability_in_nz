@@ -1,8 +1,10 @@
-Auckland Rent-Income Ratio map
-********************************
+Auckland Affordability 
+***************************
+Some web maps of Auckland focusing on income, rent, and transport.
 
 Requirements
 ============
+- Python >= 2.7
 - `RapydScript <https://bitbucket.org/pyjeon/rapydscript>`_ for compiling RapydScript (.pyj) files to JavaScript
 - `RapydCSS <https://bitbucket.org/pyjeon/rapydcss>`_ for compiling RapydCSS (.sass) files to CSS
 
@@ -14,7 +16,7 @@ If our project becomes too complex for that, then we can switch to `this feature
 Notes
 ========
 - The live site for the MBIE map is `araichev.bitbucket.org/2013_MBIE_rent_map/ <http://araichev.bitbucket.org/2013_MBIE_rent_map/>`_.Don't spread the word yet!  It's not finished.
-- Trello board for this project is `here <https://trello.com/b/93UFI6M3/rent-map>`_
+- The Trello board for this project is `here <https://trello.com/b/93UFI6M3/auckland-affordability>`_
 - Inspiration comes from `the Financial Times London rent map <http://www.ft.com/cms/s/2/ad4ef6a4-503d-11e3-befe-00144feabdc0.html>`_
 - Compare to `this map <http://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=10881119>`_ in the NZ Herald
 - Create geojson graphically at `geojson.io <http://geojson.io>`_
