@@ -1,0 +1,158 @@
+$highlight-color: #d7191c
+$opacity: 0.8
+$font-size: 12pt 
+$small-font-size: 9pt
+$background-color: white
+$line-height: 1.3
+$border-radius: 5px
+$container-height: 570px
+
+@mixin font($size)
+    font-family: 'Open Sans'
+    font-size: $size
+    line-height: 1.3
+@mixin box
+    background: white
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4)
+    border-radius: $border-radius
+    text-align: left
+    margin: 0
+    padding: 6px 8px
+    font-weight: normal
+    border-color: white
+    h4
+        margin: 0px 0px 5px 0px
+        font-weight: bold
+body
+    @include font($font-size)
+    margin: 40px auto
+    padding: 0px
+    width: 75%
+    color: black
+h1, h2, h3, h4, h5, h6
+    font-weight: 500
+    line-height: 1
+    color: inherit
+a
+    color: #2b83ba
+    text-decoration: none
+a:hover, a:active
+    text-decoration: underline
+p 
+    margin: 0 0 1.2em 0
+table
+    border-collapse: collapse
+    width: 100%
+    td + td
+        text-align: right
+ol
+    border: 0px solid black
+    li
+        margin-left: -1em
+#container
+    width: 100%
+    height: $container-height
+    border: 1px solid #ddd
+    padding: 10px
+    background-color: $background-color
+#map
+    float: left
+    width: 70%
+    height: $container-height
+#sidebar
+    float: right
+    width: 27%
+    padding-left: 1em
+.legend
+    @include font($small-font-size)
+    @include box
+    width: 80px
+    i 
+        width: 1.5em
+        height: 1.3em
+        float: left
+        margin-right: 8px
+        opacity: $opacity
+section
+    margin-bottom: 1em
+#income
+    border: 0 
+    width: 100px
+    color: $highlight-color 
+    opacity: $opacity
+    font-size: 150%
+    font-weight: bold
+    background-color: $background-color
+#income-slider 
+    margin-top: 0.5em
+    width: 200px 
+    label
+        position: absolute
+        width: 10px
+        margin-top: 14px
+        margin-left: -4px
+        font-size: $small-font-size
+#income-note
+    width: 180px
+    margin: 1.1em 0em 1em 2em
+    font-size: $small-font-size
+#num-bedrooms, #transport
+    list-style-type: none 
+    margin: 0.5em 0em 2em 0em
+    padding: 0 
+    li
+        margin: 0em 0.2em 0.2em 0em
+        padding: 0.4em 0.7em 
+        float: left 
+        height: 20px
+        text-align: center 
+        vertical-align: middle
+        border-radius: $border-radius
+        color: inherit
+    .ui-selected, .ui-selecting  
+        background: $highlight-color 
+        opacity: $opacity
+        color: white 
+#parking
+    border:0 
+    width: 150px
+    color: $highlight-color 
+    opacity: $opacity
+    font-size: 150%
+    font-weight: bold
+    background-color: $background-color
+#parking-cost-slider 
+    margin-top: 0.5em
+    width: 100px 
+    label
+        position: absolute
+        width: 250px
+        margin-left: 30px
+        margin-bottom: -31px
+        text-align: left
+        font-size: $small-font-size
+#methodology
+    clear: both
+
+.leaflet-container
+    background: $background-color !important
+.leaflet-popup-content
+    @include box
+    @include font($small-font-size)
+.leaflet-popup-tip 
+    width: 0
+    height: 0
+.leaflet-popup-content-wrapper
+    padding: 0px
+    border-radius: $border-radius
+.leaflet-popup-content-wrapper, .leaflet-popup-tip 
+    box-shadow: None
+/*
+.leaflet-label
+    @include font($small-font-size)
+    @include box
+.leaflet-label:before, .leaflet-label:after  
+    border: none
+    left: 0
+    right: 0
+*/

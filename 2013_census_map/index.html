@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Affordability in Auckland</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" href="leaflet.label.css" />    
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <h1>Affordability in Auckland</h1>  
+    <p>You just got a job in Auckland. Now where to live?<br>
+        This application color codes Auckland's neighborhoods by their affordability to you, based on your answers to the questions below.</p>  
+    <div id="container">
+        <div id="map"></div>
+        <div id="sidebar">
+            <ol>
+            <li>
+                <label for="income">What will your gross annual income be?</label><br/>
+                <input type="text" id="income" readonly>
+                <div id="income-slider"></div>
+                <div id="income-note">Median annual income of <br/>employed Aucklanders ($45,864)</div>
+            </li>
+
+            <li>
+                How many bedrooms will your dwelling have?
+                <ul id="num-bedrooms">
+                    <li class="ui-state-default" id="1">1</li>
+                    <li class="ui-state-default" id="2">2</li>
+                    <li class="ui-state-default" id="3">3</li>
+                    <li class="ui-state-default" id="4">4</li>
+                </ul><br/>
+            </li>
+
+            <li>Where will you work? Move the map marker.</li>
+
+            <li>
+                How will you travel to work?
+                <ul id="transport">
+                    <li class="ui-state-default" id="walk"><img src="static/walk.png" width="20px"></li>
+                    <li class="ui-state-default" id="bicycle"><img src="static/bicycle.png" height="25px"></li>
+                    <li class="ui-state-default" id="car"><img src="static/car.png" width="20px"></li>
+                    <li class="ui-state-default" id="bus"><img src="static/bus.png" width="20px"></li>
+                </ul><br/>
+            </li>
+
+            <li>
+                <label for="parking">How much will it cost per day to park at work?</label><br/>
+                <input type="text" id="parking" readonly> 
+                <div id="parking-cost-slider"></div>
+            </li>
+            </ol>
+        </div>
+
+    </div>
+
+    <section id="methodology">
+        <h2>Methodology</h2>
+        <ul>
+            <li>The neighborhoods in the map are Auckland's 2013 census area units sourced from Statistics New Zealand 
+            <a href="http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx">here</a>.</li>
+            <li>Rent per bedroom per area unit comes from the New Zealand Ministry of Business, Innovation and Employment from the detailed mean rents file 
+            <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">here</a>.
+            Since the suburbs of the rent data don't match the census area units 
+            (see <a href="http://www.landlords.co.nz/ask-an-expert/zones-for-market-rent-stats-2169">this thread for details</a>), 
+            we mapped the area units to suburbs in a 
+            many-to-one fashion as detailed in
+            <a href='data/Auckland_AUs_2013_and_suburbs.csv'>this CSV file</a>.</li> 
+            <li>The median annual income of employed Aucklanders is sourced from Statistics New Zealand from the June 2013 income survey
+            <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/New ZealandIncomeSurvey_HOTPJun13qtr.aspx">here</a></li>
+            <li>This application was created by Alex Raichev and Abhishek Reddy.</li>
+        </ul>
+    </section>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="leaflet-pip.min.js"></script>
+    <script src="map.js"></script>
+</body>
+</html>
