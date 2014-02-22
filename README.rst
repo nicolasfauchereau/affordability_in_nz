@@ -15,7 +15,7 @@ If our project becomes too complex for that, then we can switch to `this feature
 
 Notes
 ========
-- The live site for the MBIE map is `araichev.bitbucket.org/2013_MBIE_rent_map/ <http://araichev.bitbucket.org/2013_MBIE_rent_map/>`_.Don't spread the word yet!  It's not finished.
+- The live site for the 2013 census map is `araichev.bitbucket.org/2013_census_map/ <http://araichev.bitbucket.org/2013_census_map/>`_. Don't spread the word yet!  It's not finished.
 - The Trello board for this project is `here <https://trello.com/b/93UFI6M3/auckland-affordability>`_
 - Inspiration comes from `the Financial Times London rent map <http://www.ft.com/cms/s/2/ad4ef6a4-503d-11e3-befe-00144feabdc0.html>`_
 - Compare to `this map <http://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=10881119>`_ in the NZ Herald
