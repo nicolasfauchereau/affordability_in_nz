@@ -1,0 +1,226 @@
+
+    // Create map 
+    clon = 174.739869
+    clat = -36.840417
+    map = L.map('map', {
+        'center': [clat, clon],
+        'zoom': 10,
+        'minZoom': 8,
+        'maxZoom': 13,
+        'maxBounds': [[clat - 0.8 , clon - 0.8], [clat + 0.8, clon + 1.1]],
+    })
+
+    // Get tiles from Github
+    tilesURL = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
+    //L.tileLayer(tilesURL).addTo(map)
+    
+    // Remove 'Leaflet' link from corner of map  
+    map.attributionControl.setPrefix('')
+
+    // Define data bins and labels.
+    // Assume no-data entries map to nonpositive.
+    BINS = [0, 0.25, 0.5, 0.75, 10e9]
+    LABELS = ['n/a', '0&ndash;25%', '26&ndash;50%', '51&ndash;75%', '76%+']
+    // Define color scheme using http://colorbrewer2.org/js/. 
+    // Order colors least-to-most intense, but begin with gray, 
+    // the no-data color.
+    // 4-class Spectral:
+    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', '#ccc'])
+    // 5-class Spectral:
+    // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
+    // 'gray'])
+    MEDIAN_ANNUAL_INCOME = 882*52
+    COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
+      'bus': 0.218}
+    WEEKLY_FIXED_COST_PER_MODE = {'walk': 0, 'bicycle': 500/52, 
+      'car': 2228/52, 'bus': 0}
+
+    // Add a legend to the map
+    legend = L.control({position: 'bottomright'});
+    legend.onAdd = def(map):
+        div = L.DomUtil.create('div', 'legend')
+        div.innerHTML = '<h4>Cost as<br/>% of income</h4>'
+        for i in reversed(range(len(LABELS))):
+            div.innerHTML += '<i style="background:' + getColor(BINS[i]) +\
+              '"></i> ' + LABELS[i] + '<br>'
+        return div
+    
+    legend.addTo(map)
+
+    // Create a draggable workplace marker
+    workplace = L.marker([-36.85119, 174.76827], {
+        'draggable': true,
+    }).addTo(map)
+    workplace.bindPopup('Move this marker to where you work')
+    workplace.on('dragend', def(e):
+        setWorkplacePopup(this)
+    )
+
+    def getWorkplaceAuName(marker):
+        console.log('marker=', marker) 
+        position = marker.getLatLng()
+        console.log(position)
+        try:
+            layer = leafletPip.pointInLayer(position, aus, true)[0]
+        except:
+            return None
+        if layer:
+            auName = layer.feature.properties.AU_NAME
+        else:
+            auName = None
+        return auName
+
+    def setWorkplacePopup(marker):
+        auName = getWorkplaceAuName(marker)
+        text = '<h4>Workplace</h4>'
+        if auName:
+            text += auName
+        else:
+            text += 'Undefined'
+        marker.setPopupContent(text)
+        marker.openPopup()
+
+    // Add features/aus to map
+    nonlocal aus
+    aus = L.geoJson(aus, {
+        'style': style,
+        'onEachFeature': onEachFeature
+    }).addTo(map)
+
+    // Feature style functions
+    def getColor(x):
+        console.log('x=', x)
+        if x is None:
+            return COLORS[0]
+        for (i, grade) in enumerate(BINS):
+            if x <= grade:
+                return COLORS[i]
+    
+    def style(feature):
+        c = getColor(getWeeklyTotalCostFraction(feature))
+        return {
+          'fillColor': c,
+          'fillOpacity': 0.7,
+          'color': 'white',
+          'weight': 1,
+          'opacity': 1,
+        }
+
+    // Define suburb mouseover etc.
+    def highlightFeature(e):
+        layer = e.target
+        feature = layer.feature
+        layer.setStyle({
+          'color': 'black',
+        })
+        if not L.Browser.ie and not L.Browser.opera:
+            layer.bringToFront()
+        if getWeeklyTotalCostFraction(feature) is None:
+            wtcf = 'n/a'
+        else:
+            wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(0) + '%'
+        wcc, wct = getWeeklyCommuteCostAndTime(feature)
+        popupContent = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
+            '<table>' +\
+            '<tr><td>Weekly rent per bedroom</td><td>' +\
+            numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
+            '<tr><td>Weekly mode cost</td><td>' +\
+            numToDollarStr(wcc, False) + '</td></tr>' +\
+            '<tr><td>Weekly mode time</td><td>' +\
+            wct + ' h </td></tr>' +\
+            '<tr><td>Weekly parking cost</td><td>' +\
+            numToDollarStr(getWeeklyParkingCost(), False) +\
+            '</td></tr>' +\
+            '<tr><td>Total weekly cost</td><td>' +\
+            numToDollarStr(getWeeklyTotalCost(feature), False) +\
+            '</td></tr>' +\
+            '<tr><td>Fraction of annual income</td><td>' +\
+            wtcf +\
+            '</td></tr>' +\
+            '</table>'
+        layer.bindPopup(popupContent, {
+            'offset': L.point(0, 190),
+            'closeButton': false,
+        }).openPopup()
+
+    def resetHighlight(e):
+        layer = e.target
+        aus.resetStyle(layer)
+        layer._map.closePopup()
+            
+    def zoomToFeature(e):
+        map.fitBounds(e.target.getBounds())
+    
+    def onEachFeature(feature, layer):
+        layer.on({
+            'mouseover': highlightFeature,
+            'mouseout': resetHighlight,
+            'click': zoomToFeature,
+        })
+
+    // Accounting functions
+
+    def getWeeklyIncome():
+        income = $('#income').val() // Formatted string
+        return numToDollarStr(income, True)/52
+
+    def getWeeklyRent(feature):
+        // Return the weekly rent for this au/feature based on
+        // the currently selected property type and number of bedrooms.
+        // If the given feature has undefined rent,
+        // then return None. 
+        numBedrooms = $('#num-bedrooms').val()
+        auName = feature.properties.AU_NAME 
+        if rentByNbedroomsByAu[auName] == 'NA':
+            result = None
+        else:
+            rent = float(rentByNbedroomsByAu[auName][numBedrooms])
+            if numBedrooms == "5+":
+                result = rent/5
+            else:
+                result = rent/numBedrooms
+        return result
+
+    def getWeeklyCommuteCostAndTime(feature):
+        mode = $('#mode').val() 
+        // Get mode distance and time from this feature to workplace
+        auName = feature.properties.AU_NAME
+        i = MIndexByAu[auName]
+        workplaceAuName = getWorkplaceAuName(workplace)
+        if workplaceAuName is None:
+            print('Sorry')
+            return 0, 0
+        j = MIndexByAu[workplaceAuName]
+        distance, time = M[mode][i][j]
+        // Get weekly cost of mode
+        cost = distance*10*COMMUTE_COST_PER_KM_PER_MODE[mode] +\
+          WEEKLY_FIXED_COST_PER_MODE[mode]
+        return cost, time*10
+
+    def getWeeklyParkingCost():
+        parking = $('#parking').val() // Formatted string
+        return numToDollarStr(parking, True)*7
+
+    def getWeeklyTotalCost(feature):
+        // Return the total cost for living in this au/feature
+        rent = getWeeklyRent(feature)
+        console.log('Hey', getWeeklyCommuteCostAndTime(feature)[0])
+        if rent is not None:
+            // total = rent
+            console.log('rent is defined')
+            total = rent +\
+              // getWeeklyCommuteCostAndTime(feature)[0] +\
+              getWeeklyParkingCost()                
+        else:
+            total = None
+        console.log('total=', total, total is None)
+        return total
+
+    def getWeeklyTotalCostFraction(feature):
+        total = getWeeklyTotalCost(feature)
+        console.log('total=', total)
+        if total is not None:
+            fraction = total/getWeeklyIncome()
+        else:
+            fraction = None
+        return fraction 
