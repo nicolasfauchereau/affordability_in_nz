@@ -161,7 +161,22 @@ def makeMap():
     // Order colors least-to-most intense, but begin with gray, 
     // the no-data color.
     // 4-class Spectral:
-    COLORS = reversed(['#d7191c', '#fdae61', '#abdda4', '#2b83ba', '#ccc'])
+    OPACITY = 0.8
+    COLORS_RGB = reversed([[215, 25, 28], [253, 174, 97], [171, 221, 164], 
+      [43, 131, 186], [200, 200, 200]])
+    COLORS = []
+    for c in COLORS_RGB:
+        c.append(OPACITY)
+        hex = rgbaToHex(c)
+        COLORS.append(hex) 
+
+    def rgbaToHex(s):
+        s, a = s[:-1], s[-1]
+        result = '#'
+        for x in s:
+            result += Math.round(a*x + 255*(1 - a)).toString(16)
+        return result
+
     // 5-class Spectral:
     // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
     // 'gray'])
@@ -175,31 +190,34 @@ def makeMap():
     legend = L.control({position: 'bottomright'});
     legend.onAdd = def(map):
         div = L.DomUtil.create('div', 'legend')
-        div.innerHTML = '<h4>Cost as<br/>% of income</h4>'
-        for i in reversed(range(len(LABELS))):
-            div.innerHTML += '<i style="background:' + getColor(BINS[i]) +\
-              '"></i> ' + LABELS[i] + '<br>'
+        div.innerHTML = 'Cost as fraction of income<br/>'
+        for i in range(len(LABELS)):
+            div.innerHTML += '<span style="background:' + getColor(BINS[i]) +\
+              '">' + LABELS[i] + '</span>'
         return div
     
     legend.addTo(map)
 
-    // Create a draggable workplace marker
-    workplace = L.marker([-36.85119, 174.76827], {
-        'draggable': true,
+
+    workMarker = L.marker([-36.69925, 175.07263], {
+        'draggable': True,
+        'icon': L.mapbox.marker.icon({
+            'marker-color': COLORS[-1],
+        })
     }).addTo(map)
-    workplace.bindPopup('Move this marker to where you work')
-    workplace.on('dragend', def(e):
-        setWorkplacePopup(this)
+    workMarker.bindPopup('Move this marker to where you work')
+    workMarker.on('dragend', def(e):
+        setWorkPopup(this)
         // Recolor aus
         aus.setStyle(style)
     )
 
-    def getWorkplaceAuName(marker):
-        position = marker.getLatLng()
+    def getWorkAuName(marker):
+        latLon = marker.getLatLng()
         try:
-            layer = leafletPip.pointInLayer(position, aus, true)[0]
+            layer = leafletPip.pointInLayer(latLon, aus, True)[0]
         except:
-            console.log('Fail on pip')
+            //console.log('aus still undefined')
             return None
         if layer:
             auName = layer.feature.properties.AU_NAME
@@ -207,9 +225,9 @@ def makeMap():
             auName = None
         return auName
 
-    def setWorkplacePopup(marker):
-        auName = getWorkplaceAuName(marker)
-        text = '<h4>Workplace</h4>'
+    def setWorkPopup(marker):
+        auName = getWorkAuName(marker)
+        text = '<h4>Work</h4>'
         if auName:
             text += auName
         else:
@@ -235,7 +253,7 @@ def makeMap():
         c = getColor(getWeeklyTotalCostFraction(feature))
         return {
           'fillColor': c,
-          'fillOpacity': 0.7,
+          'fillOpacity': 1,
           'color': 'white',
           'weight': 1,
           'opacity': 1,
@@ -274,8 +292,9 @@ def makeMap():
             '</td></tr>' +\
             '</table>'
         layer.bindPopup(popupContent, {
-            'offset': L.point(0, 220),
-            'closeButton': false,
+            'offset': L.point(0, 200),
+            'closeButton': False,
+            'autoPan': False,
         }).openPopup()
 
     def resetHighlight(e):
@@ -318,14 +337,13 @@ def makeMap():
 
     def getWeeklyCommuteCostAndTime(feature):
         mode = $('#mode').val() 
-        // Get mode distance and time from this feature to workplace
+        // Get commute distance and time from this feature to work
         auName = feature.properties.AU_NAME
         i = MIndexByAu[auName]
-        workplaceAuName = getWorkplaceAuName(workplace)
-        if workplaceAuName is None:
-            console.log('Workplace AU name is None')
+        workAuName = getWorkAuName(workMarker)
+        if workAuName is None:
             return 0, 0
-        j = MIndexByAu[workplaceAuName]
+        j = MIndexByAu[workAuName]
         distance, time = M[mode][i][j]
         // Get weekly cost of mode
         cost = distance*10*COMMUTE_COST_PER_KM_PER_MODE[mode] +\
@@ -334,7 +352,7 @@ def makeMap():
 
     def getWeeklyParkingCost():
         parking = $('#parking').val() // Formatted string
-        return numToDollarStr(parking, True)*7
+        return numToDollarStr(parking, True)*5
 
     def getWeeklyTotalCost(feature):
         // Return the total cost for living in this au/feature

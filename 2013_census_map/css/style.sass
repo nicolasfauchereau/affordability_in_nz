@@ -7,17 +7,11 @@ $line-height: 1.3
 $border-radius: 5px
 $container-height: 570px
 
-@import "http://weloveiconfonts.com/api/?family=maki"
-
-/* maki */
-[class*="maki-"]:before 
-    font-family: 'maki', sans-serif
-    font-size: 15pt
-
 @mixin font($size)
     font-family: 'Open Sans'
     font-size: $size
     line-height: 1.3
+    color: black
 @mixin box
     background: white
     box-shadow: 0 1px 5px rgba(0,0,0,0.4)
@@ -28,17 +22,15 @@ $container-height: 570px
     font-weight: normal
     border-color: white
     h4
-        margin: 0px 0px 5px 0px
+        margin: 0 0 0.5em 0
         font-weight: bold
 body
     @include font($font-size)
     margin: 40px auto
     padding: 0px
     width: 75%
-    color: black
 h1, h2, h3, h4, h5, h6
     font-weight: 500
-    line-height: 1
     color: inherit
 a
     color: #2b83ba
@@ -71,20 +63,18 @@ ol
     width: 27%
     padding-left: 1em
 .legend
-    @include font($small-font-size)
     @include box
-    width: 80px
-    i 
-        width: 1.5em
-        height: 1.3em
-        float: left
-        margin-right: 8px
-        opacity: $opacity
+    @include font($small-font-size)
+    width: 220px
+    padding-bottom: 1em
+    line-height: 1.7
+    span
+        padding: 0.4em 0.4em
 section
     margin-bottom: 1em
 #income
     border: 0 
-    width: 100px
+    width: 110px
     color: $highlight-color 
     opacity: $opacity
     font-size: 150%
@@ -149,6 +139,7 @@ section
 .leaflet-popup-tip 
     width: 0
     height: 0
+    border: 0
 .leaflet-popup-content-wrapper
     padding: 0px
     border-radius: $border-radius

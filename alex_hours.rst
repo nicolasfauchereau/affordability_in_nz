@@ -14,3 +14,4 @@ Alex's project hours (date / hours / comments)
 - 9 Feb 2014 / 2 / Refactored code and UI
 - 19 Feb 2014 / 1.5 / Started on new plan. Computed AU centroids.
 - 20 Feb 2014 / 2 / Worked on computing origin-destination matrix
+- 24 Feb 2014 / 8 / Aggregated hours
