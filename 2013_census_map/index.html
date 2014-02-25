@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Affordability in Auckland: Rent + Commute + Parking</h1>  
+    <h1>Affordability in Auckland</h1>  
     <p>
         You just got a job in Auckland. Now where to live?<br>
-        This application color codes Auckland's neighborhoods by their affordability to you, based on a combined rent, commute, and parking cost determined by your answers to the questions below.
+        This application color codes Auckland's neighborhoods by their affordability to you based on rent, commute, car ownership, and parking costs determined by your answers to the questions below.
     </p>  
     <div id="container">
         <div id="map"></div>
@@ -27,7 +27,6 @@
                 <div id="income-slider"></div>
                 <div id="income-note">Median annual income of <br/>employed Aucklanders ($45,864)</div>
             </li>
-
             <li>
                 How many bedrooms will your dwelling have?
                 <ul id="num-bedrooms">
@@ -37,9 +36,9 @@
                     <li class="ui-state-default" id="4">4</li>
                 </ul><br/>
             </li>
-
-            <li>Where will you work? Move the map marker.</li>
-
+            <li>
+                Where will you work? Move the map marker.
+            </li>
             <li>
                 How will you travel to work?
                 <ul id="mode">
@@ -49,7 +48,15 @@
                     <li class="ui-state-default icon-bus" id="bus"></li>
                 </ul><br/>
             </li>
-
+            <li>
+                How many cars will you own?
+                <ul id="num-cars">
+                    <li class="ui-state-default" id="0">0</li>
+                    <li class="ui-state-default" id="1">1</li>
+                    <li class="ui-state-default" id="2">2</li>
+                    <li class="ui-state-default" id="3">3</li>
+                </ul><br/>
+            </li>
             <li>
                 <label for="parking">How much will parking at work cost per day?</label><br/>
                 <input type="text" id="parking" readonly> 
@@ -57,7 +64,6 @@
             </li>
             </ol>
         </div>
-
     </div>
 
     <section id="about">

@@ -62,9 +62,10 @@ def makeMap():
             'slide': def(event, ui): 
                 // Update income display
                 $('#income').val(numToDollarStr(ui.value))
+            ,
+            'stop': def(event, ui):
                 // Recolor aus
                 aus.setStyle(style)
-            ,
         })
         // Initialize slider 
         sv = $('#income-slider')
@@ -93,6 +94,8 @@ def makeMap():
     item.addClass('ui-selected')
     $('#num-bedrooms').val(item[0].id)
  
+    COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
+      'bus': 0.218}
     // Add a mode mode selector widget
     $(def():
         $("#mode").selectable({
@@ -109,6 +112,24 @@ def makeMap():
     item.addClass('ui-selected')
     $('#mode').val(item[0].id)
 
+    WEEKLY_CAR_OWN_COST = 2228/52
+    // Add a number-of-cars select widget
+    $(def():
+        $("#num-cars").selectable({
+            'selected': def(event, ui):
+                // Update nuber of bedrooms
+                $('#num-cars').val(ui.selected.id)
+                // Recolor aus
+                aus.setStyle(style)
+        })
+    )
+
+    // Initialize selector
+    item = $('#num-cars li:eq(0)')
+    item.addClass('ui-selected')
+    $('#num-cars').val(item[0].id)
+
+
     // Add a parking cost slider widget
     PARKING_DEFAULT = 0
     $(def():
@@ -116,15 +137,16 @@ def makeMap():
             'orientation': 'horizontal',
             'range': 'min',
             'min': 0,
-            'max': 20,
+            'max': 30,
             'value': PARKING_DEFAULT,
             'step': 1,
             'slide': def(event, ui): 
                 // Update income display
                 $('#parking').val(numToDollarStr(ui.value))
+            ,
+            'stop': def(event, ui):
                 // Recolor aus
                 aus.setStyle(style)
-            ,
         })
         // Initialize slider 
         sv = $('#parking-cost-slider')
@@ -180,11 +202,6 @@ def makeMap():
     // 5-class Spectral:
     // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
     // 'gray'])
-    MEDIAN_ANNUAL_INCOME = 882*52
-    COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
-      'bus': 0.218}
-    WEEKLY_FIXED_COST_PER_MODE = {'walk': 0, 'bicycle': 500/52, 
-      'car': 2228/52, 'bus': 0}
 
     // Add a legend to the map
     legend = L.control({position: 'bottomright'});
@@ -275,26 +292,27 @@ def makeMap():
         wcc, wct = getWeeklyCommuteCostAndTime(feature)
         popupContent = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
             '<table>' +\
-            '<tr><td>Weekly rent per bedroom</td><td>' +\
+            '<tr><td>Rent per bedroom per week</td><td>' +\
             numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
-            '<tr><td>Weekly commute cost</td><td>' +\
+            '<tr><td>Commute cost per week</td><td>' +\
             numToDollarStr(wcc, False) + '</td></tr>' +\
-            '<tr><td>Weekly commute time</td><td>' +\
+            '<tr><td>Commute time per week</td><td>' +\
             wct.toFixed(1) + ' h </td></tr>' +\
-            '<tr><td>Weekly parking cost</td><td>' +\
+            '<tr><td>Car cost per week</td><td>' +\
+            numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
+            '<tr><td>Parking cost per week</td><td>' +\
             numToDollarStr(getWeeklyParkingCost(), False) +\
             '</td></tr>' +\
-            '<tr><td>Total weekly cost</td><td>' +\
+            '<tr><td>Total cost per week</td><td>' +\
             numToDollarStr(getWeeklyTotalCost(feature), False) +\
             '</td></tr>' +\
-            '<tr><td>Fraction of annual income</td><td>' +\
+            '<tr><td>Fraction of income per week</td><td>' +\
             wtcf +\
             '</td></tr>' +\
             '</table>'
         layer.bindPopup(popupContent, {
             'offset': L.point(0, 200),
             'closeButton': False,
-            'autoPan': False,
         }).openPopup()
 
     def resetHighlight(e):
@@ -346,9 +364,12 @@ def makeMap():
         j = MIndexByAu[workAuName]
         distance, time = M[mode][i][j]
         // Get weekly cost of mode
-        cost = distance*10*COMMUTE_COST_PER_KM_PER_MODE[mode] +\
-          WEEKLY_FIXED_COST_PER_MODE[mode]
+        cost = distance*10*COMMUTE_COST_PER_KM_PER_MODE[mode]
         return cost, time*10
+
+    def getWeeklyCarOwnCost():
+        numCars = int($('#num-cars').val())
+        return numCars*WEEKLY_CAR_OWN_COST
 
     def getWeeklyParkingCost():
         parking = $('#parking').val() // Formatted string
@@ -360,6 +381,7 @@ def makeMap():
         if rent is not None:
             total = rent +\
               getWeeklyCommuteCostAndTime(feature)[0] +\
+              getWeeklyCarOwnCost() +\
               getWeeklyParkingCost()                
         else:
             total = None

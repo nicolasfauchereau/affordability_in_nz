@@ -1,154 +1,55 @@
-@import "http://weloveiconfonts.com/api/?family=maki"; 
-  [class*="maki-"]:before {
-    font-family: 'maki', sans-serif;
-    font-size: 15pt; }
+body {
+  font-family: 'Open Sans';
+  font-size: 12pt;
+  line-height: 1.3;
+  color: black;
+  margin: 40px auto;
+  padding: 0px;
+  width: 75%; }
 
-    body {
-      font-family: 'Open Sans';
-      font-size: 12pt;
-      line-height: 1.3;
-      color: black;
-      margin: 40px auto;
-      padding: 0px;
-      width: 75%; }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    color: inherit; }
 
-      h1, h2, h3, h4, h5, h6 {
-        font-weight: 500;
-        color: inherit; }
+    a {
+      color: #2b83ba;
+      text-decoration: none; }
 
-        a {
-          color: #2b83ba;
-          text-decoration: none; }
+      a:hover, a:active {
+        text-decoration: underline; }
 
-          a:hover, a:active {
-            text-decoration: underline; }
+        p {
+          margin: 0 0 1.2em 0; }
 
-            p {
-              margin: 0 0 1.2em 0; }
+          table {
+            border-collapse: collapse;
+            width: 100%; }
+            table td + td {
+              text-align: right; }
 
-              table {
-                border-collapse: collapse;
-                width: 100%; }
-                table td + td {
-                  text-align: right; }
+ol {
+  border: 0px solid black; }
+  ol li {
+    margin-left: -1em; }
 
-  ol {
-    border: 0px solid black; }
-    ol li {
-      margin-left: -1em; }
+#container {
+  width: 100%;
+  height: 600px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: white; }
 
-  #container {
-    width: 100%;
-    height: 570px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    background-color: white; }
+  #map {
+    float: left;
+    width: 70%;
+    height: 600px; }
 
-    #map {
-      float: left;
-      width: 70%;
-      height: 570px; }
+    #sidebar {
+      float: right;
+      width: 27%;
+      padding-left: 1em; }
 
-      #sidebar {
-        float: right;
-        width: 27%;
-        padding-left: 1em; }
-
-        .legend {
-          background: white;
-          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-          border-radius: 5px;
-          text-align: left;
-          margin: 0;
-          padding: 6px 8px;
-          font-weight: normal;
-          border-color: white;
-          font-family: 'Open Sans';
-          font-size: 9pt;
-          line-height: 1.3;
-          color: black;
-          width: 220px;
-          padding-bottom: 1em;
-          line-height: 1.7; }
-          .legend h4 {
-            margin: 0 0 0.5em 0;
-            font-weight: bold; }
-            .legend span {
-              padding: 0.4em 0.4em; }
-
-  section {
-    margin-bottom: 1em; }
-
-    #income {
-      border: 0;
-      width: 110px;
-      color: #d7191c;
-      opacity: 0.8;
-      font-size: 150%;
-      font-weight: bold;
-      background-color: white; }
-
-      #income-slider {
-        margin-top: 0.5em;
-        width: 200px; }
-        #income-slider label {
-          position: absolute;
-          width: 10px;
-          margin-top: 14px;
-          margin-left: -4px;
-          font-size: 9pt; }
-
-  #income-note {
-    width: 180px;
-    margin: 1.1em 0em 1em 2em;
-    font-size: 9pt; }
-
-    #num-bedrooms, #mode {
-      list-style-type: none;
-      margin: 0.5em 0em 2em 0em;
-      padding: 0; }
-      #num-bedrooms li, #mode li {
-        margin: 0em 0.2em 0.2em 0em;
-        padding: 0.4em 0.7em;
-        float: left;
-        height: 20px;
-        text-align: center;
-        vertical-align: middle;
-        border-radius: 5px;
-        color: inherit; }
-        #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting, #mode .ui-selected,
-        #mode .ui-selecting {
-          background: #d7191c;
-          opacity: 0.8;
-          color: white; }
-
-  #parking {
-    border: 0;
-    width: 150px;
-    color: #d7191c;
-    opacity: 0.8;
-    font-size: 150%;
-    font-weight: bold;
-    background-color: white; }
-
-    #parking-cost-slider {
-      margin-top: 0.5em;
-      width: 100px; }
-      #parking-cost-slider label {
-        position: absolute;
-        width: 250px;
-        margin-left: 30px;
-        margin-bottom: -31px;
-        text-align: left;
-        font-size: 9pt; }
-
-  #about {
-    clear: both; }
-
-    .leaflet-container {
-      background: white !important; }
-
-      .leaflet-popup-content {
+      .legend {
         background: white;
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
         border-radius: 5px;
@@ -160,19 +61,113 @@
         font-family: 'Open Sans';
         font-size: 9pt;
         line-height: 1.3;
-        color: black; }
-        .leaflet-popup-content h4 {
+        color: black;
+        width: 220px;
+        padding-bottom: 1em;
+        line-height: 1.7; }
+        .legend h4 {
           margin: 0 0 0.5em 0;
           font-weight: bold; }
+          .legend span {
+            padding: 0.4em 0.4em; }
 
-  .leaflet-popup-tip {
-    width: 0;
-    height: 0;
-    border: 0; }
+section {
+  margin-bottom: 1em; }
 
-    .leaflet-popup-content-wrapper {
-      padding: 0px;
-      border-radius: 5px; }
+  #income {
+    border: 0;
+    width: 110px;
+    color: #d7191c;
+    opacity: 0.8;
+    font-size: 150%;
+    font-weight: bold;
+    background-color: white; }
 
-      .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-        box-shadow: None; }
+    #income-slider {
+      margin-top: 0.5em;
+      width: 200px; }
+      #income-slider label {
+        position: absolute;
+        width: 10px;
+        margin-top: 14px;
+        margin-left: -4px;
+        font-size: 9pt; }
+
+#income-note {
+  width: 180px;
+  margin: 1.1em 0em 1em 2em;
+  font-size: 9pt; }
+
+  #num-bedrooms, #mode, #num-cars {
+    list-style-type: none;
+    margin: 0.5em 0em 2em 0em;
+    padding: 0; }
+    #num-bedrooms li, #mode li, #num-cars li {
+      margin: 0em 0.2em 0.2em 0em;
+      padding: 0.2em 0.4em;
+      float: left;
+      height: 20px;
+      text-align: center;
+      vertical-align: middle;
+      border-radius: 5px;
+      color: inherit; }
+      #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting, #mode .ui-selected,
+      #mode .ui-selecting, #num-cars .ui-selected, #num-cars .ui-selecting {
+        background: #d7191c;
+        opacity: 0.8;
+        color: white; }
+
+#parking {
+  border: 0;
+  width: 150px;
+  color: #d7191c;
+  opacity: 0.8;
+  font-size: 150%;
+  font-weight: bold;
+  background-color: white; }
+
+  #parking-cost-slider {
+    margin-top: 0.5em;
+    width: 100px; }
+    #parking-cost-slider label {
+      position: absolute;
+      width: 250px;
+      margin-left: 30px;
+      margin-bottom: -31px;
+      text-align: left;
+      font-size: 9pt; }
+
+#about {
+  clear: both; }
+
+  .leaflet-container {
+    background: white !important; }
+
+    .leaflet-popup-content {
+      background: white;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+      border-radius: 5px;
+      text-align: left;
+      margin: 0;
+      padding: 6px 8px;
+      font-weight: normal;
+      border-color: white;
+      font-family: 'Open Sans';
+      font-size: 9pt;
+      line-height: 1.3;
+      color: black; }
+      .leaflet-popup-content h4 {
+        margin: 0 0 0.5em 0;
+        font-weight: bold; }
+
+.leaflet-popup-tip {
+  width: 0;
+  height: 0;
+  border: 0; }
+
+  .leaflet-popup-content-wrapper {
+    padding: 0px;
+    border-radius: 5px; }
+
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+      box-shadow: None; }

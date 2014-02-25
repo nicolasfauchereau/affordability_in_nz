@@ -224,11 +224,14 @@ def get_distance_and_time_matrix(filename, name_field, n=NUM_SAMPLE_POINTS):
     centroids_wgs84 = [wgs84_to_nztm(*point_to_tuple(pc[1]), inverse=True)
       for pc in pc_by_name.values()]
     index_by_name = {name: i for (i, name) in enumerate(names)}
-    M = {m: {i: {} for i in range(N)} for m in modes}
+    M = {m: [] for m in modes}
 
     # Calculate M
     for i in range(N):
         a = centroids_wgs84[i]
+        # Create matrix row M[mode]_i
+        for m in modes:
+            M[m].append([])
         for j in range(N):
             if j != i:
                 b = centroids_wgs84[j] 
@@ -241,10 +244,11 @@ def get_distance_and_time_matrix(filename, name_field, n=NUM_SAMPLE_POINTS):
                 distances, times = zip(*[get_bird_distance_and_time(point, a)
                   for point in sample_points])
                 distance, time = (median(list(distances)), median(list(times)))
-            M['walk'][i][j] = (distance, time*15)
-            M['bicycle'][i][j] = (distance, time*4)
-            M['car'][i][j] = (distance, time)
-            M['bus'][i][j] = (distance, time)
+            # Create matrix entry M[mode]_ij
+            M['walk'][i].append((distance, time*15))
+            M['bicycle'][i].append((distance, time*4))
+            M['car'][i].append((distance, time))
+            M['bus'][i].append((distance, time))
 
     return index_by_name, M
 
