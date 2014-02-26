@@ -88,12 +88,26 @@ def makeMap():
                 aus.setStyle(style)
         })
     )
-
     // Initialize selector
     item = $('#num-bedrooms li:eq(1)')
     item.addClass('ui-selected')
     $('#num-bedrooms').val(item[0].id)
  
+    // // Add a number-of-bedrooms-to-rent selector widget
+    // $(def():
+    //     $("#num-bedrooms-rent").selectable({
+    //         'selected': def(event, ui):
+    //             // Update nuber of bedrooms
+    //             $('#num-bedrooms-rent').val(ui.selected.id)
+    //             // Recolor aus
+    //             aus.setStyle(style)
+    //     })
+    // )
+    // // Initialize selector
+    // item = $('#num-bedrooms-rent li:eq(0)')
+    // item.addClass('ui-selected')
+    // $('#num-bedrooms-rent').val(item[0].id)
+
     COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
       'bus': 0.218}
     // Add a mode mode selector widget
@@ -106,7 +120,6 @@ def makeMap():
                 aus.setStyle(style)
         })
     )
-
     // Initialize selector
     item = $('#mode li:eq(1)')
     item.addClass('ui-selected')
@@ -123,7 +136,6 @@ def makeMap():
                 aus.setStyle(style)
         })
     )
-
     // Initialize selector
     item = $('#num-cars li:eq(0)')
     item.addClass('ui-selected')
@@ -342,16 +354,16 @@ def makeMap():
         // If the given feature has undefined rent,
         // then return None. 
         numBedrooms = $('#num-bedrooms').val()
+        numBedroomsRent = $('#num-bedrooms-rent').val()
         auName = feature.properties.AU_NAME 
         if rentByNbedroomsByAu[auName] == 'NA':
-            result = None
+            rent = None
         else:
             rent = float(rentByNbedroomsByAu[auName][numBedrooms])
-            if numBedrooms == "5+":
-                result = rent/5
-            else:
-                result = rent/numBedrooms
-        return result
+            rent /= int(numBedrooms)
+            // if numBedrooms == "5+":
+            //     numBedrooms = 5
+        return rent
 
     def getWeeklyCommuteCostAndTime(feature):
         mode = $('#mode').val() 

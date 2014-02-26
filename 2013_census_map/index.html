@@ -15,7 +15,7 @@
     <h1>Affordability in Auckland</h1>  
     <p>
         You just got a job in Auckland. Now where to live?<br>
-        This application color codes Auckland's neighborhoods by their affordability to you based on rent, commute, car ownership, and parking costs determined by your answers to the questions below.
+        This application color codes Auckland's area units by their affordability to you based on rent, commute, car ownership, and parking costs determined by your answers to the questions below.
     </p>  
     <div id="container">
         <div id="map"></div>
@@ -36,7 +36,13 @@
                     <li class="ui-state-default" id="4">4</li>
                 </ul><br/>
             </li>
-            <li>
+<!--             <li>
+                For how many of these bedrooms will you pay rent?
+                <ul id="num-bedrooms-rent">
+                    <li class="ui-state-default" id="1">1</li>
+                </ul><br/>
+            </li>
+ -->            <li>
                 Where will you work? Move the map marker.
             </li>
             <li>
@@ -69,18 +75,26 @@
     <section id="about">
         <h2>About</h2>
         <ul>
-            <li>This application was created by Alex Raichev and Abhishek Reddy and was inspired in part by the paper "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrisseyc <a href="docs/MaMo2014.pdf">[MaMo2014]</a>.</li>
-            <li>The neighborhoods in the map are Auckland's 2013 census area units sourced from Statistics New Zealand 
+            <li>This application was created by Alex Raichev and was inspired in part by the paper "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey <a href="docs/MaMo2014.pdf">[MaMo2014]</a>.</li>
+            
+            <li>Auckland's 2013 census area units were sourced from Statistics New Zealand 
             <a href="http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx">here</a>.</li>
-            <li>Rent per bedroom per area unit comes from the New Zealand Ministry of Business, Innovation and Employment from the detailed mean rents file 
+            
+            <li>The median annual income of employed Aucklanders were sourced from Statistics New Zealand from the June 2013 income survey
+            <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/New ZealandIncomeSurvey_HOTPJun13qtr.aspx">here</a>.</li>
+            
+            <li>Mean rent per area unit per number of bedrooms came from the New Zealand Ministry of Business, Innovation and Employment from the detailed mean rents file 
             <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">here</a>.
             Since the suburbs of the rent data don't match the census area units 
             (see <a href="http://www.landlords.co.nz/ask-an-expert/zones-for-market-rent-stats-2169">this thread for details</a>), 
-            we mapped the area units to suburbs in a 
+            the area units were mapped to the suburbs in a 
             many-to-one fashion as detailed in
-            <a href='data/Auckland_AUs_2013_and_suburbs.csv'>this CSV file</a>.</li> 
-            <li>The median annual income of employed Aucklanders is sourced from Statistics New Zealand from the June 2013 income survey
-            <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/New ZealandIncomeSurvey_HOTPJun13qtr.aspx">here</a></li>
+            <a href='data/Auckland_AUs_2013_and_suburbs.csv'>this CSV file</a>.
+            This data will be replaced soon by rent data from the 2013 census.
+            </li> 
+
+            <li>The distances used are those between area unit centroids and were calculated as the bird flies. They'll be recalculated soon through the road network.</li>
+
         </ul>
     </section>
 

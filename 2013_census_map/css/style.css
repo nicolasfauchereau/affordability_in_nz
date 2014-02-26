@@ -98,11 +98,12 @@ section {
   margin: 1.1em 0em 1em 2em;
   font-size: 9pt; }
 
-  #num-bedrooms, #mode, #num-cars {
+  #num-bedrooms, #num-bedrooms-rent, #mode, #num-cars {
     list-style-type: none;
     margin: 0.5em 0em 2em 0em;
-    padding: 0; }
-    #num-bedrooms li, #mode li, #num-cars li {
+    padding: 0;
+    .ui-disabled; }
+    #num-bedrooms li, #num-bedrooms-rent li, #mode li, #num-cars li {
       margin: 0em 0.2em 0.2em 0em;
       padding: 0.2em 0.4em;
       float: left;
@@ -111,8 +112,10 @@ section {
       vertical-align: middle;
       border-radius: 5px;
       color: inherit; }
-      #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting, #mode .ui-selected,
-      #mode .ui-selecting, #num-cars .ui-selected, #num-cars .ui-selecting {
+      #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting,
+      #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
+      #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
+      #num-cars .ui-selecting {
         background: #d7191c;
         opacity: 0.8;
         color: white; }
