@@ -47,7 +47,8 @@ ol {
     #sidebar {
       float: right;
       width: 27%;
-      padding-left: 1em; }
+      padding-left: 1em;
+      font-size: 9pt; }
 
       .legend {
         background: white;
@@ -98,27 +99,29 @@ section {
   margin: 1.1em 0em 1em 2em;
   font-size: 9pt; }
 
-  #num-bedrooms, #num-bedrooms-rent, #mode, #num-cars {
+  #num-bedrooms, #num-bedrooms-rent, #mode, #num-workdays, #num-cars {
     list-style-type: none;
     margin: 0.5em 0em 2em 0em;
-    padding: 0;
-    .ui-disabled; }
-    #num-bedrooms li, #num-bedrooms-rent li, #mode li, #num-cars li {
+    padding: 0; }
+    #num-bedrooms li, #num-bedrooms-rent li, #mode li, #num-workdays li, #num-cars li {
       margin: 0em 0.2em 0.2em 0em;
       padding: 0.2em 0.4em;
       float: left;
-      height: 20px;
+      height: 1.2em;
       text-align: center;
       vertical-align: middle;
       border-radius: 5px;
       color: inherit; }
       #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting,
       #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
-      #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
-      #num-cars .ui-selecting {
+      #mode .ui-selected, #mode .ui-selecting, #num-workdays .ui-selected,
+      #num-workdays .ui-selecting, #num-cars .ui-selected, #num-cars .ui-selecting {
         background: #d7191c;
         opacity: 0.8;
         color: white; }
+        #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode .blocked,
+        #num-workdays .blocked, #num-cars .blocked {
+          opacity: 0; }
 
 #parking {
   border: 0;
@@ -130,7 +133,7 @@ section {
   background-color: white; }
 
   #parking-cost-slider {
-    margin-top: 0.5em;
+    margin: 0.5em 0 1em 0;
     width: 100px; }
     #parking-cost-slider label {
       position: absolute;

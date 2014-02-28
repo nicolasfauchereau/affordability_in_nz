@@ -78,12 +78,36 @@ def makeMap():
         $("#income-slider").append(el)
     )
 
+    def adjustNumBedroomsRent():
+        nb = $('#num-bedrooms').val()
+        // Block and possibly reset the appropriate 
+        // number of bedrooms to rent
+        group = $('#num-bedrooms-rent')
+        nbr = group.val()
+        if nbr > nb:
+            nbr = nb
+            group.val(nb)
+        for x in range(1, 5):
+            item = $('#num-bedrooms-rent li[value=' + x + ']')
+            if x == nbr:
+                item.addClass('ui-selected')
+            if x <= nb:
+                item.removeClass('blocked')
+            else:
+                item.removeClass('ui-selected')
+                item.addClass('blocked')
+            group.selectable({
+                cancel: '.blocked'
+            })
+
     // Add a number-of-bedrooms selector widget
     $(def():
         $("#num-bedrooms").selectable({
             'selected': def(event, ui):
-                // Update nuber of bedrooms
-                $('#num-bedrooms').val(ui.selected.id)
+                // Update number of bedrooms
+                $('#num-bedrooms').val(ui.selected.value)
+                // Adjust number of bedrooms to rent accordingly
+                adjustNumBedroomsRent()
                 // Recolor aus
                 aus.setStyle(style)
         })
@@ -91,31 +115,39 @@ def makeMap():
     // Initialize selector
     item = $('#num-bedrooms li:eq(1)')
     item.addClass('ui-selected')
-    $('#num-bedrooms').val(item[0].id)
- 
-    // // Add a number-of-bedrooms-to-rent selector widget
-    // $(def():
-    //     $("#num-bedrooms-rent").selectable({
-    //         'selected': def(event, ui):
-    //             // Update nuber of bedrooms
-    //             $('#num-bedrooms-rent').val(ui.selected.id)
-    //             // Recolor aus
-    //             aus.setStyle(style)
-    //     })
-    // )
-    // // Initialize selector
-    // item = $('#num-bedrooms-rent li:eq(0)')
-    // item.addClass('ui-selected')
-    // $('#num-bedrooms-rent').val(item[0].id)
+    $('#num-bedrooms').val(item[0].value)
+    adjustNumBedroomsRent()
 
+    // Add a number-of-bedrooms-to-rent selector widget
+    $(def():
+        $("#num-bedrooms-rent").selectable({
+            'selected': def(event, ui):
+                // Update nuber of bedrooms
+                $('#num-bedrooms-rent').val(ui.selected.value)
+                // Recolor aus
+                aus.setStyle(style)
+        })
+    )
+    // Initialize selector
+    item = $('#num-bedrooms-rent li:eq(0)')
+    item.addClass('ui-selected')
+    $('#num-bedrooms-rent').val(item[0].value)
+
+    def adjustParkingCost():
+        mode = $('#mode').val()
+        if mode != 'car':
+            $('#parking').val('$0')
+            $('#parking-cost-slider').slider('value', 0)
+
+    // Add a mode mode selector widget
     COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
       'bus': 0.218}
-    // Add a mode mode selector widget
     $(def():
         $("#mode").selectable({
             'selected': def(event, ui):
                 // Update nuber of bedrooms
                 $('#mode').val(ui.selected.id)
+                adjustParkingCost()
                 // Recolor aus
                 aus.setStyle(style)
         })
@@ -125,22 +157,20 @@ def makeMap():
     item.addClass('ui-selected')
     $('#mode').val(item[0].id)
 
-    WEEKLY_CAR_OWN_COST = 2228/52
-    // Add a number-of-cars select widget
+    // Add a number-of-workdays selector widget
     $(def():
-        $("#num-cars").selectable({
+        $("#num-workdays").selectable({
             'selected': def(event, ui):
                 // Update nuber of bedrooms
-                $('#num-cars').val(ui.selected.id)
+                $('#num-workdays').val(ui.selected.value)
                 // Recolor aus
                 aus.setStyle(style)
         })
     )
     // Initialize selector
-    item = $('#num-cars li:eq(0)')
+    item = $('#num-workdays li:eq(4)')
     item.addClass('ui-selected')
-    $('#num-cars').val(item[0].id)
-
+    $('#num-workdays').val(item[0].value)
 
     // Add a parking cost slider widget
     PARKING_DEFAULT = 0
@@ -167,6 +197,22 @@ def makeMap():
         min = sv.slider( "option", "min" )
         range = sv.slider( "option", "max" ) - min
     )
+
+    WEEKLY_CAR_OWN_COST = 2228/52
+    // Add a number-of-cars select widget
+    $(def():
+        $("#num-cars").selectable({
+            'selected': def(event, ui):
+                // Update nuber of bedrooms
+                $('#num-cars').val(ui.selected.value)
+                // Recolor aus
+                aus.setStyle(style)
+        })
+    )
+    // Initialize selector
+    item = $('#num-cars li:eq(0)')
+    item.addClass('ui-selected')
+    $('#num-cars').val(item[0].value)
 
 
     // Create map 
@@ -301,20 +347,22 @@ def makeMap():
             wtcf = 'n/a'
         else:
             wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(0) + '%'
+        nb = $('#num-bedrooms').val()
+        nbr = $('#num-bedrooms-rent').val()
         wcc, wct = getWeeklyCommuteCostAndTime(feature)
         popupContent = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
             '<table>' +\
-            '<tr><td>Rent per bedroom per week</td><td>' +\
+            '<tr><td>Rent per week (for ' + nbr + ' of ' + nb + ' bedrooms)</td><td>' +\
             numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
             '<tr><td>Commute cost per week</td><td>' +\
             numToDollarStr(wcc, False) + '</td></tr>' +\
             '<tr><td>Commute time per week</td><td>' +\
             wct.toFixed(1) + ' h </td></tr>' +\
-            '<tr><td>Car cost per week</td><td>' +\
-            numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
             '<tr><td>Parking cost per week</td><td>' +\
             numToDollarStr(getWeeklyParkingCost(), False) +\
             '</td></tr>' +\
+            '<tr><td>Car cost per week</td><td>' +\
+            numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
             '<tr><td>Total cost per week</td><td>' +\
             numToDollarStr(getWeeklyTotalCost(feature), False) +\
             '</td></tr>' +\
@@ -343,7 +391,6 @@ def makeMap():
         })
 
     // Accounting functions
-
     def getWeeklyIncome():
         income = $('#income').val() // Formatted string
         return numToDollarStr(income, True)/52
@@ -360,7 +407,7 @@ def makeMap():
             rent = None
         else:
             rent = float(rentByNbedroomsByAu[auName][numBedrooms])
-            rent /= int(numBedrooms)
+            rent *= int(numBedroomsRent)/int(numBedrooms)
             // if numBedrooms == "5+":
             //     numBedrooms = 5
         return rent
@@ -375,9 +422,10 @@ def makeMap():
             return 0, 0
         j = MIndexByAu[workAuName]
         distance, time = M[mode][i][j]
+        numWorkdays = int($('#num-workdays').val())
         // Get weekly cost of mode
-        cost = distance*10*COMMUTE_COST_PER_KM_PER_MODE[mode]
-        return cost, time*10
+        cost = distance*COMMUTE_COST_PER_KM_PER_MODE[mode]*numWorkdays*2
+        return cost, time*numWorkdays*2
 
     def getWeeklyCarOwnCost():
         numCars = int($('#num-cars').val())
@@ -385,7 +433,8 @@ def makeMap():
 
     def getWeeklyParkingCost():
         parking = $('#parking').val() // Formatted string
-        return numToDollarStr(parking, True)*5
+        numWorkdays = int($('#num-workdays').val())
+        return numToDollarStr(parking, True)*numWorkdays
 
     def getWeeklyTotalCost(feature):
         // Return the total cost for living in this au/feature

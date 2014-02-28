@@ -30,23 +30,26 @@
             <li>
                 How many bedrooms will your dwelling have?
                 <ul id="num-bedrooms">
-                    <li class="ui-state-default" id="1">1</li>
-                    <li class="ui-state-default" id="2">2</li>
-                    <li class="ui-state-default" id="3">3</li>
-                    <li class="ui-state-default" id="4">4</li>
+                    <li class="ui-state-default" value="1">1</li>
+                    <li class="ui-state-default" value="2">2</li>
+                    <li class="ui-state-default" value="3">3</li>
+                    <li class="ui-state-default" value="4">4</li>
                 </ul><br/>
             </li>
-<!--             <li>
+            <li>
                 For how many of these bedrooms will you pay rent?
                 <ul id="num-bedrooms-rent">
-                    <li class="ui-state-default" id="1">1</li>
+                    <li class="ui-state-default" value="1">1</li>
+                    <li class="ui-state-default" value="2">2</li>
+                    <li class="ui-state-default" value="3">3</li>
+                    <li class="ui-state-default" value="4">4</li>
                 </ul><br/>
             </li>
- -->            <li>
+            <li>
                 Where will you work? Move the map marker.
             </li>
             <li>
-                How will you travel to work?
+                How will you commute?
                 <ul id="mode">
                     <li class="ui-state-default icon-walk" id="walk"></li>
                     <li class="ui-state-default icon-bicycle" id="bicycle"></li>
@@ -55,18 +58,30 @@
                 </ul><br/>
             </li>
             <li>
-                How many cars will you own?
-                <ul id="num-cars">
-                    <li class="ui-state-default" id="0">0</li>
-                    <li class="ui-state-default" id="1">1</li>
-                    <li class="ui-state-default" id="2">2</li>
-                    <li class="ui-state-default" id="3">3</li>
+                How many days will you commute?
+                <ul id="num-workdays">
+                    <li class="ui-state-default" value="1">1</li>
+                    <li class="ui-state-default" value="2">2</li>
+                    <li class="ui-state-default" value="3">3</li>
+                    <li class="ui-state-default" value="4">4</li>
+                    <li class="ui-state-default" value="5">5</li>
+                    <li class="ui-state-default" value="6">6</li>
+                    <li class="ui-state-default" value="7">7</li>
                 </ul><br/>
             </li>
             <li>
                 <label for="parking">How much will parking at work cost per day?</label><br/>
                 <input type="text" id="parking" readonly> 
                 <div id="parking-cost-slider"></div>
+            </li>
+            <li>
+                How many cars will you own?
+                <ul id="num-cars">
+                    <li class="ui-state-default" value="0">0</li>
+                    <li class="ui-state-default" value="1">1</li>
+                    <li class="ui-state-default" value="2">2</li>
+                    <li class="ui-state-default" value="3">3</li>
+                </ul><br/>
             </li>
             </ol>
         </div>
