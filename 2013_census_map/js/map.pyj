@@ -157,20 +157,28 @@ def makeMap():
     item.addClass('ui-selected')
     $('#mode').val(item[0].id)
 
-    // Add a number-of-workdays selector widget
+    // Add a number-of-workdays slider
+    // Add a parking cost slider widget
     $(def():
-        $("#num-workdays").selectable({
-            'selected': def(event, ui):
-                // Update nuber of bedrooms
-                $('#num-workdays').val(ui.selected.value)
+        $( "#num-workdays-slider" ).slider({
+            'orientation': 'horizontal',
+            'range': 'min',
+            'min': 0,
+            'max': 7,
+            'value': 5,
+            'step': 1,
+            'slide': def(event, ui): 
+                // Update income display
+                $('#num-workdays').val(ui.value)
+            ,
+            'stop': def(event, ui):
                 // Recolor aus
                 aus.setStyle(style)
         })
+        // Initialize slider 
+        s = $('#num-workdays-slider')
+        $('#num-workdays').val(s.slider('value'))
     )
-    // Initialize selector
-    item = $('#num-workdays li:eq(4)')
-    item.addClass('ui-selected')
-    $('#num-workdays').val(item[0].value)
 
     // Add a parking cost slider widget
     PARKING_DEFAULT = 0
@@ -191,11 +199,8 @@ def makeMap():
                 aus.setStyle(style)
         })
         // Initialize slider 
-        sv = $('#parking-cost-slider')
-        $('#parking').val(numToDollarStr(sv.slider('value')))
-        // Label the median annual income point on slider
-        min = sv.slider( "option", "min" )
-        range = sv.slider( "option", "max" ) - min
+        s = $('#parking-cost-slider')
+        $('#parking').val(numToDollarStr(s.slider('value')))
     )
 
     WEEKLY_CAR_OWN_COST = 2228/52

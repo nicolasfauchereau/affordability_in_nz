@@ -3,9 +3,9 @@ body {
   font-size: 12pt;
   line-height: 1.3;
   color: black;
-  margin: 40px auto;
+  margin: 2em auto;
   padding: 0px;
-  width: 75%; }
+  width: 80%; }
 
   h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
@@ -34,21 +34,21 @@ ol {
 
 #container {
   width: 100%;
-  height: 550px;
   border: 1px solid #ddd;
   padding: 10px;
-  background-color: white; }
+  background-color: white;
+  overflow: hidden; }
 
   #map {
     float: left;
     width: 70%;
-    height: 550px; }
+    min-height: 500px; }
 
     #sidebar {
       float: right;
       width: 27%;
       padding-left: 1em;
-      font-size: 75%; }
+      font-size: 9pt; }
 
       .legend {
         background: white;
@@ -60,7 +60,7 @@ ol {
         font-weight: normal;
         border-color: white;
         font-family: 'Open Sans';
-        font-size: 75%;
+        font-size: 9pt;
         line-height: 1.3;
         color: black;
         width: 220px;
@@ -90,20 +90,21 @@ section {
       #income-slider label {
         position: absolute;
         width: 10px;
-        margin-top: 14px;
+        margin-top: 11px;
         margin-left: -4px;
-        font-size: 50%; }
+        font-size: 7pt; }
 
 #income-note {
   width: 180px;
   margin: 1.1em 0em 1em 2em;
-  font-size: 75%; }
+  font-size: 7pt; }
 
-  #num-bedrooms, #num-bedrooms-rent, #mode, #num-workdays, #num-cars {
+  #num-bedrooms, #num-bedrooms-rent, #mode, #num-cars {
     list-style-type: none;
     margin: 0.5em 0em 2em 0em;
     padding: 0; }
-    #num-bedrooms li, #num-bedrooms-rent li, #mode li, #num-workdays li, #num-cars li {
+    #num-bedrooms li, #num-bedrooms-rent li, #mode li, #num-cars li {
+      display: inline;
       margin: 0em 0.2em 0.2em 0em;
       padding: 0.2em 0.4em;
       float: left;
@@ -114,57 +115,50 @@ section {
       color: inherit; }
       #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting,
       #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
-      #mode .ui-selected, #mode .ui-selecting, #num-workdays .ui-selected,
-      #num-workdays .ui-selecting, #num-cars .ui-selected, #num-cars .ui-selecting {
+      #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
+      #num-cars .ui-selecting {
         background: #d7191c;
         opacity: 0.8;
         color: white; }
         #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode .blocked,
-        #num-workdays .blocked, #num-cars .blocked {
+        #num-cars .blocked {
           opacity: 0; }
 
-#parking {
+#num-workdays, #parking {
   border: 0;
-  width: 150px;
+  width: 2.3em;
   color: #d7191c;
   opacity: 0.8;
   font-size: 150%;
   font-weight: bold;
   background-color: white; }
 
-  #parking-cost-slider {
-    margin: 0.5em 0 1em 0;
-    width: 100px; }
-    #parking-cost-slider label {
-      position: absolute;
-      width: 250px;
-      margin-left: 30px;
-      margin-bottom: -31px;
-      text-align: left;
-      font-size: 75%; }
+  #num-workdays-slider, #parking-cost-slider {
+    width: 100px;
+    display: inline-block; }
 
-#about {
-  clear: both; }
+    #about {
+      clear: both; }
 
-  .leaflet-container {
-    background: white !important; }
+      .leaflet-container {
+        background: white !important; }
 
-    .leaflet-popup-content {
-      background: white;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
-      border-radius: 5px;
-      text-align: left;
-      margin: 0;
-      padding: 6px 8px;
-      font-weight: normal;
-      border-color: white;
-      font-family: 'Open Sans';
-      font-size: 75%;
-      line-height: 1.3;
-      color: black; }
-      .leaflet-popup-content h4 {
-        margin: 0 0 0.5em 0;
-        font-weight: bold; }
+        .leaflet-popup-content {
+          background: white;
+          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+          border-radius: 5px;
+          text-align: left;
+          margin: 0;
+          padding: 6px 8px;
+          font-weight: normal;
+          border-color: white;
+          font-family: 'Open Sans';
+          font-size: 9pt;
+          line-height: 1.3;
+          color: black; }
+          .leaflet-popup-content h4 {
+            margin: 0 0 0.5em 0;
+            font-weight: bold; }
 
 .leaflet-popup-tip {
   width: 0;
