@@ -274,10 +274,10 @@ def makeMap():
     // 'gray'])
 
     // Add a legend to the map
-    legend = L.control({position: 'bottomright'});
+    legend = L.control({position: 'bottomleft'});
     legend.onAdd = def(map):
         div = L.DomUtil.create('div', 'legend')
-        div.innerHTML = 'Cost as fraction of income<br/>'
+        div.innerHTML = 'Cost as % of income<br/>'
         for i in range(len(LABELS)):
             div.innerHTML += '<span style="background:' + getColor(BINS[i]) +\
               '">' + LABELS[i] + '</span>'
@@ -285,6 +285,48 @@ def makeMap():
     
     legend.addTo(map)
 
+    // Add a info box to the map
+    info = L.control({position: 'bottomright'})
+    info.onAdd = def(map):
+        this._div = L.DomUtil.create('div', 'info')
+        this.update()
+        return this._div
+
+    info.update = def(feature=None):
+        if feature:
+            if getWeeklyTotalCostFraction(feature) is None:
+                wtcf = 'n/a'
+            else:
+                wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(0) + '%'
+            nb = $('#num-bedrooms').val()
+            nbr = $('#num-bedrooms-rent').val()
+            wcc, wct = getWeeklyCommuteCostAndTime(feature)
+            message = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
+                '<table>' +\
+                '<tr><td>Rent per week <br/>(for ' + nbr + ' of ' + nb + ' bedrooms)</td><td>' +\
+                numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
+                '<tr><td>Commute cost per week</td><td>' +\
+                numToDollarStr(wcc, False) + '</td></tr>' +\
+                '<tr><td>Commute time per week</td><td>' +\
+                wct.toFixed(1) + '&nbsp;h </td></tr>' +\
+                '<tr><td>Parking cost per week</td><td>' +\
+                numToDollarStr(getWeeklyParkingCost(), False) +\
+                '</td></tr>' +\
+                '<tr><td>Car cost per week</td><td>' +\
+                numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
+                '<tr><td>Total cost per week</td><td>' +\
+                numToDollarStr(getWeeklyTotalCost(feature), False) +\
+                '</td></tr>' +\
+                '<tr><td>% of income per week</td><td>' +\
+                wtcf +\
+                '</td></tr>' +\
+                '</table>'
+        else:
+            message = '<h4>Info</h4>Hover over an area unit'
+        // Update the control based on feature properties passed
+        this._div.innerHTML = message
+    
+    info.addTo(map)
 
     workMarker = L.marker([-36.69925, 175.07263], {
         'draggable': True,
@@ -343,14 +385,14 @@ def makeMap():
                 layer.getLatLng()  
             layer.bindPopup(html)
     
-    nonlocal centroids
-    centroids = L.geoJson(centroids, {
-        'pointToLayer': def(feature, latlng):
-            return L.circleMarker(latlng)
-        ,
-        'onEachFeature': onEachCentroidFeature,
-        'style': centroidStyle,
-    }).addTo(map)
+    // nonlocal centroids
+    // centroids = L.geoJson(centroids, {
+    //     'pointToLayer': def(feature, latlng):
+    //         return L.circleMarker(latlng)
+    //     ,
+    //     'onEachFeature': onEachCentroidFeature,
+    //     'style': centroidStyle,
+    // }).addTo(map)
 
     // Feature style functions
     def getColor(x):
@@ -372,49 +414,50 @@ def makeMap():
     // Define suburb mouseover etc.
     def highlightFeature(e):
         layer = e.target
-        feature = layer.feature
         layer.setStyle({
           'color': 'black',
         })
-        // if not L.Browser.ie and not L.Browser.opera:
-        //     layer.bringToFront()
-        if getWeeklyTotalCostFraction(feature) is None:
-            wtcf = 'n/a'
-        else:
-            wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(0) + '%'
-        nb = $('#num-bedrooms').val()
-        nbr = $('#num-bedrooms-rent').val()
-        wcc, wct = getWeeklyCommuteCostAndTime(feature)
-        popupContent = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
-            '<table>' +\
-            '<tr><td>Rent per week (for ' + nbr + ' of ' + nb + ' bedrooms)</td><td>' +\
-            numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
-            '<tr><td>Commute cost per week</td><td>' +\
-            numToDollarStr(wcc, False) + '</td></tr>' +\
-            '<tr><td>Commute time per week</td><td>' +\
-            wct.toFixed(1) + ' h </td></tr>' +\
-            '<tr><td>Parking cost per week</td><td>' +\
-            numToDollarStr(getWeeklyParkingCost(), False) +\
-            '</td></tr>' +\
-            '<tr><td>Car cost per week</td><td>' +\
-            numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
-            '<tr><td>Total cost per week</td><td>' +\
-            numToDollarStr(getWeeklyTotalCost(feature), False) +\
-            '</td></tr>' +\
-            '<tr><td>Fraction of income per week</td><td>' +\
-            wtcf +\
-            '</td></tr>' +\
-            '</table>'
-        layer.bindPopup(popupContent, {
-            'offset': L.point(0, 200),
-            'closeButton': False,
-        }).openPopup()
+        if not L.Browser.ie and not L.Browser.opera:
+            layer.bringToFront()
+        info.update(layer.feature)
+        // if getWeeklyTotalCostFraction(feature) is None:
+        //     wtcf = 'n/a'
+        // else:
+        //     wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(0) + '%'
+        // nb = $('#num-bedrooms').val()
+        // nbr = $('#num-bedrooms-rent').val()
+        // wcc, wct = getWeeklyCommuteCostAndTime(feature)
+        // popupContent = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
+        //     '<table>' +\
+        //     '<tr><td>Rent per week (for ' + nbr + ' of ' + nb + ' bedrooms)</td><td>' +\
+        //     numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
+        //     '<tr><td>Commute cost per week</td><td>' +\
+        //     numToDollarStr(wcc, False) + '</td></tr>' +\
+        //     '<tr><td>Commute time per week</td><td>' +\
+        //     wct.toFixed(1) + ' h </td></tr>' +\
+        //     '<tr><td>Parking cost per week</td><td>' +\
+        //     numToDollarStr(getWeeklyParkingCost(), False) +\
+        //     '</td></tr>' +\
+        //     '<tr><td>Car cost per week</td><td>' +\
+        //     numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
+        //     '<tr><td>Total cost per week</td><td>' +\
+        //     numToDollarStr(getWeeklyTotalCost(feature), False) +\
+        //     '</td></tr>' +\
+        //     '<tr><td>Fraction of income per week</td><td>' +\
+        //     wtcf +\
+        //     '</td></tr>' +\
+        //     '</table>'
+        // layer.bindPopup(popupContent, {
+        //     'offset': L.point(0, 200),
+        //     'closeButton': False,
+        // }).openPopup()
 
     def resetHighlight(e):
         layer = e.target
         aus.resetStyle(layer)
         layer._map.closePopup()
-            
+        info.update()
+
     def zoomToFeature(e):
         map.fitBounds(e.target.getBounds())
     

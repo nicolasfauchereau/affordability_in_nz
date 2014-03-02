@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', Helvetica;
   font-size: 12pt;
   line-height: 1.3;
   color: black;
@@ -59,7 +59,7 @@ ol {
         padding: 6px 8px;
         font-weight: normal;
         border-color: white;
-        font-family: 'Open Sans';
+        font-family: 'Open Sans', Helvetica;
         font-size: 9pt;
         line-height: 1.3;
         color: black;
@@ -71,6 +71,25 @@ ol {
           font-weight: bold; }
           .legend span {
             padding: 0.4em 0.4em; }
+
+.info {
+  background: white;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  text-align: left;
+  margin: 0;
+  padding: 6px 8px;
+  font-weight: normal;
+  border-color: white;
+  font-family: 'Open Sans', Helvetica;
+  font-size: 9pt;
+  line-height: 1.3;
+  color: black;
+  width: 180px;
+  padding-bottom: 1em; }
+  .info h4 {
+    margin: 0 0 0.5em 0;
+    font-weight: bold; }
 
 section {
   margin-bottom: 1em; }
@@ -113,16 +132,21 @@ section {
       vertical-align: middle;
       border-radius: 5px;
       color: inherit; }
-      #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting,
-      #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
-      #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
-      #num-cars .ui-selecting {
-        background: #d7191c;
-        opacity: 0.8;
-        color: white; }
-        #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode .blocked,
-        #num-cars .blocked {
-          opacity: 0; }
+      #num-bedrooms .icon-car, #num-bedrooms-rent .icon-car, #mode .icon-car,
+      #num-cars .icon-car {
+        font-size: 75%;
+        padding-top: 0.64em;
+        padding-bottom: 0.27em; }
+        #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting,
+        #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
+        #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
+        #num-cars .ui-selecting {
+          background: #d7191c;
+          opacity: 0.8;
+          color: white; }
+          #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode .blocked,
+          #num-cars .blocked {
+            opacity: 0; }
 
 #num-workdays, #parking {
   border: 0;
@@ -152,7 +176,7 @@ section {
           padding: 6px 8px;
           font-weight: normal;
           border-color: white;
-          font-family: 'Open Sans';
+          font-family: 'Open Sans', Helvetica;
           font-size: 9pt;
           line-height: 1.3;
           color: black; }
