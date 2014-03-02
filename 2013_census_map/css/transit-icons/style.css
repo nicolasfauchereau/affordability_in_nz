@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'transit-icons';
-	src:url('fonts/transit-icons.eot?aan2vl');
-	src:url('fonts/transit-icons.eot?#iefixaan2vl') format('embedded-opentype'),
-		url('fonts/transit-icons.woff?aan2vl') format('woff'),
-		url('fonts/transit-icons.ttf?aan2vl') format('truetype'),
-		url('fonts/transit-icons.svg?aan2vl#transit-icons') format('svg');
+	src:url('fonts/transit-icons.eot?-7n595q');
+	src:url('fonts/transit-icons.eot?#iefix-7n595q') format('embedded-opentype'),
+		url('fonts/transit-icons.woff?-7n595q') format('woff'),
+		url('fonts/transit-icons.ttf?-7n595q') format('truetype'),
+		url('fonts/transit-icons.svg?-7n595q#transit-icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -29,12 +29,12 @@
 .icon-bicycle_2:before {
 	content: "\e601";
 }
-.icon-car:before {
-	content: "\e602";
-}
 .icon-bus:before {
 	content: "\e603";
 }
 .icon-walk:before {
 	content: "\e604";
+}
+.icon-car:before {
+	content: "\e602";
 }

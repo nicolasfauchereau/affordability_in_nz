@@ -132,21 +132,16 @@ section {
       vertical-align: middle;
       border-radius: 5px;
       color: inherit; }
-      #num-bedrooms .icon-car, #num-bedrooms-rent .icon-car, #mode .icon-car,
-      #num-cars .icon-car {
-        font-size: 75%;
-        padding-top: 0.64em;
-        padding-bottom: 0.27em; }
-        #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting,
-        #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
-        #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
-        #num-cars .ui-selecting {
-          background: #d7191c;
-          opacity: 0.8;
-          color: white; }
-          #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode .blocked,
-          #num-cars .blocked {
-            opacity: 0; }
+      #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting,
+      #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
+      #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
+      #num-cars .ui-selecting {
+        background: #d7191c;
+        opacity: 0.8;
+        color: white; }
+        #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode .blocked,
+        #num-cars .blocked {
+          opacity: 0; }
 
 #num-workdays, #parking {
   border: 0;
