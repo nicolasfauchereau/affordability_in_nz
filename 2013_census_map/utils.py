@@ -87,6 +87,17 @@ def get_bird_distance_and_time(a, b):
     d = distance(a[0], a[1], b[0], b[1])
     return my_round((d, d/40), 2)
 
+def get_maxx_distance_and_time(a, b):
+    import urllib2
+
+    url = 'http://www.maxx.co.nz/journey-planner.aspx?fromCoords='
+    url += '{!s}%2C{!s}&fromLoc=&fromStreet=&toCoords={!s}%2C{!s}'.format(
+      a[1], a[0], b[1], b[0])
+    url += '&toLoc=&toStreet=&hh=08&mm=30&ampm=AM&isAfter=B&date=03-03-2014'
+    print('url=', url)
+    result = urllib2.urlopen(url).read()
+    return result
+
 def get_mapquest_distance_and_time(a, b, mode='car', many_to_one=False):
     """
     Given WGS84 longitude-latitude points ``a`` and ``b``,
@@ -111,7 +122,6 @@ def get_mapquest_distance_and_time(a, b, mode='car', many_to_one=False):
     url += '{!s},{!s}&to={!s},{!s}'.format(a[1], a[0], b[1], b[0])
     url += '&routeType=' + mode
     url += '&unit=k&doReverseGeocode=false&narrativeType=none'
-    print('url=', url)
     # Send query and retrieve data
     result = json.load(urllib2.urlopen(url))
     return result['route']['distance'], result['route']['time']/60
@@ -376,11 +386,11 @@ if __name__ == '__main__':
     # with open('data/au_centroids.geojson', 'w') as json_file:
     #     json.dump(geojson, json_file)
 
-    # a = [174.75153, -36.89052]
-    # b = [174.75938, -36.8506]
-    # print(get_google_distance_and_time(a, b, mode='bus'))
+    a = [174.75153, -36.89052]
+    b = [174.75938, -36.8506]
+    print(get_maxx_distance_and_time(a, b))
 
-    pc_by_name = get_polygon_and_centroid_by_name(INFILE, 'AU_NAME')
-    centroids_by_name = {name: pj_nztm(*point_to_tuple(pc[1]), inverse=True)
-      for name, pc in pc_by_name.items()}
-    print(centroids_by_name)
+    # pc_by_name = get_polygon_and_centroid_by_name(INFILE, 'AU_NAME')
+    # centroids_by_name = {name: pj_nztm(*point_to_tuple(pc[1]), inverse=True)
+    #   for name, pc in pc_by_name.items()}
+    # print(centroids_by_name)
