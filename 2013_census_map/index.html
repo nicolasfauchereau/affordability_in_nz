@@ -53,8 +53,8 @@
                 <ul id="mode">
                     <li class="ui-state-default icon-walk" id="walk"></li>
                     <li class="ui-state-default icon-bicycle" id="bicycle"></li>
-                    <li class="ui-state-default icon-car" id="car"></li>
                     <li class="ui-state-default icon-bus" id="bus"></li>
+                    <li class="ui-state-default icon-car" id="car"></li>
                 </ul><br/>
             </li>
             <li>
@@ -63,7 +63,7 @@
                 <div id="num-workdays-slider"></div>
             </li>
             <li>
-                <label for="parking">How much will daily work parking cost?</label>
+                <label for="parking">How much will daily work parking cost?</label><br/>
                 <input type="text" id="parking" readonly> 
                 <div id="parking-cost-slider"></div>
             </li>
@@ -83,26 +83,36 @@
     <section id="about">
         <h2>About</h2>
         <ul>
-            <li>This application was created by Alex Raichev and was inspired in part by the paper "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey <a href="docs/MaMo2014.pdf">[MaMo2014]</a>.</li>
-            
-            <li>Auckland's 2013 census area units were sourced from Statistics New Zealand 
-            <a href="http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx">here</a>.</li>
-            
-            <li>The median annual income of employed Aucklanders were sourced from Statistics New Zealand from the June 2013 income survey
-            <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/New ZealandIncomeSurvey_HOTPJun13qtr.aspx">here</a>.</li>
-            
-            <li>Mean rent per area unit per number of bedrooms came from the New Zealand Ministry of Business, Innovation and Employment from the detailed mean rents file 
+        <li>
+            This application was created by Alex Raichev and is inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey <a href="docs/MaMo2014.pdf">[MaMo2014]</a>.
+        </li>    
+        <li>    
+            Auckland's 2013 census area units come from Statistics New Zealand 
+            <a href="http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx">here</a>.
+        </li>
+        <li>
+            The median annual income of employed Aucklanders comes from Statistics New Zealand from the June 2013 income survey
+            <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/New ZealandIncomeSurvey_HOTPJun13qtr.aspx">here</a>.
+        </li>
+        <li>
+            Mean rent per area unit per number of bedrooms comes from the New Zealand Ministry of Business, Innovation and Employment from the detailed mean rents file 
             <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">here</a>.
-            Since the suburbs of the rent data don't match the census area units 
+            Since the suburbs of the rent data doesn't match the census area units 
             (see <a href="http://www.landlords.co.nz/ask-an-expert/zones-for-market-rent-stats-2169">this thread for details</a>), 
-            the area units were mapped to the suburbs in a 
+            the area units are mapped to the suburbs in a 
             many-to-one fashion as detailed in
             <a href='data/Auckland_AUs_2013_and_suburbs.csv'>this CSV file</a>.
             This data will be replaced soon by rent data from the 2013 census.
-            </li> 
-
-            <li>The distances used are those between area unit centroids and were calculated as the bird flies. They'll be recalculated soon through the road network.</li>
-
+        </li> 
+        <li>
+            The distances used are those between area unit centroids and were calculated as the bird flies. They'll be recalculated soon through the road network.
+        </li>
+        <li>
+            Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, bus) = (0, 0, $0.274, $0.218). 
+        </li>
+        <li>
+            Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.
+        </li>
         </ul>
     </section>
 

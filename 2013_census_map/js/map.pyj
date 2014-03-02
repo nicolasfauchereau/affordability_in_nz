@@ -1,9 +1,10 @@
 import stdlib
 
 //geoDataFile = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
-geoDataFile = 'data/auckland_aus_2013.geojson'
-rentDataFile = 'data/mean_rents_by_nbedrooms_by_au.json'
-modeDataFile = 'data/distance_and_time_matrix.json'
+ausFile = 'data/auckland_aus_2013.geojson'
+auCentroidsFile = 'data/au_centroids.geojson'
+rentsFile = 'data/mean_rents_by_nbedrooms_by_au.json'
+matrixFile = 'data/distance_and_time_matrix.json'
 
 def numToDollarStr(x, inverse=False):
     // Given a float `x`, round it to the nearest integer,
@@ -28,20 +29,26 @@ rentByNbedroomsByAu = None
 MIndexByAu = None
 M = None
 aus = None
+centroids = None
 
-$.getJSON(rentDataFile, def(data):
+$.getJSON(rentsFile, def(data):
     nonlocal rentByNbedroomsByAu
     rentByNbedroomsByAu = data
 )
 
-$.getJSON(modeDataFile, def(data):
+$.getJSON(matrixFile, def(data):
     nonlocal MIndexByAu
     nonlocal M
     MIndexByAu = data['index_by_name']
     M = data['matrix']
 )
 
-$.getJSON(geoDataFile, def(data):
+$.getJSON(auCentroidsFile, def(data):
+    nonlocal centroids
+    centroids = data    
+)
+
+$.getJSON(ausFile, def(data):
     nonlocal aus
     aus = data    
     makeMap()
@@ -322,6 +329,29 @@ def makeMap():
         'onEachFeature': onEachFeature
     }).addTo(map)
 
+    centroidStyle = {
+        'radius': 6,
+        'fillColor': "#ff7800",
+        'color': "#000",
+        'weight': 1,
+        'opacity': 1,
+        'fillOpacity': 0.8,
+    }
+    def onEachCentroidFeature(feature, layer):
+        if feature.properties and feature.properties.AU_NAME: 
+            html = feature.properties.AU_NAME + ' centroid<br/>' +\
+                layer.getLatLng()  
+            layer.bindPopup(html)
+    
+    nonlocal centroids
+    centroids = L.geoJson(centroids, {
+        'pointToLayer': def(feature, latlng):
+            return L.circleMarker(latlng)
+        ,
+        'onEachFeature': onEachCentroidFeature,
+        'style': centroidStyle,
+    }).addTo(map)
+
     // Feature style functions
     def getColor(x):
         for (i, grade) in enumerate(BINS):
@@ -346,8 +376,8 @@ def makeMap():
         layer.setStyle({
           'color': 'black',
         })
-        if not L.Browser.ie and not L.Browser.opera:
-            layer.bringToFront()
+        // if not L.Browser.ie and not L.Browser.opera:
+        //     layer.bringToFront()
         if getWeeklyTotalCostFraction(feature) is None:
             wtcf = 'n/a'
         else:
