@@ -2,9 +2,10 @@ import stdlib
 
 //geoDataFile = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
 ausFile = 'data/auckland_aus_2013.geojson'
-auCentroidsFile = 'data/au_centroids.geojson'
+auCentroidsFile = 'data/auckland_au_centroids_2013.geojson'
 rentsFile = 'data/mean_rents_by_nbedrooms_by_au.json'
 matrixFile = 'data/distance_and_time_matrix.json'
+//matrixFile = 'data/bird_distance_and_time_matrix.json'
 
 def numToDollarStr(x, inverse=False):
     // Given a float `x`, round it to the nearest integer,
@@ -41,6 +42,7 @@ $.getJSON(matrixFile, def(data):
     nonlocal M
     MIndexByAu = data['index_by_name']
     M = data['matrix']
+    console.log(M)
 )
 
 $.getJSON(auCentroidsFile, def(data):
@@ -148,7 +150,7 @@ def makeMap():
 
     // Add a mode mode selector widget
     COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
-      'bus': 0.218}
+      'public_transport': 0.218}
     $(def():
         $("#mode").selectable({
             'selected': def(event, ui):
@@ -301,14 +303,18 @@ def makeMap():
             nb = $('#num-bedrooms').val()
             nbr = $('#num-bedrooms-rent').val()
             wcc, wct = getWeeklyCommuteCostAndTime(feature)
+            if wct is not None:
+                wct = wct.toFixed(1) + '&nbsp;h'
+            else:
+                wct = 'n/a'
             message = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
                 '<table>' +\
-                '<tr><td>Rent per week <br/>(for ' + nbr + ' of ' + nb + ' bedrooms)</td><td>' +\
+                '<tr><td>Rent per week (' + nbr + ' of ' + nb + ' bd)</td><td>' +\
                 numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
                 '<tr><td>Commute cost per week</td><td>' +\
                 numToDollarStr(wcc, False) + '</td></tr>' +\
                 '<tr><td>Commute time per week</td><td>' +\
-                wct.toFixed(1) + '&nbsp;h </td></tr>' +\
+                wct + '</td></tr>' +\
                 '<tr><td>Parking cost per week</td><td>' +\
                 numToDollarStr(getWeeklyParkingCost(), False) +\
                 '</td></tr>' +\
@@ -322,7 +328,7 @@ def makeMap():
                 '</td></tr>' +\
                 '</table>'
         else:
-            message = '<h4>Info</h4>Hover over an area unit'
+            message = '<h4>Info box</h4>Hover over an area unit'
         // Update the control based on feature properties passed
         this._div.innerHTML = message
     
@@ -502,8 +508,13 @@ def makeMap():
         distance, time = M[mode][i][j]
         numWorkdays = int($('#num-workdays').val())
         // Get weekly cost of mode
-        cost = distance*COMMUTE_COST_PER_KM_PER_MODE[mode]*numWorkdays*2
-        return cost, time*numWorkdays*2
+        if distance is not None:
+            cost = distance*COMMUTE_COST_PER_KM_PER_MODE[mode]*numWorkdays*2
+            time = time*numWorkdays*2
+        else:
+            cost = None
+            time = None
+        return cost, time
 
     def getWeeklyCarOwnCost():
         numCars = int($('#num-cars').val())
@@ -517,9 +528,10 @@ def makeMap():
     def getWeeklyTotalCost(feature):
         // Return the total cost for living in this au/feature
         rent = getWeeklyRent(feature)
-        if rent is not None:
+        cc = getWeeklyCommuteCostAndTime(feature)[0]
+        if rent is not None and cc is not None:
             total = rent +\
-              getWeeklyCommuteCostAndTime(feature)[0] +\
+              cc +\
               getWeeklyCarOwnCost() +\
               getWeeklyParkingCost()                
         else:

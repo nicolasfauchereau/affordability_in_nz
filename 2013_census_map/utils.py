@@ -5,12 +5,10 @@
 # AU name -> AU name -> (distance in meters, time in seconds)
 from __future__ import print_function, division
 import datetime as dt 
-import json
+import json, csv
 
 import pyproj, shapely
 
-INFILE = 'data/Auckland_AUs_2013.geojson'
-OUTFILE = 'data/distance_and_time_matrix.json'
 NUM_SAMPLE_POINTS = 100
 
 def my_round(x, digits=5):
@@ -104,7 +102,7 @@ def get_mapquest_distance_and_time(a, b, mode='car', many_to_one=False):
     return the distance in kilometers and the time in minutes of the 
     quickest path from ``a`` to ``b`` in the Mapquest road network for 
     the specified mode of transit; mode options are 'walk', 'bicycle', 
-    'car', and 'bus'.
+    'car', and 'public_transport'.
     Computed with the `Mapquest API <http://www.mapquestapi.com/directions/#advancedrouting>`_.
     """
     import urllib2
@@ -113,7 +111,7 @@ def get_mapquest_distance_and_time(a, b, mode='car', many_to_one=False):
         mode = 'pedestrian'
     elif mode == 'bicycle':
         pass
-    elif mode == 'bus':
+    elif mode == 'public_transport':
         mode = 'multimodal'
     else:
         mode = 'fastest'
@@ -132,7 +130,7 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
     return the distance in kilometers and the time in minutes of the 
     quickest path from ``a`` to ``b`` in the Mapquest road network for 
     the specified mode of transit; mode options are 'walk', 'bicycle', 
-    'car', and 'bus'.
+    'car', and 'public_transport'.
     Computed with the `Google API <>`_.
     """
     import urllib2
@@ -141,7 +139,7 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
         mode = 'walking'
     elif mode == 'bicycle':
         mode = 'bicycling'
-    elif mode == 'bus':
+    elif mode == 'public_transport':
         # 19:30 12 Mar 2014 GMT = 8:30 13 Mar 2014 Auckland time
         # See http://www.onlineconversion.com/unix_time.htm
         mode = 'transit&arrival_time=1394652600' 
@@ -314,8 +312,72 @@ def get_centroids_geojson(filename, name_field):
       'features': features,
     }
     return geojson
-    l
-def get_distance_and_time_matrix(filename, name_field, n=NUM_SAMPLE_POINTS):
+
+def get_distance_and_time_matrix(origin_names):
+    """
+    Return the output pair ``(index_by_name, M)``, where ``M`` is a nested
+    dictionary/matrix such that ``M[mode][i][j]`` equals the distance in km
+    and the time in hours that it takes to travel from centroid of 
+    polygon with index ``i >= 0`` to the centroid of polygon with index 
+    ``j >= 0`` through the Open Street Map road network by the mode of
+    transport ``mode``, which is one of 'walk', 'bicycle', 'car', 'bus'.
+    The dictionary ``index_by_name`` gives maps polygon names to their
+    indices. 
+    ``M[i][i]`` is obtained by choosing ``n`` points uniformly at random 
+    from polygon ``i`` and taking the median of the distances and times 
+    from each of these points to the polygon's centroid.
+    """
+    from itertools import product
+
+    modes = ['walk', 'bicycle', 'car', 'public_transport']
+    M = {mode: {} for mode in modes}
+    
+    # Read distance and time data from CSVs
+    for mode in modes:
+        filename = 'data/' + mode + '_distance_and_time.csv'
+        with open(filename, 'rb') as f:
+            reader = csv.reader(f)
+            # Skip header row
+            reader.next() 
+            for row in reader:
+                od_pair, distance, time = row
+                origin_name, destination_name = od_pair.split(' - ')
+                # Convert distance to km and time to h 
+                if distance:
+                    distance = round(float(distance)/1000, 1)
+                elif mode == 'public_transport':
+                    # Until get distance data for public transport,
+                    # used car distance
+                    try:
+                        distance = M['car'][origin_name][destination_name][0]
+                    except KeyError:
+                        distance = None
+                else:
+                    distance = None
+                time = round(float(time)/60, 1)
+                # Save to matrix
+                if origin_name not in M[mode]:
+                    M[mode][origin_name] =\
+                      {destination_name: (distance, time)}
+                else:
+                    M[mode][origin_name][destination_name] =\
+                      (distance, time) 
+
+    # Compress each M[mode] by turning it into a list of lists.
+    MM = {mode: [] for mode in modes}
+    for mode in modes:
+        for on  in origin_names:
+            row = []
+            for dn in origin_names:
+                try:
+                    row.append(M[mode][on][dn])
+                except KeyError:
+                    row.append((None, None)) 
+            MM[mode].append(row)    
+    index_by_name = {on: i for (i, on) in enumerate(origin_names)}
+    return index_by_name, MM
+
+def get_distance_and_time_matrix_online(filename, name_field, n=NUM_SAMPLE_POINTS):
     """
     Assume ``filename`` is the name of a GeoJSON file comprising a feature
     collection of (multi)polygons in WGS84 coordinates, each of which has a 
@@ -334,7 +396,7 @@ def get_distance_and_time_matrix(filename, name_field, n=NUM_SAMPLE_POINTS):
     """
     from itertools import product
 
-    modes = {'walk', 'bicycle', 'car', 'bus'}
+    modes = {'walk', 'bicycle', 'car', 'public_transport'}
     pc_by_name = get_polygon_and_centroid_by_name(filename=filename, 
       name_field=name_field)
     names = pc_by_name.keys()
@@ -366,31 +428,37 @@ def get_distance_and_time_matrix(filename, name_field, n=NUM_SAMPLE_POINTS):
             M['walk'][i].append((distance, time*15))
             M['bicycle'][i].append((distance, time*4))
             M['car'][i].append((distance, time))
-            M['bus'][i].append((distance, time))
+            M['public_transport'][i].append((distance, time))
 
     return index_by_name, M
 
 
 if __name__ == '__main__':
-    # # Dump to distance_matrix to JSON
-    # t1 = dt.datetime.now()
-    # print(t1, 'Making distance and time matrix...')
-    # index_by_name, M = get_distance_and_time_matrix(INFILE, 'AU_NAME')
-    # with open(OUTFILE, 'w') as json_file:
-    #     json.dump({'index_by_name': index_by_name, 'matrix': M}, json_file)
-    # t2 = dt.datetime.now()
-    # minutes = (t2 - t1).seconds/60
-    # print(t2, 'Done. Time elapsed is {:.1f} min.'.format(minutes))
+    au_file = 'data/Auckland_AUs_2013.geojson'
+    matrix_file = 'data/distance_and_time_matrix.json'
 
-    # geojson = get_centroids_geojson(INFILE, 'AU_NAME')
+    pc_by_name = get_polygon_and_centroid_by_name(au_file, 'AU_NAME')
+    # centroids_by_name = {name: pj_nztm(*point_to_tuple(pc[1]), inverse=True)
+    #   for name, pc in pc_by_name.items()}
+    # with open('data/au_centroids.csv', 'w') as f:
+    #     writer = csv.writer(f)
+    #     writer.writerow(['name', 'WGS84 longitude', 'WGS84 latitude'])
+    #     for name, centroid in centroids_by_name.items():
+    #         writer.writerow([name, centroid[0], centroid[1]])
+
+    # Create distance and time matrix from Saeid's CSV files
+    index_by_name, M = get_distance_and_time_matrix(sorted(pc_by_name.keys()))
+    #print(M['car'][index_by_name['Waiheke Island']][index_by_name['Islands-Motutapu Rangitoto Rakino']])
+    
+    # Dump matrix to JSON
+    with open(matrix_file, 'w') as json_file:
+        json.dump({'index_by_name': index_by_name, 'matrix': M}, json_file)
+    
+    # geojson = get_centroids_geojson(au_file, 'AU_NAME')
     # with open('data/au_centroids.geojson', 'w') as json_file:
     #     json.dump(geojson, json_file)
 
-    a = [174.75153, -36.89052]
-    b = [174.75938, -36.8506]
-    print(get_maxx_distance_and_time(a, b))
+    # a = [174.75153, -36.89052]
+    # b = [174.75938, -36.8506]
+    # print(get_maxx_distance_and_time(a, b))
 
-    # pc_by_name = get_polygon_and_centroid_by_name(INFILE, 'AU_NAME')
-    # centroids_by_name = {name: pj_nztm(*point_to_tuple(pc[1]), inverse=True)
-    #   for name, pc in pc_by_name.items()}
-    # print(centroids_by_name)
