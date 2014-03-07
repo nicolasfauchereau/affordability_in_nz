@@ -42,7 +42,6 @@ $.getJSON(matrixFile, def(data):
     nonlocal M
     MIndexByAu = data['index_by_name']
     M = data['matrix']
-    console.log(M)
 )
 
 $.getJSON(auCentroidsFile, def(data):
