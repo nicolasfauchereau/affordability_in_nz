@@ -11,7 +11,7 @@ Requirements
 
 Notes
 ========
-- Inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey `[MaMo2014] (pay-walled) <http://www.sciencedirect.com/science/article/pii/S0264275114000134>`_.
+- Inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey `[MaMo2014] <http://www.sciencedirect.com/science/article/pii/S0264275114000134>`_ (pay-walled).
 - Compare to `the Financial Times London rent map <http://www.ft.com/cms/s/2/ad4ef6a4-503d-11e3-befe-00144feabdc0.html>`_; `this NZ Herald map <http://www.nzherald.co.nz/business/news/article.cfm?c_id=3&objectid=10881119>`_
 - Create geojson graphically at `geojson.io <http://geojson.io>`_
 - Validate geojson files at `geojsonlint.com <http://geojsonlint.com/>`_
