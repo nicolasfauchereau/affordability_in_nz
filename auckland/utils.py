@@ -1,15 +1,37 @@
-# Create a JSON file that contains a matrix of travel distance and
-# and travel time estimates between the centroids of 2013 census area units 
-# (AUs). 
-# Store the matrix in a nested JSON dict of the form
-# AU name -> AU name -> (distance in meters, time in seconds)
+# Some utility functions
 from __future__ import print_function, division
 import datetime as dt 
 import json, csv
 
 import pyproj, shapely
 
+
 NUM_SAMPLE_POINTS = 100
+
+def get_collection(filename):
+    """
+    Given the name of a GeoJSON file containing a feature collection,
+    return the the feature collection as a dictionary.
+    """
+    with open(filename, 'rb') as f:
+        return json.loads(f.read())
+
+def get_prop_list(collection, prop):
+    """
+    Given a decoded GeoJSON feature collection, return 
+    ``[f['properties'][prop] for f in collection['features']]``
+    """
+    return [f['properties'][prop] for f in collection['features']]
+
+def get_au_names(filename, name_field='AU_NAME'):
+    """
+    Given the name of a GeoJSON file containing a feature collection
+    of NZ area units, return the names of the area units as a list.
+    Assume the name of an area unit ``f`` is ``f['properties'][name_field]``. 
+    """
+    collection = get_collection(filename)
+    au_names = get_prop_list(collection, name_field)
+    return sorted(au_names)
 
 def my_round(x, digits=5):
     """
@@ -84,17 +106,6 @@ def get_bird_distance_and_time(a, b):
     """
     d = distance(a[0], a[1], b[0], b[1])
     return my_round((d, d/40), 2)
-
-def get_maxx_distance_and_time(a, b):
-    import urllib2
-
-    url = 'http://www.maxx.co.nz/journey-planner.aspx?fromCoords='
-    url += '{!s}%2C{!s}&fromLoc=&fromStreet=&toCoords={!s}%2C{!s}'.format(
-      a[1], a[0], b[1], b[0])
-    url += '&toLoc=&toStreet=&hh=08&mm=30&ampm=AM&isAfter=B&date=03-03-2014'
-    print('url=', url)
-    result = urllib2.urlopen(url).read()
-    return result
 
 def get_mapquest_distance_and_time(a, b, mode='car', many_to_one=False):
     """
@@ -229,6 +240,14 @@ def median(s):
         return (s[n//2] + s[n//2 - 1])/2.0
 
 def coords_to_polygon(coords, proj=None):
+    """
+    Given a list ``f['geometry']['coordinates']`` 
+    of coordinates from a decoded GeoJSON polygon feature ``f``,
+    return the corresponding Shapely polygon.
+    If ``proj` is not ``None``, then project the coordinates
+    first via the projection ``proj``.
+    For example, ``proj`` could be ``pj_nztm``.
+    """
     from shapely.geometry import Polygon
     from shapely.geometry.polygon import LinearRing
 
@@ -260,25 +279,24 @@ def get_polygon_and_centroid_by_name(filename, name_field):
     from shapely.ops import unary_union
 
     pc_by_name = {}
-    with open(filename, 'rb') as geojson_file:
-        collection = json.loads(geojson_file.read())
-        for feature in collection['features']:
-            name = feature['properties'][name_field]
-            # Get centroid in NZTM coordinates
-            if feature['geometry']['type'] == 'Polygon':
-                coords = feature['geometry']['coordinates']
-                polygon = coords_to_polygon(coords, pj_nztm)
-            elif feature['geometry']['type'] == 'MultiPolygon':
-                big_coords = feature['geometry']['coordinates']
-                polygons = [coords_to_polygon(coords, pj_nztm)
-                  for coords in big_coords]
-                polygon = unary_union(polygons)
-            else:
-                print('Skipping this problematic feature of type', 
-                  feature['geometry']['type'])
-                continue
-            pc_by_name[name] = (polygon, polygon.centroid)
-        return pc_by_name
+    collection = get_collection(filename)
+    for feature in collection['features']:
+        name = feature['properties'][name_field]
+        # Get centroid in NZTM coordinates
+        if feature['geometry']['type'] == 'Polygon':
+            coords = feature['geometry']['coordinates']
+            polygon = coords_to_polygon(coords, pj_nztm)
+        elif feature['geometry']['type'] == 'MultiPolygon':
+            big_coords = feature['geometry']['coordinates']
+            polygons = [coords_to_polygon(coords, pj_nztm)
+              for coords in big_coords]
+            polygon = unary_union(polygons)
+        else:
+            print('Skipping this problematic feature of type', 
+              feature['geometry']['type'])
+            continue
+        pc_by_name[name] = (polygon, polygon.centroid)
+    return pc_by_name
 
 def get_centroids_geojson(filename, name_field):
     """
@@ -432,12 +450,12 @@ def get_distance_and_time_matrix_online(filename, name_field, n=NUM_SAMPLE_POINT
 
     return index_by_name, M
 
+def stuff():
+    pass
+    #    au_file = 'data/Auckland_AUs_2013.geojson'
+    # matrix_file = 'data/distance_and_time_matrix.json'
 
-if __name__ == '__main__':
-    au_file = 'data/Auckland_AUs_2013.geojson'
-    matrix_file = 'data/distance_and_time_matrix.json'
-
-    pc_by_name = get_polygon_and_centroid_by_name(au_file, 'AU_NAME')
+    # pc_by_name = get_polygon_and_centroid_by_name(au_file, 'AU_NAME')
     # centroids_by_name = {name: pj_nztm(*point_to_tuple(pc[1]), inverse=True)
     #   for name, pc in pc_by_name.items()}
     # with open('data/au_centroids.csv', 'w') as f:
@@ -447,12 +465,12 @@ if __name__ == '__main__':
     #         writer.writerow([name, centroid[0], centroid[1]])
 
     # Create distance and time matrix from Saeid's CSV files
-    index_by_name, M = get_distance_and_time_matrix(sorted(pc_by_name.keys()))
+    # index_by_name, M = get_distance_and_time_matrix(sorted(pc_by_name.keys()))
     #print(M['car'][index_by_name['Waiheke Island']][index_by_name['Islands-Motutapu Rangitoto Rakino']])
     
-    # Dump matrix to JSON
-    with open(matrix_file, 'w') as json_file:
-        json.dump({'index_by_name': index_by_name, 'matrix': M}, json_file)
+    # # Dump matrix to JSON
+    # with open(matrix_file, 'w') as json_file:
+    #     json.dump({'index_by_name': index_by_name, 'matrix': M}, json_file)
     
     # geojson = get_centroids_geojson(au_file, 'AU_NAME')
     # with open('data/au_centroids.geojson', 'w') as json_file:
@@ -462,3 +480,9 @@ if __name__ == '__main__':
     # b = [174.75938, -36.8506]
     # print(get_maxx_distance_and_time(a, b))
 
+def get_rents():
+    pass
+    
+if __name__ == '__main__':
+    au_names = get_au_names('data/Auckland_AUs_2013.geojson')
+    print(len(au_names))
