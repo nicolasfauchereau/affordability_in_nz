@@ -322,7 +322,7 @@ def makeMap():
                 '<tr><td>Total cost per week</td><td>' +\
                 numToDollarStr(getWeeklyTotalCost(feature), False) +\
                 '</td></tr>' +\
-                '<tr><td>% of income per week</td><td>' +\
+                '<tr><td>% of weekly income</td><td>' +\
                 wtcf +\
                 '</td></tr>' +\
                 '</table>'
