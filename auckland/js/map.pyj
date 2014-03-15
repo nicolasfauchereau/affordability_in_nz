@@ -34,9 +34,9 @@ centroids = None
 
 $.when(
     $.getJSON(matrixFile),
-    $.ajax(auCentroidsFile), 
-    $.ajax(rentsFile),
-    $.getJSON(ausFile),
+    $.getJSON(auCentroidsFile), 
+    $.getJSON(rentsFile),
+    $.getJSON(ausFile)
 ).done(def(a, b, c, d):
     nonlocal MIndexByAu
     nonlocal M
