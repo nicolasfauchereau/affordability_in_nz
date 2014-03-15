@@ -1,6 +1,6 @@
-New Zealand Affordability Maps
+Affordability in New Zealand 
 ********************************
-Web maps of affordability in various New Zealand (NZ) cities.
+Web maps of affordability for various New Zealand (NZ) cities.
 Focused on rent, commute, parking, and car ownership costs relative to income.
 For example, see the `Auckland demo site <https://rawgithub.com/araichev/nz_affordability_maps/master/auckland/index.html>`_.
 
