@@ -55,28 +55,6 @@ $.when(
     makeMap()
 )
 
-// $.getJSON(matrixFile, def(data):
-//     nonlocal MIndexByAu
-//     nonlocal M
-//     MIndexByAu = data['index_by_name']
-//     M = data['matrix']
-// )
-// $.getJSON(auCentroidsFile, def(data):
-//     nonlocal centroids
-//     centroids = data    
-// )
-
-// $.getJSON(rentsFile, def(data):
-//     nonlocal rentByNbedroomsByAu
-//     rentByNbedroomsByAu = data
-// )
-
-// $.getJSON(ausFile, def(data):
-//     nonlocal aus
-//     aus = data    
-//     makeMap()
-// )
-
 def makeMap():    
     // Make sidebar
     // Add an income slider widget
