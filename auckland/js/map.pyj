@@ -32,28 +32,50 @@ M = None
 aus = None
 centroids = None
 
-$.getJSON(auCentroidsFile, def(data):
-    nonlocal centroids
-    centroids = data    
-)
-
-$.getJSON(rentsFile, def(data):
-    nonlocal rentByNbedroomsByAu
-    rentByNbedroomsByAu = data
-)
-
-$.getJSON(ausFile, def(data):
-    nonlocal aus
-    aus = data    
-)
-
-$.getJSON(matrixFile, def(data):
+$.when(
+    $.getJSON(matrixFile),
+    $.ajax(auCentroidsFile), 
+    $.ajax(rentsFile),
+    $.getJSON(ausFile),
+).done(def(a, b, c, d):
     nonlocal MIndexByAu
     nonlocal M
-    MIndexByAu = data['index_by_name']
-    M = data['matrix']
+    MIndexByAu = a[0]['index_by_name']
+    M = a[0]['matrix']
+
+    nonlocal centroids
+    centroids = b[0]    
+    
+    nonlocal rentByNbedroomsByAu
+    rentByNbedroomsByAu = c[0]
+
+    nonlocal aus
+    aus = d[0]    
+
     makeMap()
 )
+
+// $.getJSON(matrixFile, def(data):
+//     nonlocal MIndexByAu
+//     nonlocal M
+//     MIndexByAu = data['index_by_name']
+//     M = data['matrix']
+// )
+// $.getJSON(auCentroidsFile, def(data):
+//     nonlocal centroids
+//     centroids = data    
+// )
+
+// $.getJSON(rentsFile, def(data):
+//     nonlocal rentByNbedroomsByAu
+//     rentByNbedroomsByAu = data
+// )
+
+// $.getJSON(ausFile, def(data):
+//     nonlocal aus
+//     aus = data    
+//     makeMap()
+// )
 
 def makeMap():    
     // Make sidebar
