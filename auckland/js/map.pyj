@@ -32,11 +32,6 @@ M = None
 aus = None
 centroids = None
 
-$.getJSON(rentsFile, def(data):
-    nonlocal rentByNbedroomsByAu
-    rentByNbedroomsByAu = data
-)
-
 $.getJSON(matrixFile, def(data):
     nonlocal MIndexByAu
     nonlocal M
@@ -47,6 +42,11 @@ $.getJSON(matrixFile, def(data):
 $.getJSON(auCentroidsFile, def(data):
     nonlocal centroids
     centroids = data    
+)
+
+$.getJSON(rentsFile, def(data):
+    nonlocal rentByNbedroomsByAu
+    rentByNbedroomsByAu = data
 )
 
 $.getJSON(ausFile, def(data):
