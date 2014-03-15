@@ -8,10 +8,9 @@ import pyproj, shapely
 
 NUM_SAMPLE_POINTS = 100
 
-def get_collection(filename):
+def get_json(filename):
     """
-    Given the name of a GeoJSON file containing a feature collection,
-    return the the feature collection as a dictionary.
+    Decode a JSON file given its name.
     """
     with open(filename, 'rb') as f:
         return json.loads(f.read())
@@ -29,7 +28,7 @@ def get_au_names(filename, name_field='AU_NAME'):
     of NZ area units, return the names of the area units as a list.
     Assume the name of an area unit ``f`` is ``f['properties'][name_field]``. 
     """
-    collection = get_collection(filename)
+    collection = get_json(filename)
     au_names = get_prop_list(collection, name_field)
     return sorted(au_names)
 
@@ -279,7 +278,7 @@ def get_polygon_and_centroid_by_name(filename, name_field):
     from shapely.ops import unary_union
 
     pc_by_name = {}
-    collection = get_collection(filename)
+    collection = get_json(filename)
     for feature in collection['features']:
         name = feature['properties'][name_field]
         # Get centroid in NZTM coordinates
@@ -480,9 +479,63 @@ def stuff():
     # b = [174.75938, -36.8506]
     # print(get_maxx_distance_and_time(a, b))
 
-def get_rents():
-    pass
+def get_rents(filename, au_names, max_bedrooms=5, header=True):
+    """
+    Given the name of a CSV file in which each row contains as its first
+    several entries
     
+        #. area unit name
+        #. number of bedrooms in dwelling
+        #. count
+        #. median weekly rent paid,
+    
+    return a nested dictionary of median weekly rent paid by number of
+    bedrooms by area unit name.
+    More specifically, the keys of the dictionary are the strings in 
+    ``au_names`` and each corresponding value in a dictionary with
+    key-value pair (number of bedrooms, median weekly rent paid for a
+    dwelling with that number of bedrooms in the given area unit).
+    Only get data for dwellings with at most ``max_bedrooms`` bedrooms.
+    If ``header == True``, then skip the first row of the CSV file.
+    """
+    # Initialize output
+    rent_by_num_bedrooms_by_au_name =\
+      {au_name: {i: None for i in range(1, max_bedrooms + 1)} 
+      for au_name in au_names}
+    au_names_set = set(au_names)
+    with open(filename, 'rb') as f:
+        reader = csv.reader(f)
+        if header:
+            # Skip header row
+            reader.next() 
+        for row in reader:
+            au_name, num_bedrooms, count, rent = row[:4]
+            if au_name not in au_names_set or\
+              num_bedrooms not in [str(i) for i in range(max_bedrooms + 1)] or\
+              not rent:
+                # Skip row. 
+                # Note that null rents are already recorded in the output.
+                continue
+            num_bedrooms = int(num_bedrooms)
+            rent = int(rent)
+            rent_by_num_bedrooms_by_au_name[au_name][num_bedrooms] = rent
+
+    return rent_by_num_bedrooms_by_au_name
+
+def write_rents_to_json(csv_filename, json_filename, au_names, max_bedrooms=5,
+  header=True):
+    """
+    Run ``get_rents(csv_filename, au_names, max_bedrooms, header)``
+    and dump the result to a JSON file with the name ``json_filename``.
+    """
+    rents = get_rents(csv_filename, au_names, max_bedrooms, header)
+    with open(json_filename, 'w') as f:
+        json.dump(rents, f)
+
 if __name__ == '__main__':
     au_names = get_au_names('data/Auckland_AUs_2013.geojson')
-    print(len(au_names))
+    #rents = get_rents('../nz_census_rent_data_2013.csv', au_names)
+    #print(rents)
+    #print(len(au_names), len(rents))
+    write_rents_to_json('../nz_census_rents_2013.csv', 
+      'data/auckland_median_rents_2013.json', au_names)

@@ -4,18 +4,17 @@
     <title>Affordability in Auckland</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-<!--     <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
- -->
-     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-    <link rel="stylesheet" href="css/transit-icons/style.css">    
+    <link rel="stylesheet" href="js/jquery-ui-1.10.3/jquery-ui.css">
+    <link rel="stylesheet" href="js/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" href="fonts/Open-Sans/stylesheet.css">  
+    <link rel="stylesheet" href="css/transit-icons/style.css">  
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <h1>Affordability in Auckland</h1>  
     <p>
         You just got a job in Auckland. Now where to live?<br>
-        This application color codes Auckland's area units by their affordability to you based on rent, commute, parking, and car ownership costs determined by your answers to the questions below.
+        This application color codes Auckland's area units by their affordability to you, where affordability is based on rent, commute, parking, and car ownership costs determined by your answers to the questions below.
     </p>  
     <div id="container">
         <div id="map"></div>
@@ -85,30 +84,29 @@
         <ul>
         <li>
             This application was created by Saeid Adli and Alex Raichev, 
-            funded by <a href="http://www.mrcagney.com">MRCagney</a>, and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey <a href="docs/MaMo2014.pdf">[MaMo2014]</a>.
+            funded by <a href="http://www.mrcagney.com">MRCagney</a>, and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey <a href="http://www.sciencedirect.com/science/article/pii/S0264275114000134">[MaMo2014]</a> (pay-walled).
         </li>    
-        <li>    
-            Auckland's 2013 census area units come from Statistics New Zealand from <a href="http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx">here</a>.
+        <li> 
+            This application is open-source and its data and code can be found on Github <a href="https://github.com/araichev/nz_affordability_maps">here</a>.
+            Contributors to the project are welcome.
+            Affordability in Wellington is next!
+        </li>
+        <li>   
+            The polygons displayed are simplified versions of Auckland's 2013 census area units, the full versions of which come from Statistics New Zealand from <a href="http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx">here</a>.
         </li>
         <li>
-            The median annual income of employed Aucklanders comes from Statistics New Zealand from the June 2013 income survey from
-            <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/New ZealandIncomeSurvey_HOTPJun13qtr.aspx">here</a>.
+            The median annual income of employed Aucklanders comes from Statistics New Zealand from the June 2013 income survey
+            <a href="http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx">here</a>.
         </li>
         <li>
-            Mean rent per area unit per number of bedrooms comes from the New Zealand Ministry of Business, Innovation and Employment from the detailed mean rents file 
-            <a href="http://www.dbh.govt.nz/nz-housing-and-construction-quarterly-open-data">here</a>.
-            Since the suburbs of the rent data doesn't match the census area units 
-            (see <a href="http://www.landlords.co.nz/ask-an-expert/zones-for-market-rent-stats-2169">this thread for details</a>), 
-            the area units are mapped to the suburbs in a 
-            many-to-one fashion as detailed in
-            <a href='data/Auckland_AUs_2013_and_suburbs.csv'>this CSV file</a>.
-            This data will be replaced soon by rent data from the 2013 census.
+            Median rent per area unit per number of bedrooms data comes from a custom data request from Statistics New Zealand.
         </li> 
         <li>
-            The distances used are those between area unit centroids and are calculated through the stree network. The public transport distances are car distances, though, but will be updated soon.
+            The distances used are those between area unit centroids and are calculated through the street network. For now, the public transport data is for bus alone and its distances are car distances, but that will be improved upon soon. 
+            Also the distance from a centroid to itself is currently zero, which will also be improved upon soon.
         </li>
         <li>
-            Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, bus) = (0, 0, $0.274, $0.218). 
+            Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218). 
         </li>
         <li>
             Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.
@@ -116,12 +114,9 @@
         </ul>
     </section>
 
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <!--
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-    -->
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>    
+    <script src="js/jquery-1.9.1/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.3/jquery-ui.min.js"></script>
+    <script src='js/mapbox-1.6.1/mapbox.min.js'></script>    
     <script src="js/leaflet-pip.min.js"></script>
     <script src="js/map.js"></script>
 </body>

@@ -3,7 +3,7 @@ import stdlib
 //geoDataFile = 'data/Auckland_City_AUs_2006_small_with_rents.geojson'
 ausFile = 'data/auckland_aus_2013.geojson'
 auCentroidsFile = 'data/auckland_au_centroids_2013.geojson'
-rentsFile = 'data/mean_rents_by_nbedrooms_by_au.json'
+rentsFile = 'data/auckland_median_rents_2013.json'
 matrixFile = 'data/distance_and_time_matrix.json'
 //matrixFile = 'data/bird_distance_and_time_matrix.json'
 
@@ -229,8 +229,8 @@ def makeMap():
 
 
     // Create map 
-    clon = 174.739869
-    clat = -36.840417
+    clon = 174.8
+    clat = -36.9
     map = L.map('map', {
         'center': [clat, clon],
         'zoom': 10,
@@ -486,13 +486,12 @@ def makeMap():
         numBedrooms = $('#num-bedrooms').val()
         numBedroomsRent = $('#num-bedrooms-rent').val()
         auName = feature.properties.AU_NAME 
-        if rentByNbedroomsByAu[auName] == 'NA':
-            rent = None
-        else:
-            rent = float(rentByNbedroomsByAu[auName][numBedrooms])
+        rent = rentByNbedroomsByAu[auName][numBedrooms] 
+        if rent is not None:
+            rent = float(rent)
             rent *= int(numBedroomsRent)/int(numBedrooms)
-            // if numBedrooms == "5+":
-            //     numBedrooms = 5
+        else:
+            rent = None
         return rent
 
     def getWeeklyCommuteCostAndTime(feature):
