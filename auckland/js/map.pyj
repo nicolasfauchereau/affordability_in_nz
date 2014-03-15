@@ -32,13 +32,6 @@ M = None
 aus = None
 centroids = None
 
-$.getJSON(matrixFile, def(data):
-    nonlocal MIndexByAu
-    nonlocal M
-    MIndexByAu = data['index_by_name']
-    M = data['matrix']
-)
-
 $.getJSON(auCentroidsFile, def(data):
     nonlocal centroids
     centroids = data    
@@ -52,6 +45,13 @@ $.getJSON(rentsFile, def(data):
 $.getJSON(ausFile, def(data):
     nonlocal aus
     aus = data    
+)
+
+$.getJSON(matrixFile, def(data):
+    nonlocal MIndexByAu
+    nonlocal M
+    MIndexByAu = data['index_by_name']
+    M = data['matrix']
     makeMap()
 )
 
