@@ -89,9 +89,9 @@ body:
                             '3'
                     br()
                 
-    section(id='about'):
+    section(id='notes'):
         h2:
-            'About'
+            'Notes'
         ul:
             li:
                 'This application is created by Saeid Adli and Alex Raichev and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey' 
