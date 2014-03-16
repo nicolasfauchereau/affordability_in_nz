@@ -113,7 +113,7 @@ body:
                         a(href='http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx'):
                             'here.'
                     li:
-                        'Median rent per area unit per number of bedrooms comes from the 2013 census as a custom data request from Statistics New Zealand.'
+                        'Median rent per area unit per number of bedrooms comes from a custom 2013 census data request from Statistics New Zealand.'
                     li:
                         'The distances used are those between area unit centroids and are calculated through the street network. For now, the public transport data is via bus only and its distances are car distances, but that will be improved upon soon. Also the distance from a centroid to itself is currently zero, which will also be improved upon soon.'
                     li:
@@ -121,14 +121,14 @@ body:
                     li:
                         'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'      
             li:
-                'A big thanks to the' 
+                'Thanks heaps to the' 
                 a(href='http://www.mrcagney.com'):
                     'MRCagney'
-                'Auckland team for donating to this project.'
+                'Auckland team for donating to this project!'
             li: 
-                'If you have any feedback, feel free to'  
+                'Feedback?'  
                 a(href='mailto:affordability-in-nz@raichev.net'):
-                    'email Alex.'
+                    'Email Alex.'
 
     script(src='js/jquery-1.11.0/jquery.min.js')
     script(src='js/jquery-ui-1.10.3/jquery-ui.min.js')

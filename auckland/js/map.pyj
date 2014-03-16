@@ -337,7 +337,7 @@ def makeMap():
     
     info.addTo(map)
 
-    workMarker = L.marker([-36.69925, 175.07263], {
+    workMarker = L.marker([-36.74, 175.07263], {
         'draggable': True,
         'icon': L.mapbox.marker.icon({
             'marker-color': '#9370DB', // COLORS[-1],
