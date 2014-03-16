@@ -275,7 +275,7 @@ def makeMap():
     // 'gray'])
 
     // Add a legend to the map
-    legend = L.control({position: 'bottomleft'});
+    legend = L.control({'position': 'bottomleft'});
     legend.onAdd = def(map):
         div = L.DomUtil.create('div', 'legend')
         div.innerHTML = 'Cost as % of income<br/>'
@@ -285,6 +285,10 @@ def makeMap():
         return div
     
     legend.addTo(map)
+
+    // Add a scale display to the map
+    L.control.scale({'imperial': False, 'position': 'topleft'}).addTo(map);
+
 
     // Add a info box to the map
     info = L.control({position: 'bottomright'})
