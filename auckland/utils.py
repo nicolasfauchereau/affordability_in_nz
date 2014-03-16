@@ -7,6 +7,7 @@ import pyproj, shapely
 
 
 NUM_SAMPLE_POINTS = 100
+MODES = ['walk', 'bicycle', 'public_transport', 'car']
 
 def get_json(filename):
     """
@@ -22,13 +23,12 @@ def get_prop_list(collection, prop):
     """
     return [f['properties'][prop] for f in collection['features']]
 
-def get_au_names(filename, name_field='AU_NAME'):
+def get_au_names(collection, name_field='AU_NAME'):
     """
-    Given the name of a GeoJSON file containing a feature collection
-    of NZ area units, return the names of the area units as a list.
+    Given a decoded GeoJSON feature collection of NZ area units, 
+    return the names of the area units as a list.
     Assume the name of an area unit ``f`` is ``f['properties'][name_field]``. 
     """
-    collection = get_json(filename)
     au_names = get_prop_list(collection, name_field)
     return sorted(au_names)
 
@@ -106,7 +106,7 @@ def get_bird_distance_and_time(a, b):
     d = distance(a[0], a[1], b[0], b[1])
     return my_round((d, d/40), 2)
 
-def get_mapquest_distance_and_time(a, b, mode='car', many_to_one=False):
+def get_mapquest_distance_and_time(a, b, mode='car'):
     """
     Given WGS84 longitude-latitude points ``a`` and ``b``,
     return the distance in kilometers and the time in minutes of the 
@@ -231,6 +231,7 @@ def median(s):
     """
     if not s:
         return None
+    s = list(s)
     s.sort()
     n = len(s)
     if n % 2 == 1:
@@ -264,10 +265,10 @@ def coords_to_polygon(coords, proj=None):
         interior = []
     return Polygon(exterior, interior)
    
-def get_polygon_and_centroid_by_name(filename, name_field):
+def get_polygon_and_centroid_by_name(collection, name_field):
     """
-    Assume ``filename`` is the name of a GeoJSON file comprising a feature
-    collection of (multi)polygons in WGS84 coordinates, each of which has a 
+    Given a decoded GeoJSON feature collection of (multi)polygons in 
+    WGS84 coordinates, each of which has a 
     name specified in ``feature['properties'][name_field]``. 
     Return a dictionary with the key-value pairs (polygon name, 
     (polygon as a Shapely (multi)polygon in NZTM coordinates, 
@@ -278,7 +279,6 @@ def get_polygon_and_centroid_by_name(filename, name_field):
     from shapely.ops import unary_union
 
     pc_by_name = {}
-    collection = get_json(filename)
     for feature in collection['features']:
         name = feature['properties'][name_field]
         # Get centroid in NZTM coordinates
@@ -297,15 +297,14 @@ def get_polygon_and_centroid_by_name(filename, name_field):
         pc_by_name[name] = (polygon, polygon.centroid)
     return pc_by_name
 
-def get_centroids_geojson(filename, name_field):
+def get_centroids_geojson(collection, name_field):
     """
-    Assume ``filename`` is the name of a GeoJSON file comprising a feature
-    collection of (multi)polygons in WGS84 coordinates, each of which has a 
-    name specified in ``feature['properties'][name_field]``. 
-    Return a decoded GeoJSON feature collection of the polygon centroids 
-    as point features.
+    Given a decode GeoJSON feature of (multi)polygons in WGS84 coordinates,
+    each of which has a name specified in 
+    ``feature['properties'][name_field]``, return a decoded GeoJSON feature 
+    collection of the polygon centroids as point features.
     """
-    pc_by_name = get_polygon_and_centroid_by_name(filename,
+    pc_by_name = get_polygon_and_centroid_by_name(collection,
       name_field)
     features = []
     for name, pc in pc_by_name.items():
@@ -346,11 +345,10 @@ def get_distance_and_time_matrix(origin_names):
     """
     from itertools import product
 
-    modes = ['walk', 'bicycle', 'car', 'public_transport']
-    M = {mode: {} for mode in modes}
-    
+    M = {mode: {} for mode in MODES}
+
     # Read distance and time data from CSVs
-    for mode in modes:
+    for mode in MODES:
         filename = 'data/' + mode + '_distance_and_time.csv'
         with open(filename, 'rb') as f:
             reader = csv.reader(f)
@@ -381,8 +379,8 @@ def get_distance_and_time_matrix(origin_names):
                       (distance, time) 
 
     # Compress each M[mode] by turning it into a list of lists.
-    MM = {mode: [] for mode in modes}
-    for mode in modes:
+    MM = {mode: [] for mode in MODES}
+    for mode in MODES:
         for on  in origin_names:
             row = []
             for dn in origin_names:
@@ -394,12 +392,13 @@ def get_distance_and_time_matrix(origin_names):
     index_by_name = {on: i for (i, on) in enumerate(origin_names)}
     return index_by_name, MM
 
-def get_distance_and_time_matrix_online(filename, name_field, n=NUM_SAMPLE_POINTS):
+def get_distance_and_time_matrix_online(collection, name_field, 
+  n=NUM_SAMPLE_POINTS):
     """
-    Assume ``filename`` is the name of a GeoJSON file comprising a feature
-    collection of (multi)polygons in WGS84 coordinates, each of which has a 
-    name specified in ``feature['properties']['name_field']``. 
-    Return the output pair ``(index_by_name, M)``, where ``M`` is a nested
+    Given a decoded GeoJSON feature collection of (multi)polygons in WGS84
+    coordinates, each of which has a name specified in 
+    ``feature['properties']['name_field']``, return the output pair 
+    ``(index_by_name, M)``, where ``M`` is a nested
     dictionary/matrix such that ``M[mode][i][j]`` equals the distance in km
     and the time in hours that it takes to travel from centroid of 
     polygon with index ``i >= 0`` to the centroid of polygon with index 
@@ -413,21 +412,19 @@ def get_distance_and_time_matrix_online(filename, name_field, n=NUM_SAMPLE_POINT
     """
     from itertools import product
 
-    modes = {'walk', 'bicycle', 'car', 'public_transport'}
-    pc_by_name = get_polygon_and_centroid_by_name(filename=filename, 
-      name_field=name_field)
+    pc_by_name = get_polygon_and_centroid_by_name(collection, name_field)
     names = pc_by_name.keys()
     N = len(names)
     centroids_wgs84 = [pj_nztm(*point_to_tuple(pc[1]), inverse=True)
       for pc in pc_by_name.values()]
     index_by_name = {name: i for (i, name) in enumerate(names)}
-    M = {m: [] for m in modes}
+    M = {m: [] for m in MODES}
 
     # Calculate M
     for i in range(N):
         a = centroids_wgs84[i]
         # Create matrix row M[mode]_i
-        for m in modes:
+        for m in MODES:
             M[m].append([])
         for j in range(N):
             if j != i:
@@ -449,35 +446,26 @@ def get_distance_and_time_matrix_online(filename, name_field, n=NUM_SAMPLE_POINT
 
     return index_by_name, M
 
-def stuff():
-    pass
-    #    au_file = 'data/Auckland_AUs_2013.geojson'
-    # matrix_file = 'data/distance_and_time_matrix.json'
-
-    # pc_by_name = get_polygon_and_centroid_by_name(au_file, 'AU_NAME')
-    # centroids_by_name = {name: pj_nztm(*point_to_tuple(pc[1]), inverse=True)
-    #   for name, pc in pc_by_name.items()}
-    # with open('data/au_centroids.csv', 'w') as f:
-    #     writer = csv.writer(f)
-    #     writer.writerow(['name', 'WGS84 longitude', 'WGS84 latitude'])
-    #     for name, centroid in centroids_by_name.items():
-    #         writer.writerow([name, centroid[0], centroid[1]])
-
-    # Create distance and time matrix from Saeid's CSV files
-    # index_by_name, M = get_distance_and_time_matrix(sorted(pc_by_name.keys()))
-    #print(M['car'][index_by_name['Waiheke Island']][index_by_name['Islands-Motutapu Rangitoto Rakino']])
-    
-    # # Dump matrix to JSON
-    # with open(matrix_file, 'w') as json_file:
-    #     json.dump({'index_by_name': index_by_name, 'matrix': M}, json_file)
-    
-    # geojson = get_centroids_geojson(au_file, 'AU_NAME')
-    # with open('data/au_centroids.geojson', 'w') as json_file:
-    #     json.dump(geojson, json_file)
-
-    # a = [174.75153, -36.89052]
-    # b = [174.75938, -36.8506]
-    # print(get_maxx_distance_and_time(a, b))
+# TODO: finish this function
+def get_distance_and_time_diagonal(collection):
+    pc_by_name = get_polygon_and_centroid_by_name(collection, 'AU_NAME')
+    for au_name, pc in pc_by_name.items():
+        for mode in MODES:
+            get_distance_and_time_to_self(pc[0], pc[1], mode=mode)
+        
+def get_distance_and_time_to_self(polygon, centroid, n=NUM_SAMPLE_POINTS,
+  mode=MODES[0]):
+    """
+    Given a polygon and its centroid in NZTM coordinates,
+    return...
+    """
+    centroid = pj_nztm(*point_to_tuple(centroid), inverse=True)
+    sample_points = get_sample_points(polygon, n)
+    sample_points = [pj_nztm(*point_to_tuple(p), inverse=True) 
+      for p in sample_points]
+    distances, times = zip(*[get_mapquest_distance_and_time(centroid, p, mode) 
+        for p in sample_points])
+    return(median(distances), median(times))
 
 def get_rents(filename, au_names, max_bedrooms=5, header=True):
     """
@@ -533,9 +521,14 @@ def write_rents_to_json(csv_filename, json_filename, au_names, max_bedrooms=5,
         json.dump(rents, f)
 
 if __name__ == '__main__':
-    au_names = get_au_names('data/Auckland_AUs_2013.geojson')
+    #collection = get_json('data/Auckland_AUs_2013.geojson')
+    #au_names = get_au_names(collection)
     #rents = get_rents('../nz_census_rent_data_2013.csv', au_names)
     #print(rents)
     #print(len(au_names), len(rents))
-    write_rents_to_json('../nz_census_rents_2013.csv', 
-      'data/auckland_median_rents_2013.json', au_names)
+    # write_rents_to_json('../nz_census_rents_2013.csv', 
+    #   'data/auckland_median_rents_2013.json', au_names)
+    a = (174.76196765899655, -36.846315278298114)
+    b = (174.7931671142578, -36.88250409463316)
+    result = get_mapquest_distance_and_time(a, b, 'car')
+    print(result)

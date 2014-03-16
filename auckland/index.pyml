@@ -28,7 +28,8 @@ body:
                     input(type='text' id='income' readonly)
                     div(id='income-slider')
                     div(id='income-note'):
-                        'Median gross annual income of' br()br()
+                        'Median gross annual income of' 
+                        br()br()
                         'employed Aucklanders ($45,864)'
                 li:
                     'How many bedrooms will your dwelling have?'
