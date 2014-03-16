@@ -16,7 +16,7 @@ body:
     p:
         'You just got a job in Auckland. Now where to live?' 
         br()
-        'This application color codes Auckland's area units by their affordability to you, where affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below.'
+        "This application color codes Auckland's area units by their affordability to you, where affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below."
     div(id='wrap'):
         div(id='map')
         div(id='sidebar'):
@@ -94,7 +94,7 @@ body:
             'About'
         ul:
             li:
-                'This application is created by Saeid Adli and Alex Raichev and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland' by K. Mattingly and J. Morrissey"' 
+                'This application is created by Saeid Adli and Alex Raichev and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey' 
                 a(href='http://www.sciencedirect.com/science/article/pii/S0264275114000134'):
                     '[MaMo2014]'
                 '(pay-walled). This application is open-source, and its data and code can be found on Github' 
@@ -105,7 +105,7 @@ body:
                 'Regarding data sources:'  
                 ul:
                     li: 
-                        'The polygons displayed are simplified versions of Auckland's 2013 census area units, the full versions of which come from Statistics New Zealand from' 
+                        "The polygons displayed are simplified versions of Auckland's 2013 census area units, the full versions of which come from Statistics New Zealand from" 
                         a(href='http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx'):
                             'here.'
                     li:
@@ -121,13 +121,13 @@ body:
                     li:
                         'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'      
             li:
-                'A big thanks to the 
+                'A big thanks to the' 
                 a(href='http://www.mrcagney.com'):
                     'MRCagney'
                 'Auckland team for donating to this project.'
             li: 
                 'If you have any feedback, feel free to'  
-                a(href='mailto:affordability@raichev.net'):
+                a(href='mailto:affordability-in-nz@raichev.net'):
                     'email Alex.'
 
     script(src='js/jquery-1.11.0/jquery.min.js')
