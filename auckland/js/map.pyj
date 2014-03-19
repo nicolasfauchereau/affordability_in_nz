@@ -241,9 +241,8 @@ def makeMap():
         'maxBounds': [[clat - 0.8 , clon - 0.8], [clat + 0.8, clon + 1.1]],
     })
 
-    // Get tiles from Github
-    tilesURL = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
-    //L.tileLayer(tilesURL).addTo(map)
+    // Disable zoom-by-scroll
+    map.scrollWheelZoom.disable()
     
     // Remove 'Leaflet' link from corner of map  
     map.attributionControl.setPrefix('')
