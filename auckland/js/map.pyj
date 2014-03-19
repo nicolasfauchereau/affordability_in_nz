@@ -32,6 +32,7 @@ M = None
 aus = None
 centroids = None
 
+spinner = new Spinner().spin($("#map").get(0))
 $.when(
     $.getJSON(matrixFile),
     $.getJSON(auCentroidsFile), 
@@ -52,6 +53,7 @@ $.when(
     nonlocal aus
     aus = d[0]    
 
+    spinner.stop()
     makeMap()
 )
 
@@ -95,7 +97,7 @@ def makeMap():
         if nbr > nb:
             nbr = nb
             group.val(nb)
-        for x in range(1, 5):
+        for x in range(1, 6):
             item = $('#num-bedrooms-rent li[value=' + x + ']')
             if x == nbr:
                 item.addClass('ui-selected')

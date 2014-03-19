@@ -521,8 +521,8 @@ def write_rents_to_json(csv_filename, json_filename, au_names, max_bedrooms=5,
         json.dump(rents, f)
 
 if __name__ == '__main__':
-    #collection = get_json('data/Auckland_AUs_2013.geojson')
-    #au_names = get_au_names(collection)
+    collection = get_json('data/Auckland_AUs_2013.geojson')
+    pc_by_name = get_polygon_and_centroid_by_name(collection, 'AU_NAME')
     #rents = get_rents('../nz_census_rent_data_2013.csv', au_names)
     #print(rents)
     #print(len(au_names), len(rents))
@@ -530,5 +530,5 @@ if __name__ == '__main__':
     #   'data/auckland_median_rents_2013.json', au_names)
     a = (174.76196765899655, -36.846315278298114)
     b = (174.7931671142578, -36.88250409463316)
-    result = get_mapquest_distance_and_time(a, b, 'car')
+    result = get_google_distance_and_time(a, b, 'car')
     print(result)
