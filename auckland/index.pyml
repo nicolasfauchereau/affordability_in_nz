@@ -105,7 +105,7 @@ body:
                 '(pay-walled). This application is open-source, and its data and code can be found on Github' 
                 a(href='https://github.com/araichev/affordability_in_nz'):
                     'here.'
-                'Contributors to the project are welcome.'
+                'Contributors to the project are welcome. Affordability in Wellington is next!'
             li:
                 'Regarding data sources:'  
                 ul:
