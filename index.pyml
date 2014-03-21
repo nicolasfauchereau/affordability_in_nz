@@ -13,6 +13,16 @@ html:
 body:
     h1:
         'Affordability in Auckland'  
+    # div(id='nav'):
+    #     ul:
+    #         li:
+    #             a(id='Auckland'):
+    #                 'Auckland'
+    #         li:
+    #             '/'
+    #         li: 
+    #             a(id='Wellington'):
+    #                 'Wellington'
     p:
         'You just got a job in Auckland. Now where to live?' 
         br()
@@ -60,7 +70,7 @@ body:
                             '5'
                     br()
                 li:
-                    'Where will you work? Move the map marker.'
+                    'Where will you work? Move the purple map marker.'
                 li:
                     'How will you commute?'
                     ul(id='mode')
