@@ -11,22 +11,33 @@ body {
     font-weight: 500;
     color: inherit; }
 
-    a {
-      color: #2b83ba;
-      text-decoration: none; }
+    h1 {
+      margin-bottom: 0.5em; }
 
-      a:hover, a:active {
-        text-decoration: underline; }
+      #nav ul {
+        list-style-type: none;
+        margin-top: -1.5em;
+        padding-left: 0; }
+        #nav ul li {
+          display: inline;
+          margin-left: 0; }
 
-        p {
-          margin: 0 0 1.2em 0; }
+a {
+  color: #2b83ba;
+  text-decoration: none; }
 
-          table {
-            border-collapse: collapse;
-            width: 100%;
-            font: inherit; }
-            table td + td {
-              text-align: right; }
+  a:hover, a:active {
+    text-decoration: underline; }
+
+    p {
+      margin: 0 0 1.2em 0; }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font: inherit; }
+        table td + td {
+          text-align: right; }
 
 ol {
   border: 0px solid black; }
