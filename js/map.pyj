@@ -1,27 +1,24 @@
 import stdlib
 
-ausFile = 'data/auckland/auckland_aus_2013.geojson'
-auCentroidsFile = 'data/auckland/auckland_au_centroids_2013.geojson'
-rentsFile = 'data/auckland/auckland_median_rents_2013.json'
-matrixFile = 'data/auckland/distance_and_time_matrix.json'
+ausFile = 'data/Auckland/Auckland_AU2013.geojson'
+auCentroidsFile = 'data/Auckland/Auckland_AU2013_centroids.geojson'
+rentsFile = 'data/Auckland/Auckland_AU2013_rents.json'
+matrixFile = 'data/Auckland/Auckland_AU2013_commutes.json'
+lon = 174.8
+lat = -36.9
+maxBounds = [[lat - 0.8 , lon - 0.8], [lat + 0.8, lon + 1.1]]
+markerLatLon = [-36.74, 175.07263]
+median_annual_income = 52*882
 
-def numToDollarStr(x, inverse=False):
-    // Given a float `x`, round it to the nearest integer,
-    // convert it into a string with commas as
-    // thousands separators and prepend a dollar sign.
-    // If `inverse` is True, then assume `x` has the output format
-    // mentioned above, and convert it back to an integer.
-    if not inverse:
-        if x is None:
-            return 'n/a'
-        dollars = x.toFixed(0)
-        // Insert separating commas
-        dollars = dollars.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-        return '$' + dollars 
-    else:
-        if x == 'n/a':
-            return None
-        return int(x.replace('$', '').replace(',',''))
+// ausFile = 'data/Wellington/Wellington_AU2013.geojson'
+// auCentroidsFile = 'data/Wellington/Wellington_AU2013_centroids.geojson'
+// rentsFile = 'data/Wellington/Wellington_AU2013_rents.json'
+// matrixFile = 'data/Wellington/Wellington_AU2013_bird_commutes.json'
+// lon = 174.97
+// lat = -41.25
+// maxBounds = [[lat - 0.8 , lon - 0.8], [lat + 1.6, lon + 2.0]]
+// markerLatLon = [-41.2, 174.6]
+// median_annual_income = 52*921
 
 // Get data and then make map
 rentByNbedroomsByAu = None
@@ -55,17 +52,34 @@ $.when(
     makeMap()
 )
 
+def numToDollarStr(x, inverse=False):
+    // Given a float `x`, round it to the nearest integer,
+    // convert it into a string with commas as
+    // thousands separators and prepend a dollar sign.
+    // If `inverse` is True, then assume `x` has the output format
+    // mentioned above, and convert it back to an integer.
+    if not inverse:
+        if x is None:
+            return 'n/a'
+        dollars = x.toFixed(0)
+        // Insert separating commas
+        dollars = dollars.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+        return '$' + dollars 
+    else:
+        if x == 'n/a':
+            return None
+        return int(x.replace('$', '').replace(',',''))
+
 def makeMap():    
     // Make sidebar
     // Add an income slider widget
-    MEDIAN_ANNUAL_INCOME = 52*882
     $(def():
         $( "#income-slider" ).slider({
             'orientation': 'horizontal',
             'range': 'min',
             'min': 100,
             'max': 100000,
-            'value': MEDIAN_ANNUAL_INCOME,
+            'value': median_annual_income,
             'step': 100,
             'slide': def(event, ui): 
                 // Update income display
@@ -82,7 +96,7 @@ def makeMap():
         min = sv.slider( "option", "min" )
         range = sv.slider( "option", "max" ) - min
         el = $('<label>&#9650;</label><br>').css('left', 
-            (MEDIAN_ANNUAL_INCOME/range*100) +'%')
+            (median_annual_income/range*100) +'%')
         $("#income-slider").append(el)
     )
 
@@ -229,14 +243,12 @@ def makeMap():
 
 
     // Create map 
-    clon = 174.8
-    clat = -36.9
     map = L.map('map', {
-        'center': [clat, clon],
+        'center': [lat, lon],
         'zoom': 10,
         'minZoom': 8,
         'maxZoom': 13,
-        'maxBounds': [[clat - 0.8 , clon - 0.8], [clat + 0.8, clon + 1.1]],
+        'maxBounds': maxBounds,
     })
 
     // Disable zoom-by-scroll
@@ -309,7 +321,7 @@ def makeMap():
                 wct = wct.toFixed(1) + '&nbsp;h'
             else:
                 wct = 'n/a'
-            message = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
+            message = '<h4>' + feature.properties.AU2013_NAM + '</h4>' +\
                 '<table>' +\
                 '<tr><td>Rent per week (' + nbr + ' of ' + nb + ' bd)</td><td>' +\
                 numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
@@ -336,7 +348,7 @@ def makeMap():
     
     info.addTo(map)
 
-    workMarker = L.marker([-36.74, 175.07263], {
+    workMarker = L.marker(markerLatLon, {
         'draggable': True,
         'icon': L.mapbox.marker.icon({
             'marker-color': '#9370DB', // COLORS[-1],
@@ -357,7 +369,7 @@ def makeMap():
             //console.log('aus still undefined')
             return None
         if layer:
-            auName = layer.feature.properties.AU_NAME
+            auName = layer.feature.properties.AU2013_NAM
         else:
             auName = None
         return auName
@@ -388,8 +400,8 @@ def makeMap():
         'fillOpacity': 0.8,
     }
     def onEachCentroidFeature(feature, layer):
-        if feature.properties and feature.properties.AU_NAME: 
-            html = feature.properties.AU_NAME + ' centroid<br/>' +\
+        if feature.properties and feature.properties.AU2013_NAM: 
+            html = feature.properties.AU2013_NAM + ' centroid<br/>' +\
                 layer.getLatLng()  
             layer.bindPopup(html)
     
@@ -435,7 +447,7 @@ def makeMap():
         // nb = $('#num-bedrooms').val()
         // nbr = $('#num-bedrooms-rent').val()
         // wcc, wct = getWeeklyCommuteCostAndTime(feature)
-        // popupContent = '<h4>' + feature.properties.AU_NAME + '</h4>' +\
+        // popupContent = '<h4>' + feature.properties.AU2013_NAM + '</h4>' +\
         //     '<table>' +\
         //     '<tr><td>Rent per week (for ' + nbr + ' of ' + nb + ' bedrooms)</td><td>' +\
         //     numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
@@ -488,7 +500,7 @@ def makeMap():
         // then return None. 
         numBedrooms = $('#num-bedrooms').val()
         numBedroomsRent = $('#num-bedrooms-rent').val()
-        auName = feature.properties.AU_NAME 
+        auName = feature.properties.AU2013_NAM         
         rent = rentByNbedroomsByAu[auName][numBedrooms] 
         if rent is not None:
             rent = float(rent)
@@ -500,7 +512,7 @@ def makeMap():
     def getWeeklyCommuteCostAndTime(feature):
         mode = $('#mode').val() 
         // Get commute distance and time from this feature to work
-        auName = feature.properties.AU_NAME
+        auName = feature.properties.AU2013_NAM
         i = MIndexByAu[auName]
         workAuName = getWorkAuName(workMarker)
         if workAuName is None:
