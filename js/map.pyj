@@ -1,26 +1,14 @@
 import stdlib
 
-ausFile = 'data/Auckland/Auckland_AU2013.geojson'
-auCentroidsFile = 'data/Auckland/Auckland_AU2013_centroids.geojson'
-rentsFile = 'data/Auckland/Auckland_AU2013_rents.json'
-matrixFile = 'data/Auckland/Auckland_AU2013_commutes.json'
-lon = 174.8
-lat = -36.9
-maxBounds = [[lat - 0.8 , lon - 0.8], [lat + 0.8, lon + 1.1]]
-markerLatLon = [-36.74, 175.07263]
-median_annual_income = 52*882
-
-// ausFile = 'data/Wellington/Wellington_AU2013.geojson'
-// auCentroidsFile = 'data/Wellington/Wellington_AU2013_centroids.geojson'
-// rentsFile = 'data/Wellington/Wellington_AU2013_rents.json'
-// matrixFile = 'data/Wellington/Wellington_AU2013_bird_commutes.json'
-// lon = 174.97
-// lat = -41.25
-// maxBounds = [[lat - 0.8 , lon - 0.8], [lat + 1.6, lon + 2.0]]
-// markerLatLon = [-41.2, 174.6]
-// median_annual_income = 52*921
-
-// Get data and then make map
+// Get data embedded in webpage
+data = $.parseJSON($('#data').html())
+lon = data['lon']
+lat = data['lat']
+maxBounds = data['maxBounds']
+markerLatLon = data['markerLatLon']
+medianAnnualIncome = data['medianAnnualIncome']
+    
+// Load data files and then make map
 rentByNbedroomsByAu = None
 MIndexByAu = None
 M = None
@@ -29,10 +17,10 @@ centroids = None
 
 spinner = new Spinner().spin($("#map").get(0))
 $.when(
-    $.getJSON(matrixFile),
-    $.getJSON(auCentroidsFile), 
-    $.getJSON(rentsFile),
-    $.getJSON(ausFile)
+    $.getJSON(data['commutesFile']),
+    $.getJSON(data['centroidsFile']), 
+    $.getJSON(data['rentsFile']),
+    $.getJSON(data['ausFile'])
 ).done(def(a, b, c, d):
     nonlocal MIndexByAu
     nonlocal M
@@ -79,7 +67,7 @@ def makeMap():
             'range': 'min',
             'min': 100,
             'max': 100000,
-            'value': median_annual_income,
+            'value': medianAnnualIncome,
             'step': 100,
             'slide': def(event, ui): 
                 // Update income display
@@ -96,7 +84,7 @@ def makeMap():
         min = sv.slider( "option", "min" )
         range = sv.slider( "option", "max" ) - min
         el = $('<label>&#9650;</label><br>').css('left', 
-            (median_annual_income/range*100) +'%')
+            (medianAnnualIncome/range*100) +'%')
         $("#income-slider").append(el)
     )
 
