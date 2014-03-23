@@ -1,0 +1,25 @@
+import base
+import map_tool
+
+def main():
+    p:
+        'You just got a job in Wellington. Now where to live?' 
+        br()
+        "This application color codes Wellington's area units by their affordability to you. Here affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below."
+    map_tool('employed Wellingtonians ($47,900)')
+
+def data():
+    json:
+        {
+          "ausFile": "data/Wellington/Wellington_AU2013.geojson",
+          "centroidsFile": "data/Wellington/Wellington_AU2013_centroids.geojson",
+          "rentsFile": "data/Wellington/Wellington_AU2013_rents.json",
+          "commutesFile": "data/Wellington/Wellington_AU2013_bird_commutes.json",
+          "lon": 174.95,
+          "lat": -41.2,
+          "maxBounds": [[-42.0 , 174.17], [-39.65, 176.97]],
+          "markerLatLon": [-41.2, 174.6],
+          "medianAnnualIncome": 47892
+        }
+
+page()
