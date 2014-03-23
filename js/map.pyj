@@ -19,9 +19,9 @@ spinner = new Spinner().spin($("#map").get(0))
 $.when(
     $.getJSON(data['ausFile']),
     $.getJSON(data['rentsFile']),
-    $.getJSON(data['commutesFile']),
-    $.getJSON(data['centroidsFile'])
-).done(def(a, b, c, d):
+    $.getJSON(data['commutesFile'])
+    // $.getJSON(data['centroidsFile'])
+).done(def(a, b, c): 
     nonlocal aus
     aus = a[0]    
 
@@ -33,8 +33,8 @@ $.when(
     MIndexByAu = c[0]['index_by_name']
     M = c[0]['matrix']
 
-    nonlocal centroids
-    centroids = d[0]    
+    // nonlocal centroids
+    // centroids = d[0]    
     
     spinner.stop()
     makeMap()
@@ -301,6 +301,7 @@ def makeMap():
         return this._div
 
     info.update = def(feature=None):
+        // TODO: Optimize this. Too many total cost calculations! 
         if feature:
             if getWeeklyTotalCostFraction(feature) is None:
                 wtcf = 'n/a'
@@ -347,8 +348,13 @@ def makeMap():
         })
     }).addTo(map)
     workMarker.bindPopup('Move this marker to where you work')
-    workMarker.on('dragend', def(e):
+    workMarker.on('drag', def(e):
+        // In marker popup display the name of the area unit 
+        // being hovered over
         setWorkPopup(this)
+    )
+    workMarker.on('dragend', def(e):
+        // setWorkPopup(this)
         // Recolor aus
         aus.setStyle(style)
     )
@@ -358,7 +364,6 @@ def makeMap():
         try:
             layer = leafletPip.pointInLayer(latLon, aus, True)[0]
         except:
-            //console.log('aus still undefined')
             return None
         if layer:
             auName = layer.feature.properties.AU2013_NAM
