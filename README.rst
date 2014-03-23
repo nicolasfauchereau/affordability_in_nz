@@ -34,8 +34,8 @@ Notes on Wellington
 
 Todo
 ====
-- Get public transport data that includes ferry and rail.
-- Get a better public transport cost estimate using Hop card zones.
+- Improve public transport distances and times to include ferry and rail.
+- Improve public transport cost estimates, possibly using Hop card zones.
 - Replace the zero distance of a centroid to itself with the median distance of N >= 100 points to the centroid, where the points are sampled uniformly at random from the area unit in question.
 
 Authors
