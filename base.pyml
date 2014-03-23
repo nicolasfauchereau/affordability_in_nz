@@ -21,11 +21,11 @@ def page():
                 li:
                     a(href='index.html'):
                         'Auckland'
-                li:
-                    '/'
-                li: 
-                    a(href='wellington.html'):
-                        'Wellington'
+                # li:
+                #     '/'
+                # li: 
+                #     a(href='wellington.html'):
+                #         'Wellington'
                 li:
                     '//'
                 li: 
