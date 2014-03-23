@@ -17,25 +17,25 @@ centroids = None
 
 spinner = new Spinner().spin($("#map").get(0))
 $.when(
-    $.getJSON(data['commutesFile']),
-    $.getJSON(data['centroidsFile']), 
+    $.getJSON(data['ausFile']),
     $.getJSON(data['rentsFile']),
-    $.getJSON(data['ausFile'])
+    $.getJSON(data['commutesFile']),
+    $.getJSON(data['centroidsFile'])
 ).done(def(a, b, c, d):
+    nonlocal aus
+    aus = a[0]    
+
+    nonlocal rentByNbedroomsByAu
+    rentByNbedroomsByAu = b[0]
+
     nonlocal MIndexByAu
     nonlocal M
-    MIndexByAu = a[0]['index_by_name']
-    M = a[0]['matrix']
+    MIndexByAu = c[0]['index_by_name']
+    M = c[0]['matrix']
 
     nonlocal centroids
-    centroids = b[0]    
+    centroids = d[0]    
     
-    nonlocal rentByNbedroomsByAu
-    rentByNbedroomsByAu = c[0]
-
-    nonlocal aus
-    aus = d[0]    
-
     spinner.stop()
     makeMap()
 )
@@ -285,7 +285,6 @@ def makeMap():
             div.innerHTML += '<span style="background:' +\
               getColor(BINS[n - i - 1]) +\
               '"></span><span>' + LABELS[n - i - 1] + '</span><br/>'
-        print(div.innerHTML)
         return div
     
     legend.addTo(map)
