@@ -1,5 +1,5 @@
-$highlight-color: #d7191c
-$opacity: 0.8
+$highlight-color: rgb(213, 62, 79) 
+$opacity: 1.0
 $font-size: 12pt 
 $small-font-size: 9pt
 $tiny-font-size: 7pt
@@ -44,7 +44,7 @@ h1
             margin-left: 0
 
 a
-    color: #2b83ba
+    color: rgb(50, 136, 189)
     text-decoration: none
 a:hover, a:active
     text-decoration: underline
@@ -69,11 +69,11 @@ ol
     overflow: hidden
 #map
     float: left
-    width: 70%
-    min-height: 500px
+    width: 75%
+    min-height: 550px
 #sidebar
     float: right
-    width: 27%
+    width: 23%
     padding-left: 1em
 .info
     @include box
@@ -83,11 +83,13 @@ ol
     min-height: 135px
 .legend
     @include box
-    @include font($small-font-size, 1.7)
-    width: 220px
+    @include font($small-font-size, 1.2)
+    height: 205px
+    width: 65px
     padding-bottom: 1em
     span
-        padding: 0.2em 0.4em
+        line-height: 1.3
+        padding: 0 0.8em
 section
     margin-bottom: 1em
 #income

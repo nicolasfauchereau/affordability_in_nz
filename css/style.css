@@ -23,7 +23,7 @@ body {
           margin-left: 0; }
 
 a {
-  color: #2b83ba;
+  color: #3288bd;
   text-decoration: none; }
 
   a:hover, a:active {
@@ -57,12 +57,12 @@ ol {
 
   #map {
     float: left;
-    width: 70%;
-    min-height: 500px; }
+    width: 75%;
+    min-height: 550px; }
 
     #sidebar {
       float: right;
-      width: 27%;
+      width: 23%;
       padding-left: 1em; }
 
       .info {
@@ -98,15 +98,17 @@ ol {
   border-color: white;
   font-family: "open_sansregular", Helvetica, sans-serif;
   font-size: 9pt;
-  line-height: 1.7;
+  line-height: 1.2;
   color: black;
-  width: 220px;
+  height: 205px;
+  width: 65px;
   padding-bottom: 1em; }
   .legend h4 {
     margin: 0 0 0.5em 0;
     font-weight: bold; }
     .legend span {
-      padding: 0.2em 0.4em; }
+      line-height: 1.3;
+      padding: 0 0.8em; }
 
 section {
   margin-bottom: 1em; }
@@ -114,8 +116,8 @@ section {
   #income {
     border: 0;
     width: 110px;
-    color: #d7191c;
-    opacity: 0.8;
+    color: #d53e4f;
+    opacity: 1;
     font-size: 150%;
     font-weight: bold;
     background-color: white; }
@@ -153,8 +155,8 @@ section {
       #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
       #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
       #num-cars .ui-selecting {
-        background: #d7191c;
-        opacity: 0.8;
+        background: #d53e4f;
+        opacity: 1;
         color: white; }
         #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode .blocked,
         #num-cars .blocked {
@@ -163,8 +165,8 @@ section {
 #num-workdays, #parking {
   border: 0;
   width: 2.3em;
-  color: #d7191c;
-  opacity: 0.8;
+  color: #d53e4f;
+  opacity: 1;
   font-size: 150%;
   font-weight: bold;
   background-color: white; }

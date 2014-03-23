@@ -26,11 +26,11 @@
                 </a>
             </li>
             <li>
-                /
+                //
             </li>
             <li>
-                <a href='wellington.html'>
-                    Wellington
+                <a href='notes.html'>
+                    Notes
                 </a>
             </li>
         </ul>
@@ -38,7 +38,7 @@
     <p>
         You just got a job in Wellington. Now where to live?
         <br />
-        This application color codes Wellington's area units by their affordability to you, where affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below.
+        This application color codes Wellington's area units by their affordability to you. Here affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below.
     </p>
     <div id='wrap'>
         <div id='map'>
@@ -56,7 +56,7 @@
                     <div id='income-note'>
                         Median gross annual income of
                         <br )br( />
-                        employed Aucklanders ($45,864)
+                        employed Wellingtonians ($47,900)
                     </div>
                 </li>
                 <li>
@@ -102,7 +102,7 @@
                     <br />
                 </li>
                 <li>
-                    Where will you work? Move the purple map marker.
+                    Where will you work? Move the red map marker.
                 </li>
                 <li>
                     How will you commute?
@@ -153,74 +153,14 @@
             </ol>
         </div>
     </div>
-    <section id='notes'>
-        <h2>
-            Notes
-        </h2>
-        <ul>
-            <li>
-                This application is created by Saeid Adli and Alex Raichev and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey
-                <a href='http://www.sciencedirect.com/science/article/pii/S0264275114000134'>
-                    [MaMo2014]
-                </a>
-                (pay-walled). This application is open-source, and its data and code can be found on Github
-                <a href='https://github.com/araichev/affordability_in_nz'>
-                    here.
-                </a>
-                Contributors to the project are welcome.
-            </li>
-            <li>
-                Regarding data sources:
-                <ul>
-                    <li>
-                        The polygons displayed are simplified versions of 2013 census area units, the full versions of which come from Statistics New Zealand from
-                        <a href='http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx'>
-                            here.
-                        </a>
-                    </li>
-                    <li>
-                        The median gross annual incomes of employed Aucklanders/Wellingtonians comes from Statistics New Zealand from the June 2013 income survey (grouped by regional council)
-                        <a href='http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx'>
-                            here.
-                        </a>
-                    </li>
-                    <li>
-                        Rents are median rents per area unit per dwelling size and come from a custom 2013 census data request from Statistics New Zealand.
-                    </li>
-                    <li>
-                        The distances used are those between area unit centroids and are calculated through the street network. For now, the public transport data is via bus only and its distances are car distances, but that will be improved upon soon. Also the distance from a centroid to itself is currently zero, which will also be improved upon soon.
-                    </li>
-                    <li>
-                        Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218).
-                    </li>
-                    <li>
-                        Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Thanks heaps to the
-                <a href='http://www.mrcagney.com'>
-                    MRCagney
-                </a>
-                Auckland team for donating to this project!
-            </li>
-            <li>
-                Feedback?
-                <a href='mailto:affordability-in-nz@raichev.net'>
-                    Email Alex.
-                </a>
-            </li>
-        </ul>
-    </section>
     <script type="application/json" id="data">
       {
         "ausFile": "data/Wellington/Wellington_AU2013.geojson",
         "centroidsFile": "data/Wellington/Wellington_AU2013_centroids.geojson",
         "rentsFile": "data/Wellington/Wellington_AU2013_rents.json",
         "commutesFile": "data/Wellington/Wellington_AU2013_bird_commutes.json",
-        "lon": 174.97,
-        "lat": -41.25,
+        "lon": 174.95,
+        "lat": -41.2,
         "maxBounds": [[-42.0 , 174.17], [-39.65, 176.97]],
         "markerLatLon": [-41.2, 174.6],
         "medianAnnualIncome": 47892

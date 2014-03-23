@@ -246,16 +246,19 @@ def makeMap():
     map.attributionControl.setPrefix('')
 
     // Define data bins and labels.
-    // Assume no-data entries map to nonpositive.
-    BINS = [0, 0.25, 0.5, 0.75, 10e9]
-    LABELS = ['n/a', '0&ndash;25%', '26&ndash;50%', '51&ndash;75%', '76%+']
+    // Assume no-data entries map to nonpositive numbers.
+    BINS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 10e9]
+    LABELS = ['n/a', '10%', '20%', '30%', '40%', '50%', '60%', '70%', 
+      '80%', '90%', '100%+']
     // Define color scheme using http://colorbrewer2.org/js/. 
     // Order colors least-to-most intense, but begin with gray, 
     // the no-data color.
-    // 4-class Spectral:
-    OPACITY = 0.8
-    COLORS_RGB = reversed([[215, 25, 28], [253, 174, 97], [171, 221, 164], 
-      [43, 131, 186], [200, 200, 200]])
+    OPACITY = 1
+    COLORS_RGB = reversed([[158, 1, 66],[213, 62, 79],[244, 109, 67],
+        [253, 174, 97],[254, 224, 139],[230, 245, 152],[171, 221, 164],
+        [102, 194, 165],[50, 136, 189], [94, 79, 162], [200, 200, 200]])
+    //COLORS_RGB = reversed([[215, 25, 28], [253, 174, 97], [171, 221, 164], 
+    //  [43, 131, 186], [200, 200, 200]])
     COLORS = []
     for c in COLORS_RGB:
         c.append(OPACITY)
@@ -266,21 +269,23 @@ def makeMap():
         s, a = s[:-1], s[-1]
         result = '#'
         for x in s:
-            result += Math.round(a*x + 255*(1 - a)).toString(16)
+            h = Math.round(a*x + 255*(1 - a)).toString(16)
+            if len(h) < 2:
+                h = '0' + h
+            result += h
         return result
-
-    // 5-class Spectral:
-    // COLORS = reversed(['#d7191c', '#fdae61', '#ffffbf', '#abdda4', '#2b83ba',
-    // 'gray'])
 
     // Add a legend to the map
     legend = L.control({'position': 'bottomleft'});
     legend.onAdd = def(map):
         div = L.DomUtil.create('div', 'legend')
-        div.innerHTML = 'Cost as % of income<br/>'
-        for i in range(len(LABELS)):
-            div.innerHTML += '<span style="background:' + getColor(BINS[i]) +\
-              '">' + LABELS[i] + '</span>'
+        div.innerHTML = '<h4>Cost as % of income</h4>'
+        n = len(BINS)
+        for i in range(n):
+            div.innerHTML += '<span style="background:' +\
+              getColor(BINS[n - i - 1]) +\
+              '"></span><span>' + LABELS[n - i - 1] + '</span><br/>'
+        print(div.innerHTML)
         return div
     
     legend.addTo(map)
@@ -301,7 +306,7 @@ def makeMap():
             if getWeeklyTotalCostFraction(feature) is None:
                 wtcf = 'n/a'
             else:
-                wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(0) + '%'
+                wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(1) + '%'
             nb = $('#num-bedrooms').val()
             nbr = $('#num-bedrooms-rent').val()
             wcc, wct = getWeeklyCommuteCostAndTime(feature)
@@ -339,7 +344,7 @@ def makeMap():
     workMarker = L.marker(markerLatLon, {
         'draggable': True,
         'icon': L.mapbox.marker.icon({
-            'marker-color': '#9370DB', // COLORS[-1],
+            'marker-color': COLORS[-2], //'#9370DB',
         })
     }).addTo(map)
     workMarker.bindPopup('Move this marker to where you work')
@@ -414,8 +419,8 @@ def makeMap():
         return {
           'fillColor': c,
           'fillOpacity': 1,
-          'color': 'white',
-          'weight': 1,
+          'color': 'black',
+          'weight': 0.5,
           'opacity': 1,
         }
 
@@ -423,7 +428,7 @@ def makeMap():
     def highlightFeature(e):
         layer = e.target
         layer.setStyle({
-          'color': 'black',
+          'weight': 2,
         })
         if not L.Browser.ie and not L.Browser.opera:
             layer.bringToFront()
