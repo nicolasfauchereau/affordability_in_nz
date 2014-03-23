@@ -1,0 +1,42 @@
+import base
+
+def main():
+    p:
+        'This application is created by Saeid Adli and Alex Raichev and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey' 
+        a(href='http://www.sciencedirect.com/science/article/pii/S0264275114000134'):
+            '[MaMo2014]'
+        '(pay-walled).'
+    p:
+        'This application is open-source. Its data and code can be found on Github' 
+        a(href='https://github.com/araichev/affordability_in_nz'):
+            'here,'
+        'and contributors are welcome.'
+        'Thanks heaps to ' 
+        a(href='http://www.mrcagney.com'):
+            'MRCagney'
+        'for donating to this project!'
+    p:
+        'Regarding data sources:'  
+        ul:
+            li: 
+                "The area units displayed are simplified versions of the 2013 census area units, the full versions of which come from Statistics New Zealand from" 
+                a(href='http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx'):
+                    'here.'
+            li:
+                'The median gross annual incomes of employed Aucklanders, Wellingtonians, etc. comes from Statistics New Zealand from the June 2013 income survey (grouped by regional council)'
+                a(href='http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx'):
+                    'here.'
+            li:
+                'Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.'
+            li:
+                'The commute distances and times used are those between area unit centroids and are calculated through the street network. For now, the public transport data is via bus only and its distances are car distances, but that will be improved upon soon. Also the distance from a centroid to itself is currently zero, which will also be improved upon soon.'
+            li:
+                'Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218).' 
+            li:
+                'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'      
+    p: 
+        'Feedback?'  
+        a(href='mailto:affordability-in-nz@raichev.net'):
+            'Email Alex.'
+
+page()

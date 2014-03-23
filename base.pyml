@@ -1,0 +1,34 @@
+json = verbatim('<script type="application/json" id="data">', '</script>')
+
+def page():
+    !DOCTYPE(html)
+    html:
+        head:
+            title:
+                'Affordability in New Zealand'
+            meta(charset='utf-8')
+            meta(name='viewport' content='width=device-width, initial-scale=1.0')
+            link(rel='stylesheet' href='js/jquery-ui-1.10.3/jquery-ui.css')
+            link(rel='stylesheet' href='js/leaflet-0.7.2/leaflet.css')
+            link(rel='stylesheet' href='fonts/Open-Sans/stylesheet.css')  
+            link(rel='stylesheet' href='css/transit-icons/style.css') 
+            link(rel='stylesheet' href='css/style.css')
+    body:
+        h1:
+            'Affordability in New Zealand'  
+        div(id='nav'):
+            ul:
+                li:
+                    a(href='index.html'):
+                        'Auckland'
+                li:
+                    '/'
+                li: 
+                    a(href='wellington.html'):
+                        'Wellington'
+                li:
+                    '//'
+                li: 
+                    a(href='notes.html'):
+                        'Notes'
+        main()
