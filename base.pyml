@@ -1,6 +1,6 @@
 json = verbatim('<script type="application/json" id="data">', '</script>')
 
-def page():
+def page($page_name):
     !DOCTYPE(html)
     html:
         head:
@@ -13,13 +13,13 @@ def page():
             link(rel='stylesheet' href='fonts/Open-Sans/stylesheet.css')  
             link(rel='stylesheet' href='css/transit-icons/style.css') 
             link(rel='stylesheet' href='css/style.css')
-    body:
+    body(id=$page_name):
         h1:
             'Affordability in New Zealand'  
         div(id='nav'):
             ul:
                 li:
-                    a(href='index.html'):
+                    a(href='index.html' id='nav-index'):
                         'Auckland'
                 # li:
                 #     '/'
@@ -29,6 +29,6 @@ def page():
                 li:
                     '//'
                 li: 
-                    a(href='notes.html'):
+                    a(href='notes.html' id='nav-notes'):
                         'Notes'
         main()

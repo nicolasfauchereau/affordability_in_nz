@@ -22,22 +22,25 @@ body {
           display: inline;
           margin-left: 0; }
 
-a {
-  color: #3288bd;
-  text-decoration: none; }
+body#index a#nav-index, body#wellington a#nav-wellington, body#notes a#nav-notes {
+  color: inherit; }
 
-  a:hover, a:active {
-    text-decoration: underline; }
+  a {
+    color: #3288bd;
+    text-decoration: none; }
 
-    p {
-      margin: 0 0 1.2em 0; }
+    a:hover, a:active {
+      text-decoration: underline; }
 
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        font: inherit; }
-        table td + td {
-          text-align: right; }
+      p {
+        margin: 0 0 1.2em 0; }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          font: inherit; }
+          table td + td {
+            text-align: right; }
 
 ol {
   border: 0px solid black; }

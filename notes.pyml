@@ -39,4 +39,4 @@ def main():
         a(href='mailto:affordability-in-nz@raichev.net'):
             'Email Alex.'
 
-page()
+page('notes')
