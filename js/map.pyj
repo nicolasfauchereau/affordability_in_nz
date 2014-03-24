@@ -143,11 +143,44 @@ def makeMap():
     item.addClass('ui-selected')
     $('#num-bedrooms-rent').val(item[0].value)
 
-    def adjustParkingCost():
-        mode = $('#mode').val()
-        if mode != 'car':
-            $('#parking').val('$0')
-            $('#parking-cost-slider').slider('value', 0)
+    // Add a parking cost slider widget
+    PARKING_DEFAULT = 0
+    $(def():
+        $( "#parking-cost-slider" ).slider({
+            'orientation': 'horizontal',
+            'range': 'min',
+            'min': 0,
+            'max': 30,
+            'value': PARKING_DEFAULT,
+            'step': 1,
+            'slide': def(event, ui): 
+                // Update income display
+                $('#parking').val(numToDollarStr(ui.value))
+            ,
+            'stop': def(event, ui):
+                // Recolor aus
+                aus.setStyle(style)
+        })
+        // Initialize slider 
+        s = $('#parking-cost-slider')
+        $('#parking').val(numToDollarStr(s.slider('value')))
+    )
+
+    // Add a number-of-cars select widget
+    WEEKLY_CAR_OWN_COST = 2228/52
+    $(def():
+        $("#num-cars").selectable({
+            'selected': def(event, ui):
+                // Update nuber of bedrooms
+                $('#num-cars').val(ui.selected.value)
+                // Recolor aus
+                aus.setStyle(style)
+        })
+    )
+    // Initialize selector
+    item = $('#num-cars li:eq(0)')
+    item.addClass('ui-selected')
+    $('#num-cars').val(item[0].value)
 
     // Add a mode mode selector widget
     COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
@@ -157,7 +190,18 @@ def makeMap():
             'selected': def(event, ui):
                 // Update nuber of bedrooms
                 $('#mode').val(ui.selected.id)
-                adjustParkingCost()
+                mode = $('#mode').val()
+                if mode != 'car':
+                    // Zero parking cost
+                    $('#parking').val('$0')
+                    $('#parking-cost-slider').slider('value', 0)
+                else:
+                    // Set car ownership to 1 car if it's 0
+                    item = $('#num-cars li.ui-selected')
+                    if item.val() == 0:
+                        item.removeClass('ui-selected')
+                        $('#num-cars li:eq(1)').addClass('ui-selected')
+                        $('#num-cars').val(1)
                 // Recolor aus
                 aus.setStyle(style)
         })
@@ -189,45 +233,6 @@ def makeMap():
         s = $('#num-workdays-slider')
         $('#num-workdays').val(s.slider('value'))
     )
-
-    // Add a parking cost slider widget
-    PARKING_DEFAULT = 0
-    $(def():
-        $( "#parking-cost-slider" ).slider({
-            'orientation': 'horizontal',
-            'range': 'min',
-            'min': 0,
-            'max': 30,
-            'value': PARKING_DEFAULT,
-            'step': 1,
-            'slide': def(event, ui): 
-                // Update income display
-                $('#parking').val(numToDollarStr(ui.value))
-            ,
-            'stop': def(event, ui):
-                // Recolor aus
-                aus.setStyle(style)
-        })
-        // Initialize slider 
-        s = $('#parking-cost-slider')
-        $('#parking').val(numToDollarStr(s.slider('value')))
-    )
-
-    WEEKLY_CAR_OWN_COST = 2228/52
-    // Add a number-of-cars select widget
-    $(def():
-        $("#num-cars").selectable({
-            'selected': def(event, ui):
-                // Update nuber of bedrooms
-                $('#num-cars').val(ui.selected.value)
-                // Recolor aus
-                aus.setStyle(style)
-        })
-    )
-    // Initialize selector
-    item = $('#num-cars li:eq(0)')
-    item.addClass('ui-selected')
-    $('#num-cars').val(item[0].value)
 
 
     // Create map 
