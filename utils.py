@@ -18,6 +18,8 @@ FILES_BY_REGION = {
         'data/Auckland/Auckland_AU2013_centroids.csv',       
       'centroids_geojson': 
         'data/Auckland/Auckland_AU2013_centroids.geojson', 
+      'sample_points':
+        'data/Auckland/Auckland_AU2013_sample_points.csv',             
       'bird_commutes':
         'data/Auckland/Auckland_AU2013_bird_commutes.json',      
     },
@@ -31,6 +33,8 @@ FILES_BY_REGION = {
         'data/Wellington/Wellington_AU2013_centroids.csv',       
       'centroids_geojson': 
         'data/Wellington/Wellington_AU2013_centroids.geojson',       
+      'sample_points':
+        'data/Auckland/Wellington_AU2013_sample_points.csv',             
       'bird_commutes':
         'data/Wellington/Wellington_AU2013_bird_commutes.json',      
     },
@@ -266,7 +270,7 @@ def get_polygon_and_centroid_by_au_name(collection, name_field='AU2013_NAM'):
 
 def create_region_centroids(region, name_field='AU2013_NAM'):
     """
-    Created a GeoJSON an CSV file containing the centroids of the area
+    Create a GeoJSON and CSV file containing the centroids of the area
     units for the given region.
 
     For the CSV file create a header row and data rows with the following
@@ -318,6 +322,66 @@ def create_region_centroids(region, name_field='AU2013_NAM'):
 
     geojson = features_to_feature_collection(features)
     dump_json(geojson, files['centroids_geojson'])
+
+def get_sample_points(polygon, n):
+    """
+    Return ``n`` Shapely points chosen uniformly at random from the 
+    given Shapely polygon object.
+    """
+    from shapely.geometry import Point
+    from random import uniform
+
+    minx, miny, maxx, maxy = polygon.bounds
+    # Sample uniformly at random from the polygon's bounding box
+    # and discard points that aren't in the polygon.
+    sample_points = []
+    i = 0
+    while i < n:
+        x = uniform(minx, maxx)
+        y = uniform(miny, maxy)
+        p = Point(x, y)
+        if p.intersects(polygon):
+            sample_points.append(p)
+            i += 1
+    return sample_points
+
+def create_region_sample_points(region, name_field='AU2013_NAM', n=100):
+    """
+    Create a CSV file containing ``n`` random sample points from each area unit
+    in the given region (using ``get_sample_points()``).
+
+    For the CSV file create a header row and data rows with the following
+    columns:
+
+    1. area unit name
+    2. WGS84 longitude of a sample point in the area unit
+    3. WGS84 latitude of sample point
+
+    Acceptable region inputs are any of the keys of ``FILES_BY_REGION``, 
+    e.g. 'wellington'.
+
+    These sample points can then be used to calculate a commute distance
+    and time from an area unit to itself.
+    For example, for each area unit and each mode of travel one could 
+    take the medians of the distances and times from the sample points 
+    to the centroid as the representative commute distance and time.
+    """
+    files = FILES_BY_REGION[region]
+    collection = load_json(files['geojson'])
+    pc_by_name = get_polygon_and_centroid_by_au_name(collection, 
+      name_field=name_field)
+    
+    # Create CSV version
+    with open(files['sample_points'], 'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(['2013 area unit name', 
+          'WGS84 longitude of a sample point in the area unit',
+          'WGS84 latitude of sample point'])
+        for name, pc in pc_by_name.items():
+            sample_points = get_sample_points(pc[0], n)
+            for p in sample_points:
+                pp = my_round(pj_nztm(*point_to_tuple(p), inverse=True))
+                writer.writerow([name, pp[0], pp[1]])
 
 # Distance and time data functions
 def distance(lon1, lat1, lon2, lat2):
@@ -383,28 +447,6 @@ def median(s):
         return s[n//2]
     else:
         return (s[n//2] + s[n//2 - 1])/2.0
-
-def get_sample_points(polygon, n):
-    """
-    Return ``n`` Shapely points chosen uniformly at random from the 
-    given Shapely polygon object.
-    """
-    from shapely.geometry import Point
-    from random import uniform
-
-    minx, miny, maxx, maxy = polygon.bounds
-    # Sample uniformly at random from the polygon's bounding box
-    # and discard points that aren't in the polygon.
-    sample_points = []
-    i = 0
-    while i < n:
-        x = uniform(minx, maxx)
-        y = uniform(miny, maxy)
-        p = Point(x, y)
-        if p.intersects(polygon):
-            sample_points.append(p)
-            i += 1
-    return sample_points
 
 def get_bird_commutes(collection, name_field, 
   n=NUM_SAMPLE_POINTS):
@@ -650,4 +692,5 @@ if __name__ == '__main__':
     create_region_geojson(region)
     create_region_rents(region)
     create_region_centroids(region)
+    create_region_sample_points(region)
     create_region_bird_commutes(region)

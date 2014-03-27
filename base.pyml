@@ -24,7 +24,7 @@ def page($page_name):
                 # li:
                 #     '/'
                 # li: 
-                #     a(href='wellington.html'):
+                #     a(href='wellington.html' id='nav-wellington'):
                 #         'Wellington'
                 li:
                     '//'
