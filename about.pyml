@@ -36,7 +36,7 @@ def main():
                 'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'      
     p: 
         'Feedback?'  
-        a(href='mailto:affordability-in-nz@raichev.net'):
+        a(href='mailto:araichev@affordability.org.nz'):
             'Email Alex.'
 
-page('notes')
+page('about')
