@@ -38,5 +38,6 @@ def main():
         'Feedback?'  
         a(href='mailto:araichev@affordability.org.nz'):
             'Email Alex.'
+        'This application is a work in progress and your feedback will help make it better.'
 
 page('about')

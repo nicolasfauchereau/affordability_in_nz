@@ -37,6 +37,7 @@ Todo
 - Improve public transport distances and times to include ferry and rail.
 - Improve public transport cost estimates, possibly using Hop card zones.
 - Replace the zero distance of a centroid to itself with the median distance of N >= 100 points to the centroid, where the points are sampled uniformly at random from the area unit in question.
+- Make the app useable by couples by adding optional questions for the partner's commute and parking costs
 
 Authors
 ========
