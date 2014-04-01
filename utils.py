@@ -531,7 +531,7 @@ def get_distance_and_time_matrix(origin_names):
 
     # Read distance and time data from CSVs
     for mode in MODES:
-        filename = 'data/' + mode + '_distance_and_time.csv'
+        filename = 'data/' + mode + '_commutes.csv'
         with open(filename, 'rb') as f:
             reader = csv.reader(f)
             # Skip header row
