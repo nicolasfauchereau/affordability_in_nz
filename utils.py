@@ -7,6 +7,8 @@ import pyproj, shapely
 
 AU2013_GEOJSON_FILE = 'data/AU2013_simplified.geojson'
 AU2013_RENTS_FILE = 'data/AU2013_rents.csv'
+# TODO: Simplify this dictionary of files. 
+# Eliminate redundancies and take advantage of naming structure.
 FILES_BY_REGION = {
   'auckland':
     {
@@ -22,6 +24,14 @@ FILES_BY_REGION = {
         'data/Auckland/Auckland_AU2013_sample_points.csv',             
       'bird_commutes':
         'data/Auckland/Auckland_AU2013_bird_commutes.json',      
+      'walk_commutes':
+        'data/Auckland/Auckland_AU2013_walk_commutes.csv',      
+      'bicycle_commutes':
+        'data/Auckland/Auckland_AU2013_bicycle_commutes.csv',      
+      'transit_commutes':
+        'data/Auckland/Auckland_AU2013_transit_commutes.csv',      
+      'car_commutes':
+        'data/Auckland/Auckland_AU2013_car_commutes.csv',      
     },
   'wellington':
     {
@@ -37,6 +47,14 @@ FILES_BY_REGION = {
         'data/Auckland/Wellington_AU2013_sample_points.csv',             
       'bird_commutes':
         'data/Wellington/Wellington_AU2013_bird_commutes.json',      
+      'walk_commutes':
+        'data/Auckland/Wellington_AU2013_walk_commutes.csv',      
+      'bicycle_commutes':
+        'data/Auckland/Wellington_AU2013_bicycle_commutes.csv',      
+      'transit_commutes':
+        'data/Auckland/Wellington_AU2013_transit_commutes.csv',      
+      'car_commutes':
+        'data/Auckland/Wellington_AU2013_car_commutes.csv',      
     },
 }
 NUM_SAMPLE_POINTS = 100
@@ -466,8 +484,6 @@ def get_bird_commutes(collection, name_field,
     from polygon ``i`` and taking the median of the distances and times 
     from each of these points to the polygon's centroid.
     """
-    from itertools import product
-
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, name_field)
     names = pc_by_name.keys()
     N = len(names)
@@ -510,10 +526,14 @@ def create_region_bird_commutes(region, name_field='AU2013_NAM'):
     data = {'index_by_name': index_by_name, 'matrix': M}
     dump_json(data, files['bird_commutes'])
 
+# TODO: Clean up the functions below.
 # Miscellaneous commute data functions in various states of completion
-def get_distance_and_time_matrix(origin_names):
+def create_commutes(collection, name_field):
     """
-    Return the output pair ``(index_by_name, M)``, where ``M`` is a nested
+    Given a decoded GeoJSON feature collection of (multi)polygons in WGS84
+    coordinates, each of which has a name specified in 
+    ``feature['properties']['name_field']``, return the output pair 
+    ``(index_by_name, M)``, where ``M`` is a nested
     dictionary/matrix such that ``M[mode][i][j]`` equals the distance in km
     and the time in hours that it takes to travel from centroid of 
     polygon with index ``i >= 0`` to the centroid of polygon with index 
@@ -524,9 +544,13 @@ def get_distance_and_time_matrix(origin_names):
     ``M[i][i]`` is obtained by choosing ``n`` points uniformly at random 
     from polygon ``i`` and taking the median of the distances and times 
     from each of these points to the polygon's centroid.
-    """
-    from itertools import product
 
+    Get data from CSVs.
+    """
+    pc_by_name = get_polygon_and_centroid_by_au_name(collection, name_field)
+    names = pc_by_name.keys()
+    N = len(names)
+    index_by_name = {name: i for (i, name) in enumerate(names)}
     M = {mode: {} for mode in MODES}
 
     # Read distance and time data from CSVs
@@ -537,8 +561,7 @@ def get_distance_and_time_matrix(origin_names):
             # Skip header row
             reader.next() 
             for row in reader:
-                od_pair, distance, time = row
-                origin_name, destination_name = od_pair.split(' - ')
+                origin_name, destination_name, distance, time = row
                 # Convert distance to km and time to h 
                 if distance:
                     distance = round(float(distance)/1000, 1)
