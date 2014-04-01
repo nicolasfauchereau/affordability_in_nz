@@ -184,7 +184,7 @@ def makeMap():
 
     // Add a mode mode selector widget
     COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
-      'public_transport': 0.218}
+      'transit': 0.218}
     $(def():
         $("#mode").selectable({
             'selected': def(event, ui):
@@ -519,6 +519,7 @@ def makeMap():
 
     def getWeeklyCommuteCostAndTime(feature):
         mode = $('#mode').val() 
+        console.log('mode', mode)
         // Get commute distance and time from this feature to work
         auName = feature.properties.AU2013_NAM
         i = MIndexByAu[auName]

@@ -40,7 +40,7 @@ FILES_BY_REGION = {
     },
 }
 NUM_SAMPLE_POINTS = 100
-MODES = ['walk', 'bicycle', 'public_transport', 'car']
+MODES = ['walk', 'bicycle', 'transit', 'car']
 
 def get_au_names(filename, header=True):
     """
@@ -459,7 +459,7 @@ def get_bird_commutes(collection, name_field,
     and the time in hours that it takes to travel from centroid of 
     polygon with index ``i >= 0`` to the centroid of polygon with index 
     ``j >= 0`` through the Open Street Map road network by the mode of
-    transport ``mode``, which is one of 'walk', 'bicycle', 'car', 'bus'.
+    transport ``mode``, which is one of 'walk', 'bicycle', 'car', 'transit'.
     The dictionary ``index_by_name`` gives maps polygon names to their
     indices. 
     ``M[i][i]`` is obtained by choosing ``n`` points uniformly at random 
@@ -498,7 +498,7 @@ def get_bird_commutes(collection, name_field,
             M['walk'][i].append((distance, time*15))
             M['bicycle'][i].append((distance, time*4))
             M['car'][i].append((distance, time))
-            M['public_transport'][i].append((distance, time))
+            M['transit'][i].append((distance, time))
 
     return index_by_name, M
 
@@ -518,7 +518,7 @@ def get_distance_and_time_matrix(origin_names):
     and the time in hours that it takes to travel from centroid of 
     polygon with index ``i >= 0`` to the centroid of polygon with index 
     ``j >= 0`` through the Open Street Map road network by the mode of
-    transport ``mode``, which is one of 'walk', 'bicycle', 'car', 'bus'.
+    transport ``mode``, which is one of 'walk', 'bicycle', 'car', 'transit'.
     The dictionary ``index_by_name`` gives maps polygon names to their
     indices. 
     ``M[i][i]`` is obtained by choosing ``n`` points uniformly at random 
@@ -542,7 +542,7 @@ def get_distance_and_time_matrix(origin_names):
                 # Convert distance to km and time to h 
                 if distance:
                     distance = round(float(distance)/1000, 1)
-                elif mode == 'public_transport':
+                elif mode == 'transit':
                     # Until get distance data for public transport,
                     # used car distance
                     try:
@@ -601,7 +601,7 @@ def get_mapquest_distance_and_time(a, b, mode='car'):
     return the distance in kilometers and the time in minutes of the 
     quickest path from ``a`` to ``b`` in the Mapquest road network for 
     the specified mode of transit; mode options are 'walk', 'bicycle', 
-    'car', and 'public_transport'.
+    'car', and 'transit'.
     Computed with the `Mapquest API <http://www.mapquestapi.com/directions/#advancedrouting>`_.
     """
     import urllib2
@@ -610,7 +610,7 @@ def get_mapquest_distance_and_time(a, b, mode='car'):
         mode = 'pedestrian'
     elif mode == 'bicycle':
         pass
-    elif mode == 'public_transport':
+    elif mode == 'transit':
         mode = 'multimodal'
     else:
         mode = 'fastest'
@@ -629,7 +629,7 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
     return the distance in kilometers and the time in minutes of the 
     quickest path from ``a`` to ``b`` in the Mapquest road network for 
     the specified mode of transit; mode options are 'walk', 'bicycle', 
-    'car', and 'public_transport'.
+    'car', and 'transit'.
     Computed with the `Google API <>`_.
     """
     import urllib2
@@ -638,7 +638,7 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
         mode = 'walking'
     elif mode == 'bicycle':
         mode = 'bicycling'
-    elif mode == 'public_transport':
+    elif mode == 'transit':
         # 19:30 12 Mar 2014 GMT = 8:30 13 Mar 2014 Auckland time
         # See http://www.onlineconversion.com/unix_time.htm
         mode = 'transit&arrival_time=1394652600' 
