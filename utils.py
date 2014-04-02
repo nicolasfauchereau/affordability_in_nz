@@ -655,7 +655,13 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
     'car', and 'transit'.
     Computed with the `Google API <>`_.
     """
+    import socks
+    from socketshandler import SocksiPyHandler
     import urllib2
+
+    # Connect to the internet through Tor
+    opener = urllib2.build_opener(
+      SocksiPyHandler(socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
 
     if mode == 'walk':
         mode = 'walking'
@@ -673,7 +679,7 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
     url += '&mode=' + mode + '&sensor=false'
     print('url=', url)
     # Send query and retrieve data
-    result = json.load(urllib2.urlopen(url))
+    result = json.load(opener.open(url))
     return result
 
 def get_google_distance_matrix(origins, destinations, mode='driving'):
@@ -691,7 +697,13 @@ def get_google_distance_matrix(origins, destinations, mode='driving'):
     distance in meters and ``v['duration']['value']`` is the travel time in 
     seconds.
     """
+    import socks
+    from socketshandler import SocksiPyHandler
     import urllib2
+
+    # Connect to the internet through Tor
+    opener = urllib2.build_opener(SocksiPyHandler(
+      socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
 
     # Create query url
     url = 'http://maps.googleapis.com/maps/api/distancematrix/json?origins='
