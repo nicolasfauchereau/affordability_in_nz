@@ -5,59 +5,9 @@ import json, csv
 
 import pyproj, shapely
 
-AU2013_GEOJSON_FILE = 'data/AU2013_simplified.geojson'
-AU2013_RENTS_FILE = 'data/AU2013_rents.csv'
-# TODO: Simplify this dictionary of files. 
-# Eliminate redundancies and take advantage of naming structure.
-FILES_BY_REGION = {
-  'auckland':
-    {
-      'au_codes_and_names': 
-        'data/Auckland/Auckland_AU2013_codes_and_names.csv',
-      'geojson': 'data/Auckland/Auckland_AU2013.geojson',
-      'rents': 'data/Auckland/Auckland_AU2013_rents.json',
-      'centroids_csv': 
-        'data/Auckland/Auckland_AU2013_centroids.csv',       
-      'centroids_geojson': 
-        'data/Auckland/Auckland_AU2013_centroids.geojson', 
-      'sample_points':
-        'data/Auckland/Auckland_AU2013_sample_points.csv',             
-      'bird_commutes':
-        'data/Auckland/Auckland_AU2013_bird_commutes.json',      
-      'walk_commutes':
-        'data/Auckland/Auckland_AU2013_walk_commutes.csv',      
-      'bicycle_commutes':
-        'data/Auckland/Auckland_AU2013_bicycle_commutes.csv',      
-      'transit_commutes':
-        'data/Auckland/Auckland_AU2013_transit_commutes.csv',      
-      'car_commutes':
-        'data/Auckland/Auckland_AU2013_car_commutes.csv',      
-    },
-  'wellington':
-    {
-      'au_codes_and_names': 
-        'data/Wellington/Wellington_AU2013_codes_and_names.csv',
-      'geojson': 'data/Wellington/Wellington_AU2013.geojson',
-      'rents': 'data/Wellington/Wellington_AU2013_rents.json',       
-      'centroids_csv': 
-        'data/Wellington/Wellington_AU2013_centroids.csv',       
-      'centroids_geojson': 
-        'data/Wellington/Wellington_AU2013_centroids.geojson',       
-      'sample_points':
-        'data/Auckland/Wellington_AU2013_sample_points.csv',             
-      'bird_commutes':
-        'data/Wellington/Wellington_AU2013_bird_commutes.json',      
-      'walk_commutes':
-        'data/Auckland/Wellington_AU2013_walk_commutes.csv',      
-      'bicycle_commutes':
-        'data/Auckland/Wellington_AU2013_bicycle_commutes.csv',      
-      'transit_commutes':
-        'data/Auckland/Wellington_AU2013_transit_commutes.csv',      
-      'car_commutes':
-        'data/Auckland/Wellington_AU2013_car_commutes.csv',      
-    },
-}
-NUM_SAMPLE_POINTS = 100
+MASTER_SHAPES_FILE = 'data/au_shapes_simplified.geojson'
+MASTER_RENTS_FILE = 'data/au_rents.csv'
+REGIONS = {'auckland', 'wellington'}
 MODES = ['walk', 'bicycle', 'transit', 'car']
 
 def get_au_names(filename, header=True):
@@ -120,27 +70,26 @@ def slice_collection(collection, prop, values):
       if f['properties'][prop] in values]
     return features_to_feature_collection(features)
 
-def create_region_geojson(region, name_field='AU2013_NAM'):
+def create_geojson(region, name_field='AU2013_NAM'):
     """
-    Create the GeoJSON file for the given region, where acceptable
-    inputs are any of the keys of ``REGION_FILES``, e.g. 'wellington'.
+    Create the GeoJSON file for a given region from ``REGIONS``.
     """
-    collection = load_json(AU2013_GEOJSON_FILE)
-    files = FILES_BY_REGION[region]
-    au_names = get_au_names(files['au_codes_and_names'])
+    prefix = 'data/%s/' % region
+    collection = load_json(MASTER_SHAPES_FILE)
+    au_names = get_au_names(prefix + 'au_names.csv')
     new_collection = slice_collection(collection, name_field, au_names)
-    dump_json(new_collection, files['geojson'])
+    dump_json(new_collection, prefix + 'au_shapes.geojson')
 
     # Little check
     A = au_names
     B = get_prop_set(new_collection, 'AU2013_NAM')
     success = (A == B)
-    print('Got geodata for each AU?', success)
+    print('Got shapes for each AU?', success)
     if not success:
         print('  Missing geodata for', A - B)
 
 # Rent data functions
-def slice_rents(filename, au_names, max_bedrooms=5, header=True):
+def create_rents(region, max_bedrooms=5, header=True):
     """
     Given the name of a CSV file in which each row contains as its first
     several entries
@@ -159,11 +108,14 @@ def slice_rents(filename, au_names, max_bedrooms=5, header=True):
     Only get data for dwellings with at most ``max_bedrooms`` bedrooms.
     If ``header == True``, then skip the first row of the CSV file.
     """
+    prefix = 'data/%s/' % region
+
     # Initialize output
+    au_names = get_au_names(prefix + 'au_names.csv')
     rent_by_num_bedrooms_by_au_name =\
       {au_name: {i: None for i in range(1, max_bedrooms + 1)} 
       for au_name in au_names}
-    with open(filename, 'rb') as f:
+    with open(MASTER_RENTS_FILE, 'rb') as f:
         reader = csv.reader(f)
         if header:
             # Skip header row
@@ -179,19 +131,13 @@ def slice_rents(filename, au_names, max_bedrooms=5, header=True):
             num_bedrooms = int(num_bedrooms)
             rent = int(rent)
             rent_by_num_bedrooms_by_au_name[au_name][num_bedrooms] = rent
-
-    return rent_by_num_bedrooms_by_au_name
-
-def create_region_rents(region, max_bedrooms=5, header=True):
-    files = FILES_BY_REGION[region]
-    au_names = get_au_names(files['au_codes_and_names'])
-    rents = slice_rents(AU2013_RENTS_FILE, au_names, max_bedrooms=max_bedrooms,
-      header=header)
-    dump_json(rents, files['rents'])
+    
+    # Write to file
+    dump_json(rent_by_num_bedrooms_by_au_name, prefix + 'au_rents.json')
 
     # Little check
     A = au_names
-    B = set(rents.keys())
+    B = set(rent_by_num_bedrooms_by_au_name.keys())
     success = (A == B)
     print('Got rents for each AU?', success)
     if not success:
@@ -286,10 +232,10 @@ def get_polygon_and_centroid_by_au_name(collection, name_field='AU2013_NAM'):
         pc_by_name[name] = (polygon, polygon.centroid)
     return pc_by_name
 
-def create_region_centroids(region, name_field='AU2013_NAM'):
+def create_centroids(region, name_field='AU2013_NAM'):
     """
     Create a GeoJSON and CSV file containing the centroids of the area
-    units for the given region.
+    units for a given region from ``REGIONS``.
 
     For the CSV file create a header row and data rows with the following
     columns:
@@ -300,17 +246,15 @@ def create_region_centroids(region, name_field='AU2013_NAM'):
 
     For the GeoJSON file, create feature collection of point features,
     one for each centroid.
-
-    Acceptable region inputs are any of the keys of ``FILES_BY_REGION``, 
-    e.g. 'wellington'.
     """
-    files = FILES_BY_REGION[region]
-    collection = load_json(files['geojson'])
+    prefix = 'data/%s/' % region
+
+    collection = load_json(prefix + 'au_shapes.geojson')
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, 
       name_field=name_field)
     
     # Create CSV version
-    with open(files['centroids_csv'], 'w') as f:
+    with open(prefix + 'au_centroids.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(['2013 area unit name', 
           'WGS84 longitude of centroid of area unit',
@@ -339,7 +283,7 @@ def create_region_centroids(region, name_field='AU2013_NAM'):
         features.append(feature)
 
     geojson = features_to_feature_collection(features)
-    dump_json(geojson, files['centroids_geojson'])
+    dump_json(geojson, prefix + 'au_centroids.geojson')
 
 def get_sample_points(polygon, n):
     """
@@ -363,10 +307,11 @@ def get_sample_points(polygon, n):
             i += 1
     return sample_points
 
-def create_region_sample_points(region, name_field='AU2013_NAM', n=100):
+def create_sample_points(region, name_field='AU2013_NAM', n=100):
     """
     Create a CSV file containing ``n`` random sample points from each area unit
-    in the given region (using ``get_sample_points()``).
+    in a given region in ``REGIONS``.
+    Use ``get_sample_points()``).
 
     For the CSV file create a header row and data rows with the following
     columns:
@@ -375,22 +320,19 @@ def create_region_sample_points(region, name_field='AU2013_NAM', n=100):
     2. WGS84 longitude of a sample point in the area unit
     3. WGS84 latitude of sample point
 
-    Acceptable region inputs are any of the keys of ``FILES_BY_REGION``, 
-    e.g. 'wellington'.
-
     These sample points can then be used to calculate a commute distance
     and time from an area unit to itself.
     For example, for each area unit and each mode of travel one could 
     take the medians of the distances and times from the sample points 
     to the centroid as the representative commute distance and time.
     """
-    files = FILES_BY_REGION[region]
-    collection = load_json(files['geojson'])
+    prefix = 'data/%s/' % region
+    collection = load_json(prefix + 'au_shapes.geojson')
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, 
       name_field=name_field)
     
     # Create CSV version
-    with open(files['sample_points'], 'w') as f:
+    with open(prefix + 'au_sample_points.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(['2013 area unit name', 
           'WGS84 longitude of a sample point in the area unit',
@@ -466,24 +408,29 @@ def median(s):
     else:
         return (s[n//2] + s[n//2 - 1])/2.0
 
-def get_bird_commutes(collection, name_field, 
-  n=NUM_SAMPLE_POINTS):
+def create_fake_commutes(region, name_field='AU2013_NAM',
+  n=100):
     """
-    Given a decoded GeoJSON feature collection of (multi)polygons in WGS84
-    coordinates, each of which has a name specified in 
-    ``feature['properties']['name_field']``, return the output pair 
+    Given a region in ``REGIONS``, get the regions decoded GeoJSON 
+    feature collection of (multi)polygons in WGS84 coordinates, 
+    each of which has a name specified in 
+    ``feature['properties']['name_field']``, and return the output pair 
     ``(index_by_name, M)``, where ``M`` is a nested
-    dictionary/matrix such that ``M[mode][i][j]`` equals the distance in km
-    and the time in hours that it takes to travel from centroid of 
+    dictionary/matrix such that ``M[mode][i][j]`` equals a fake distance in km
+    and a fake time in hours that it takes to travel from the centroid of 
     polygon with index ``i >= 0`` to the centroid of polygon with index 
-    ``j >= 0`` through the Open Street Map road network by the mode of
-    transport ``mode``, which is one of 'walk', 'bicycle', 'car', 'transit'.
-    The dictionary ``index_by_name`` gives maps polygon names to their
-    indices. 
+    ``j >= 0``.
+    The distance used ('walk', 'bicycle', 'car', 'transit') = (d, d, d, d)
+    and the time used is (t*15, t*4, t, t), where d and t come from
+    ``get_bird_distance_and_time()``
+    The dictionary ``index_by_name`` maps polygon names to their indices. 
     ``M[i][i]`` is obtained by choosing ``n`` points uniformly at random 
     from polygon ``i`` and taking the median of the distances and times 
     from each of these points to the polygon's centroid.
     """
+    prefix = 'data/%s/' % region
+
+    collection = load_json(prefix + 'au_shapes.geojson')
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, name_field)
     names = pc_by_name.keys()
     N = len(names)
@@ -516,18 +463,11 @@ def get_bird_commutes(collection, name_field,
             M['car'][i].append((distance, time))
             M['transit'][i].append((distance, time))
 
-    return index_by_name, M
-
-def create_region_bird_commutes(region, name_field='AU2013_NAM'):
-    files = FILES_BY_REGION[region]
-    collection = load_json(files['geojson'])
-    index_by_name, M = get_bird_commutes(collection, 
-      name_field=name_field)
     data = {'index_by_name': index_by_name, 'matrix': M}
-    dump_json(data, files['bird_commutes'])
+    dump_json(data, prefix + 'fake_commutes.json')
 
 # TODO: Clean up the functions below.
-# Miscellaneous commute data functions in various states of completion
+# Miscellaneous commute data functions in various states of disarray.
 def create_commutes(collection, name_field):
     """
     Given a decoded GeoJSON feature collection of (multi)polygons in WGS84
@@ -547,6 +487,8 @@ def create_commutes(collection, name_field):
 
     Get data from CSVs.
     """
+    prefix = 'data/%s/' % region
+
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, name_field)
     names = pc_by_name.keys()
     N = len(names)
@@ -555,7 +497,7 @@ def create_commutes(collection, name_field):
 
     # Read distance and time data from CSVs
     for mode in MODES:
-        filename = 'data/' + mode + '_commutes.csv'
+        filename = prefix + mode + '_commutes.csv'
         with open(filename, 'rb') as f:
             reader = csv.reader(f)
             # Skip header row
@@ -604,7 +546,7 @@ def get_distance_and_time_diagonal(collection):
         for mode in MODES:
             get_distance_and_time_to_self(pc[0], pc[1], mode=mode)
         
-def get_distance_and_time_to_self(polygon, centroid, n=NUM_SAMPLE_POINTS,
+def get_distance_and_time_to_self(polygon, centroid, n=100,
   mode=MODES[0]):
     """
     Given a polygon and its centroid in NZTM coordinates,
@@ -646,7 +588,9 @@ def get_mapquest_distance_and_time(a, b, mode='car'):
     result = json.load(urllib2.urlopen(url))
     return result['route']['distance'], result['route']['time']/60
 
-def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
+# TODO: return better formatted outputs
+def get_google_distance_and_time(a, b, mode='car', many_to_one=False,
+  use_tor=True):
     """
     Given WGS84 longitude-latitude points ``a`` and ``b``,
     return the distance in kilometers and the time in minutes of the 
@@ -654,14 +598,23 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
     the specified mode of transit; mode options are 'walk', 'bicycle', 
     'car', and 'transit'.
     Computed with the `Google API <>`_.
+    If ``use_tor == True``, then perform API calls through Tor,
+    assuming you have it running.
     """
-    import socks
-    from socketshandler import SocksiPyHandler
     import urllib2
 
-    # Connect to the internet through Tor
-    opener = urllib2.build_opener(
-      SocksiPyHandler(socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
+    if use_tor:
+        # Connect to the internet through Tor
+        import socks
+        from socketshandler import SocksiPyHandler
+
+        opener = urllib2.build_opener(SocksiPyHandler(
+          socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
+        open_sesame = opener.open
+        # Test
+        print('IP address', open_sesame('https://httpbin.org/ip').read())
+    else:
+        open_sesame = urllib2.urlopen
 
     if mode == 'walk':
         mode = 'walking'
@@ -677,12 +630,13 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False):
     url = 'http://maps.googleapis.com/maps/api/directions/json?origin='
     url += '{!s},{!s}&destination={!s},{!s}'.format(a[1], a[0], b[1], b[0])
     url += '&mode=' + mode + '&sensor=false'
-    print('url=', url)
     # Send query and retrieve data
-    result = json.load(opener.open(url))
+    result = json.load(open_sesame(url))
     return result
 
-def get_google_distance_matrix(origins, destinations, mode='driving'):
+# TODO: return better formatted outputs
+def get_google_distance_matrix(origins, destinations, mode='driving',
+  use_tor=True):
     """
     Given a list of origins as WGS84 longitude-latitude pairs,
     a list of destinations of the same length and form,
@@ -696,14 +650,24 @@ def get_google_distance_matrix(origins, destinations, mode='driving'):
     a dictionary ``v``, where ``v['distance']['value']`` is the travel
     distance in meters and ``v['duration']['value']`` is the travel time in 
     seconds.
+
+    If ``use_tor == True``, then perform API calls through Tor,
+    assuming you have it running.
     """
-    import socks
-    from socketshandler import SocksiPyHandler
     import urllib2
 
-    # Connect to the internet through Tor
-    opener = urllib2.build_opener(SocksiPyHandler(
-      socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
+    if use_tor:
+        # Connect to the internet through Tor
+        import socks
+        from socketshandler import SocksiPyHandler
+
+        opener = urllib2.build_opener(SocksiPyHandler(
+          socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
+        open_sesame = opener.open
+        # Test
+        print('IP address', open_sesame('https://httpbin.org/ip').read())
+    else:
+        open_sesame = urllib2.urlopen
 
     # Create query url
     url = 'http://maps.googleapis.com/maps/api/distancematrix/json?origins='
@@ -719,13 +683,24 @@ def get_google_distance_matrix(origins, destinations, mode='driving'):
 
     print('url=', url)
     # Send query and retrieve data
-    return json.load(urllib2.urlopen(url))
+    return json.load(open_sesame(url))
 
+def test_api(use_tor=True):
+    a = [174.7103025602929,-36.77207046318112]
+    b = [174.70080752730942,-36.914615337299345]
+    g1 = get_google_distance_and_time(a, b, use_tor=use_tor)
+    g2 = get_google_distance_matrix([a, b], [a, b], use_tor=use_tor)
+    print()
+    print(g1)
+    print('-'*40)
+    print(g2)
 
 if __name__ == '__main__':
     region = 'wellington'
-    create_region_geojson(region)
-    create_region_rents(region)
-    create_region_centroids(region)
-    create_region_sample_points(region)
-    create_region_bird_commutes(region)
+    print('Creating files for %s...' % region)
+    create_geojson(region)
+    create_rents(region)
+    create_centroids(region)
+    create_sample_points(region)
+    create_fake_commutes(region)
+    # test_api(use_tor=True)
