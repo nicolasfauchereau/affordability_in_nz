@@ -21,11 +21,11 @@ def page($page_name):
                 li:
                     a(href='index.html' id='nav-index'):
                         'Auckland'
-                # li:
-                #     '/'
-                # li: 
-                #     a(href='wellington.html' id='nav-wellington'):
-                #         'Wellington'
+                li:
+                    '/'
+                li: 
+                    a(href='wellington.html' id='nav-wellington'):
+                        'Wellington'
                 li:
                     '//'
                 li: 

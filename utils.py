@@ -3,7 +3,8 @@ from __future__ import print_function, division
 import datetime as dt 
 import json, csv
 
-import pyproj, shapely
+import pyproj
+import shapely
 
 MASTER_SHAPES_FILE = 'data/au_shapes_simplified.geojson'
 MASTER_RENTS_FILE = 'data/au_rents.csv'
@@ -267,7 +268,7 @@ def create_centroids(region, name_field='AU2013_NAM', digits=5):
         writer.writerow(['2013 area unit name', 
           'WGS84 longitude of centroid of area unit',
           'WGS84 latitude of centroid of area unit'])
-        for name, pc in pc_by_name.items():
+        for name, pc in sorted(pc_by_name.items()):
             centroid = my_round(pj_nztm(*point_to_tuple(pc[1]), inverse=True),
               digits=digits)
             # CSV row
@@ -479,12 +480,12 @@ def create_fake_commutes(region, name_field='AU2013_NAM',
 
 # TODO: Clean up the functions below.
 # Miscellaneous commute data functions in various states of disarray.
-def create_commutes(collection, name_field):
+def create_commutes(region):
     """
-    Given a decoded GeoJSON feature collection of (multi)polygons in WGS84
-    coordinates, each of which has a name specified in 
-    ``feature['properties']['name_field']``, return the output pair 
-    ``(index_by_name, M)``, where ``M`` is a nested
+    Take the commute data CSV files for this region and convert them
+    into one JSON master matrix. 
+    More specifically, write to ``data/<region>/commutes.json`` 
+    the pair ``index_by_name, M``, where ``M`` is a nested
     dictionary/matrix such that ``M[mode][i][j]`` equals the distance in km
     and the time in hours that it takes to travel from centroid of 
     polygon with index ``i >= 0`` to the centroid of polygon with index 
@@ -496,7 +497,6 @@ def create_commutes(collection, name_field):
     from polygon ``i`` and taking the median of the distances and times 
     from each of these points to the polygon's centroid.
 
-    Get data from CSVs.
     """
     prefix = 'data/%s/' % region
 
@@ -547,86 +547,25 @@ def create_commutes(collection, name_field):
                 except KeyError:
                     row.append((None, None)) 
             MM[mode].append(row)    
+
+    # Write to file
     index_by_name = {on: i for (i, on) in enumerate(origin_names)}
-    return index_by_name, MM
-
-# TODO: finish this function
-def get_distance_and_time_diagonal(collection):
-    pc_by_name = get_polygon_and_centroid_by_au_name(collection, 'AU_NAME')
-    for au_name, pc in pc_by_name.items():
-        for mode in MODES:
-            get_distance_and_time_to_self(pc[0], pc[1], mode=mode)
+    data = {'index_by_name': index_by_name, 'matrix': MM}
+    dump_json(data, prefix + 'commutes.json')
         
-def get_distance_and_time_to_self(polygon, centroid, n=100,
-  mode=MODES[0]):
-    """
-    Given a polygon and its centroid in NZTM coordinates,
-    return...
-    """
-    centroid = pj_nztm(*point_to_tuple(centroid), inverse=True)
-    sample_points = get_sample_points(polygon, n)
-    sample_points = [pj_nztm(*point_to_tuple(p), inverse=True) 
-      for p in sample_points]
-    distances, times = zip(*[get_mapquest_distance_and_time(centroid, p, mode) 
-        for p in sample_points])
-    return(median(distances), median(times))
-
-def get_mapquest_distance_and_time(a, b, mode='car'):
-    """
-    Given WGS84 longitude-latitude points ``a`` and ``b``,
-    return the distance in kilometers and the time in minutes of the 
-    quickest path from ``a`` to ``b`` in the Mapquest road network for 
-    the specified mode of transit; mode options are 'walk', 'bicycle', 
-    'car', and 'transit'.
-    Computed with the `Mapquest API <http://www.mapquestapi.com/directions/#advancedrouting>`_.
-    """
-    import urllib2
-
-    if mode == 'walk':
-        mode = 'pedestrian'
-    elif mode == 'bicycle':
-        pass
-    elif mode == 'transit':
-        mode = 'multimodal'
-    else:
-        mode = 'fastest'
-
-    url = 'http://www.mapquestapi.com/directions/v2/route?key=Fmjtd|luur2l622u%2C2n%3Do5-90ya0y&from='
-    url += '{!s},{!s}&to={!s},{!s}'.format(a[1], a[0], b[1], b[0])
-    url += '&routeType=' + mode
-    url += '&unit=k&doReverseGeocode=false&narrativeType=none'
-    # Send query and retrieve data
-    result = json.load(urllib2.urlopen(url))
-    return result['route']['distance'], result['route']['time']/60
 
 # TODO: return better formatted outputs
-def get_google_distance_and_time(a, b, mode='car', many_to_one=False,
-  use_tor=True):
+def get_google_distance_and_time(a, b, mode='transit', use_tor=True):
     """
     Given WGS84 longitude-latitude points ``a`` and ``b``,
-    return the distance in kilometers and the time in minutes of the 
-    quickest path from ``a`` to ``b`` in the Mapquest road network for 
+    return the distance in meters and the time in minutes of the 
+    quickest path from ``a`` to ``b`` in the Google road network for 
     the specified mode of transit; mode options are 'walk', 'bicycle', 
     'car', and 'transit'.
-    Computed with the `Google API <>`_.
+    Computed with the `Google API <https://developers.google.com/maps/documentation/directions/>`_.
     If ``use_tor == True``, then perform API calls through Tor,
     assuming you have it running.
     """
-    import urllib2
-
-    if use_tor:
-        # Connect to the internet through Tor
-        import socks
-        from socketshandler import SocksiPyHandler
-
-        opener = urllib2.build_opener(SocksiPyHandler(
-          socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
-        open_sesame = opener.open
-        # Test
-        print('IP address', open_sesame('https://httpbin.org/ip').read())
-    else:
-        open_sesame = urllib2.urlopen
-
     if mode == 'walk':
         mode = 'walking'
     elif mode == 'bicycle':
@@ -641,12 +580,31 @@ def get_google_distance_and_time(a, b, mode='car', many_to_one=False,
     url = 'http://maps.googleapis.com/maps/api/directions/json?origin='
     url += '{!s},{!s}&destination={!s},{!s}'.format(a[1], a[0], b[1], b[0])
     url += '&mode=' + mode + '&sensor=false'
+    
     # Send query and retrieve data
-    result = json.load(open_sesame(url))
+    try:
+        data = json.load(open_url(url, use_tor=use_tor))
+    except:
+        return -1
+    
+    # Parse data
+    if data['status'] == 'OK':
+        # Distance in meters
+        distance = sum(leg['distance']['value'] 
+          for leg in data['routes'][0]['legs'])
+        # Convert time from seconds to minutes
+        time = sum(leg['duration']['value'] 
+          for leg in data['routes'][0]['legs'])/60
+        result = distance, time
+    elif data['status'] == 'ZERO_RESULTS':
+        result = (None, None)
+    else:
+        # Fail
+        result = -1
     return result
 
-# TODO: return better formatted outputs
-def get_google_distance_matrix(origins, destinations, mode='driving',
+# TODO: update docstring to describe output format. Mention None case.
+def get_google_distance_and_time_matrix(origins, destinations, mode='driving',
   use_tor=True):
     """
     Given a list of origins as WGS84 longitude-latitude pairs,
@@ -655,33 +613,11 @@ def get_google_distance_matrix(origins, destinations, mode='driving',
     return the origin-destination matrix computed by Google Maps API; see
     `here <https://developers.google.com/maps/documentation/distancematrix/>`_.
 
-    The output matrix ``M``, is in decoded JSON form, where
-    ``M['rows'][i]['elements'][j]`` contains time and distance estimates 
-    for the trip from ``origins[i]`` to ``destinations[j]`` in the form of 
-    a dictionary ``v``, where ``v['distance']['value']`` is the travel
-    distance in meters and ``v['duration']['value']`` is the travel time in 
-    seconds.
+    The output matrix ``M`` is of the form...
 
     If ``use_tor == True``, then perform API calls through Tor,
     assuming you have it running.
-
-    The web page above also describes the usage limits for the free API.
     """
-    import urllib2
-
-    if use_tor:
-        # Connect to the internet through Tor
-        import socks
-        from socketshandler import SocksiPyHandler
-
-        opener = urllib2.build_opener(SocksiPyHandler(
-          socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
-        open_sesame = opener.open
-        # Test
-        print('IP address', open_sesame('https://httpbin.org/ip').read())
-    else:
-        open_sesame = urllib2.urlopen
-
     # Create query url
     url = 'http://maps.googleapis.com/maps/api/distancematrix/json?origins='
     for (lon, lat) in origins:
@@ -694,73 +630,155 @@ def get_google_distance_matrix(origins, destinations, mode='driving',
     url = url[:-1]
     url += '&mode=' + mode + '&sensor=false'
 
-    # print('url=', url)
     # Send query and retrieve data
-    return json.load(open_sesame(url))
+    try:
+        data = json.load(open_url(url, use_tor=use_tor))
+    except:
+        return -1
 
-def test_api(use_tor=True):
-    points = [      
-      [174.92401,-41.2234],
-      [174.81693,-41.24061],
-      [174.75541,-41.29672],
-      [174.80076,-41.22184],
-      [174.99621,-41.17046],
-      [174.9756,-41.15006],
-      [174.82284,-41.32307],
-      [174.76214,-41.27524],
-      [175.11763,-41.15757],
-      [174.77217,-41.32261],
-      # [175.00824,-41.11013],
-      # [174.82901,-41.30851],
-      # [175.80406,-40.65381],
-      # [174.96121,-41.27227],
-      # [174.98829,-40.89302],
-      # [174.91788,-41.214],
-      # [175.72208,-41.15631],
-      # [174.93024,-41.21782],
-      # [175.0571,-41.11991],
-      # [175.70155,-40.64866],
-      # [174.96521,-41.17234],
-      # [174.93334,-41.26437],
-      # [175.11788,-41.08158],
-      # [175.62952,-40.81038],
-      # [175.04926,-40.86251],
-      # [174.89068,-41.22477],
-      # [175.04093,-41.14899],
-      # [174.71366,-41.25922],
-      # [174.84384,-41.09868],
-      # [174.75804,-41.33419],
-      # [174.94453,-41.19582],
-      # [174.8738,-41.04401],
-      # [174.89215,-41.19858],
-      # [174.92733,-41.20573],
-      # [174.87465,-41.22248],
-      # [174.76446,-41.31239],
-      # [174.99316,-41.19115],
-      # [174.82035,-41.18154],
-      # [175.04565,-41.12369],
-      # [174.90941,-41.17127],
-      # [174.82081,-41.16895],
-      # [174.90892,-41.2191],
-      # [174.87609,-41.2004],
-      # [174.87147,-41.13669],
-      # [174.86279,-41.13977],
-      # [174.82969,-41.32904],
-      # [174.83862,-41.16408],
-      # [175.08753,-41.12044],
-      # [174.82699,-41.11339],
-    ]
-    print('num points:', len(points))
-    # g1 = get_google_distance_and_time(a, b, use_tor=use_tor)
-    g2 = get_google_distance_matrix(points, points, use_tor=use_tor)
-    print()
-    # print(g1)
-    # print('-'*40)
-    print(g2)
+    # Parse data and return a size len(originis)*len(destinations) 
+    # matrix of distance-time pairs with distance in km and time in h.
+    # Encode the matrix as a dictionary with structure
+    # (i, j) -> (distance, time)
+    M = {}
+    for i in range(len(data['rows'])):
+        for j in range(len(data['rows'][i]['elements'])):
+            v = data['rows'][i]['elements'][j]
+            if v['status'] == 'ZERO_RESULTS':
+                # No route, so set to None
+                M[(i, j)] = (None, None) 
+            else:
+                M[(i, j)] =\
+                  (v['distance']['value'], v['duration']['value']/60)
+    return M
 
+def create_transit_commutes(region, max_num_fails=3, use_tor=True):
+    """
+    Get centroid data from CSV, query Google to get transit commute
+    distances and times, and output to a CSV where each row contains:
+
+    1. origin AU name
+    2. destination AU name
+    3. distance in meters
+    4. time in minutes 
+    """
+    prefix = 'data/%s/' % region
+
+    # Read centroids data and build a list of items 
+    # (AU name, longitude-latitude coordinate pair of AU centroid)
+    names_and_centroids = []
+    with open(prefix + 'au_centroids.csv', 'rb') as f:
+        reader = csv.reader(f)
+        # Skip header row
+        reader.next()
+        for row in reader:
+            formatted_row = (row[0], (float(row[1]), float(row[2])))
+            names_and_centroids.append(formatted_row)
+
+    # Write commutes data CSV 
+    with open(prefix + 'transit_commutes.csv', 'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(['origin (2013 area unit name)', 
+          'destination', 'distance (meters)', 'time (minutes)'])
+        for o_name, o_centroid in names_and_centroids:
+            for d_name, d_centroid in names_and_centroids:
+                row = [o_name, d_name]
+                g = get_google_distance_and_time(o_centroid, d_centroid,
+                  mode='transit', use_tor=use_tor)
+                # If request failed, try again up to max_num_fails times
+                num_fails = 0
+                while g == -1:
+                    num_fails += 1
+                    if num_fails < max_num_fails:
+                        # Try again
+                        g = get_google_distance_and_time(o_centroid, 
+                          d_centroid, mode='transit')
+                    elif num_fails == max_num_fails:
+                        # We've probably hit the API limit, 
+                        # so get a new IP address and try once more
+                        print('Failed to get data %s times.' % max_num_fails +\
+                          'Getting new IP address and trying once more.')
+                        get_new_ip_address()
+                        g = get_google_distance_and_time(o_centroid, 
+                          d_centroid, mode='transit')
+                    else:
+                        # Give up
+                        print('Gave up on %s to %s.' % (o_name, d_name))
+                        break
+                row.extend(list(g))
+                print(row)
+                writer.writerow(row)
+    # for o_name, o_centroid in names_and_centroids:
+    #     # Get distance and time data for this row of M
+    #     for i in range(0, len(names_and_centroids), k):
+    #     #for d_names_and_d_centroids in names_and_centroids[::k]:
+    #         d_names_and_d_centroids = names_and_centroids[i:i+k]
+    #         # Break row into chunks of size at most k
+    #         # so that we don't exceed the API limit
+    #         d_names, d_centroids = zip(*d_names_and_d_centroids)
+    #         print('Calling Google...')
+    #         A = get_google_distance_matrix([o_centroid], d_centroids)
+    #         print('Got Google data')
+    #         num_fails = 0
+    #         while A is None:
+    #             print('A is None')
+    #             # We've hit our daily IP limit, so get a new IP address
+    #             # Tor does this automatically every 10 min
+    #             num_fails += 1
+    #             if num_fails == max_num_fails:
+    #                 # Abort!
+    #                 return
+    #             time.sleep(10*60 + 5) # or get_new_IP_address()
+    #             A = get_google_distance_matrix([o_centroid], d_centroids)
+
+    #         # Note that A is a dict of the form
+    #         # (0, index in d_centroids) -> (distance, time)    
+    #         for key, value in A.items():
+    #             d_name = d_names[key[1]]
+    #             M[(o_name, d_name)] = value
+    #         # Sleep in accordance with API limits
+    #         time.sleep(15)
+
+def open_url(url, use_tor=True):
+    import urllib2
+    import socks 
+    from socketshandler import SocksiPyHandler
+
+    if use_tor:
+        opener = urllib2.build_opener(SocksiPyHandler(
+          socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
+        return opener.open(url)
+    else:
+        return urllib2.urlopen(url)
+
+def get_new_ip_address():
+    """
+    Get a new Tor exit node IP address.
+    """
+    from stem import Signal
+    from stem.control import Controller
+    import time
+
+    with Controller.from_port(port=9151) as controller:
+      controller.authenticate()
+      controller.signal(Signal.NEWNYM)
+
+    # Print IP address
+    time.sleep(3) # Delay while Tor updates
+    ip_address = json.load(open_url('https://httpbin.org/ip'))[
+      'origin']
+    print('IP address', ip_address)
+
+def test_tor(use_tor=True):
+    a = [174.78209,-41.30701]
+    b = [174.89262,-41.13399]
+    print(get_google_distance_and_time(a, b))
+    get_new_ip_address()
+    print(get_google_distance_and_time(a, b))
+    get_new_ip_address()
 
 if __name__ == '__main__':
-    # region = 'auckland'
+    region = 'wellington'
     # print('Creating files for %s...' % region)
     # print('  Shapes...')
     # create_shapes(region)
@@ -772,4 +790,5 @@ if __name__ == '__main__':
     # create_sample_points(region)
     # print('  Fake commutes...')
     # create_fake_commutes(region)
-    test_api()
+    # test_tor()
+    create_transit_commutes(region)
