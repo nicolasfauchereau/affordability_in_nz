@@ -9,7 +9,7 @@ import shapely
 MASTER_SHAPES_FILE = 'data/au_shapes_simplified.geojson'
 MASTER_RENTS_FILE = 'data/au_rents.csv'
 REGIONS = {'auckland', 'wellington'}
-MODES = ['walk', 'bicycle', 'transit', 'car']
+MODES = ['walk', 'bicycle', 'car', 'transit']
 
 def get_au_names(filename, header=True):
     """
@@ -478,35 +478,41 @@ def create_fake_commutes(region, name_field='AU2013_NAM',
     data = {'index_by_name': index_by_name, 'matrix': M}
     dump_json(data, prefix + 'fake_commutes.json')
 
-# TODO: Clean up the functions below.
-# Miscellaneous commute data functions in various states of disarray.
 def create_commutes(region):
     """
-    Take the commute data CSV files for this region and convert them
-    into one JSON master matrix. 
+    Take the data in the commute CSV files for this region and 
+    convert it into one JSON master file. 
     More specifically, write to ``data/<region>/commutes.json`` 
-    the pair ``index_by_name, M``, where ``M`` is a nested
-    dictionary/matrix such that ``M[mode][i][j]`` equals the distance in km
-    and the time in hours that it takes to travel from centroid of 
-    polygon with index ``i >= 0`` to the centroid of polygon with index 
-    ``j >= 0`` through the Open Street Map road network by the mode of
-    transport ``mode``, which is one of 'walk', 'bicycle', 'car', 'transit'.
-    The dictionary ``index_by_name`` gives maps polygon names to their
-    indices. 
-    ``M[i][i]`` is obtained by choosing ``n`` points uniformly at random 
-    from polygon ``i`` and taking the median of the distances and times 
-    from each of these points to the polygon's centroid.
-
+    ``{'index_by_name': index_by_name, 'matrix': M}``, where 
+    ``index_by_name`` is a dictionary with structure
+    area unit name -> row/column index in matrix and where 
+    ``M`` is a matrix (encoded by a dictionary with structure
+    mode -> list of lists of distance-time pairs) 
+    such that ``M[mode][i][j]`` equals the distance in km
+    and the time in hours that it takes to travel by the given mode
+    (specified in the list ``MODES``)
+    from the centroid of the area unit with index ``i >= 0`` 
+    to the centroid of the area unit with index ``j >= 0``.
     """
     prefix = 'data/%s/' % region
 
-    pc_by_name = get_polygon_and_centroid_by_au_name(collection, name_field)
-    names = pc_by_name.keys()
-    N = len(names)
+    # Get AU names
+    names = []
+    with open(prefix + 'au_names.csv') as f:
+        reader = csv.reader(f)
+        # Skip header
+        reader.next()
+        for row in reader:
+            names.append(row[0])
+    names.sort()
     index_by_name = {name: i for (i, name) in enumerate(names)}
-    M = {mode: {} for mode in MODES}
+    n = len(names)
 
-    # Read distance and time data from CSVs
+    # Initialize matrix
+    M = {mode: [[(None, None) for j in range(n)] 
+      for i in range(n)] for mode in MODES}
+
+    # Assign distance and time values from CSVs
     for mode in MODES:
         filename = prefix + mode + '_commutes.csv'
         with open(filename, 'rb') as f:
@@ -514,45 +520,56 @@ def create_commutes(region):
             # Skip header row
             reader.next() 
             for row in reader:
-                origin_name, destination_name, distance, time = row
+                o_name, d_name, distance, time = row
                 # Convert distance to km and time to h 
                 if distance:
-                    distance = round(float(distance)/1000, 1)
-                elif mode == 'transit':
-                    # Until get distance data for public transport,
-                    # used car distance
-                    try:
-                        distance = M['car'][origin_name][destination_name][0]
-                    except KeyError:
-                        distance = None
+                    distance = float(distance)
                 else:
                     distance = None
-                time = round(float(time)/60, 1)
-                # Save to matrix
-                if origin_name not in M[mode]:
-                    M[mode][origin_name] =\
-                      {destination_name: (distance, time)}
+                if time:
+                    time = float(time)
                 else:
-                    M[mode][origin_name][destination_name] =\
-                      (distance, time) 
-
-    # Compress each M[mode] by turning it into a list of lists.
-    MM = {mode: [] for mode in MODES}
-    for mode in MODES:
-        for on  in origin_names:
-            row = []
-            for dn in origin_names:
-                try:
-                    row.append(M[mode][on][dn])
-                except KeyError:
-                    row.append((None, None)) 
-            MM[mode].append(row)    
+                    time = None
+                # Save to matrix
+                M[mode][index_by_name[o_name]][index_by_name[d_name]] =\
+                  (distance, time)
 
     # Write to file
-    index_by_name = {on: i for (i, on) in enumerate(origin_names)}
-    data = {'index_by_name': index_by_name, 'matrix': MM}
+    data = {'index_by_name': index_by_name, 'matrix': M}
     dump_json(data, prefix + 'commutes.json')
-        
+       
+# TODO: delete this function when no longer necessary
+def format_commutes(region):
+    """
+    Assuming CSV commute distances in meters and times in minutes,
+    convert them to kilometer and hours, respectively.
+    Save to new CSV files.
+    """ 
+    prefix = 'data/%s/' % region
+
+    # Assign distance and time values from CSVs
+    for mode in MODES: 
+        filename = prefix + mode + '_commutes.csv'
+        with open(filename, 'rb') as f:
+            reader = csv.reader(f)
+            M = list(reader)
+        filename = prefix + mode + '_commutes_new.csv'
+        with open(filename, 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(['origin area unit', 'destination area unit',
+              'distance (kilometers)', 'time (hours)'])
+            for row in sorted(M[1:]):
+                o_name, d_name, distance, time = row
+                # Convert distance to km and time to h 
+                if distance:
+                    distance = round(float(distance)/1000, 3)
+                else:
+                    distance = None
+                if time:
+                    time = round(float(time)/60, 3)
+                else:
+                    time = None
+                writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
     region = 'wellington'
@@ -567,3 +584,4 @@ if __name__ == '__main__':
     # create_sample_points(region)
     # print('  Fake commutes...')
     # create_fake_commutes(region)
+    convert_units_in_commutes(region)
