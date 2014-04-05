@@ -11,7 +11,6 @@ Requirements
 - `RapydScript <https://bitbucket.org/pyjeon/rapydscript>`_ for compiling RapydScript (.pyj) files to JavaScript
 - Python >= 2.7 for data processing in ``utils.py``
 - `Shapely <http://toblerity.org/shapely/>`_ for geodata processing ``utils.py``
-- `PySocks <https://github.com/Anorov/PySocks>`_ for connecting to the internet via SOCKS proxy server in ``utils.py``
 
 Instructions
 =============
