@@ -70,9 +70,10 @@ def slice_collection(collection, prop, values):
       if f['properties'][prop] in values]
     return features_to_feature_collection(features)
 
-def create_geojson(region, name_field='AU2013_NAM'):
+def create_shapes(region, name_field='AU2013_NAM'):
     """
-    Create the GeoJSON file for a given region from ``REGIONS``.
+    Create the GeoJSON file comprising the AU shapes for a given region 
+    from ``REGIONS``.
     """
     prefix = 'data/%s/' % region
     collection = load_json(MASTER_SHAPES_FILE)
@@ -232,7 +233,7 @@ def get_polygon_and_centroid_by_au_name(collection, name_field='AU2013_NAM'):
         pc_by_name[name] = (polygon, polygon.centroid)
     return pc_by_name
 
-def create_centroids(region, name_field='AU2013_NAM'):
+def create_centroids(region, name_field='AU2013_NAM', digits=5):
     """
     Create a GeoJSON and CSV file containing the centroids of the area
     units for a given region from ``REGIONS``.
@@ -246,6 +247,12 @@ def create_centroids(region, name_field='AU2013_NAM'):
 
     For the GeoJSON file, create feature collection of point features,
     one for each centroid.
+
+    All longitude and latitude entries are rounded to ``digits``
+    decimal places.
+    Note that 5 decimal places in longitude and latitude degrees gives
+    a precision on the ground of about 1 meter; see
+    `here <https://en.wikipedia.org/wiki/Decimal_degrees>`_ . 
     """
     prefix = 'data/%s/' % region
 
@@ -253,35 +260,32 @@ def create_centroids(region, name_field='AU2013_NAM'):
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, 
       name_field=name_field)
     
-    # Create CSV version
+    # Create CSV and GeoJSON
+    features = []
     with open(prefix + 'au_centroids.csv', 'w') as f:
         writer = csv.writer(f)
         writer.writerow(['2013 area unit name', 
           'WGS84 longitude of centroid of area unit',
           'WGS84 latitude of centroid of area unit'])
         for name, pc in pc_by_name.items():
-            centroid = pj_nztm(*point_to_tuple(pc[1]), inverse=True)
+            centroid = my_round(pj_nztm(*point_to_tuple(pc[1]), inverse=True),
+              digits=digits)
+            # CSV row
             writer.writerow([name, centroid[0], centroid[1]])
+            # GeoJSON point feature for later
+            feature = {
+              'type': 'Feature',
+              'geometry': {
+                'type': "Point",
+                'coordinates': list(centroid),
+               },
+              'properties': {
+                name_field: name,
+              }
+            }
+            features.append(feature)
 
-    # Create GeoJSON version
-    features = []
-    for name, pc in pc_by_name.items():
-        # Get centroid in WGS84 coords
-        centroid = pj_nztm(*point_to_tuple(pc[1]), inverse=True)
-        # Create GeoJSON point feature
-
-        feature = {
-          'type': 'Feature',
-          'geometry': {
-            'type': "Point",
-            'coordinates': list(centroid),
-           },
-          'properties': {
-            name_field: name,
-          }
-        }
-        features.append(feature)
-
+    # Combine GeoJSON features and write to file
     geojson = features_to_feature_collection(features)
     dump_json(geojson, prefix + 'au_centroids.geojson')
 
@@ -307,7 +311,7 @@ def get_sample_points(polygon, n):
             i += 1
     return sample_points
 
-def create_sample_points(region, name_field='AU2013_NAM', n=100):
+def create_sample_points(region, name_field='AU2013_NAM', n=100, digits=5):
     """
     Create a CSV file containing ``n`` random sample points from each area unit
     in a given region in ``REGIONS``.
@@ -325,6 +329,12 @@ def create_sample_points(region, name_field='AU2013_NAM', n=100):
     For example, for each area unit and each mode of travel one could 
     take the medians of the distances and times from the sample points 
     to the centroid as the representative commute distance and time.
+
+    All longitude and latitude entries are rounded to ``digits``
+    decimal places.
+    Note that 5 decimal places in longitude and latitude degrees gives
+    a precision on the ground of about 1 meter; see
+    `here <https://en.wikipedia.org/wiki/Decimal_degrees>`_ . 
     """
     prefix = 'data/%s/' % region
     collection = load_json(prefix + 'au_shapes.geojson')
@@ -340,7 +350,8 @@ def create_sample_points(region, name_field='AU2013_NAM', n=100):
         for name, pc in pc_by_name.items():
             sample_points = get_sample_points(pc[0], n)
             for p in sample_points:
-                pp = my_round(pj_nztm(*point_to_tuple(p), inverse=True))
+                pp = my_round(pj_nztm(*point_to_tuple(p), inverse=True),
+                  digits=digits)
                 writer.writerow([name, pp[0], pp[1]])
 
 # Distance and time data functions
@@ -653,6 +664,8 @@ def get_google_distance_matrix(origins, destinations, mode='driving',
 
     If ``use_tor == True``, then perform API calls through Tor,
     assuming you have it running.
+
+    The web page above also describes the usage limits for the free API.
     """
     import urllib2
 
@@ -681,26 +694,82 @@ def get_google_distance_matrix(origins, destinations, mode='driving',
     url = url[:-1]
     url += '&mode=' + mode + '&sensor=false'
 
-    print('url=', url)
+    # print('url=', url)
     # Send query and retrieve data
     return json.load(open_sesame(url))
 
 def test_api(use_tor=True):
-    a = [174.7103025602929,-36.77207046318112]
-    b = [174.70080752730942,-36.914615337299345]
-    g1 = get_google_distance_and_time(a, b, use_tor=use_tor)
-    g2 = get_google_distance_matrix([a, b], [a, b], use_tor=use_tor)
+    points = [      
+      [174.92401,-41.2234],
+      [174.81693,-41.24061],
+      [174.75541,-41.29672],
+      [174.80076,-41.22184],
+      [174.99621,-41.17046],
+      [174.9756,-41.15006],
+      [174.82284,-41.32307],
+      [174.76214,-41.27524],
+      [175.11763,-41.15757],
+      [174.77217,-41.32261],
+      # [175.00824,-41.11013],
+      # [174.82901,-41.30851],
+      # [175.80406,-40.65381],
+      # [174.96121,-41.27227],
+      # [174.98829,-40.89302],
+      # [174.91788,-41.214],
+      # [175.72208,-41.15631],
+      # [174.93024,-41.21782],
+      # [175.0571,-41.11991],
+      # [175.70155,-40.64866],
+      # [174.96521,-41.17234],
+      # [174.93334,-41.26437],
+      # [175.11788,-41.08158],
+      # [175.62952,-40.81038],
+      # [175.04926,-40.86251],
+      # [174.89068,-41.22477],
+      # [175.04093,-41.14899],
+      # [174.71366,-41.25922],
+      # [174.84384,-41.09868],
+      # [174.75804,-41.33419],
+      # [174.94453,-41.19582],
+      # [174.8738,-41.04401],
+      # [174.89215,-41.19858],
+      # [174.92733,-41.20573],
+      # [174.87465,-41.22248],
+      # [174.76446,-41.31239],
+      # [174.99316,-41.19115],
+      # [174.82035,-41.18154],
+      # [175.04565,-41.12369],
+      # [174.90941,-41.17127],
+      # [174.82081,-41.16895],
+      # [174.90892,-41.2191],
+      # [174.87609,-41.2004],
+      # [174.87147,-41.13669],
+      # [174.86279,-41.13977],
+      # [174.82969,-41.32904],
+      # [174.83862,-41.16408],
+      # [175.08753,-41.12044],
+      # [174.82699,-41.11339],
+    ]
+    print('num points:', len(points))
+    # g1 = get_google_distance_and_time(a, b, use_tor=use_tor)
+    g2 = get_google_distance_matrix(points, points, use_tor=use_tor)
     print()
-    print(g1)
-    print('-'*40)
+    # print(g1)
+    # print('-'*40)
     print(g2)
 
+
 if __name__ == '__main__':
-    region = 'wellington'
-    print('Creating files for %s...' % region)
-    create_geojson(region)
-    create_rents(region)
-    create_centroids(region)
-    create_sample_points(region)
-    create_fake_commutes(region)
-    # test_api(use_tor=True)
+    # region = 'auckland'
+    # print('Creating files for %s...' % region)
+    # print('  Shapes...')
+    # create_shapes(region)
+    # print('  Rents...')
+    # create_rents(region)
+    # print('  Centroids...')
+    # create_centroids(region)
+    # print('  Sample points...')
+    # create_sample_points(region)
+    # print('  Fake commutes...')
+    # create_fake_commutes(region)
+    test_api()
