@@ -1,4 +1,72 @@
-origin area unit,destination area unit,distance (kilometers),time (hours)
+origin (2013 area unit name),destination,distance (kilometers),time (hours)
+Adelaide,Adelaide,0.0,0.0
+Adelaide,Adventure,27.736,1.454
+Adelaide,Akatarawa,45.832,2.244
+Adelaide,Alicetown,18.103,0.749
+Adelaide,Arakura,33.482,1.364
+Adelaide,Aro Street-Nairn Street,3.241,0.528
+Adelaide,Ascot Park,29.477,1.395
+Adelaide,Avalon East,23.402,1.141
+Adelaide,Avalon West,25.869,1.22
+Adelaide,Awarua,11.481,0.948
+Adelaide,Belmont,29.12,1.985
+Adelaide,Berhampore East,3.092,0.33
+Adelaide,Berhampore West,2.934,0.303
+Adelaide,Boulcott,23.044,1.33
+Adelaide,Brentwood,35.545,1.574
+Adelaide,Brooklyn,6.64,0.658
+Adelaide,Brooklyn South,3.938,0.945
+Adelaide,Cannons Creek East,26.369,1.301
+Adelaide,Cannons Creek North,25.538,1.261
+Adelaide,Cannons Creek South,26.846,1.386
+Adelaide,Carterton,82.244,2.138
+Adelaide,Churton Park North,26.044,1.887
+Adelaide,Churton Park South,16.91,1.371
+Adelaide,Clouston Park,39.583,1.657
+Adelaide,Cloustonville,51.509,1.857
+Adelaide,Crofton Downs,14.726,1.199
+Adelaide,Dannevirke East,180.219,4.527
+Adelaide,Dannevirke West,181.194,4.741
+Adelaide,Delaney,33.162,1.471
+Adelaide,Discovery,31.527,1.469
+Adelaide,Eastbourne,29.823,1.33
+Adelaide,Ebdentown,38.558,1.661
+Adelaide,Eketahuna,192.805,4.537
+Adelaide,Elderslea,37.537,1.644
+Adelaide,Elsdon-Takapuwahia,26.631,1.672
+Adelaide,Emerald Hill,45.255,2.01
+Adelaide,Endeavour,34.893,3.394
+Adelaide,Epuni East,24.292,1.193
+Adelaide,Epuni West,23.213,1.309
+Adelaide,Esplanade,17.463,0.833
+Adelaide,Featherston,62.163,1.647
+Adelaide,Fernlea,28.313,1.579
+Adelaide,Glendale,36.25,1.489
+Adelaide,Glenside North,22.591,1.313
+Adelaide,Gracefield,19.931,1.599
+Adelaide,Greenacres,20.94,1.253
+Adelaide,Grenada North,18.805,1.372
+Adelaide,Grenada Village,25.358,1.835
+Adelaide,Greytown,80.086,2.043
+Adelaide,Happy Valley-Owhiro Bay,5.9,0.773
+Adelaide,Hataitai North,4.446,0.467
+Adelaide,Haywards-Manor Park,30.653,1.726
+Adelaide,Heretaunga,34.127,1.491
+Adelaide,Heretaunga-Silverstream,31.754,1.274
+Adelaide,Holborn,29.223,1.765
+Adelaide,Homebush-Te Ore Ore,103.339,4.782
+Adelaide,Homedale East,29.93,1.574
+Adelaide,Homedale West,37.106,1.456
+Adelaide,Horokiwi,21.841,1.919
+Adelaide,Hutt Central,19.893,0.866
+Adelaide,Island Bay East,4.847,0.465
+Adelaide,Island Bay West,4.827,0.462
+Adelaide,Johnsonville Central,12.042,0.916
+Adelaide,Johnsonville East,13.932,1.076
+Adelaide,Johnsonville North,12.525,1.043
+Adelaide,Kahutara,82.094,1.941
+Adelaide,Kaitawa,70.387,3.388
+Adelaide,Kaiwharawhara,7.254,0.342
 Adelaide,Adelaide,0.0,0.0
 Adelaide,Adventure,27.736,1.454
 Adelaide,Akatarawa,45.832,2.244
@@ -176,7 +244,7 @@ Adelaide,Strathmore Park,9.061,0.423
 Adelaide,Taita North,27.855,1.199
 Adelaide,Taita South,25.03,1.249
 Adelaide,Taitville,7.308,0.511
-Adelaide,Takapu,,
+Adelaide,Takapu,29.994,2.7202777777777776
 Adelaide,Tawa Central,19.352,1.086
 Adelaide,Tawa South,17.478,1.06
 Adelaide,Tawhai,32.66,1.285
@@ -326,7 +394,7 @@ Adventure,Miramar South,31.702,1.427
 Adventure,Miramar West,33.142,1.558
 Adventure,Mitchelltown,27.488,1.47
 Adventure,Moera,38.817,1.389
-Adventure,Moonshine Valley,,
+Adventure,Moonshine Valley,63.14,2.0597222222222222
 Adventure,Mt Cook-Wallace Street,26.646,1.229
 Adventure,Mt Holdsworth,,
 Adventure,Mt Victoria West,26.793,1.136
@@ -392,7 +460,7 @@ Adventure,Strathmore Park,33.99,1.831
 Adventure,Taita North,45.663,1.461
 Adventure,Taita South,43.414,1.443
 Adventure,Taitville,26.543,1.278
-Adventure,Takapu,,
+Adventure,Takapu,7.437,1.67
 Adventure,Tawa Central,10.203,0.701
 Adventure,Tawa South,13.222,1.241
 Adventure,Tawhai,51.888,2.691
@@ -486,7 +554,7 @@ Akatarawa,Haywards-Manor Park,19.293,1.567
 Akatarawa,Heretaunga,14.138,1.028
 Akatarawa,Heretaunga-Silverstream,14.162,1.015
 Akatarawa,Holborn,19.591,1.337
-Akatarawa,Homebush-Te Ore Ore,,
+Akatarawa,Homebush-Te Ore Ore,74.406,4.4927777777777775
 Akatarawa,Homedale East,35.135,1.848
 Akatarawa,Homedale West,39.581,1.802
 Akatarawa,Horokiwi,58.05,3.151
@@ -824,7 +892,7 @@ Alicetown,Strathmore Park,25.549,1.269
 Alicetown,Taita North,8.969,0.487
 Alicetown,Taita South,8.303,0.486
 Alicetown,Taitville,16.982,0.807
-Alicetown,Takapu,,
+Alicetown,Takapu,39.935,2.5569444444444445
 Alicetown,Tawa Central,28.482,0.963
 Alicetown,Tawa South,26.608,0.936
 Alicetown,Tawhai,13.634,0.866
@@ -921,7 +989,7 @@ Arakura,Holborn,19.303,1.21
 Arakura,Homebush-Te Ore Ore,93.514,4.643
 Arakura,Homedale East,5.662,0.589
 Arakura,Homedale West,10.489,0.706
-Arakura,Horokiwi,,
+Arakura,Horokiwi,18.8,1.6241666666666668
 Arakura,Hutt Central,12.612,0.482
 Arakura,Island Bay East,36.628,1.819
 Arakura,Island Bay West,36.608,1.816
@@ -1256,7 +1324,7 @@ Aro Street-Nairn Street,Strathmore Park,11.339,1.138
 Aro Street-Nairn Street,Taita North,26.193,1.204
 Aro Street-Nairn Street,Taita South,23.464,1.167
 Aro Street-Nairn Street,Taitville,1.494,0.365
-Aro Street-Nairn Street,Takapu,,
+Aro Street-Nairn Street,Takapu,28.813,2.6475
 Aro Street-Nairn Street,Tawa Central,17.856,1.125
 Aro Street-Nairn Street,Tawa South,15.982,1.099
 Aro Street-Nairn Street,Tawhai,31.567,1.213
@@ -1472,7 +1540,7 @@ Ascot Park,Strathmore Park,35.854,1.856
 Ascot Park,Taita North,47.527,1.486
 Ascot Park,Taita South,45.278,1.469
 Ascot Park,Taitville,28.407,1.304
-Ascot Park,Takapu,,
+Ascot Park,Takapu,9.3,1.6952777777777779
 Ascot Park,Tawa Central,12.067,0.726
 Ascot Park,Tawa South,15.086,1.267
 Ascot Park,Tawhai,69.06,2.534
@@ -1688,7 +1756,7 @@ Avalon East,Strathmore Park,31.486,1.353
 Avalon East,Taita North,4.297,0.307
 Avalon East,Taita South,2.518,0.286
 Avalon East,Taitville,22.056,1.255
-Avalon East,Takapu,,
+Avalon East,Takapu,44.325,2.6463888888888887
 Avalon East,Tawa Central,33.368,1.41
 Avalon East,Tawa South,31.494,1.384
 Avalon East,Tawhai,9.019,0.628
@@ -1904,7 +1972,7 @@ Avalon West,Strathmore Park,31.091,1.765
 Avalon West,Taita North,3.429,0.264
 Avalon West,Taita South,2.634,0.396
 Avalon West,Taitville,23.81,1.212
-Avalon West,Takapu,,
+Avalon West,Takapu,45.444,2.8730555555555557
 Avalon West,Tawa Central,35.31,1.867
 Avalon West,Tawa South,33.436,1.841
 Avalon West,Tawhai,8.15,0.585
@@ -2177,8 +2245,8 @@ Belmont,Brentwood,25.412,1.655
 Belmont,Brooklyn,29.862,2.106
 Belmont,Brooklyn South,30.847,2.29
 Belmont,Cannons Creek East,,
-Belmont,Cannons Creek North,,
-Belmont,Cannons Creek South,,
+Belmont,Cannons Creek North,45.358,2.0608333333333335
+Belmont,Cannons Creek South,46.632,2.1286111111111112
 Belmont,Carterton,72.313,6.172
 Belmont,Churton Park North,24.789,1.802
 Belmont,Churton Park South,28.931,1.968
@@ -2210,7 +2278,7 @@ Belmont,Grenada Village,41.017,2.749
 Belmont,Greytown,71.367,2.474
 Belmont,Happy Valley-Owhiro Bay,34.0,2.452
 Belmont,Hataitai North,28.95,1.709
-Belmont,Haywards-Manor Park,,
+Belmont,Haywards-Manor Park,25.497,1.4522222222222223
 Belmont,Heretaunga,23.156,1.57
 Belmont,Heretaunga-Silverstream,20.534,1.429
 Belmont,Holborn,23.451,1.502
@@ -2246,8 +2314,8 @@ Belmont,Lansdowne,90.834,4.449
 Belmont,Linden,39.865,2.287
 Belmont,Lyall Bay-Airport-Moa Point,32.607,2.067
 Belmont,Maidstone,26.469,1.647
-Belmont,Makara-Ohariu,,
-Belmont,Mana Island,,
+Belmont,Makara-Ohariu,41.064,2.4783333333333335
+Belmont,Mana Island,49.124,2.290277777777778
 Belmont,Mana-Camborne,47.338,2.333
 Belmont,Mangaroa,44.007,2.06
 Belmont,Mangatainoka,203.541,7.793
@@ -2270,7 +2338,7 @@ Belmont,Miramar South,32.633,1.971
 Belmont,Miramar West,32.89,2.01
 Belmont,Mitchelltown,28.785,1.978
 Belmont,Moera,12.155,1.085
-Belmont,Moonshine Valley,,
+Belmont,Moonshine Valley,37.926,2.0877777777777777
 Belmont,Mt Cook-Wallace Street,27.8,1.674
 Belmont,Mt Holdsworth,,
 Belmont,Mt Victoria West,27.974,1.707
@@ -2301,7 +2369,7 @@ Belmont,Paekakariki,62.782,2.443
 Belmont,Paekakariki Hill,71.009,2.883
 Belmont,Pahiatua,194.963,7.689
 Belmont,Papakowhai North,48.008,2.684
-Belmont,Papakowhai South,,
+Belmont,Papakowhai South,49.707,2.5505555555555555
 Belmont,Paparangi,24.232,1.912
 Belmont,Paparangi West,30.908,2.11
 Belmont,Papatawa,189.325,7.472
@@ -2324,9 +2392,9 @@ Belmont,Rangoon Heights,26.572,2.071
 Belmont,Ranui Heights,44.151,2.704
 Belmont,Raroa,24.157,1.915
 Belmont,Raumati Beach,72.13,2.925
-Belmont,Raumati South,,
+Belmont,Raumati South,82.565,12.600833333333334
 Belmont,Resolution,,
-Belmont,Riverstone Terraces,,
+Belmont,Riverstone Terraces,32.951,1.9630555555555556
 Belmont,Roseneath,30.544,1.88
 Belmont,Seatoun,36.726,2.227
 Belmont,Seatoun Tunnel West,33.861,1.953
@@ -2342,7 +2410,7 @@ Belmont,Tawa South,37.466,2.369
 Belmont,Tawhai,19.499,1.488
 Belmont,Te Horo,92.815,4.446
 Belmont,Te Kainga,32.069,1.966
-Belmont,Te Marua,,
+Belmont,Te Marua,39.976,2.185277777777778
 Belmont,Te Wharau,,
 Belmont,Thorndon-Tinakori Road,24.273,1.444
 Belmont,Tirohanga,8.337,1.037
@@ -2462,7 +2530,7 @@ Berhampore East,Lansdowne,100.177,2.786
 Berhampore East,Linden,21.936,1.042
 Berhampore East,Lyall Bay-Airport-Moa Point,13.171,0.777
 Berhampore East,Maidstone,39.158,1.661
-Berhampore East,Makara-Ohariu,,
+Berhampore East,Makara-Ohariu,19.47,1.268888888888889
 Berhampore East,Mana Island,31.444,1.484
 Berhampore East,Mana-Camborne,30.901,1.394
 Berhampore East,Mangaroa,55.038,2.075
@@ -2552,7 +2620,7 @@ Berhampore East,Strathmore Park,10.505,0.593
 Berhampore East,Taita North,28.748,1.437
 Berhampore East,Taita South,26.499,1.419
 Berhampore East,Taitville,9.025,0.718
-Berhampore East,Takapu,,
+Berhampore East,Takapu,35.48,8.38
 Berhampore East,Tawa Central,21.411,1.15
 Berhampore East,Tawa South,19.537,1.124
 Berhampore East,Tawhai,35.133,2.972
@@ -2678,7 +2746,7 @@ Berhampore West,Lansdowne,99.981,2.796
 Berhampore West,Linden,21.74,1.05
 Berhampore West,Lyall Bay-Airport-Moa Point,12.975,0.784
 Berhampore West,Maidstone,39.433,1.909
-Berhampore West,Makara-Ohariu,,
+Berhampore West,Makara-Ohariu,19.261,1.2766666666666666
 Berhampore West,Mana Island,31.248,1.492
 Berhampore West,Mana-Camborne,30.705,1.401
 Berhampore West,Mangaroa,55.354,2.155
@@ -2768,7 +2836,7 @@ Berhampore West,Strathmore Park,10.308,0.601
 Berhampore West,Taita North,29.023,1.684
 Berhampore West,Taita South,26.774,1.667
 Berhampore West,Taitville,7.326,0.937
-Berhampore West,Takapu,,
+Berhampore West,Takapu,37.4,8.66388888888889
 Berhampore West,Tawa Central,21.215,1.158
 Berhampore West,Tawa South,19.341,1.131
 Berhampore West,Tawhai,34.948,3.185
@@ -2984,7 +3052,7 @@ Boulcott,Strathmore Park,29.083,1.767
 Boulcott,Taita North,5.442,0.316
 Boulcott,Taita South,4.648,0.447
 Boulcott,Taitville,21.802,1.214
-Boulcott,Takapu,,
+Boulcott,Takapu,43.35,2.7511111111111113
 Boulcott,Tawa Central,33.302,1.87
 Boulcott,Tawa South,31.428,1.844
 Boulcott,Tawhai,10.164,0.637
@@ -3134,7 +3202,7 @@ Brentwood,Miramar South,40.091,1.552
 Brentwood,Miramar West,42.913,2.406
 Brentwood,Mitchelltown,37.625,1.818
 Brentwood,Moera,17.656,0.891
-Brentwood,Moonshine Valley,,
+Brentwood,Moonshine Valley,8.894,0.24138888888888888
 Brentwood,Mt Cook-Wallace Street,34.304,1.315
 Brentwood,Mt Holdsworth,,
 Brentwood,Mt Victoria West,34.451,1.471
@@ -3200,7 +3268,7 @@ Brentwood,Strathmore Park,43.961,2.179
 Brentwood,Taita North,10.092,0.43
 Brentwood,Taita South,12.04,0.662
 Brentwood,Taitville,36.68,1.627
-Brentwood,Takapu,,
+Brentwood,Takapu,56.47,3.088888888888889
 Brentwood,Tawa Central,48.18,2.282
 Brentwood,Tawa South,46.306,2.256
 Brentwood,Tawhai,9.599,0.724
@@ -3416,7 +3484,7 @@ Brooklyn,Strathmore Park,9.513,0.792
 Brooklyn,Taita North,27.499,1.4
 Brooklyn,Taita South,25.25,1.383
 Brooklyn,Taitville,2.798,0.582
-Brooklyn,Takapu,,
+Brooklyn,Takapu,30.305,8.474166666666667
 Brooklyn,Tawa Central,19.691,1.373
 Brooklyn,Tawa South,17.817,1.347
 Brooklyn,Tawhai,33.081,2.495
@@ -3515,8 +3583,8 @@ Brooklyn South,Homedale East,40.588,2.833
 Brooklyn South,Homedale West,41.115,2.858
 Brooklyn South,Horokiwi,19.835,2.422
 Brooklyn South,Hutt Central,21.047,1.202
-Brooklyn South,Island Bay East,,
-Brooklyn South,Island Bay West,,
+Brooklyn South,Island Bay East,9.89,0.8097222222222222
+Brooklyn South,Island Bay West,9.87,0.8069444444444445
 Brooklyn South,Johnsonville Central,16.621,2.281
 Brooklyn South,Johnsonville East,17.054,2.417
 Brooklyn South,Johnsonville North,17.138,2.407
@@ -3525,10 +3593,10 @@ Brooklyn South,Kaitawa,71.926,3.282
 Brooklyn South,Kaiwharawhara,8.297,0.807
 Brooklyn South,Kapiti Island,,
 Brooklyn South,Karaka Bay-Worser Bay,15.579,1.309
-Brooklyn South,Karori East,,
-Brooklyn South,Karori North,,
-Brooklyn South,Karori Park,,
-Brooklyn South,Karori South,,
+Brooklyn South,Karori East,11.94,0.9713888888888889
+Brooklyn South,Karori North,9.953,0.8925
+Brooklyn South,Karori Park,13.476,0.7905555555555556
+Brooklyn South,Karori South,15.274,1.1919444444444445
 Brooklyn South,Kelburn,4.163,0.923
 Brooklyn South,Kelson,,
 Brooklyn South,Khandallah Park-Broadmeadows,17.997,2.826
@@ -3556,10 +3624,10 @@ Brooklyn South,Masterton East,100.968,4.031
 Brooklyn South,Masterton Railway,95.951,2.689
 Brooklyn South,Masterton West,95.919,2.683
 Brooklyn South,Maungakotukutuku,64.788,1.796
-Brooklyn South,Maungaraki,,
+Brooklyn South,Maungaraki,24.726,1.1086111111111112
 Brooklyn South,Maupuia,16.485,1.49
 Brooklyn South,Melling,20.34,1.229
-Brooklyn South,Melrose-Houghton Bay-Southgate,,
+Brooklyn South,Melrose-Houghton Bay-Southgate,12.906,0.895
 Brooklyn South,Miramar,13.975,1.128
 Brooklyn South,Miramar North,15.226,1.193
 Brooklyn South,Miramar South,12.803,1.066
@@ -3666,12 +3734,12 @@ Brooklyn South,Waterloo West,22.006,1.394
 Brooklyn South,Whareama,,
 Brooklyn South,Wilford,18.659,1.139
 Brooklyn South,Willis Street-Cambridge Terrace,3.716,0.738
-Brooklyn South,Wilton,,
+Brooklyn South,Wilton,13.046,0.9483333333333334
 Brooklyn South,Woburn North,22.861,1.255
 Brooklyn South,Woburn South,23.065,1.301
 Brooklyn South,Woodridge,18.057,3.307
 Brooklyn South,Woodville,156.262,4.33
-Cannons Creek East,Adelaide,,
+Cannons Creek East,Adelaide,26.881,1.3486111111111112
 Cannons Creek East,Adventure,1.513,0.36
 Cannons Creek East,Akatarawa,63.22,2.48
 Cannons Creek East,Alicetown,35.812,2.057
@@ -3682,8 +3750,8 @@ Cannons Creek East,Avalon East,40.662,2.226
 Cannons Creek East,Avalon West,41.781,2.453
 Cannons Creek East,Awarua,28.741,2.049
 Cannons Creek East,Belmont,,
-Cannons Creek East,Berhampore East,,
-Cannons Creek East,Berhampore West,,
+Cannons Creek East,Berhampore East,28.348,1.4016666666666666
+Cannons Creek East,Berhampore West,28.705,1.496388888888889
 Cannons Creek East,Boulcott,39.683,2.331
 Cannons Creek East,Brentwood,52.805,2.659
 Cannons Creek East,Brooklyn,27.565,10.08
@@ -3720,8 +3788,8 @@ Cannons Creek East,Greenacres,8.292,0.691
 Cannons Creek East,Grenada North,12.228,0.977
 Cannons Creek East,Grenada Village,37.802,3.157
 Cannons Creek East,Greytown,97.474,2.487
-Cannons Creek East,Happy Valley-Owhiro Bay,,
-Cannons Creek East,Hataitai North,,
+Cannons Creek East,Happy Valley-Owhiro Bay,33.746,1.5780555555555555
+Cannons Creek East,Hataitai North,26.757,1.0394444444444444
 Cannons Creek East,Haywards-Manor Park,47.913,2.811
 Cannons Creek East,Heretaunga,51.387,2.576
 Cannons Creek East,Heretaunga-Silverstream,49.014,2.359
@@ -3731,8 +3799,8 @@ Cannons Creek East,Homedale East,57.131,2.736
 Cannons Creek East,Homedale West,57.658,2.761
 Cannons Creek East,Horokiwi,36.378,2.325
 Cannons Creek East,Hutt Central,37.844,2.092
-Cannons Creek East,Island Bay East,,
-Cannons Creek East,Island Bay West,,
+Cannons Creek East,Island Bay East,30.602,1.4808333333333332
+Cannons Creek East,Island Bay West,30.582,1.4780555555555555
 Cannons Creek East,Johnsonville Central,32.864,2.183
 Cannons Creek East,Johnsonville East,33.297,2.32
 Cannons Creek East,Johnsonville North,33.381,2.31
@@ -3740,7 +3808,7 @@ Cannons Creek East,Kahutara,99.482,2.469
 Cannons Creek East,Kaitawa,52.554,3.185
 Cannons Creek East,Kaiwharawhara,24.84,1.791
 Cannons Creek East,Kapiti Island,,
-Cannons Creek East,Karaka Bay-Worser Bay,,
+Cannons Creek East,Karaka Bay-Worser Bay,33.094,1.6583333333333334
 Cannons Creek East,Karori East,27.757,3.238
 Cannons Creek East,Karori North,28.269,3.049
 Cannons Creek East,Karori Park,29.803,3.028
@@ -3748,15 +3816,15 @@ Cannons Creek East,Karori South,31.679,3.242
 Cannons Creek East,Kelburn,23.942,1.179
 Cannons Creek East,Kelson,,
 Cannons Creek East,Khandallah Park-Broadmeadows,34.24,2.729
-Cannons Creek East,Kilbirnie East,,
-Cannons Creek East,Kilbirnie West-Hataitai South,,
-Cannons Creek East,Kingston-Mornington,,
+Cannons Creek East,Kilbirnie East,28.665,1.1419444444444444
+Cannons Creek East,Kilbirnie West-Hataitai South,27.514,1.0725
+Cannons Creek East,Kingston-Mornington,29.17,1.2844444444444445
 Cannons Creek East,Kopuaranga,,
 Cannons Creek East,Korokoro,34.611,2.468
 Cannons Creek East,Lambton,23.147,0.921
 Cannons Creek East,Lansdowne,115.497,3.193
 Cannons Creek East,Linden,7.229,0.417
-Cannons Creek East,Lyall Bay-Airport-Moa Point,,
+Cannons Creek East,Lyall Bay-Airport-Moa Point,32.833,1.5177777777777777
 Cannons Creek East,Maidstone,54.949,2.576
 Cannons Creek East,Makara-Ohariu,41.662,3.311
 Cannons Creek East,Mana Island,11.119,0.659
@@ -3772,27 +3840,27 @@ Cannons Creek East,Masterton East,117.211,3.937
 Cannons Creek East,Masterton Railway,112.194,2.762
 Cannons Creek East,Masterton West,112.162,2.756
 Cannons Creek East,Maungakotukutuku,44.331,1.374
-Cannons Creek East,Maungaraki,,
-Cannons Creek East,Maupuia,,
+Cannons Creek East,Maungaraki,37.424,1.2991666666666666
+Cannons Creek East,Maupuia,35.325,1.813611111111111
 Cannons Creek East,Melling,36.917,2.189
-Cannons Creek East,Melrose-Houghton Bay-Southgate,,
-Cannons Creek East,Miramar,,
-Cannons Creek East,Miramar North,,
-Cannons Creek East,Miramar South,,
-Cannons Creek East,Miramar West,,
+Cannons Creek East,Melrose-Houghton Bay-Southgate,32.255,1.6041666666666667
+Cannons Creek East,Miramar,31.75,1.5783333333333334
+Cannons Creek East,Miramar North,32.985,1.5427777777777778
+Cannons Creek East,Miramar South,30.578,1.5005555555555556
+Cannons Creek East,Miramar West,32.018,1.6388888888888888
 Cannons Creek East,Mitchelltown,26.551,3.138
 Cannons Creek East,Moera,37.693,2.279
 Cannons Creek East,Moonshine Valley,58.833,1.954
-Cannons Creek East,Mt Cook-Wallace Street,,
+Cannons Creek East,Mt Cook-Wallace Street,25.506,1.0202777777777778
 Cannons Creek East,Mt Holdsworth,,
-Cannons Creek East,Mt Victoria West,,
+Cannons Creek East,Mt Victoria West,25.761,0.9527777777777777
 Cannons Creek East,Naenae North,44.172,3.524
 Cannons Creek East,Naenae South,41.607,2.439
 Cannons Creek East,Newlands East,33.576,3.081
 Cannons Creek East,Newlands North,34.027,2.471
 Cannons Creek East,Newlands South,34.842,2.656
-Cannons Creek East,Newtown East,,
-Cannons Creek East,Newtown West,,
+Cannons Creek East,Newtown East,27.927,1.3702777777777777
+Cannons Creek East,Newtown West,27.688,1.3763888888888889
 Cannons Creek East,Ngaio South,28.351,2.096
 Cannons Creek East,Ngaumutawa,112.381,2.808
 Cannons Creek East,Ngauranga East,27.874,1.974
@@ -3839,12 +3907,12 @@ Cannons Creek East,Raumati Beach,37.145,3.315
 Cannons Creek East,Raumati South,41.295,9.347
 Cannons Creek East,Resolution,20.28,1.19
 Cannons Creek East,Riverstone Terraces,57.144,2.514
-Cannons Creek East,Roseneath,,
-Cannons Creek East,Seatoun,,
-Cannons Creek East,Seatoun Tunnel West,,
+Cannons Creek East,Roseneath,26.075,1.1411111111111112
+Cannons Creek East,Seatoun,33.868,1.6513888888888888
+Cannons Creek East,Seatoun Tunnel West,32.744,1.6352777777777778
 Cannons Creek East,Solway North,111.089,2.772
 Cannons Creek East,Solway South,112.695,3.091
-Cannons Creek East,Strathmore Park,,
+Cannons Creek East,Strathmore Park,33.843,1.5202777777777778
 Cannons Creek East,Taita North,44.539,2.351
 Cannons Creek East,Taita South,42.29,2.334
 Cannons Creek East,Taitville,26.203,2.997
@@ -3865,8 +3933,8 @@ Cannons Creek East,Trentham North,52.46,2.596
 Cannons Creek East,Trentham South,52.219,2.747
 Cannons Creek East,Tuturumuri,,
 Cannons Creek East,Upper Hutt Central,54.96,2.571
-Cannons Creek East,Vogeltown,,
-Cannons Creek East,Vogeltown West,,
+Cannons Creek East,Vogeltown,26.835,1.3052777777777778
+Cannons Creek East,Vogeltown West,28.213,1.1497222222222223
 Cannons Creek East,Wadestown,25.176,2.172
 Cannons Creek East,Waikanae Beach,48.574,9.172
 Cannons Creek East,Waikanae East,43.406,3.253
@@ -3937,7 +4005,7 @@ Cannons Creek North,Crofton Downs,26.556,2.0
 Cannons Creek North,Dannevirke East,162.232,3.809
 Cannons Creek North,Dannevirke West,163.207,4.024
 Cannons Creek North,Delaney,50.275,3.225
-Cannons Creek North,Discovery,,
+Cannons Creek North,Discovery,8.055,0.6211111111111111
 Cannons Creek North,Eastbourne,46.036,2.781
 Cannons Creek North,Ebdentown,53.927,1.917
 Cannons Creek North,Eketahuna,174.817,3.819
@@ -4027,7 +4095,7 @@ Cannons Creek North,Naenae North,41.813,1.935
 Cannons Creek North,Naenae South,39.716,1.611
 Cannons Creek North,Newlands East,31.685,2.236
 Cannons Creek North,Newlands North,17.107,1.358
-Cannons Creek North,Newlands South,,
+Cannons Creek North,Newlands South,19.634,1.1880555555555556
 Cannons Creek North,Newtown East,26.609,1.792
 Cannons Creek North,Newtown West,25.689,1.67
 Cannons Creek North,Ngaio South,26.46,2.251
@@ -4124,7 +4192,7 @@ Cannons Creek North,Woburn North,34.823,1.249
 Cannons Creek North,Woburn South,35.31,1.357
 Cannons Creek North,Woodridge,32.711,2.365
 Cannons Creek North,Woodville,137.128,3.364
-Cannons Creek South,Adelaide,,
+Cannons Creek South,Adelaide,26.631,1.4347222222222222
 Cannons Creek South,Adventure,3.102,0.649
 Cannons Creek South,Akatarawa,62.97,2.566
 Cannons Creek South,Alicetown,35.562,2.143
@@ -4135,11 +4203,11 @@ Cannons Creek South,Avalon East,40.412,2.312
 Cannons Creek South,Avalon West,41.531,2.539
 Cannons Creek South,Awarua,28.491,2.135
 Cannons Creek South,Belmont,46.816,2.296
-Cannons Creek South,Berhampore East,,
-Cannons Creek South,Berhampore West,,
+Cannons Creek South,Berhampore East,28.558,1.5797222222222222
+Cannons Creek South,Berhampore West,28.455,1.5825
 Cannons Creek South,Boulcott,39.433,2.417
 Cannons Creek South,Brentwood,52.555,2.746
-Cannons Creek South,Brooklyn,,
+Cannons Creek South,Brooklyn,27.873,1.4808333333333332
 Cannons Creek South,Brooklyn South,28.301,2.351
 Cannons Creek South,Cannons Creek East,1.814,0.335
 Cannons Creek South,Cannons Creek North,1.156,0.206
@@ -4173,8 +4241,8 @@ Cannons Creek South,Greenacres,8.042,0.777
 Cannons Creek South,Grenada North,11.978,1.064
 Cannons Creek South,Grenada Village,37.552,3.243
 Cannons Creek South,Greytown,97.224,2.573
-Cannons Creek South,Happy Valley-Owhiro Bay,,
-Cannons Creek South,Hataitai North,,
+Cannons Creek South,Happy Valley-Owhiro Bay,34.07,1.765
+Cannons Creek South,Hataitai North,26.507,1.1255555555555556
 Cannons Creek South,Haywards-Manor Park,47.663,2.897
 Cannons Creek South,Heretaunga,51.137,2.662
 Cannons Creek South,Heretaunga-Silverstream,48.764,2.445
@@ -4184,8 +4252,8 @@ Cannons Creek South,Homedale East,56.881,2.822
 Cannons Creek South,Homedale West,57.408,2.847
 Cannons Creek South,Horokiwi,36.128,2.411
 Cannons Creek South,Hutt Central,37.594,2.178
-Cannons Creek South,Island Bay East,,
-Cannons Creek South,Island Bay West,,
+Cannons Creek South,Island Bay East,30.926,1.6177777777777778
+Cannons Creek South,Island Bay West,30.906,1.615
 Cannons Creek South,Johnsonville Central,32.614,2.269
 Cannons Creek South,Johnsonville East,33.047,2.406
 Cannons Creek South,Johnsonville North,33.131,2.396
@@ -4193,7 +4261,7 @@ Cannons Creek South,Kahutara,99.232,2.555
 Cannons Creek South,Kaitawa,52.304,3.271
 Cannons Creek South,Kaiwharawhara,24.59,1.877
 Cannons Creek South,Kapiti Island,,
-Cannons Creek South,Karaka Bay-Worser Bay,,
+Cannons Creek South,Karaka Bay-Worser Bay,33.418,1.878611111111111
 Cannons Creek South,Karori East,27.507,3.324
 Cannons Creek South,Karori North,28.019,3.136
 Cannons Creek South,Karori Park,29.553,3.114
@@ -4201,15 +4269,15 @@ Cannons Creek South,Karori South,31.429,3.328
 Cannons Creek South,Kelburn,23.692,1.265
 Cannons Creek South,Kelson,,
 Cannons Creek South,Khandallah Park-Broadmeadows,33.99,2.815
-Cannons Creek South,Kilbirnie East,,
-Cannons Creek South,Kilbirnie West-Hataitai South,,
-Cannons Creek South,Kingston-Mornington,,
+Cannons Creek South,Kilbirnie East,28.415,1.2280555555555555
+Cannons Creek South,Kilbirnie West-Hataitai South,27.264,1.158611111111111
+Cannons Creek South,Kingston-Mornington,29.478,1.4213888888888888
 Cannons Creek South,Kopuaranga,,
 Cannons Creek South,Korokoro,34.361,2.554
 Cannons Creek South,Lambton,22.897,1.007
 Cannons Creek South,Lansdowne,115.247,3.279
 Cannons Creek South,Linden,6.979,0.503
-Cannons Creek South,Lyall Bay-Airport-Moa Point,,
+Cannons Creek South,Lyall Bay-Airport-Moa Point,32.583,1.603888888888889
 Cannons Creek South,Maidstone,54.699,2.662
 Cannons Creek South,Makara-Ohariu,41.412,3.397
 Cannons Creek South,Mana Island,11.427,0.762
@@ -4225,27 +4293,27 @@ Cannons Creek South,Masterton East,116.961,4.023
 Cannons Creek South,Masterton Railway,111.944,2.848
 Cannons Creek South,Masterton West,111.912,2.842
 Cannons Creek South,Maungakotukutuku,44.639,1.561
-Cannons Creek South,Maungaraki,,
-Cannons Creek South,Maupuia,,
+Cannons Creek South,Maungaraki,37.174,1.3852777777777778
+Cannons Creek South,Maupuia,35.649,2.033888888888889
 Cannons Creek South,Melling,36.667,2.275
-Cannons Creek South,Melrose-Houghton Bay-Southgate,,
-Cannons Creek South,Miramar,,
-Cannons Creek South,Miramar North,,
-Cannons Creek South,Miramar South,,
-Cannons Creek South,Miramar West,,
+Cannons Creek South,Melrose-Houghton Bay-Southgate,31.191,1.7763888888888888
+Cannons Creek South,Miramar,32.058,1.5486111111111112
+Cannons Creek South,Miramar North,33.309,1.7980555555555555
+Cannons Creek South,Miramar South,30.886,1.4708333333333334
+Cannons Creek South,Miramar West,32.326,1.6091666666666666
 Cannons Creek South,Mitchelltown,26.301,3.224
 Cannons Creek South,Moera,37.443,2.366
 Cannons Creek South,Moonshine Valley,59.157,1.807
-Cannons Creek South,Mt Cook-Wallace Street,,
+Cannons Creek South,Mt Cook-Wallace Street,25.256,1.1063888888888889
 Cannons Creek South,Mt Holdsworth,,
-Cannons Creek South,Mt Victoria West,,
+Cannons Creek South,Mt Victoria West,25.511,1.038888888888889
 Cannons Creek South,Naenae North,43.922,3.611
 Cannons Creek South,Naenae South,41.357,2.525
 Cannons Creek South,Newlands East,33.326,3.167
 Cannons Creek South,Newlands North,33.777,2.557
 Cannons Creek South,Newlands South,34.592,2.743
-Cannons Creek South,Newtown East,,
-Cannons Creek South,Newtown West,,
+Cannons Creek South,Newtown East,27.677,1.456388888888889
+Cannons Creek South,Newtown West,27.438,1.4625
 Cannons Creek South,Ngaio South,28.101,2.182
 Cannons Creek South,Ngaumutawa,112.131,2.894
 Cannons Creek South,Ngauranga East,27.624,2.06
@@ -4292,12 +4360,12 @@ Cannons Creek South,Raumati Beach,36.895,3.401
 Cannons Creek South,Raumati South,41.045,9.433
 Cannons Creek South,Resolution,20.031,1.276
 Cannons Creek South,Riverstone Terraces,57.468,2.368
-Cannons Creek South,Roseneath,,
-Cannons Creek South,Seatoun,,
-Cannons Creek South,Seatoun Tunnel West,,
+Cannons Creek South,Roseneath,25.825,1.2272222222222222
+Cannons Creek South,Seatoun,34.192,2.0044444444444443
+Cannons Creek South,Seatoun Tunnel West,33.052,1.6055555555555556
 Cannons Creek South,Solway North,110.839,2.858
 Cannons Creek South,Solway South,112.445,3.178
-Cannons Creek South,Strathmore Park,,
+Cannons Creek South,Strathmore Park,33.349,1.8972222222222221
 Cannons Creek South,Taita North,44.289,2.438
 Cannons Creek South,Taita South,42.04,2.42
 Cannons Creek South,Taitville,25.953,3.083
@@ -4318,8 +4386,8 @@ Cannons Creek South,Trentham North,52.21,2.682
 Cannons Creek South,Trentham South,51.969,2.833
 Cannons Creek South,Tuturumuri,,
 Cannons Creek South,Upper Hutt Central,54.71,2.657
-Cannons Creek South,Vogeltown,,
-Cannons Creek South,Vogeltown West,,
+Cannons Creek South,Vogeltown,28.991,1.4483333333333333
+Cannons Creek South,Vogeltown West,27.963,1.2358333333333333
 Cannons Creek South,Wadestown,24.926,2.258
 Cannons Creek South,Waikanae Beach,48.324,9.258
 Cannons Creek South,Waikanae East,43.156,3.339
@@ -4556,7 +4624,7 @@ Carterton,Woburn North,71.149,1.563
 Carterton,Woburn South,66.262,1.67
 Carterton,Woodridge,89.968,2.393
 Carterton,Woodville,227.961,9.389
-Churton Park North,Adelaide,,
+Churton Park North,Adelaide,17.746,1.1588888888888889
 Churton Park North,Adventure,52.688,3.499
 Churton Park North,Akatarawa,56.179,3.369
 Churton Park North,Alicetown,28.771,2.946
@@ -4567,11 +4635,11 @@ Churton Park North,Avalon East,33.621,3.115
 Churton Park North,Avalon West,34.758,3.303
 Churton Park North,Awarua,9.504,2.355
 Churton Park North,Belmont,28.054,1.998
-Churton Park North,Berhampore East,,
-Churton Park North,Berhampore West,,
+Churton Park North,Berhampore East,19.204,1.3316666666666668
+Churton Park North,Berhampore West,19.57,1.2686111111111111
 Churton Park North,Boulcott,32.991,3.116
 Churton Park North,Brentwood,55.061,3.597
-Churton Park North,Brooklyn,,
+Churton Park North,Brooklyn,18.516,1.2327777777777778
 Churton Park North,Brooklyn South,21.51,2.154
 Churton Park North,Cannons Creek East,51.454,3.379
 Churton Park North,Cannons Creek North,50.49,3.371
@@ -4601,12 +4669,12 @@ Churton Park North,Fernlea,40.686,3.931
 Churton Park North,Glendale,43.18,3.917
 Churton Park North,Glenside North,3.675,0.487
 Churton Park North,Gracefield,34.478,4.148
-Churton Park North,Greenacres,,
-Churton Park North,Grenada North,,
+Churton Park North,Greenacres,13.905,1.1827777777777777
+Churton Park North,Grenada North,10.867,1.2455555555555555
 Churton Park North,Grenada Village,4.295,0.953
 Churton Park North,Greytown,88.691,2.876
-Churton Park North,Happy Valley-Owhiro Bay,,
-Churton Park North,Hataitai North,,
+Churton Park North,Happy Valley-Owhiro Bay,24.627,1.6002777777777777
+Churton Park North,Hataitai North,17.638,1.095
 Churton Park North,Haywards-Manor Park,40.872,3.7
 Churton Park North,Heretaunga,44.346,3.465
 Churton Park North,Heretaunga-Silverstream,41.973,3.248
@@ -4616,8 +4684,8 @@ Churton Park North,Homedale East,50.09,4.125
 Churton Park North,Homedale West,50.617,4.15
 Churton Park North,Horokiwi,29.337,3.214
 Churton Park North,Hutt Central,30.663,3.05
-Churton Park North,Island Bay East,,
-Churton Park North,Island Bay West,,
+Churton Park North,Island Bay East,21.483,1.4430555555555555
+Churton Park North,Island Bay West,21.463,1.4402777777777778
 Churton Park North,Johnsonville Central,5.391,0.637
 Churton Park North,Johnsonville East,4.762,0.72
 Churton Park North,Johnsonville North,2.992,0.667
@@ -4625,23 +4693,23 @@ Churton Park North,Kahutara,90.699,2.858
 Churton Park North,Kaitawa,81.128,4.074
 Churton Park North,Kaiwharawhara,17.799,2.668
 Churton Park North,Kapiti Island,,
-Churton Park North,Karaka Bay-Worser Bay,,
+Churton Park North,Karaka Bay-Worser Bay,24.069,1.5472222222222223
 Churton Park North,Karori East,20.716,3.127
 Churton Park North,Karori North,21.228,2.938
 Churton Park North,Karori Park,22.762,2.917
 Churton Park North,Karori South,24.638,3.131
 Churton Park North,Kelburn,18.154,2.762
 Churton Park North,Kelson,,
-Churton Park North,Khandallah Park-Broadmeadows,,
-Churton Park North,Kilbirnie East,,
-Churton Park North,Kilbirnie West-Hataitai South,,
-Churton Park North,Kingston-Mornington,,
+Churton Park North,Khandallah Park-Broadmeadows,8.641,1.2180555555555554
+Churton Park North,Kilbirnie East,19.641,1.1975
+Churton Park North,Kilbirnie West-Hataitai South,18.49,1.1280555555555556
+Churton Park North,Kingston-Mornington,20.121,1.1733333333333333
 Churton Park North,Kopuaranga,,
 Churton Park North,Korokoro,27.57,3.356
 Churton Park North,Lambton,16.106,2.659
 Churton Park North,Lansdowne,106.714,3.582
 Churton Park North,Linden,9.311,0.721
-Churton Park North,Lyall Bay-Airport-Moa Point,,
+Churton Park North,Lyall Bay-Airport-Moa Point,24.287,1.49
 Churton Park North,Maidstone,47.908,3.465
 Churton Park North,Makara-Ohariu,,
 Churton Park North,Mana Island,20.699,1.265
@@ -4657,31 +4725,31 @@ Churton Park North,Masterton East,108.428,3.826
 Churton Park North,Masterton Railway,103.411,3.151
 Churton Park North,Masterton West,103.379,3.145
 Churton Park North,Maungakotukutuku,52.264,1.78
-Churton Park North,Maungaraki,,
-Churton Park North,Maupuia,,
+Churton Park North,Maungaraki,18.945,1.021388888888889
+Churton Park North,Maupuia,26.3,1.7025
 Churton Park North,Melling,29.876,3.078
-Churton Park North,Melrose-Houghton Bay-Southgate,,
-Churton Park North,Miramar,,
-Churton Park North,Miramar North,,
-Churton Park North,Miramar South,,
-Churton Park North,Miramar West,,
+Churton Park North,Melrose-Houghton Bay-Southgate,23.186,1.5430555555555556
+Churton Park North,Miramar,22.71,1.3005555555555555
+Churton Park North,Miramar North,23.961,1.4666666666666666
+Churton Park North,Miramar South,21.538,1.2227777777777777
+Churton Park North,Miramar West,22.978,1.3611111111111112
 Churton Park North,Mitchelltown,19.51,3.027
 Churton Park North,Moera,30.652,3.168
 Churton Park North,Moonshine Valley,50.15,2.009
-Churton Park North,Mt Cook-Wallace Street,,
+Churton Park North,Mt Cook-Wallace Street,16.417,0.9091666666666667
 Churton Park North,Mt Holdsworth,,
-Churton Park North,Mt Victoria West,,
+Churton Park North,Mt Victoria West,16.583,1.0083333333333333
 Churton Park North,Naenae North,37.131,3.413
 Churton Park North,Naenae South,35.968,3.28
-Churton Park North,Newlands East,,
+Churton Park North,Newlands East,9.429,1.0325
 Churton Park North,Newlands North,6.017,0.883
-Churton Park North,Newlands South,,
-Churton Park North,Newtown East,,
-Churton Park North,Newtown West,,
+Churton Park North,Newlands South,9.411,0.9177777777777778
+Churton Park North,Newtown East,18.86,1.1758333333333333
+Churton Park North,Newtown West,18.4,1.168611111111111
 Churton Park North,Ngaio South,10.521,2.468
 Churton Park North,Ngaumutawa,103.598,3.197
-Churton Park North,Ngauranga East,,
-Churton Park North,Ngauranga West,,
+Churton Park North,Ngauranga East,7.845,0.5252777777777777
+Churton Park North,Ngauranga West,8.568,0.7063888888888888
 Churton Park North,Nireaha-Tiraumea,198.953,4.292
 Churton Park North,Normandale,32.912,3.583
 Churton Park North,Norsewood-Herbertville,,
@@ -4724,12 +4792,12 @@ Churton Park North,Raumati Beach,65.72,4.204
 Churton Park North,Raumati South,69.87,9.236
 Churton Park North,Resolution,31.455,1.762
 Churton Park North,Riverstone Terraces,48.461,2.57
-Churton Park North,Roseneath,,
-Churton Park North,Seatoun,,
-Churton Park North,Seatoun Tunnel West,,
+Churton Park North,Roseneath,16.988,1.03
+Churton Park North,Seatoun,24.817,1.6730555555555555
+Churton Park North,Seatoun Tunnel West,23.698,1.3575
 Churton Park North,Solway North,102.306,3.161
 Churton Park North,Solway South,103.912,3.48
-Churton Park North,Strathmore Park,,
+Churton Park North,Strathmore Park,23.974,1.5658333333333334
 Churton Park North,Taita North,39.321,3.184
 Churton Park North,Taita South,35.249,3.223
 Churton Park North,Taitville,19.162,2.886
@@ -4750,8 +4818,8 @@ Churton Park North,Trentham North,45.419,3.485
 Churton Park North,Trentham South,45.178,3.636
 Churton Park North,Tuturumuri,,
 Churton Park North,Upper Hutt Central,47.919,3.46
-Churton Park North,Vogeltown,,
-Churton Park North,Vogeltown West,,
+Churton Park North,Vogeltown,19.634,1.2002777777777778
+Churton Park North,Vogeltown West,19.18,1.2052777777777777
 Churton Park North,Wadestown,18.318,2.756
 Churton Park North,Waikanae Beach,77.148,9.061
 Churton Park North,Waikanae East,71.98,4.142
@@ -4770,7 +4838,7 @@ Churton Park North,Willis Street-Cambridge Terrace,16.711,2.755
 Churton Park North,Wilton,12.218,2.719
 Churton Park North,Woburn North,29.673,2.966
 Churton Park North,Woburn South,30.16,3.074
-Churton Park North,Woodridge,,
+Churton Park North,Woodridge,9.597,0.9836111111111111
 Churton Park North,Woodville,149.345,3.792
 Churton Park South,Adelaide,16.929,1.219
 Churton Park South,Adventure,49.885,1.85
@@ -4818,7 +4886,7 @@ Churton Park South,Glendale,40.93,2.387
 Churton Park South,Glenside North,2.576,0.25
 Churton Park South,Gracefield,27.347,1.924
 Churton Park South,Greenacres,28.475,1.731
-Churton Park South,Grenada North,,
+Churton Park South,Grenada North,6.428,0.8594444444444445
 Churton Park South,Grenada Village,3.697,0.812
 Churton Park South,Greytown,86.137,2.646
 Churton Park South,Happy Valley-Owhiro Bay,21.719,2.306
@@ -4848,7 +4916,7 @@ Churton Park South,Karori Park,19.136,1.558
 Churton Park South,Karori South,20.935,1.96
 Churton Park South,Kelburn,14.098,1.269
 Churton Park South,Kelson,,
-Churton Park South,Khandallah Park-Broadmeadows,,
+Churton Park South,Khandallah Park-Broadmeadows,6.028,1.0075
 Churton Park South,Kilbirnie East,19.568,1.333
 Churton Park South,Kilbirnie West-Hataitai South,18.709,1.341
 Churton Park South,Kingston-Mornington,19.326,1.234
@@ -4986,7 +5054,7 @@ Churton Park South,Willis Street-Cambridge Terrace,14.412,1.083
 Churton Park South,Wilton,9.415,1.071
 Churton Park South,Woburn North,26.87,1.317
 Churton Park South,Woburn South,27.357,1.425
-Churton Park South,Woodridge,,
+Churton Park South,Woodridge,6.984,0.7730555555555556
 Churton Park South,Woodville,146.791,3.562
 Clouston Park,Adelaide,39.621,1.578
 Clouston Park,Adventure,71.949,2.296
@@ -5016,14 +5084,14 @@ Clouston Park,Cloustonville,12.628,0.378
 Clouston Park,Crofton Downs,40.708,1.957
 Clouston Park,Dannevirke East,210.463,4.948
 Clouston Park,Dannevirke West,211.438,5.162
-Clouston Park,Delaney,,
+Clouston Park,Delaney,15.413,0.8608333333333333
 Clouston Park,Discovery,59.366,2.718
 Clouston Park,Eastbourne,34.297,1.812
 Clouston Park,Ebdentown,1.885,0.376
 Clouston Park,Eketahuna,225.908,4.678
 Clouston Park,Elderslea,4.483,0.374
 Clouston Park,Elsdon-Takapuwahia,58.502,2.495
-Clouston Park,Emerald Hill,,
+Clouston Park,Emerald Hill,6.471,0.5502777777777778
 Clouston Park,Endeavour,85.874,2.31
 Clouston Park,Epuni East,21.858,1.015
 Clouston Park,Epuni West,20.606,0.745
@@ -5080,7 +5148,7 @@ Clouston Park,Mana Island,59.612,2.257
 Clouston Park,Mana-Camborne,58.441,2.271
 Clouston Park,Mangaroa,,
 Clouston Park,Mangatainoka,210.194,4.542
-Clouston Park,Manuka,,
+Clouston Park,Manuka,16.621,0.9863888888888889
 Clouston Park,Maoribank,2.982,0.676
 Clouston Park,Mara,,
 Clouston Park,Martinborough,45.819,1.294
@@ -5099,7 +5167,7 @@ Clouston Park,Miramar South,42.598,2.314
 Clouston Park,Miramar West,44.189,2.426
 Clouston Park,Mitchelltown,38.584,2.18
 Clouston Park,Moera,21.722,0.961
-Clouston Park,Moonshine Valley,,
+Clouston Park,Moonshine Valley,15.992,0.8491666666666666
 Clouston Park,Mt Cook-Wallace Street,38.37,1.519
 Clouston Park,Mt Holdsworth,,
 Clouston Park,Mt Victoria West,38.347,1.523
@@ -5259,7 +5327,7 @@ Cloustonville,Haywards-Manor Park,24.741,1.218
 Cloustonville,Heretaunga,19.592,0.678
 Cloustonville,Heretaunga-Silverstream,19.61,0.666
 Cloustonville,Holborn,25.045,0.988
-Cloustonville,Homebush-Te Ore Ore,,
+Cloustonville,Homebush-Te Ore Ore,80.132,4.323055555555555
 Cloustonville,Homedale East,40.583,1.499
 Cloustonville,Homedale West,45.029,1.453
 Cloustonville,Horokiwi,51.089,2.165
@@ -5550,7 +5618,7 @@ Crofton Downs,Nireaha-Tiraumea,210.649,4.534
 Crofton Downs,Normandale,28.033,1.844
 Crofton Downs,Norsewood-Herbertville,,
 Crofton Downs,Northland,5.266,1.112
-Crofton Downs,Northland North,,
+Crofton Downs,Northland North,6.083,0.8491666666666666
 Crofton Downs,Onepoto,35.063,1.902
 Crofton Downs,Opaki-Fernridge,100.4,2.677
 Crofton Downs,Oriental Bay,9.691,0.877
@@ -6303,7 +6371,7 @@ Discovery,Brooklyn,30.819,2.54
 Discovery,Brooklyn South,34.728,2.367
 Discovery,Cannons Creek East,4.671,0.572
 Discovery,Cannons Creek North,5.517,0.599
-Discovery,Cannons Creek South,,
+Discovery,Cannons Creek South,8.699,0.8269444444444445
 Discovery,Carterton,105.8,3.203
 Discovery,Churton Park North,20.496,2.585
 Discovery,Churton Park South,20.389,2.325
@@ -6360,7 +6428,7 @@ Discovery,Karori Park,32.234,1.778
 Discovery,Karori South,34.033,2.18
 Discovery,Kelburn,27.196,1.639
 Discovery,Kelson,,
-Discovery,Khandallah Park-Broadmeadows,,
+Discovery,Khandallah Park-Broadmeadows,39.888,2.1952777777777777
 Discovery,Kilbirnie East,31.695,1.656
 Discovery,Kilbirnie West-Hataitai South,31.96,1.732
 Discovery,Kingston-Mornington,32.424,2.454
@@ -6395,7 +6463,7 @@ Discovery,Miramar South,33.632,2.072
 Discovery,Miramar West,35.223,2.183
 Discovery,Mitchelltown,29.618,1.937
 Discovery,Moera,40.947,1.739
-Discovery,Moonshine Valley,,
+Discovery,Moonshine Valley,67.68,2.1
 Discovery,Mt Cook-Wallace Street,29.895,1.956
 Discovery,Mt Holdsworth,,
 Discovery,Mt Victoria West,28.622,1.637
@@ -6403,13 +6471,13 @@ Discovery,Naenae North,46.958,2.223
 Discovery,Naenae South,44.861,1.899
 Discovery,Newlands East,36.83,2.524
 Discovery,Newlands North,33.419,2.176
-Discovery,Newlands South,,
+Discovery,Newlands South,26.266,1.4283333333333332
 Discovery,Newtown East,31.754,2.08
 Discovery,Newtown West,30.834,1.959
 Discovery,Ngaio South,31.605,2.539
 Discovery,Ngaumutawa,118.558,3.41
-Discovery,Ngauranga East,,
-Discovery,Ngauranga West,,
+Discovery,Ngauranga East,31.334,1.1630555555555555
+Discovery,Ngauranga West,26.548,1.3866666666666667
 Discovery,Nireaha-Tiraumea,193.508,4.043
 Discovery,Normandale,46.829,2.341
 Discovery,Norsewood-Herbertville,,
@@ -6445,7 +6513,7 @@ Discovery,Poets Block,60.347,2.229
 Discovery,Porirua Central,10.668,1.182
 Discovery,Porirua East,8.656,1.043
 Discovery,Pukerua Bay,12.929,1.169
-Discovery,Rangoon Heights,,
+Discovery,Rangoon Heights,34.474,1.4894444444444443
 Discovery,Ranui Heights,9.196,1.16
 Discovery,Raroa,32.952,2.056
 Discovery,Raumati Beach,32.619,1.53
@@ -6515,7 +6583,7 @@ Eastbourne,Berhampore East,32.3,1.65
 Eastbourne,Berhampore West,32.67,1.7
 Eastbourne,Boulcott,13.328,0.717
 Eastbourne,Brentwood,28.263,1.15
-Eastbourne,Brooklyn,,
+Eastbourne,Brooklyn,27.061,1.0611111111111111
 Eastbourne,Brooklyn South,32.267,1.833
 Eastbourne,Cannons Creek East,60.03,3.267
 Eastbourne,Cannons Creek North,59.066,3.233
@@ -6601,7 +6669,7 @@ Eastbourne,Masterton East,99.923,4.0
 Eastbourne,Masterton Railway,94.907,2.833
 Eastbourne,Masterton West,94.875,2.817
 Eastbourne,Maungakotukutuku,70.322,2.0
-Eastbourne,Maungaraki,,
+Eastbourne,Maungaraki,18.126,0.9255555555555556
 Eastbourne,Maupuia,38.113,1.95
 Eastbourne,Melling,12.609,0.567
 Eastbourne,Melrose-Houghton Bay-Southgate,40.493,3.783
@@ -6744,7 +6812,7 @@ Ebdentown,Cloustonville,14.591,0.533
 Ebdentown,Crofton Downs,40.245,1.867
 Ebdentown,Dannevirke East,209.372,4.95
 Ebdentown,Dannevirke West,210.347,5.167
-Ebdentown,Delaney,,
+Ebdentown,Delaney,14.493,0.9283333333333333
 Ebdentown,Discovery,58.903,2.617
 Ebdentown,Eastbourne,33.834,1.717
 Ebdentown,Ebdentown,0.0,0.0
@@ -6808,7 +6876,7 @@ Ebdentown,Mana Island,58.521,2.267
 Ebdentown,Mana-Camborne,57.978,2.183
 Ebdentown,Mangaroa,,
 Ebdentown,Mangatainoka,209.731,4.45
-Ebdentown,Manuka,,
+Ebdentown,Manuka,15.701,1.0538888888888889
 Ebdentown,Maoribank,4.004,0.9
 Ebdentown,Mara,,
 Ebdentown,Martinborough,45.356,1.2
@@ -6827,7 +6895,7 @@ Ebdentown,Miramar South,42.135,2.217
 Ebdentown,Miramar West,43.726,2.333
 Ebdentown,Mitchelltown,38.121,2.083
 Ebdentown,Moera,20.631,0.967
-Ebdentown,Moonshine Valley,,
+Ebdentown,Moonshine Valley,11.936,0.7291666666666666
 Ebdentown,Mt Cook-Wallace Street,37.279,1.533
 Ebdentown,Mt Holdsworth,,
 Ebdentown,Mt Victoria West,37.256,1.533
@@ -7042,7 +7110,7 @@ Eketahuna,Miramar North,139.697,22.917
 Eketahuna,Miramar South,137.274,22.783
 Eketahuna,Miramar West,138.865,22.917
 Eketahuna,Mitchelltown,133.678,22.85
-Eketahuna,Moera,,
+Eketahuna,Moera,147.107,16.505
 Eketahuna,Moonshine Valley,234.06,6.167
 Eketahuna,Mt Cook-Wallace Street,132.218,22.567
 Eketahuna,Mt Holdsworth,,
@@ -7055,7 +7123,7 @@ Eketahuna,Newlands South,137.669,22.95
 Eketahuna,Newtown East,135.055,22.8
 Eketahuna,Newtown West,133.925,22.717
 Eketahuna,Ngaio South,135.047,22.733
-Eketahuna,Ngaumutawa,,
+Eketahuna,Ngaumutawa,40.685,12.482777777777779
 Eketahuna,Ngauranga East,134.558,22.733
 Eketahuna,Ngauranga West,134.968,22.85
 Eketahuna,Nireaha-Tiraumea,,
@@ -7064,7 +7132,7 @@ Eketahuna,Norsewood-Herbertville,,
 Eketahuna,Northland,131.805,23.05
 Eketahuna,Northland North,131.685,22.983
 Eketahuna,Onepoto,157.155,24.217
-Eketahuna,Opaki-Fernridge,,
+Eketahuna,Opaki-Fernridge,42.089,13.453888888888889
 Eketahuna,Oriental Bay,132.628,22.583
 Eketahuna,Otaihanga,183.429,24.633
 Eketahuna,Otaki,197.237,24.633
@@ -7176,7 +7244,7 @@ Elderslea,Cloustonville,16.46,0.617
 Elderslea,Crofton Downs,39.259,1.85
 Elderslea,Dannevirke East,208.386,4.95
 Elderslea,Dannevirke West,209.361,5.167
-Elderslea,Delaney,,
+Elderslea,Delaney,12.541,0.7688888888888888
 Elderslea,Discovery,57.917,2.617
 Elderslea,Eastbourne,32.848,1.7
 Elderslea,Ebdentown,1.722,0.333
@@ -7240,7 +7308,7 @@ Elderslea,Mana Island,57.535,2.25
 Elderslea,Mana-Camborne,56.992,2.167
 Elderslea,Mangaroa,,
 Elderslea,Mangatainoka,210.22,4.55
-Elderslea,Manuka,,
+Elderslea,Manuka,13.749,0.8944444444444445
 Elderslea,Maoribank,7.125,0.6
 Elderslea,Mara,,
 Elderslea,Martinborough,45.845,1.3
@@ -7259,7 +7327,7 @@ Elderslea,Miramar South,41.149,2.2
 Elderslea,Miramar West,42.74,2.317
 Elderslea,Mitchelltown,37.135,2.067
 Elderslea,Moera,19.645,0.967
-Elderslea,Moonshine Valley,,
+Elderslea,Moonshine Valley,10.605,0.6011111111111112
 Elderslea,Mt Cook-Wallace Street,36.293,1.517
 Elderslea,Mt Holdsworth,,
 Elderslea,Mt Victoria West,36.27,1.517
@@ -7451,7 +7519,7 @@ Elsdon-Takapuwahia,Lansdowne,116.021,3.567
 Elsdon-Takapuwahia,Linden,7.753,0.8
 Elsdon-Takapuwahia,Lyall Bay-Airport-Moa Point,30.838,1.967
 Elsdon-Takapuwahia,Maidstone,55.473,2.45
-Elsdon-Takapuwahia,Makara-Ohariu,,
+Elsdon-Takapuwahia,Makara-Ohariu,36.071,1.9116666666666666
 Elsdon-Takapuwahia,Mana Island,3.379,0.6
 Elsdon-Takapuwahia,Mana-Camborne,11.13,1.45
 Elsdon-Takapuwahia,Mangaroa,71.353,2.867
@@ -7465,7 +7533,7 @@ Elsdon-Takapuwahia,Masterton East,117.735,4.317
 Elsdon-Takapuwahia,Masterton Railway,112.718,3.133
 Elsdon-Takapuwahia,Masterton West,112.686,3.133
 Elsdon-Takapuwahia,Maungakotukutuku,44.855,1.833
-Elsdon-Takapuwahia,Maungaraki,,
+Elsdon-Takapuwahia,Maungaraki,37.461,1.688611111111111
 Elsdon-Takapuwahia,Maupuia,34.784,2.183
 Elsdon-Takapuwahia,Melling,38.332,1.9
 Elsdon-Takapuwahia,Melrose-Houghton Bay-Southgate,31.474,2.3
@@ -7551,7 +7619,7 @@ Elsdon-Takapuwahia,Te Marua,64.445,2.4
 Elsdon-Takapuwahia,Te Wharau,,
 Elsdon-Takapuwahia,Thorndon-Tinakori Road,23.236,1.2
 Elsdon-Takapuwahia,Tirohanga,40.926,2.25
-Elsdon-Takapuwahia,Titahi Bay North,,
+Elsdon-Takapuwahia,Titahi Bay North,8.591,1.3527777777777779
 Elsdon-Takapuwahia,Titahi Bay South,2.973,0.533
 Elsdon-Takapuwahia,Totara Park,58.075,2.817
 Elsdon-Takapuwahia,Trentham North,52.984,2.483
@@ -7604,7 +7672,7 @@ Emerald Hill,Carterton,52.897,2.017
 Emerald Hill,Churton Park North,43.661,2.3
 Emerald Hill,Churton Park South,45.306,2.333
 Emerald Hill,Clouston Park,6.401,0.517
-Emerald Hill,Cloustonville,,
+Emerald Hill,Cloustonville,10.95,0.4727777777777778
 Emerald Hill,Crofton Downs,46.709,2.167
 Emerald Hill,Dannevirke East,215.836,5.25
 Emerald Hill,Dannevirke West,216.811,5.467
@@ -7635,7 +7703,7 @@ Emerald Hill,Haywards-Manor Park,18.565,1.283
 Emerald Hill,Heretaunga,13.41,0.75
 Emerald Hill,Heretaunga-Silverstream,13.434,0.733
 Emerald Hill,Holborn,18.863,1.05
-Emerald Hill,Homebush-Te Ore Ore,,
+Emerald Hill,Homebush-Te Ore Ore,73.956,4.733611111111111
 Emerald Hill,Homedale East,34.407,1.567
 Emerald Hill,Homedale West,38.853,1.517
 Emerald Hill,Horokiwi,44.913,2.233
@@ -7797,7 +7865,7 @@ Emerald Hill,Woburn South,26.603,1.183
 Emerald Hill,Woodridge,43.054,1.817
 Emerald Hill,Woodville,190.733,4.817
 Endeavour,Adelaide,36.44,1.6
-Endeavour,Adventure,,
+Endeavour,Adventure,7.213,0.7980555555555555
 Endeavour,Akatarawa,72.759,2.767
 Endeavour,Alicetown,44.712,1.367
 Endeavour,Arakura,57.544,1.8
@@ -7897,7 +7965,7 @@ Endeavour,Masterton East,126.75,4.717
 Endeavour,Masterton Railway,121.733,3.533
 Endeavour,Masterton West,121.701,3.533
 Endeavour,Maungakotukutuku,44.465,1.433
-Endeavour,Maungaraki,,
+Endeavour,Maungaraki,44.266,1.4775
 Endeavour,Maupuia,43.799,2.083
 Endeavour,Melling,45.632,1.55
 Endeavour,Melrose-Houghton Bay-Southgate,40.489,1.7
@@ -7961,7 +8029,7 @@ Endeavour,Rangoon Heights,43.943,1.783
 Endeavour,Ranui Heights,16.472,1.017
 Endeavour,Raroa,41.528,1.617
 Endeavour,Raumati Beach,37.279,1.6
-Endeavour,Raumati South,,
+Endeavour,Raumati South,39.978,1.9919444444444445
 Endeavour,Resolution,,
 Endeavour,Riverstone Terraces,66.699,2.583
 Endeavour,Roseneath,37.217,1.783
@@ -8040,7 +8108,7 @@ Epuni East,Cloustonville,31.112,1.083
 Epuni East,Crofton Downs,24.054,1.417
 Epuni East,Dannevirke East,193.181,4.517
 Epuni East,Dannevirke West,194.156,4.733
-Epuni East,Delaney,,
+Epuni East,Delaney,11.771,0.8019444444444445
 Epuni East,Discovery,42.712,2.183
 Epuni East,Eastbourne,17.643,1.267
 Epuni East,Ebdentown,18.286,0.85
@@ -8104,7 +8172,7 @@ Epuni East,Mana Island,42.33,1.817
 Epuni East,Mana-Camborne,41.787,1.733
 Epuni East,Mangaroa,33.297,1.083
 Epuni East,Mangatainoka,190.052,4.467
-Epuni East,Manuka,,
+Epuni East,Manuka,12.979,0.9275
 Epuni East,Maoribank,21.828,1.067
 Epuni East,Mara,,
 Epuni East,Martinborough,62.782,1.533
@@ -8192,7 +8260,7 @@ Epuni East,Taitville,20.985,1.45
 Epuni East,Takapu,43.254,2.583
 Epuni East,Tawa Central,32.297,1.483
 Epuni East,Tawa South,30.423,1.467
-Epuni East,Tawhai,,
+Epuni East,Tawhai,22.071,0.9061111111111111
 Epuni East,Te Horo,85.939,2.617
 Epuni East,Te Kainga,25.643,1.267
 Epuni East,Te Marua,27.846,1.317
@@ -8256,7 +8324,7 @@ Epuni West,Cloustonville,30.631,0.983
 Epuni West,Crofton Downs,23.573,1.317
 Epuni West,Dannevirke East,192.7,4.417
 Epuni West,Dannevirke West,193.675,4.633
-Epuni West,Delaney,,
+Epuni West,Delaney,10.617,0.5638888888888889
 Epuni West,Discovery,42.231,2.083
 Epuni West,Eastbourne,17.162,1.167
 Epuni West,Ebdentown,17.805,0.75
@@ -8320,7 +8388,7 @@ Epuni West,Mana Island,41.849,1.717
 Epuni West,Mana-Camborne,41.306,1.633
 Epuni West,Mangaroa,34.238,1.017
 Epuni West,Mangatainoka,189.571,4.367
-Epuni West,Manuka,,
+Epuni West,Manuka,11.825,0.6894444444444444
 Epuni West,Maoribank,22.769,1.0
 Epuni West,Mara,,
 Epuni West,Martinborough,62.273,1.433
@@ -8408,7 +8476,7 @@ Epuni West,Taitville,20.504,1.35
 Epuni West,Takapu,42.773,2.5
 Epuni West,Tawa Central,31.816,1.383
 Epuni West,Tawa South,29.942,1.367
-Epuni West,Tawhai,,
+Epuni West,Tawhai,16.898,0.6052777777777778
 Epuni West,Te Horo,85.458,2.517
 Epuni West,Te Kainga,25.162,1.167
 Epuni West,Te Marua,27.337,1.217
@@ -8891,7 +8959,7 @@ Fernlea,Berhampore East,29.977,1.533
 Fernlea,Berhampore West,30.347,1.583
 Fernlea,Boulcott,11.29,0.983
 Fernlea,Brentwood,23.166,1.1
-Fernlea,Brooklyn,,
+Fernlea,Brooklyn,29.852,1.1894444444444445
 Fernlea,Brooklyn South,29.976,1.7
 Fernlea,Cannons Creek East,57.403,3.133
 Fernlea,Cannons Creek North,56.439,3.117
@@ -8977,7 +9045,7 @@ Fernlea,Masterton East,87.585,3.383
 Fernlea,Masterton Railway,82.569,2.2
 Fernlea,Masterton West,82.537,2.2
 Fernlea,Maungakotukutuku,81.351,2.2
-Fernlea,Maungaraki,,
+Fernlea,Maungaraki,16.634,0.9038888888888889
 Fernlea,Maupuia,35.685,1.833
 Fernlea,Melling,11.9,0.9
 Fernlea,Melrose-Houghton Bay-Southgate,38.181,3.667
@@ -9107,7 +9175,7 @@ Glendale,Berhampore East,35.37,1.564
 Glendale,Berhampore West,35.74,1.617
 Glendale,Boulcott,16.406,0.914
 Glendale,Brentwood,28.559,1.139
-Glendale,Brooklyn,,
+Glendale,Brooklyn,35.245,1.3177777777777777
 Glendale,Brooklyn South,35.369,1.744
 Glendale,Cannons Creek East,62.796,3.177
 Glendale,Cannons Creek North,61.832,3.152
@@ -9193,7 +9261,7 @@ Glendale,Masterton East,94.283,3.516
 Glendale,Masterton Railway,87.962,2.241
 Glendale,Masterton West,87.93,2.235
 Glendale,Maungakotukutuku,86.744,2.286
-Glendale,Maungaraki,,
+Glendale,Maungaraki,23.362,1.0147222222222223
 Glendale,Maupuia,41.078,1.872
 Glendale,Melling,17.016,0.841
 Glendale,Melrose-Houghton Bay-Southgate,43.574,3.702
@@ -9384,7 +9452,7 @@ Glenside North,Karori Park,20.64,1.215
 Glenside North,Karori South,22.439,1.617
 Glenside North,Kelburn,15.602,1.076
 Glenside North,Kelson,,
-Glenside North,Khandallah Park-Broadmeadows,,
+Glenside North,Khandallah Park-Broadmeadows,7.866,0.9613888888888888
 Glenside North,Kilbirnie East,20.101,1.093
 Glenside North,Kilbirnie West-Hataitai South,20.366,1.168
 Glenside North,Kingston-Mornington,20.83,1.89
@@ -9427,13 +9495,13 @@ Glenside North,Naenae North,35.364,1.66
 Glenside North,Naenae South,33.267,1.336
 Glenside North,Newlands East,25.236,1.961
 Glenside North,Newlands North,5.076,0.482
-Glenside North,Newlands South,,
+Glenside North,Newlands South,8.31,0.6908333333333333
 Glenside North,Newtown East,20.16,1.517
 Glenside North,Newtown West,19.24,1.395
 Glenside North,Ngaio South,20.011,1.976
 Glenside North,Ngaumutawa,104.041,2.705
-Glenside North,Ngauranga East,,
-Glenside North,Ngauranga West,,
+Glenside North,Ngauranga East,6.726,0.32166666666666666
+Glenside North,Ngauranga West,7.449,0.5027777777777778
 Glenside North,Nireaha-Tiraumea,197.679,3.969
 Glenside North,Normandale,35.235,1.777
 Glenside North,Norsewood-Herbertville,,
@@ -9469,7 +9537,7 @@ Glenside North,Poets Block,48.753,1.666
 Glenside North,Porirua Central,7.623,0.852
 Glenside North,Porirua East,8.749,0.78
 Glenside North,Pukerua Bay,21.314,1.039
-Glenside North,Rangoon Heights,,
+Glenside North,Rangoon Heights,7.161,0.6788888888888889
 Glenside North,Ranui Heights,9.249,0.897
 Glenside North,Raroa,5.095,0.377
 Glenside North,Raumati Beach,41.004,1.4
@@ -9522,7 +9590,7 @@ Glenside North,Willis Street-Cambridge Terrace,16.155,0.95
 Glenside North,Wilton,19.892,1.206
 Glenside North,Woburn North,28.374,0.974
 Glenside North,Woburn South,28.861,1.082
-Glenside North,Woodridge,,
+Glenside North,Woodridge,5.661,0.7161111111111111
 Glenside North,Woodville,147.615,3.386
 Gracefield,Adelaide,24.397,1.271
 Gracefield,Adventure,55.038,3.22
@@ -9539,7 +9607,7 @@ Gracefield,Berhampore East,26.074,1.474
 Gracefield,Berhampore West,26.444,1.528
 Gracefield,Boulcott,7.102,0.541
 Gracefield,Brentwood,22.037,0.973
-Gracefield,Brooklyn,,
+Gracefield,Brooklyn,20.888,0.8777777777777778
 Gracefield,Brooklyn South,26.064,1.654
 Gracefield,Cannons Creek East,53.804,3.087
 Gracefield,Cannons Creek North,52.84,3.062
@@ -9816,7 +9884,7 @@ Greenacres,Karori Park,23.283,1.179
 Greenacres,Karori South,25.082,1.581
 Greenacres,Kelburn,18.245,1.04
 Greenacres,Kelson,,
-Greenacres,Khandallah Park-Broadmeadows,,
+Greenacres,Khandallah Park-Broadmeadows,14.463,1.4172222222222222
 Greenacres,Kilbirnie East,22.744,1.056
 Greenacres,Kilbirnie West-Hataitai South,23.009,1.132
 Greenacres,Kingston-Mornington,23.473,1.854
@@ -9859,13 +9927,13 @@ Greenacres,Naenae North,38.007,1.624
 Greenacres,Naenae South,35.91,1.3
 Greenacres,Newlands East,27.879,1.925
 Greenacres,Newlands North,11.673,0.938
-Greenacres,Newlands South,,
+Greenacres,Newlands South,16.121,1.2347222222222223
 Greenacres,Newtown East,22.803,1.481
 Greenacres,Newtown West,21.883,1.359
 Greenacres,Ngaio South,22.654,1.94
 Greenacres,Ngaumutawa,106.684,2.669
-Greenacres,Ngauranga East,,
-Greenacres,Ngauranga West,,
+Greenacres,Ngauranga East,22.157,0.8344444444444444
+Greenacres,Ngauranga West,15.206,0.9430555555555555
 Greenacres,Nireaha-Tiraumea,188.069,4.081
 Greenacres,Normandale,37.878,1.741
 Greenacres,Norsewood-Herbertville,,
@@ -9901,7 +9969,7 @@ Greenacres,Poets Block,51.396,1.629
 Greenacres,Porirua Central,4.192,0.649
 Greenacres,Porirua East,5.318,0.577
 Greenacres,Pukerua Bay,17.883,0.836
-Greenacres,Rangoon Heights,,
+Greenacres,Rangoon Heights,14.936,1.1894444444444445
 Greenacres,Ranui Heights,5.818,0.694
 Greenacres,Raroa,11.692,0.833
 Greenacres,Raumati Beach,37.573,1.197
@@ -9981,7 +10049,7 @@ Grenada North,Churton Park North,7.478,1.135
 Grenada North,Churton Park South,7.37,0.875
 Grenada North,Clouston Park,48.418,1.856
 Grenada North,Cloustonville,60.783,1.972
-Grenada North,Crofton Downs,,
+Grenada North,Crofton Downs,20.627,1.4277777777777778
 Grenada North,Dannevirke East,169.436,4.206
 Grenada North,Dannevirke West,170.411,4.42
 Grenada North,Delaney,44.305,3.043
@@ -10032,7 +10100,7 @@ Grenada North,Karori Park,21.119,1.308
 Grenada North,Karori South,22.918,1.71
 Grenada North,Kelburn,16.081,1.169
 Grenada North,Kelson,,
-Grenada North,Khandallah Park-Broadmeadows,,
+Grenada North,Khandallah Park-Broadmeadows,11.69,1.4891666666666667
 Grenada North,Kilbirnie East,20.58,1.186
 Grenada North,Kilbirnie West-Hataitai South,20.845,1.262
 Grenada North,Kingston-Mornington,21.309,1.984
@@ -10075,7 +10143,7 @@ Grenada North,Naenae North,35.843,1.753
 Grenada North,Naenae South,33.746,1.429
 Grenada North,Newlands East,25.715,2.054
 Grenada North,Newlands North,8.899,1.009
-Grenada North,Newlands South,,
+Grenada North,Newlands South,14.297,1.2977777777777777
 Grenada North,Newtown East,20.639,1.61
 Grenada North,Newtown West,19.719,1.489
 Grenada North,Ngaio South,20.49,2.069
@@ -10117,7 +10185,7 @@ Grenada North,Poets Block,49.232,1.759
 Grenada North,Porirua Central,8.1,0.946
 Grenada North,Porirua East,9.226,0.873
 Grenada North,Pukerua Bay,21.791,1.132
-Grenada North,Rangoon Heights,,
+Grenada North,Rangoon Heights,13.112,1.2525
 Grenada North,Ranui Heights,9.726,0.99
 Grenada North,Raroa,8.919,0.904
 Grenada North,Raumati Beach,41.481,1.493
@@ -10172,7 +10240,7 @@ Grenada North,Woburn North,28.853,1.067
 Grenada North,Woburn South,29.34,1.175
 Grenada North,Woodridge,26.741,2.183
 Grenada North,Woodville,144.332,3.76
-Grenada Village,Adelaide,,
+Grenada Village,Adelaide,17.972,1.081388888888889
 Grenada Village,Adventure,52.106,3.044
 Grenada Village,Akatarawa,50.3,2.375
 Grenada Village,Alicetown,28.189,2.491
@@ -10183,11 +10251,11 @@ Grenada Village,Avalon East,33.039,2.66
 Grenada Village,Avalon West,34.176,2.848
 Grenada Village,Awarua,8.922,1.9
 Grenada Village,Belmont,28.255,1.854
-Grenada Village,Berhampore East,,
-Grenada Village,Berhampore West,,
+Grenada Village,Berhampore East,19.954,1.2527777777777778
+Grenada Village,Berhampore West,19.796,1.2244444444444444
 Grenada Village,Boulcott,32.409,2.661
 Grenada Village,Brentwood,54.479,3.142
-Grenada Village,Brooklyn,,
+Grenada Village,Brooklyn,19.584,0.9666666666666667
 Grenada Village,Brooklyn South,25.623,2.161
 Grenada Village,Cannons Creek East,50.872,2.924
 Grenada Village,Cannons Creek North,49.908,2.916
@@ -10217,12 +10285,12 @@ Grenada Village,Fernlea,40.104,3.476
 Grenada Village,Glendale,42.598,3.462
 Grenada Village,Glenside North,2.968,0.457
 Grenada Village,Gracefield,33.896,3.694
-Grenada Village,Greenacres,,
-Grenada Village,Grenada North,,
+Grenada Village,Greenacres,10.593,0.9386111111111111
+Grenada Village,Grenada North,7.556,1.0013888888888889
 Grenada Village,Grenada Village,0.0,0.0
 Grenada Village,Greytown,91.094,2.718
-Grenada Village,Happy Valley-Owhiro Bay,,
-Grenada Village,Hataitai North,,
+Grenada Village,Happy Valley-Owhiro Bay,22.858,1.5091666666666668
+Grenada Village,Hataitai North,17.864,1.0175
 Grenada Village,Haywards-Manor Park,40.29,3.245
 Grenada Village,Heretaunga,43.764,3.01
 Grenada Village,Heretaunga-Silverstream,41.391,2.793
@@ -10232,8 +10300,8 @@ Grenada Village,Homedale East,49.508,3.67
 Grenada Village,Homedale West,50.035,3.695
 Grenada Village,Horokiwi,5.047,1.085
 Grenada Village,Hutt Central,30.081,2.595
-Grenada Village,Island Bay East,,
-Grenada Village,Island Bay West,,
+Grenada Village,Island Bay East,21.709,1.448888888888889
+Grenada Village,Island Bay West,21.689,1.4461111111111111
 Grenada Village,Johnsonville Central,5.758,0.632
 Grenada Village,Johnsonville East,3.447,0.78
 Grenada Village,Johnsonville North,5.226,0.713
@@ -10241,25 +10309,25 @@ Grenada Village,Kahutara,93.102,2.7
 Grenada Village,Kaitawa,80.546,3.619
 Grenada Village,Kaiwharawhara,17.217,2.213
 Grenada Village,Kapiti Island,,
-Grenada Village,Karaka Bay-Worser Bay,,
+Grenada Village,Karaka Bay-Worser Bay,24.295,1.386388888888889
 Grenada Village,Karori East,20.134,2.672
 Grenada Village,Karori North,20.646,2.484
 Grenada Village,Karori Park,22.18,2.462
 Grenada Village,Karori South,24.056,2.676
 Grenada Village,Kelburn,17.572,2.307
 Grenada Village,Kelson,,
-Grenada Village,Khandallah Park-Broadmeadows,,
-Grenada Village,Kilbirnie East,,
-Grenada Village,Kilbirnie West-Hataitai South,,
-Grenada Village,Kingston-Mornington,,
+Grenada Village,Khandallah Park-Broadmeadows,8.878,1.2238888888888888
+Grenada Village,Kilbirnie East,19.867,1.12
+Grenada Village,Kilbirnie West-Hataitai South,18.716,1.0505555555555555
+Grenada Village,Kingston-Mornington,20.325,1.1791666666666667
 Grenada Village,Kopuaranga,,
 Grenada Village,Korokoro,26.988,2.902
 Grenada Village,Lambton,15.524,2.205
 Grenada Village,Lansdowne,109.117,3.424
 Grenada Village,Linden,8.604,0.691
-Grenada Village,Lyall Bay-Airport-Moa Point,,
+Grenada Village,Lyall Bay-Airport-Moa Point,21.282,1.2458333333333333
 Grenada Village,Maidstone,47.326,3.01
-Grenada Village,Makara-Ohariu,,
+Grenada Village,Makara-Ohariu,26.865,1.5025
 Grenada Village,Mana Island,25.852,1.389
 Grenada Village,Mana-Camborne,38.598,3.002
 Grenada Village,Mangaroa,57.909,1.885
@@ -10273,31 +10341,31 @@ Grenada Village,Masterton East,110.831,4.168
 Grenada Village,Masterton Railway,105.814,2.993
 Grenada Village,Masterton West,105.782,2.987
 Grenada Village,Maungakotukutuku,71.416,1.935
-Grenada Village,Maungaraki,,
-Grenada Village,Maupuia,,
+Grenada Village,Maungaraki,19.171,1.0272222222222223
+Grenada Village,Maupuia,26.526,1.5416666666666667
 Grenada Village,Melling,29.294,2.624
-Grenada Village,Melrose-Houghton Bay-Southgate,,
-Grenada Village,Miramar,,
-Grenada Village,Miramar North,,
-Grenada Village,Miramar South,,
-Grenada Village,Miramar West,,
+Grenada Village,Melrose-Houghton Bay-Southgate,22.026,1.2841666666666667
+Grenada Village,Miramar,22.936,1.3063888888888888
+Grenada Village,Miramar North,24.187,1.3058333333333334
+Grenada Village,Miramar South,21.764,1.228611111111111
+Grenada Village,Miramar West,23.204,1.3669444444444445
 Grenada Village,Mitchelltown,18.928,2.572
 Grenada Village,Moera,30.07,2.714
 Grenada Village,Moonshine Valley,48.764,1.874
-Grenada Village,Mt Cook-Wallace Street,,
+Grenada Village,Mt Cook-Wallace Street,16.69,0.8316666666666667
 Grenada Village,Mt Holdsworth,,
-Grenada Village,Mt Victoria West,,
+Grenada Village,Mt Victoria West,16.868,0.9308333333333333
 Grenada Village,Naenae North,36.549,2.959
 Grenada Village,Naenae South,35.386,2.826
 Grenada Village,Newlands East,4.181,0.954
 Grenada Village,Newlands North,3.286,0.726
 Grenada Village,Newlands South,4.252,0.964
-Grenada Village,Newtown East,,
-Grenada Village,Newtown West,,
+Grenada Village,Newtown East,19.086,1.0983333333333334
+Grenada Village,Newtown West,18.626,1.0911111111111111
 Grenada Village,Ngaio South,9.939,2.014
 Grenada Village,Ngaumutawa,106.001,3.039
-Grenada Village,Ngauranga East,,
-Grenada Village,Ngauranga West,,
+Grenada Village,Ngauranga East,8.069,0.4488888888888889
+Grenada Village,Ngauranga West,8.792,0.63
 Grenada Village,Nireaha-Tiraumea,199.709,4.615
 Grenada Village,Normandale,32.33,3.128
 Grenada Village,Norsewood-Herbertville,,
@@ -10333,19 +10401,19 @@ Grenada Village,Poets Block,55.727,3.194
 Grenada Village,Porirua Central,33.581,3.046
 Grenada Village,Porirua East,48.63,2.957
 Grenada Village,Pukerua Bay,45.984,3.21
-Grenada Village,Rangoon Heights,,
+Grenada Village,Rangoon Heights,8.522,0.745
 Grenada Village,Ranui Heights,33.919,3.068
 Grenada Village,Raroa,6.403,0.773
 Grenada Village,Raumati Beach,65.138,3.749
 Grenada Village,Raumati South,69.288,8.781
 Grenada Village,Resolution,28.402,1.747
 Grenada Village,Riverstone Terraces,44.233,2.323
-Grenada Village,Roseneath,,
-Grenada Village,Seatoun,,
-Grenada Village,Seatoun Tunnel West,,
+Grenada Village,Roseneath,17.293,1.1191666666666666
+Grenada Village,Seatoun,25.052,1.5122222222222221
+Grenada Village,Seatoun Tunnel West,23.903,1.3633333333333333
 Grenada Village,Solway North,104.709,3.003
 Grenada Village,Solway South,106.315,3.322
-Grenada Village,Strathmore Park,,
+Grenada Village,Strathmore Park,24.209,1.405
 Grenada Village,Taita North,38.739,2.73
 Grenada Village,Taita South,34.667,2.768
 Grenada Village,Taitville,18.58,2.431
@@ -10366,8 +10434,8 @@ Grenada Village,Trentham North,44.837,3.031
 Grenada Village,Trentham South,44.596,3.181
 Grenada Village,Tuturumuri,,
 Grenada Village,Upper Hutt Central,47.337,3.005
-Grenada Village,Vogeltown,,
-Grenada Village,Vogeltown West,,
+Grenada Village,Vogeltown,18.059,1.0333333333333334
+Grenada Village,Vogeltown West,19.384,1.1277777777777778
 Grenada Village,Wadestown,17.736,2.301
 Grenada Village,Waikanae Beach,76.566,8.606
 Grenada Village,Waikanae East,71.398,3.688
@@ -10408,7 +10476,7 @@ Greytown,Brooklyn South,82.854,2.278
 Greytown,Cannons Creek East,98.051,2.553
 Greytown,Cannons Creek North,97.22,2.513
 Greytown,Cannons Creek South,98.033,2.721
-Greytown,Carterton,,
+Greytown,Carterton,9.001,0.4122222222222222
 Greytown,Churton Park North,89.421,2.411
 Greytown,Churton Park South,91.067,2.432
 Greytown,Clouston Park,47.026,1.356
@@ -10673,11 +10741,11 @@ Happy Valley-Owhiro Bay,Kahutara,85.968,2.592
 Happy Valley-Owhiro Bay,Kaitawa,74.655,3.474
 Happy Valley-Owhiro Bay,Kaiwharawhara,12.1,1.384
 Happy Valley-Owhiro Bay,Kapiti Island,,
-Happy Valley-Owhiro Bay,Karaka Bay-Worser Bay,,
-Happy Valley-Owhiro Bay,Karori East,,
-Happy Valley-Owhiro Bay,Karori North,,
-Happy Valley-Owhiro Bay,Karori Park,,
-Happy Valley-Owhiro Bay,Karori South,,
+Happy Valley-Owhiro Bay,Karaka Bay-Worser Bay,17.331,1.025
+Happy Valley-Owhiro Bay,Karori East,15.044,1.1177777777777778
+Happy Valley-Owhiro Bay,Karori North,13.96,1.003611111111111
+Happy Valley-Owhiro Bay,Karori Park,17.327,0.985
+Happy Valley-Owhiro Bay,Karori South,16.619,1.458888888888889
 Happy Valley-Owhiro Bay,Kelburn,9.163,1.143
 Happy Valley-Owhiro Bay,Kelson,,
 Happy Valley-Owhiro Bay,Khandallah Park-Broadmeadows,20.726,3.019
@@ -10691,7 +10759,7 @@ Happy Valley-Owhiro Bay,Lansdowne,101.983,3.316
 Happy Valley-Owhiro Bay,Linden,24.637,1.449
 Happy Valley-Owhiro Bay,Lyall Bay-Airport-Moa Point,15.872,1.184
 Happy Valley-Owhiro Bay,Maidstone,41.435,2.866
-Happy Valley-Owhiro Bay,Makara-Ohariu,,
+Happy Valley-Owhiro Bay,Makara-Ohariu,22.158,1.6752777777777779
 Happy Valley-Owhiro Bay,Mana Island,33.25,1.948
 Happy Valley-Owhiro Bay,Mana-Camborne,33.602,1.801
 Happy Valley-Owhiro Bay,Mangaroa,57.315,2.279
@@ -10705,14 +10773,14 @@ Happy Valley-Owhiro Bay,Masterton East,104.592,3.99
 Happy Valley-Owhiro Bay,Masterton Railway,98.68,2.885
 Happy Valley-Owhiro Bay,Masterton West,98.648,2.879
 Happy Valley-Owhiro Bay,Maungakotukutuku,70.784,2.284
-Happy Valley-Owhiro Bay,Maungaraki,,
-Happy Valley-Owhiro Bay,Maupuia,,
+Happy Valley-Owhiro Bay,Maungaraki,23.91,1.4222222222222223
+Happy Valley-Owhiro Bay,Maupuia,19.562,1.1802777777777778
 Happy Valley-Owhiro Bay,Melling,24.796,1.697
 Happy Valley-Owhiro Bay,Melrose-Houghton Bay-Southgate,6.351,0.64
-Happy Valley-Owhiro Bay,Miramar,,
-Happy Valley-Owhiro Bay,Miramar North,,
+Happy Valley-Owhiro Bay,Miramar,13.521,0.8616666666666667
+Happy Valley-Owhiro Bay,Miramar North,17.223,0.9444444444444444
 Happy Valley-Owhiro Bay,Miramar South,16.24,1.337
-Happy Valley-Owhiro Bay,Miramar West,,
+Happy Valley-Owhiro Bay,Miramar West,13.789,0.9222222222222223
 Happy Valley-Owhiro Bay,Mitchelltown,9.985,1.301
 Happy Valley-Owhiro Bay,Moera,25.683,1.864
 Happy Valley-Owhiro Bay,Moonshine Valley,45.335,2.06
@@ -10774,7 +10842,7 @@ Happy Valley-Owhiro Bay,Resolution,47.398,2.752
 Happy Valley-Owhiro Bay,Riverstone Terraces,43.646,2.621
 Happy Valley-Owhiro Bay,Roseneath,10.185,0.898
 Happy Valley-Owhiro Bay,Seatoun,14.077,1.466
-Happy Valley-Owhiro Bay,Seatoun Tunnel West,,
+Happy Valley-Owhiro Bay,Seatoun Tunnel West,15.502,0.8305555555555556
 Happy Valley-Owhiro Bay,Solway North,97.575,2.895
 Happy Valley-Owhiro Bay,Solway South,99.181,3.214
 Happy Valley-Owhiro Bay,Strathmore Park,16.162,1.839
@@ -11064,7 +11132,7 @@ Haywards-Manor Park,Cloustonville,24.974,1.108
 Haywards-Manor Park,Crofton Downs,32.387,1.813
 Haywards-Manor Park,Dannevirke East,201.514,4.907
 Haywards-Manor Park,Dannevirke West,202.489,5.121
-Haywards-Manor Park,Delaney,,
+Haywards-Manor Park,Delaney,12.63,1.0372222222222223
 Haywards-Manor Park,Discovery,51.045,2.573
 Haywards-Manor Park,Eastbourne,25.976,1.668
 Haywards-Manor Park,Ebdentown,12.148,0.871
@@ -11128,7 +11196,7 @@ Haywards-Manor Park,Mana Island,50.663,2.217
 Haywards-Manor Park,Mana-Camborne,50.12,2.127
 Haywards-Manor Park,Mangaroa,,
 Haywards-Manor Park,Mangatainoka,198.385,4.864
-Haywards-Manor Park,Manuka,,
+Haywards-Manor Park,Manuka,13.838,1.1627777777777777
 Haywards-Manor Park,Maoribank,15.69,1.089
 Haywards-Manor Park,Mara,,
 Haywards-Manor Park,Martinborough,54.979,1.7
@@ -11216,7 +11284,7 @@ Haywards-Manor Park,Taitville,29.318,1.844
 Haywards-Manor Park,Takapu,51.587,2.986
 Haywards-Manor Park,Tawa Central,40.63,1.883
 Haywards-Manor Park,Tawa South,38.756,1.857
-Haywards-Manor Park,Tawhai,,
+Haywards-Manor Park,Tawhai,11.725,1.0230555555555556
 Haywards-Manor Park,Te Horo,94.272,3.018
 Haywards-Manor Park,Te Kainga,33.976,1.668
 Haywards-Manor Park,Te Marua,20.738,1.14
@@ -11280,7 +11348,7 @@ Heretaunga,Cloustonville,19.772,0.697
 Heretaunga,Crofton Downs,35.849,1.714
 Heretaunga,Dannevirke East,204.976,4.808
 Heretaunga,Dannevirke West,205.951,5.022
-Heretaunga,Delaney,,
+Heretaunga,Delaney,8.484,0.5880555555555556
 Heretaunga,Discovery,54.507,2.474
 Heretaunga,Eastbourne,29.438,1.569
 Heretaunga,Ebdentown,6.561,0.605
@@ -11344,7 +11412,7 @@ Heretaunga,Mana Island,56.009,2.034
 Heretaunga,Mana-Camborne,53.582,2.028
 Heretaunga,Mangaroa,,
 Heretaunga,Mangatainoka,201.847,4.765
-Heretaunga,Manuka,,
+Heretaunga,Manuka,9.692,0.7136111111111111
 Heretaunga,Maoribank,10.437,0.679
 Heretaunga,Mara,,
 Heretaunga,Martinborough,49.392,1.434
@@ -11363,7 +11431,7 @@ Heretaunga,Miramar South,37.739,2.071
 Heretaunga,Miramar West,39.33,2.182
 Heretaunga,Mitchelltown,33.725,1.936
 Heretaunga,Moera,19.146,1.068
-Heretaunga,Moonshine Valley,,
+Heretaunga,Moonshine Valley,12.746,0.665
 Heretaunga,Mt Cook-Wallace Street,32.883,1.379
 Heretaunga,Mt Holdsworth,,
 Heretaunga,Mt Victoria West,32.86,1.383
@@ -11496,7 +11564,7 @@ Heretaunga-Silverstream,Cloustonville,19.838,0.666
 Heretaunga-Silverstream,Crofton Downs,33.483,1.471
 Heretaunga-Silverstream,Dannevirke East,202.61,4.565
 Heretaunga-Silverstream,Dannevirke West,203.585,4.779
-Heretaunga-Silverstream,Delaney,,
+Heretaunga-Silverstream,Delaney,8.167,0.5877777777777777
 Heretaunga-Silverstream,Discovery,52.141,2.231
 Heretaunga-Silverstream,Eastbourne,27.071,1.326
 Heretaunga-Silverstream,Ebdentown,7.012,0.429
@@ -11560,7 +11628,7 @@ Heretaunga-Silverstream,Mana Island,51.759,1.875
 Heretaunga-Silverstream,Mana-Camborne,51.216,1.785
 Heretaunga-Silverstream,Mangaroa,,
 Heretaunga-Silverstream,Mangatainoka,199.481,4.506
-Heretaunga-Silverstream,Manuka,,
+Heretaunga-Silverstream,Manuka,9.375,0.7133333333333334
 Heretaunga-Silverstream,Maoribank,10.554,0.648
 Heretaunga-Silverstream,Mara,,
 Heretaunga-Silverstream,Martinborough,49.843,1.258
@@ -11956,8 +12024,8 @@ Homebush-Te Ore Ore,Heretaunga,,
 Homebush-Te Ore Ore,Heretaunga-Silverstream,124.651,28.568
 Homebush-Te Ore Ore,Holborn,122.12,29.059
 Homebush-Te Ore Ore,Homebush-Te Ore Ore,0.0,0.0
-Homebush-Te Ore Ore,Homedale East,,
-Homebush-Te Ore Ore,Homedale West,,
+Homebush-Te Ore Ore,Homedale East,121.868,6.582222222222223
+Homebush-Te Ore Ore,Homedale West,123.602,6.511388888888889
 Homebush-Te Ore Ore,Horokiwi,112.015,29.034
 Homebush-Te Ore Ore,Hutt Central,83.497,27.692
 Homebush-Te Ore Ore,Island Bay East,106.255,28.725
@@ -12023,7 +12091,7 @@ Homebush-Te Ore Ore,Newlands South,106.61,28.505
 Homebush-Te Ore Ore,Newtown East,103.996,28.364
 Homebush-Te Ore Ore,Newtown West,102.866,28.284
 Homebush-Te Ore Ore,Ngaio South,103.988,28.289
-Homebush-Te Ore Ore,Ngaumutawa,,
+Homebush-Te Ore Ore,Ngaumutawa,8.078,2.1733333333333333
 Homebush-Te Ore Ore,Ngauranga East,103.499,28.295
 Homebush-Te Ore Ore,Ngauranga West,103.909,28.409
 Homebush-Te Ore Ore,Nireaha-Tiraumea,52.024,1.929
@@ -12034,7 +12102,7 @@ Homebush-Te Ore Ore,Northland North,100.626,28.546
 Homebush-Te Ore Ore,Onepoto,222.164,7.799
 Homebush-Te Ore Ore,Opaki-Fernridge,,
 Homebush-Te Ore Ore,Oriental Bay,101.569,28.137
-Homebush-Te Ore Ore,Otaihanga,,
+Homebush-Te Ore Ore,Otaihanga,151.749,7.354444444444445
 Homebush-Te Ore Ore,Otaki,163.522,6.533
 Homebush-Te Ore Ore,Otaki Forks,,
 Homebush-Te Ore Ore,Owahanga,,
@@ -12046,14 +12114,14 @@ Homebush-Te Ore Ore,Papakowhai South,214.428,7.537
 Homebush-Te Ore Ore,Paparangi,245.648,9.134
 Homebush-Te Ore Ore,Paparangi West,250.24,9.269
 Homebush-Te Ore Ore,Papatawa,84.712,2.528
-Homebush-Te Ore Ore,Paraparaumu Beach North,,
-Homebush-Te Ore Ore,Paraparaumu Beach South,,
+Homebush-Te Ore Ore,Paraparaumu Beach North,152.219,7.0441666666666665
+Homebush-Te Ore Ore,Paraparaumu Beach South,150.597,7.0216666666666665
 Homebush-Te Ore Ore,Paraparaumu Central,185.414,6.752
 Homebush-Te Ore Ore,Paremata-Postgate,220.922,7.758
 Homebush-Te Ore Ore,Parkway,,
 Homebush-Te Ore Ore,Pauatahanui,130.783,25.928
-Homebush-Te Ore Ore,Peka Peka,,
-Homebush-Te Ore Ore,Pencarrow,,
+Homebush-Te Ore Ore,Peka Peka,177.169,19.83
+Homebush-Te Ore Ore,Pencarrow,124.712,6.522222222222222
 Homebush-Te Ore Ore,Petone Central,87.747,27.675
 Homebush-Te Ore Ore,Pinehaven,,
 Homebush-Te Ore Ore,Plimmerton,220.474,8.043
@@ -12065,7 +12133,7 @@ Homebush-Te Ore Ore,Rangoon Heights,106.631,28.426
 Homebush-Te Ore Ore,Ranui Heights,214.038,7.447
 Homebush-Te Ore Ore,Raroa,223.275,7.389
 Homebush-Te Ore Ore,Raumati Beach,191.405,7.005
-Homebush-Te Ore Ore,Raumati South,,
+Homebush-Te Ore Ore,Raumati South,154.421,7.189444444444445
 Homebush-Te Ore Ore,Resolution,129.415,26.316
 Homebush-Te Ore Ore,Riverstone Terraces,,
 Homebush-Te Ore Ore,Roseneath,103.315,28.207
@@ -12081,7 +12149,7 @@ Homebush-Te Ore Ore,Takapu,123.304,7.47
 Homebush-Te Ore Ore,Tawa Central,216.82,8.301
 Homebush-Te Ore Ore,Tawa South,218.676,8.374
 Homebush-Te Ore Ore,Tawhai,124.022,29.387
-Homebush-Te Ore Ore,Te Horo,,
+Homebush-Te Ore Ore,Te Horo,171.382,19.735
 Homebush-Te Ore Ore,Te Kainga,105.714,28.319
 Homebush-Te Ore Ore,Te Marua,272.149,17.724
 Homebush-Te Ore Ore,Te Wharau,,
@@ -12097,9 +12165,9 @@ Homebush-Te Ore Ore,Upper Hutt Central,65.592,27.313
 Homebush-Te Ore Ore,Vogeltown,104.32,28.242
 Homebush-Te Ore Ore,Vogeltown West,103.866,28.164
 Homebush-Te Ore Ore,Wadestown,101.021,28.411
-Homebush-Te Ore Ore,Waikanae Beach,,
+Homebush-Te Ore Ore,Waikanae Beach,159.805,7.048055555555556
 Homebush-Te Ore Ore,Waikanae East,178.219,6.721
-Homebush-Te Ore Ore,Waikanae Park,,
+Homebush-Te Ore Ore,Waikanae Park,157.106,7.182222222222222
 Homebush-Te Ore Ore,Waikanae West,178.361,6.682
 Homebush-Te Ore Ore,Waingawa,10.724,1.748
 Homebush-Te Ore Ore,Waitangirua,216.867,7.356
@@ -12131,7 +12199,7 @@ Homedale East,Berhampore East,31.906,1.567
 Homedale East,Berhampore West,32.276,1.621
 Homedale East,Boulcott,19.941,1.242
 Homedale East,Brentwood,25.095,1.142
-Homedale East,Brooklyn,,
+Homedale East,Brooklyn,31.781,1.2213888888888889
 Homedale East,Brooklyn South,31.905,1.748
 Homedale East,Cannons Creek East,59.332,3.181
 Homedale East,Cannons Creek North,58.368,3.155
@@ -12217,7 +12285,7 @@ Homedale East,Masterton East,89.514,3.42
 Homedale East,Masterton Railway,84.498,2.245
 Homedale East,Masterton West,84.466,2.239
 Homedale East,Maungakotukutuku,83.28,2.268
-Homedale East,Maungaraki,,
+Homedale East,Maungaraki,18.562,0.9636111111111111
 Homedale East,Maupuia,37.614,1.876
 Homedale East,Melling,20.55,1.169
 Homedale East,Melrose-Houghton Bay-Southgate,40.11,3.705
@@ -12347,7 +12415,7 @@ Homedale West,Berhampore East,32.438,1.491
 Homedale West,Berhampore West,32.808,1.544
 Homedale West,Boulcott,20.587,1.383
 Homedale West,Brentwood,25.627,1.066
-Homedale West,Brooklyn,,
+Homedale West,Brooklyn,32.313,1.1447222222222222
 Homedale West,Brooklyn South,32.437,1.671
 Homedale West,Cannons Creek East,59.864,3.104
 Homedale West,Cannons Creek North,58.9,3.079
@@ -12433,7 +12501,7 @@ Homedale West,Masterton East,90.046,3.343
 Homedale West,Masterton Railway,85.03,2.168
 Homedale West,Masterton West,84.998,2.162
 Homedale West,Maungakotukutuku,83.812,2.23
-Homedale West,Maungaraki,,
+Homedale West,Maungaraki,19.095,0.9258333333333333
 Homedale West,Maupuia,38.146,1.799
 Homedale West,Melling,21.196,1.309
 Homedale West,Melrose-Houghton Bay-Southgate,40.642,3.629
@@ -12548,10 +12616,10 @@ Homedale West,Woburn North,9.539,0.434
 Homedale West,Woburn South,9.817,0.49
 Homedale West,Woodridge,28.719,1.313
 Homedale West,Woodville,176.398,4.309
-Horokiwi,Adelaide,,
+Horokiwi,Adelaide,17.829,1.4008333333333334
 Horokiwi,Adventure,59.347,3.238
 Horokiwi,Akatarawa,62.838,3.107
-Horokiwi,Alicetown,,
+Horokiwi,Alicetown,9.231,0.8966666666666666
 Horokiwi,Arakura,50.697,3.635
 Horokiwi,Aro Street-Nairn Street,25.165,2.689
 Horokiwi,Ascot Park,62.226,3.127
@@ -12559,11 +12627,11 @@ Horokiwi,Avalon East,40.28,2.854
 Horokiwi,Avalon West,41.417,3.041
 Horokiwi,Awarua,16.163,2.093
 Horokiwi,Belmont,,
-Horokiwi,Berhampore East,,
-Horokiwi,Berhampore West,,
+Horokiwi,Berhampore East,19.184,1.573611111111111
+Horokiwi,Berhampore West,19.653,1.5105555555555557
 Horokiwi,Boulcott,39.65,2.854
 Horokiwi,Brentwood,61.72,3.335
-Horokiwi,Brooklyn,,
+Horokiwi,Brooklyn,18.495,1.4747222222222223
 Horokiwi,Brooklyn South,28.169,1.893
 Horokiwi,Cannons Creek East,58.113,3.118
 Horokiwi,Cannons Creek North,57.149,3.11
@@ -12587,18 +12655,18 @@ Horokiwi,Emerald Hill,62.133,2.723
 Horokiwi,Endeavour,73.272,3.252
 Horokiwi,Epuni East,39.205,2.949
 Horokiwi,Epuni West,38.724,2.841
-Horokiwi,Esplanade,,
+Horokiwi,Esplanade,8.479,0.9002777777777777
 Horokiwi,Featherston,73.784,2.309
 Horokiwi,Fernlea,47.345,3.669
 Horokiwi,Glendale,49.839,3.656
 Horokiwi,Glenside North,9.952,1.34
-Horokiwi,Gracefield,,
+Horokiwi,Gracefield,10.914,1.1391666666666667
 Horokiwi,Greenacres,37.937,3.119
 Horokiwi,Grenada North,28.255,2.431
 Horokiwi,Grenada Village,7.799,0.674
 Horokiwi,Greytown,91.716,2.685
-Horokiwi,Happy Valley-Owhiro Bay,,
-Horokiwi,Hataitai North,,
+Horokiwi,Happy Valley-Owhiro Bay,24.71,1.758888888888889
+Horokiwi,Hataitai North,17.704,1.3030555555555556
 Horokiwi,Haywards-Manor Park,47.531,3.438
 Horokiwi,Heretaunga,51.005,3.203
 Horokiwi,Heretaunga-Silverstream,48.632,2.986
@@ -12607,9 +12675,9 @@ Horokiwi,Homebush-Te Ore Ore,111.927,5.281
 Horokiwi,Homedale East,56.749,3.864
 Horokiwi,Homedale West,57.276,3.889
 Horokiwi,Horokiwi,0.0,0.0
-Horokiwi,Hutt Central,,
-Horokiwi,Island Bay East,,
-Horokiwi,Island Bay West,,
+Horokiwi,Hutt Central,11.202,1.0669444444444445
+Horokiwi,Island Bay East,21.566,1.685
+Horokiwi,Island Bay West,21.546,1.6822222222222223
 Horokiwi,Johnsonville Central,11.825,0.831
 Horokiwi,Johnsonville East,10.828,0.834
 Horokiwi,Johnsonville North,11.337,0.932
@@ -12617,7 +12685,7 @@ Horokiwi,Kahutara,93.724,2.667
 Horokiwi,Kaitawa,87.787,3.812
 Horokiwi,Kaiwharawhara,24.458,2.406
 Horokiwi,Kapiti Island,,
-Horokiwi,Karaka Bay-Worser Bay,,
+Horokiwi,Karaka Bay-Worser Bay,24.152,1.8725
 Horokiwi,Karori East,27.375,2.866
 Horokiwi,Karori North,27.887,2.677
 Horokiwi,Karori Park,29.421,2.656
@@ -12625,17 +12693,17 @@ Horokiwi,Karori South,31.297,2.869
 Horokiwi,Kelburn,24.813,2.5
 Horokiwi,Kelson,,
 Horokiwi,Khandallah Park-Broadmeadows,15.241,2.54
-Horokiwi,Kilbirnie East,,
-Horokiwi,Kilbirnie West-Hataitai South,,
-Horokiwi,Kingston-Mornington,,
+Horokiwi,Kilbirnie East,19.724,1.356111111111111
+Horokiwi,Kilbirnie West-Hataitai South,18.573,1.2866666666666666
+Horokiwi,Kingston-Mornington,20.1,1.4152777777777779
 Horokiwi,Kopuaranga,,
-Horokiwi,Korokoro,,
+Horokiwi,Korokoro,2.357,0.46111111111111114
 Horokiwi,Lambton,22.765,2.398
 Horokiwi,Lansdowne,109.739,3.392
 Horokiwi,Linden,36.874,2.844
-Horokiwi,Lyall Bay-Airport-Moa Point,,
+Horokiwi,Lyall Bay-Airport-Moa Point,24.37,1.7319444444444445
 Horokiwi,Maidstone,54.567,3.204
-Horokiwi,Makara-Ohariu,,
+Horokiwi,Makara-Ohariu,26.631,1.738611111111111
 Horokiwi,Mana Island,28.104,1.786
 Horokiwi,Mana-Camborne,45.839,3.196
 Horokiwi,Mangaroa,70.447,2.617
@@ -12649,33 +12717,33 @@ Horokiwi,Masterton East,111.453,4.136
 Horokiwi,Masterton Railway,106.436,2.96
 Horokiwi,Masterton West,106.404,2.954
 Horokiwi,Maungakotukutuku,60.854,2.501
-Horokiwi,Maungaraki,,
-Horokiwi,Maupuia,,
-Horokiwi,Melling,,
-Horokiwi,Melrose-Houghton Bay-Southgate,,
-Horokiwi,Miramar,,
-Horokiwi,Miramar North,,
-Horokiwi,Miramar South,,
-Horokiwi,Miramar West,,
+Horokiwi,Maungaraki,11.081,0.9863888888888889
+Horokiwi,Maupuia,26.383,2.0277777777777777
+Horokiwi,Melling,10.295,1.0616666666666668
+Horokiwi,Melrose-Houghton Bay-Southgate,23.269,1.785
+Horokiwi,Miramar,22.793,1.5425
+Horokiwi,Miramar North,24.044,1.7919444444444443
+Horokiwi,Miramar South,21.621,1.4647222222222223
+Horokiwi,Miramar West,23.061,1.6030555555555555
 Horokiwi,Mitchelltown,26.169,2.766
-Horokiwi,Moera,,
+Horokiwi,Moera,11.029,1.095
 Horokiwi,Moonshine Valley,53.091,2.402
-Horokiwi,Mt Cook-Wallace Street,,
+Horokiwi,Mt Cook-Wallace Street,16.434,1.2344444444444445
 Horokiwi,Mt Holdsworth,,
-Horokiwi,Mt Victoria West,,
+Horokiwi,Mt Victoria West,16.712,1.2002777777777778
 Horokiwi,Naenae North,43.79,3.152
 Horokiwi,Naenae South,42.627,3.019
 Horokiwi,Newlands East,4.025,0.65
 Horokiwi,Newlands North,4.812,0.626
 Horokiwi,Newlands South,5.596,0.859
-Horokiwi,Newtown East,,
-Horokiwi,Newtown West,,
+Horokiwi,Newtown East,18.839,1.5844444444444445
+Horokiwi,Newtown West,18.163,1.3633333333333333
 Horokiwi,Ngaio South,17.18,2.207
 Horokiwi,Ngaumutawa,106.623,3.007
-Horokiwi,Ngauranga East,,
-Horokiwi,Ngauranga West,,
+Horokiwi,Ngauranga East,7.205,0.7802777777777777
+Horokiwi,Ngauranga West,7.928,0.9613888888888888
 Horokiwi,Nireaha-Tiraumea,201.305,4.764
-Horokiwi,Normandale,,
+Horokiwi,Normandale,12.892,1.0955555555555556
 Horokiwi,Norsewood-Herbertville,,
 Horokiwi,Northland,26.715,2.681
 Horokiwi,Northland North,28.039,2.958
@@ -12702,7 +12770,7 @@ Horokiwi,Parkway,46.328,3.641
 Horokiwi,Pauatahanui,36.956,1.846
 Horokiwi,Peka Peka,59.358,2.503
 Horokiwi,Pencarrow,62.083,3.856
-Horokiwi,Petone Central,,
+Horokiwi,Petone Central,6.895,0.7041666666666667
 Horokiwi,Pinehaven,47.571,1.919
 Horokiwi,Plimmerton,47.991,3.461
 Horokiwi,Poets Block,62.968,3.387
@@ -12716,12 +12784,12 @@ Horokiwi,Raumati Beach,72.379,3.943
 Horokiwi,Raumati South,76.529,8.974
 Horokiwi,Resolution,35.587,2.234
 Horokiwi,Riverstone Terraces,46.832,2.424
-Horokiwi,Roseneath,,
-Horokiwi,Seatoun,,
-Horokiwi,Seatoun Tunnel West,,
+Horokiwi,Roseneath,17.027,1.3552777777777778
+Horokiwi,Seatoun,24.796,1.9983333333333333
+Horokiwi,Seatoun Tunnel West,23.678,1.5994444444444444
 Horokiwi,Solway North,105.331,2.971
 Horokiwi,Solway South,106.937,3.29
-Horokiwi,Strathmore Park,,
+Horokiwi,Strathmore Park,23.953,1.8911111111111112
 Horokiwi,Taita North,45.98,2.923
 Horokiwi,Taita South,41.908,2.962
 Horokiwi,Taitville,25.821,2.624
@@ -12734,7 +12802,7 @@ Horokiwi,Te Kainga,15.11,2.087
 Horokiwi,Te Marua,48.333,2.213
 Horokiwi,Te Wharau,,
 Horokiwi,Thorndon-Tinakori Road,22.33,2.295
-Horokiwi,Tirohanga,,
+Horokiwi,Tirohanga,11.101,1.3363888888888888
 Horokiwi,Titahi Bay North,49.436,3.098
 Horokiwi,Titahi Bay South,52.196,3.349
 Horokiwi,Totara Park,57.169,2.568
@@ -12742,8 +12810,8 @@ Horokiwi,Trentham North,52.078,3.224
 Horokiwi,Trentham South,51.837,3.375
 Horokiwi,Tuturumuri,,
 Horokiwi,Upper Hutt Central,54.578,3.198
-Horokiwi,Vogeltown,,
-Horokiwi,Vogeltown West,,
+Horokiwi,Vogeltown,19.613,1.4422222222222223
+Horokiwi,Vogeltown West,19.159,1.363888888888889
 Horokiwi,Wadestown,24.977,2.494
 Horokiwi,Waikanae Beach,83.807,8.8
 Horokiwi,Waikanae East,78.639,3.881
@@ -12757,11 +12825,11 @@ Horokiwi,Wallaceville,53.264,3.129
 Horokiwi,Waterloo East,38.183,2.906
 Horokiwi,Waterloo West,37.501,2.754
 Horokiwi,Whareama,,
-Horokiwi,Wilford,,
+Horokiwi,Wilford,8.522,0.88
 Horokiwi,Willis Street-Cambridge Terrace,23.37,2.494
 Horokiwi,Wilton,18.877,2.458
 Horokiwi,Woburn North,36.332,2.705
-Horokiwi,Woburn South,,
+Horokiwi,Woburn South,11.95,1.1666666666666667
 Horokiwi,Woodridge,2.774,0.563
 Horokiwi,Woodville,151.241,4.031
 Hutt Central,Adelaide,20.507,0.894
@@ -13005,7 +13073,7 @@ Island Bay East,Churton Park North,31.21,3.751
 Island Bay East,Churton Park South,30.973,1.764
 Island Bay East,Clouston Park,45.955,3.213
 Island Bay East,Cloustonville,55.643,2.018
-Island Bay East,Crofton Downs,,
+Island Bay East,Crofton Downs,17.012,1.2275
 Island Bay East,Dannevirke East,183.969,4.584
 Island Bay East,Dannevirke West,184.944,4.799
 Island Bay East,Delaney,41.664,3.917
@@ -13049,11 +13117,11 @@ Island Bay East,Kahutara,85.843,2.302
 Island Bay East,Kaitawa,74.53,3.518
 Island Bay East,Kaiwharawhara,11.08,1.068
 Island Bay East,Kapiti Island,,
-Island Bay East,Karaka Bay-Worser Bay,,
-Island Bay East,Karori East,,
-Island Bay East,Karori North,,
-Island Bay East,Karori Park,,
-Island Bay East,Karori South,,
+Island Bay East,Karaka Bay-Worser Bay,14.398,0.9877777777777778
+Island Bay East,Karori East,12.469,0.9883333333333333
+Island Bay East,Karori North,11.075,0.8697222222222222
+Island Bay East,Karori Park,14.631,0.89
+Island Bay East,Karori South,18.597,1.3594444444444445
 Island Bay East,Kelburn,8.143,0.826
 Island Bay East,Kelson,,
 Island Bay East,Khandallah Park-Broadmeadows,20.601,3.062
@@ -13061,7 +13129,7 @@ Island Bay East,Kilbirnie East,9.495,0.44
 Island Bay East,Kilbirnie West-Hataitai South,8.636,0.448
 Island Bay East,Kingston-Mornington,13.968,0.91
 Island Bay East,Kopuaranga,,
-Island Bay East,Korokoro,,
+Island Bay East,Korokoro,21.471,1.4597222222222221
 Island Bay East,Lambton,7.489,0.565
 Island Bay East,Lansdowne,101.858,3.026
 Island Bay East,Linden,23.617,1.133
@@ -13081,14 +13149,14 @@ Island Bay East,Masterton East,103.572,3.678
 Island Bay East,Masterton Railway,98.555,2.595
 Island Bay East,Masterton West,98.523,2.589
 Island Bay East,Maungakotukutuku,66.287,2.106
-Island Bay East,Maungaraki,,
-Island Bay East,Maupuia,,
+Island Bay East,Maungaraki,24.121,1.2208333333333334
+Island Bay East,Maupuia,16.629,1.1430555555555555
 Island Bay East,Melling,23.776,1.38
 Island Bay East,Melrose-Houghton Bay-Southgate,3.88,0.229
-Island Bay East,Miramar,,
-Island Bay East,Miramar North,,
+Island Bay East,Miramar,15.438,0.8347222222222223
+Island Bay East,Miramar North,14.29,0.9072222222222223
 Island Bay East,Miramar South,15.22,1.02
-Island Bay East,Miramar West,,
+Island Bay East,Miramar West,15.706,0.8952777777777777
 Island Bay East,Mitchelltown,8.965,0.984
 Island Bay East,Moera,24.663,1.548
 Island Bay East,Moonshine Valley,45.21,1.953
@@ -13130,7 +13198,7 @@ Island Bay East,Paraparaumu Beach North,63.564,9.501
 Island Bay East,Paraparaumu Beach South,61.942,9.479
 Island Bay East,Paraparaumu Central,58.115,3.448
 Island Bay East,Paremata-Postgate,31.674,1.563
-Island Bay East,Parkway,,
+Island Bay East,Parkway,31.264,1.5397222222222222
 Island Bay East,Pauatahanui,48.818,1.952
 Island Bay East,Peka Peka,74.237,2.223
 Island Bay East,Pencarrow,51.963,3.076
@@ -13150,7 +13218,7 @@ Island Bay East,Resolution,47.449,2.339
 Island Bay East,Riverstone Terraces,43.521,2.514
 Island Bay East,Roseneath,9.165,0.581
 Island Bay East,Seatoun,13.057,1.149
-Island Bay East,Seatoun Tunnel West,,
+Island Bay East,Seatoun Tunnel West,12.574,0.7186111111111111
 Island Bay East,Solway North,97.45,2.605
 Island Bay East,Solway South,99.056,2.924
 Island Bay East,Strathmore Park,15.142,1.523
@@ -13183,8 +13251,8 @@ Island Bay East,Waikanae Park,67.851,9.639
 Island Bay East,Waikanae West,65.578,3.557
 Island Bay East,Waingawa,99.414,3.764
 Island Bay East,Waitangirua,46.599,3.116
-Island Bay East,Waiwhetu North,,
-Island Bay East,Waiwhetu South,,
+Island Bay East,Waiwhetu North,28.371,1.345
+Island Bay East,Waiwhetu South,26.895,1.5325
 Island Bay East,Wallaceville,43.322,2.849
 Island Bay East,Waterloo East,33.05,9.217
 Island Bay East,Waterloo West,24.244,1.543
@@ -13221,7 +13289,7 @@ Island Bay West,Churton Park North,31.19,3.746
 Island Bay West,Churton Park South,30.953,1.76
 Island Bay West,Clouston Park,42.62,3.194
 Island Bay West,Cloustonville,55.623,2.014
-Island Bay West,Crofton Downs,,
+Island Bay West,Crofton Downs,14.791,1.2205555555555556
 Island Bay West,Dannevirke East,183.949,4.58
 Island Bay West,Dannevirke West,184.924,4.794
 Island Bay West,Delaney,38.207,3.898
@@ -13265,11 +13333,11 @@ Island Bay West,Kahutara,85.823,2.297
 Island Bay West,Kaitawa,74.51,3.513
 Island Bay West,Kaiwharawhara,11.06,1.063
 Island Bay West,Kapiti Island,,
-Island Bay West,Karaka Bay-Worser Bay,,
-Island Bay West,Karori East,,
-Island Bay West,Karori North,,
-Island Bay West,Karori Park,,
-Island Bay West,Karori South,,
+Island Bay West,Karaka Bay-Worser Bay,14.378,0.9833333333333333
+Island Bay West,Karori East,12.449,0.9838888888888889
+Island Bay West,Karori North,11.055,0.8652777777777778
+Island Bay West,Karori Park,14.611,0.8855555555555555
+Island Bay West,Karori South,16.401,1.3202777777777779
 Island Bay West,Kelburn,8.123,0.822
 Island Bay West,Kelson,,
 Island Bay West,Khandallah Park-Broadmeadows,20.581,3.057
@@ -13283,7 +13351,7 @@ Island Bay West,Lansdowne,101.838,3.022
 Island Bay West,Linden,23.597,1.128
 Island Bay West,Lyall Bay-Airport-Moa Point,14.832,0.863
 Island Bay West,Maidstone,41.29,2.904
-Island Bay West,Makara-Ohariu,,
+Island Bay West,Makara-Ohariu,21.131,1.3533333333333333
 Island Bay West,Mana Island,33.105,1.654
 Island Bay West,Mana-Camborne,32.562,1.48
 Island Bay West,Mangaroa,57.17,2.318
@@ -13297,14 +13365,14 @@ Island Bay West,Masterton East,103.552,3.674
 Island Bay West,Masterton Railway,98.535,2.59
 Island Bay West,Masterton West,98.503,2.584
 Island Bay West,Maungakotukutuku,66.267,2.102
-Island Bay West,Maungaraki,,
-Island Bay West,Maupuia,,
+Island Bay West,Maungaraki,24.101,1.216388888888889
+Island Bay West,Maupuia,16.609,1.138611111111111
 Island Bay West,Melling,23.756,1.376
 Island Bay West,Melrose-Houghton Bay-Southgate,4.492,0.304
-Island Bay West,Miramar,,
-Island Bay West,Miramar North,,
+Island Bay West,Miramar,16.05,0.9111111111111111
+Island Bay West,Miramar North,14.27,0.9027777777777778
 Island Bay West,Miramar South,15.2,1.016
-Island Bay West,Miramar West,,
+Island Bay West,Miramar West,16.318,0.9716666666666667
 Island Bay West,Mitchelltown,8.945,0.979
 Island Bay West,Moera,24.643,1.543
 Island Bay West,Moonshine Valley,45.19,1.949
@@ -13366,7 +13434,7 @@ Island Bay West,Resolution,47.429,2.335
 Island Bay West,Riverstone Terraces,43.501,2.509
 Island Bay West,Roseneath,9.145,0.576
 Island Bay West,Seatoun,13.037,1.145
-Island Bay West,Seatoun Tunnel West,,
+Island Bay West,Seatoun Tunnel West,10.392,0.7469444444444444
 Island Bay West,Solway North,97.43,2.601
 Island Bay West,Solway South,99.036,2.92
 Island Bay West,Strathmore Park,15.122,1.518
@@ -14395,7 +14463,7 @@ Kaitawa,Naenae North,87.876,2.401
 Kaitawa,Naenae South,85.779,2.077
 Kaitawa,Newlands East,77.748,2.702
 Kaitawa,Newlands North,74.337,2.354
-Kaitawa,Newlands South,,
+Kaitawa,Newlands South,64.844,1.9497222222222221
 Kaitawa,Newtown East,72.672,2.258
 Kaitawa,Newtown West,71.752,2.136
 Kaitawa,Ngaio South,72.523,2.717
@@ -14562,7 +14630,7 @@ Kaiwharawhara,Kaitawa,74.096,2.425
 Kaiwharawhara,Kaiwharawhara,0.0,0.0
 Kaiwharawhara,Kapiti Island,,
 Kaiwharawhara,Karaka Bay-Worser Bay,19.081,2.071
-Kaiwharawhara,Karori East,,
+Kaiwharawhara,Karori East,7.593,0.6691666666666667
 Kaiwharawhara,Karori North,8.662,1.188
 Kaiwharawhara,Karori Park,14.907,1.559
 Kaiwharawhara,Karori South,16.706,1.961
@@ -14579,7 +14647,7 @@ Kaiwharawhara,Lansdowne,96.941,2.549
 Kaiwharawhara,Linden,15.09,1.782
 Kaiwharawhara,Lyall Bay-Airport-Moa Point,14.641,1.054
 Kaiwharawhara,Maidstone,40.876,1.817
-Kaiwharawhara,Makara-Ohariu,,
+Kaiwharawhara,Makara-Ohariu,16.829,0.8797222222222222
 Kaiwharawhara,Mana Island,28.208,1.014
 Kaiwharawhara,Mana-Camborne,22.945,1.736
 Kaiwharawhara,Mangaroa,51.703,1.476
@@ -14621,7 +14689,7 @@ Kaiwharawhara,Ngauranga West,3.34,0.733
 Kaiwharawhara,Nireaha-Tiraumea,199.865,4.075
 Kaiwharawhara,Normandale,29.502,2.121
 Kaiwharawhara,Norsewood-Herbertville,,
-Kaiwharawhara,Northland,,
+Kaiwharawhara,Northland,6.121,0.48944444444444446
 Kaiwharawhara,Northland North,4.257,0.99
 Kaiwharawhara,Onepoto,29.111,1.504
 Kaiwharawhara,Opaki-Fernridge,97.386,2.069
@@ -14927,19 +14995,19 @@ Kapiti Island,Woodville,,
 Karaka Bay-Worser Bay,Adelaide,9.595,0.67
 Karaka Bay-Worser Bay,Adventure,48.372,3.496
 Karaka Bay-Worser Bay,Akatarawa,52.16,2.942
-Karaka Bay-Worser Bay,Alicetown,,
-Karaka Bay-Worser Bay,Arakura,,
+Karaka Bay-Worser Bay,Alicetown,28.979,1.168611111111111
+Karaka Bay-Worser Bay,Arakura,36.076,1.4836111111111112
 Karaka Bay-Worser Bay,Aro Street-Nairn Street,10.731,0.86
 Karaka Bay-Worser Bay,Ascot Park,51.251,3.446
-Karaka Bay-Worser Bay,Avalon East,,
+Karaka Bay-Worser Bay,Avalon East,28.621,1.2216666666666667
 Karaka Bay-Worser Bay,Avalon West,32.941,3.118
-Karaka Bay-Worser Bay,Awarua,,
+Karaka Bay-Worser Bay,Awarua,21.502,1.1888888888888889
 Karaka Bay-Worser Bay,Belmont,37.922,2.403
 Karaka Bay-Worser Bay,Berhampore East,12.377,0.875
 Karaka Bay-Worser Bay,Berhampore West,12.689,0.872
-Karaka Bay-Worser Bay,Boulcott,,
+Karaka Bay-Worser Bay,Boulcott,27.642,1.3263888888888888
 Karaka Bay-Worser Bay,Brentwood,43.965,3.324
-Karaka Bay-Worser Bay,Brooklyn,,
+Karaka Bay-Worser Bay,Brooklyn,17.502,1.1022222222222222
 Karaka Bay-Worser Bay,Brooklyn South,15.928,1.228
 Karaka Bay-Worser Bay,Cannons Creek East,47.138,3.363
 Karaka Bay-Worser Bay,Cannons Creek North,46.174,3.337
@@ -14949,7 +15017,7 @@ Karaka Bay-Worser Bay,Churton Park North,36.02,4.083
 Karaka Bay-Worser Bay,Churton Park South,35.772,2.097
 Karaka Bay-Worser Bay,Clouston Park,47.439,3.531
 Karaka Bay-Worser Bay,Cloustonville,57.584,2.358
-Karaka Bay-Worser Bay,Crofton Downs,,
+Karaka Bay-Worser Bay,Crofton Downs,16.447,1.4333333333333333
 Karaka Bay-Worser Bay,Dannevirke East,186.548,4.725
 Karaka Bay-Worser Bay,Dannevirke West,187.523,4.939
 Karaka Bay-Worser Bay,Delaney,43.026,4.235
@@ -14961,19 +15029,19 @@ Karaka Bay-Worser Bay,Elderslea,45.957,3.394
 Karaka Bay-Worser Bay,Elsdon-Takapuwahia,34.925,3.435
 Karaka Bay-Worser Bay,Emerald Hill,51.455,2.558
 Karaka Bay-Worser Bay,Endeavour,62.297,3.765
-Karaka Bay-Worser Bay,Epuni East,,
-Karaka Bay-Worser Bay,Epuni West,,
-Karaka Bay-Worser Bay,Esplanade,,
+Karaka Bay-Worser Bay,Epuni East,27.546,1.3172222222222223
+Karaka Bay-Worser Bay,Epuni West,27.065,1.2091666666666667
+Karaka Bay-Worser Bay,Esplanade,28.339,1.2397222222222222
 Karaka Bay-Worser Bay,Featherston,68.482,1.823
 Karaka Bay-Worser Bay,Fernlea,38.587,3.207
-Karaka Bay-Worser Bay,Glendale,,
-Karaka Bay-Worser Bay,Glenside North,,
+Karaka Bay-Worser Bay,Glendale,38.844,1.6094444444444445
+Karaka Bay-Worser Bay,Glenside North,22.004,1.3763888888888889
 Karaka Bay-Worser Bay,Gracefield,32.345,1.844
-Karaka Bay-Worser Bay,Greenacres,,
-Karaka Bay-Worser Bay,Grenada North,,
+Karaka Bay-Worser Bay,Greenacres,31.799,1.4327777777777777
+Karaka Bay-Worser Bay,Grenada North,29.664,1.5525
 Karaka Bay-Worser Bay,Grenada Village,31.585,1.712
 Karaka Bay-Worser Bay,Greytown,86.414,2.199
-Karaka Bay-Worser Bay,Happy Valley-Owhiro Bay,,
+Karaka Bay-Worser Bay,Happy Valley-Owhiro Bay,13.532,0.8405555555555555
 Karaka Bay-Worser Bay,Hataitai North,7.17,0.418
 Karaka Bay-Worser Bay,Haywards-Manor Park,39.073,3.476
 Karaka Bay-Worser Bay,Heretaunga,42.547,3.241
@@ -14983,9 +15051,9 @@ Karaka Bay-Worser Bay,Homebush-Te Ore Ore,111.322,5.158
 Karaka Bay-Worser Bay,Homedale East,47.991,3.401
 Karaka Bay-Worser Bay,Homedale West,48.518,3.426
 Karaka Bay-Worser Bay,Horokiwi,27.238,1.99
-Karaka Bay-Worser Bay,Hutt Central,,
-Karaka Bay-Worser Bay,Island Bay East,,
-Karaka Bay-Worser Bay,Island Bay West,,
+Karaka Bay-Worser Bay,Hutt Central,27.147,1.3005555555555555
+Karaka Bay-Worser Bay,Island Bay East,10.389,0.8977777777777778
+Karaka Bay-Worser Bay,Island Bay West,10.369,0.895
 Karaka Bay-Worser Bay,Johnsonville Central,35.652,1.869
 Karaka Bay-Worser Bay,Johnsonville East,22.38,1.563
 Karaka Bay-Worser Bay,Johnsonville North,35.123,1.969
@@ -14994,24 +15062,24 @@ Karaka Bay-Worser Bay,Kaitawa,79.329,3.85
 Karaka Bay-Worser Bay,Kaiwharawhara,15.859,0.817
 Karaka Bay-Worser Bay,Kapiti Island,,
 Karaka Bay-Worser Bay,Karaka Bay-Worser Bay,0.0,0.0
-Karaka Bay-Worser Bay,Karori East,,
-Karaka Bay-Worser Bay,Karori North,,
-Karaka Bay-Worser Bay,Karori Park,,
-Karaka Bay-Worser Bay,Karori South,,
+Karaka Bay-Worser Bay,Karori East,14.142,1.1125
+Karaka Bay-Worser Bay,Karori North,14.316,0.9805555555555555
+Karaka Bay-Worser Bay,Karori Park,16.894,1.0141666666666667
+Karaka Bay-Worser Bay,Karori South,18.693,1.4108333333333334
 Karaka Bay-Worser Bay,Kelburn,10.691,0.901
 Karaka Bay-Worser Bay,Kelson,,
 Karaka Bay-Worser Bay,Khandallah Park-Broadmeadows,25.4,3.394
 Karaka Bay-Worser Bay,Kilbirnie East,4.594,0.269
 Karaka Bay-Worser Bay,Kilbirnie West-Hataitai South,5.794,0.295
-Karaka Bay-Worser Bay,Kingston-Mornington,,
+Karaka Bay-Worser Bay,Kingston-Mornington,11.106,0.8944444444444445
 Karaka Bay-Worser Bay,Kopuaranga,,
-Karaka Bay-Worser Bay,Korokoro,,
+Karaka Bay-Worser Bay,Korokoro,23.309,1.3858333333333333
 Karaka Bay-Worser Bay,Lambton,10.037,0.644
 Karaka Bay-Worser Bay,Lansdowne,104.437,2.906
-Karaka Bay-Worser Bay,Linden,,
+Karaka Bay-Worser Bay,Linden,32.224,1.393888888888889
 Karaka Bay-Worser Bay,Lyall Bay-Airport-Moa Point,5.958,0.544
 Karaka Bay-Worser Bay,Maidstone,46.109,3.241
-Karaka Bay-Worser Bay,Makara-Ohariu,,
+Karaka Bay-Worser Bay,Makara-Ohariu,28.332,1.366111111111111
 Karaka Bay-Worser Bay,Mana Island,35.704,1.538
 Karaka Bay-Worser Bay,Mana-Camborne,38.289,9.531
 Karaka Bay-Worser Bay,Mangaroa,59.769,2.452
@@ -15025,36 +15093,36 @@ Karaka Bay-Worser Bay,Masterton East,106.151,3.899
 Karaka Bay-Worser Bay,Masterton Railway,101.134,2.474
 Karaka Bay-Worser Bay,Masterton West,101.102,2.469
 Karaka Bay-Worser Bay,Maungakotukutuku,68.866,2.334
-Karaka Bay-Worser Bay,Maungaraki,,
+Karaka Bay-Worser Bay,Maungaraki,25.959,1.261388888888889
 Karaka Bay-Worser Bay,Maupuia,1.932,0.452
-Karaka Bay-Worser Bay,Melling,,
-Karaka Bay-Worser Bay,Melrose-Houghton Bay-Southgate,,
+Karaka Bay-Worser Bay,Melling,25.023,1.1788888888888889
+Karaka Bay-Worser Bay,Melrose-Houghton Bay-Southgate,9.788,0.6958333333333333
 Karaka Bay-Worser Bay,Miramar,1.285,0.235
 Karaka Bay-Worser Bay,Miramar North,0.9,0.161
 Karaka Bay-Worser Bay,Miramar South,2.793,0.207
 Karaka Bay-Worser Bay,Miramar West,2.182,0.258
-Karaka Bay-Worser Bay,Mitchelltown,,
-Karaka Bay-Worser Bay,Moera,,
+Karaka Bay-Worser Bay,Mitchelltown,13.158,1.0305555555555554
+Karaka Bay-Worser Bay,Moera,29.111,1.2197222222222222
 Karaka Bay-Worser Bay,Moonshine Valley,47.784,2.031
 Karaka Bay-Worser Bay,Mt Cook-Wallace Street,8.21,0.587
 Karaka Bay-Worser Bay,Mt Holdsworth,,
 Karaka Bay-Worser Bay,Mt Victoria West,7.634,0.378
-Karaka Bay-Worser Bay,Naenae North,,
-Karaka Bay-Worser Bay,Naenae South,,
+Karaka Bay-Worser Bay,Naenae North,31.663,1.5586111111111112
+Karaka Bay-Worser Bay,Naenae South,29.736,1.5230555555555556
 Karaka Bay-Worser Bay,Newlands East,24.355,1.549
 Karaka Bay-Worser Bay,Newlands North,22.078,1.441
 Karaka Bay-Worser Bay,Newlands South,21.833,1.461
 Karaka Bay-Worser Bay,Newtown East,8.916,0.662
 Karaka Bay-Worser Bay,Newtown West,8.799,0.609
-Karaka Bay-Worser Bay,Ngaio South,,
+Karaka Bay-Worser Bay,Ngaio South,21.91,1.1719444444444445
 Karaka Bay-Worser Bay,Ngaumutawa,101.321,2.521
 Karaka Bay-Worser Bay,Ngauranga East,18.756,1.306
 Karaka Bay-Worser Bay,Ngauranga West,19.166,1.419
 Karaka Bay-Worser Bay,Nireaha-Tiraumea,216.048,5.228
-Karaka Bay-Worser Bay,Normandale,,
+Karaka Bay-Worser Bay,Normandale,27.77,1.3705555555555555
 Karaka Bay-Worser Bay,Norsewood-Herbertville,,
-Karaka Bay-Worser Bay,Northland,,
-Karaka Bay-Worser Bay,Northland North,,
+Karaka Bay-Worser Bay,Northland,13.68,0.9513888888888888
+Karaka Bay-Worser Bay,Northland North,12.686,1.0552777777777778
 Karaka Bay-Worser Bay,Onepoto,39.248,3.624
 Karaka Bay-Worser Bay,Opaki-Fernridge,104.882,2.426
 Karaka Bay-Worser Bay,Oriental Bay,10.431,0.702
@@ -15074,19 +15142,19 @@ Karaka Bay-Worser Bay,Paraparaumu Beach North,68.363,9.833
 Karaka Bay-Worser Bay,Paraparaumu Beach South,66.741,9.811
 Karaka Bay-Worser Bay,Paraparaumu Central,62.914,3.78
 Karaka Bay-Worser Bay,Paremata-Postgate,37.381,9.609
-Karaka Bay-Worser Bay,Parkway,,
+Karaka Bay-Worser Bay,Parkway,32.9,1.418611111111111
 Karaka Bay-Worser Bay,Pauatahanui,51.397,2.079
 Karaka Bay-Worser Bay,Peka Peka,73.516,2.501
 Karaka Bay-Worser Bay,Pencarrow,53.325,3.393
-Karaka Bay-Worser Bay,Petone Central,,
+Karaka Bay-Worser Bay,Petone Central,26.755,1.0922222222222222
 Karaka Bay-Worser Bay,Pinehaven,46.809,1.813
 Karaka Bay-Worser Bay,Plimmerton,39.533,3.498
 Karaka Bay-Worser Bay,Poets Block,46.116,3.424
-Karaka Bay-Worser Bay,Porirua Central,,
+Karaka Bay-Worser Bay,Porirua Central,31.079,1.5516666666666667
 Karaka Bay-Worser Bay,Porirua East,33.11,9.479
 Karaka Bay-Worser Bay,Pukerua Bay,44.767,3.441
 Karaka Bay-Worser Bay,Rangoon Heights,22.319,1.367
-Karaka Bay-Worser Bay,Ranui Heights,,
+Karaka Bay-Worser Bay,Ranui Heights,29.48,1.4791666666666667
 Karaka Bay-Worser Bay,Raroa,36.297,2.009
 Karaka Bay-Worser Bay,Raumati Beach,63.921,3.98
 Karaka Bay-Worser Bay,Raumati South,68.071,10.012
@@ -15100,17 +15168,17 @@ Karaka Bay-Worser Bay,Solway South,101.635,2.804
 Karaka Bay-Worser Bay,Strathmore Park,3.322,0.682
 Karaka Bay-Worser Bay,Taita North,35.699,3.016
 Karaka Bay-Worser Bay,Taita South,33.45,2.999
-Karaka Bay-Worser Bay,Taitville,,
+Karaka Bay-Worser Bay,Taitville,17.297,0.9430555555555555
 Karaka Bay-Worser Bay,Takapu,36.628,2.554
-Karaka Bay-Worser Bay,Tawa Central,,
-Karaka Bay-Worser Bay,Tawa South,,
+Karaka Bay-Worser Bay,Tawa Central,33.968,1.4880555555555555
+Karaka Bay-Worser Bay,Tawa South,24.618,1.5611111111111111
 Karaka Bay-Worser Bay,Tawhai,41.624,4.247
 Karaka Bay-Worser Bay,Te Horo,79.313,2.585
-Karaka Bay-Worser Bay,Te Kainga,,
+Karaka Bay-Worser Bay,Te Kainga,23.358,1.2069444444444444
 Karaka Bay-Worser Bay,Te Marua,52.549,2.069
 Karaka Bay-Worser Bay,Te Wharau,,
 Karaka Bay-Worser Bay,Thorndon-Tinakori Road,11.417,0.844
-Karaka Bay-Worser Bay,Tirohanga,,
+Karaka Bay-Worser Bay,Tirohanga,25.392,1.3605555555555555
 Karaka Bay-Worser Bay,Titahi Bay North,38.46,3.184
 Karaka Bay-Worser Bay,Titahi Bay South,41.22,3.47
 Karaka Bay-Worser Bay,Totara Park,46.491,2.403
@@ -15120,24 +15188,24 @@ Karaka Bay-Worser Bay,Tuturumuri,,
 Karaka Bay-Worser Bay,Upper Hutt Central,46.12,3.236
 Karaka Bay-Worser Bay,Vogeltown,9.625,0.799
 Karaka Bay-Worser Bay,Vogeltown West,9.12,0.912
-Karaka Bay-Worser Bay,Wadestown,,
+Karaka Bay-Worser Bay,Wadestown,12.95,0.9633333333333334
 Karaka Bay-Worser Bay,Waikanae Beach,75.349,9.837
 Karaka Bay-Worser Bay,Waikanae East,70.181,3.918
 Karaka Bay-Worser Bay,Waikanae Park,72.65,9.971
 Karaka Bay-Worser Bay,Waikanae West,70.377,3.889
 Karaka Bay-Worser Bay,Waingawa,101.993,3.984
 Karaka Bay-Worser Bay,Waitangirua,48.083,3.434
-Karaka Bay-Worser Bay,Waiwhetu North,,
-Karaka Bay-Worser Bay,Waiwhetu South,,
+Karaka Bay-Worser Bay,Waiwhetu North,30.017,1.2238888888888888
+Karaka Bay-Worser Bay,Waiwhetu South,29.298,1.2233333333333334
 Karaka Bay-Worser Bay,Wallaceville,44.806,3.166
-Karaka Bay-Worser Bay,Waterloo East,,
-Karaka Bay-Worser Bay,Waterloo West,,
+Karaka Bay-Worser Bay,Waterloo East,30.244,1.2044444444444444
+Karaka Bay-Worser Bay,Waterloo West,28.473,1.2183333333333333
 Karaka Bay-Worser Bay,Whareama,,
-Karaka Bay-Worser Bay,Wilford,,
+Karaka Bay-Worser Bay,Wilford,28.382,1.2141666666666666
 Karaka Bay-Worser Bay,Willis Street-Cambridge Terrace,8.986,0.463
-Karaka Bay-Worser Bay,Wilton,,
-Karaka Bay-Worser Bay,Woburn North,,
-Karaka Bay-Worser Bay,Woburn South,,
+Karaka Bay-Worser Bay,Wilton,15.798,1.0708333333333333
+Karaka Bay-Worser Bay,Woburn North,27.304,1.1688888888888889
+Karaka Bay-Worser Bay,Woburn South,27.266,1.3094444444444444
 Karaka Bay-Worser Bay,Woodridge,25.379,1.572
 Karaka Bay-Worser Bay,Woodville,161.445,4.279
 Karori East,Adelaide,9.04,0.807
@@ -16457,7 +16525,7 @@ Khandallah Park-Broadmeadows,Cannons Creek East,46.258,1.82
 Khandallah Park-Broadmeadows,Cannons Creek North,17.328,1.705
 Khandallah Park-Broadmeadows,Cannons Creek South,46.107,2.019
 Khandallah Park-Broadmeadows,Carterton,87.386,2.931
-Khandallah Park-Broadmeadows,Churton Park North,,
+Khandallah Park-Broadmeadows,Churton Park North,8.906,1.1611111111111112
 Khandallah Park-Broadmeadows,Churton Park South,4.58,0.941
 Khandallah Park-Broadmeadows,Clouston Park,44.042,2.195
 Khandallah Park-Broadmeadows,Cloustonville,56.407,2.312
@@ -16483,7 +16551,7 @@ Khandallah Park-Broadmeadows,Glenside North,7.477,1.455
 Khandallah Park-Broadmeadows,Gracefield,24.954,2.013
 Khandallah Park-Broadmeadows,Greenacres,26.082,1.821
 Khandallah Park-Broadmeadows,Grenada North,24.628,1.994
-Khandallah Park-Broadmeadows,Grenada Village,,
+Khandallah Park-Broadmeadows,Grenada Village,9.617,1.285
 Khandallah Park-Broadmeadows,Greytown,85.237,2.816
 Khandallah Park-Broadmeadows,Happy Valley-Owhiro Bay,19.326,2.395
 Khandallah Park-Broadmeadows,Hataitai North,14.458,1.468
@@ -16555,13 +16623,13 @@ Khandallah Park-Broadmeadows,Naenae North,31.467,2.092
 Khandallah Park-Broadmeadows,Naenae South,29.37,1.769
 Khandallah Park-Broadmeadows,Newlands East,21.339,1.41
 Khandallah Park-Broadmeadows,Newlands North,4.661,0.988
-Khandallah Park-Broadmeadows,Newlands South,,
+Khandallah Park-Broadmeadows,Newlands South,10.519,1.125
 Khandallah Park-Broadmeadows,Newtown East,16.263,1.45
 Khandallah Park-Broadmeadows,Newtown West,15.343,1.328
 Khandallah Park-Broadmeadows,Ngaio South,4.1,0.899
 Khandallah Park-Broadmeadows,Ngaumutawa,100.144,3.138
-Khandallah Park-Broadmeadows,Ngauranga East,,
-Khandallah Park-Broadmeadows,Ngauranga West,,
+Khandallah Park-Broadmeadows,Ngauranga East,9.06,0.7344444444444445
+Khandallah Park-Broadmeadows,Ngauranga West,9.783,0.9155555555555556
 Khandallah Park-Broadmeadows,Nireaha-Tiraumea,197.733,4.553
 Khandallah Park-Broadmeadows,Normandale,31.338,2.21
 Khandallah Park-Broadmeadows,Norsewood-Herbertville,,
@@ -16579,7 +16647,7 @@ Khandallah Park-Broadmeadows,Paekakariki Hill,56.163,2.142
 Khandallah Park-Broadmeadows,Pahiatua,161.066,4.118
 Khandallah Park-Broadmeadows,Papakowhai North,20.118,1.695
 Khandallah Park-Broadmeadows,Papakowhai South,17.073,1.652
-Khandallah Park-Broadmeadows,Paparangi,,
+Khandallah Park-Broadmeadows,Paparangi,6.546,0.8291666666666667
 Khandallah Park-Broadmeadows,Paparangi West,4.548,0.93
 Khandallah Park-Broadmeadows,Papatawa,155.96,4.059
 Khandallah Park-Broadmeadows,Paraparaumu Beach North,64.966,7.498
@@ -16739,7 +16807,7 @@ Kilbirnie East,Lansdowne,99.92,2.694
 Kilbirnie East,Linden,24.781,1.099
 Kilbirnie East,Lyall Bay-Airport-Moa Point,1.652,0.232
 Kilbirnie East,Maidstone,40.049,2.876
-Kilbirnie East,Makara-Ohariu,,
+Kilbirnie East,Makara-Ohariu,19.943,1.1702777777777778
 Kilbirnie East,Mana Island,31.187,1.326
 Kilbirnie East,Mana-Camborne,33.746,1.451
 Kilbirnie East,Mangaroa,58.358,1.936
@@ -16955,7 +17023,7 @@ Kilbirnie West-Hataitai South,Lansdowne,98.784,2.648
 Kilbirnie West-Hataitai South,Linden,23.66,1.049
 Kilbirnie West-Hataitai South,Lyall Bay-Airport-Moa Point,2.97,0.205
 Kilbirnie West-Hataitai South,Maidstone,41.353,2.908
-Kilbirnie West-Hataitai South,Makara-Ohariu,,
+Kilbirnie West-Hataitai South,Makara-Ohariu,18.148,1.0830555555555557
 Kilbirnie West-Hataitai South,Mana Island,30.051,1.28
 Kilbirnie West-Hataitai South,Mana-Camborne,32.625,1.4
 Kilbirnie West-Hataitai South,Mangaroa,57.233,1.822
@@ -17088,7 +17156,7 @@ Kingston-Mornington,Adelaide,4.401,0.547
 Kingston-Mornington,Adventure,41.616,2.693
 Kingston-Mornington,Akatarawa,47.624,2.341
 Kingston-Mornington,Alicetown,22.318,1.157
-Kingston-Mornington,Arakura,,
+Kingston-Mornington,Arakura,32.521,1.2141666666666666
 Kingston-Mornington,Aro Street-Nairn Street,3.054,0.612
 Kingston-Mornington,Ascot Park,44.495,2.643
 Kingston-Mornington,Avalon East,39.543,9.536
@@ -17109,7 +17177,7 @@ Kingston-Mornington,Churton Park North,29.269,3.279
 Kingston-Mornington,Churton Park South,18.574,2.334
 Kingston-Mornington,Clouston Park,40.683,2.728
 Kingston-Mornington,Cloustonville,53.048,1.844
-Kingston-Mornington,Crofton Downs,,
+Kingston-Mornington,Crofton Downs,12.892,1.163888888888889
 Kingston-Mornington,Dannevirke East,182.012,4.544
 Kingston-Mornington,Dannevirke West,182.987,4.758
 Kingston-Mornington,Delaney,36.27,3.431
@@ -17165,13 +17233,13 @@ Kingston-Mornington,Kilbirnie East,6.694,0.668
 Kingston-Mornington,Kilbirnie West-Hataitai South,5.835,0.677
 Kingston-Mornington,Kingston-Mornington,0.0,0.0
 Kingston-Mornington,Kopuaranga,,
-Kingston-Mornington,Korokoro,,
+Kingston-Mornington,Korokoro,19.015,1.1936111111111112
 Kingston-Mornington,Lambton,7.104,0.725
 Kingston-Mornington,Lansdowne,99.901,2.888
 Kingston-Mornington,Linden,23.232,1.292
 Kingston-Mornington,Lyall Bay-Airport-Moa Point,7.294,0.826
 Kingston-Mornington,Maidstone,39.353,2.438
-Kingston-Mornington,Makara-Ohariu,,
+Kingston-Mornington,Makara-Ohariu,19.256,1.3005555555555555
 Kingston-Mornington,Mana Island,31.168,1.52
 Kingston-Mornington,Mana-Camborne,32.197,1.644
 Kingston-Mornington,Mangaroa,55.233,1.851
@@ -17185,7 +17253,7 @@ Kingston-Mornington,Masterton East,101.615,3.799
 Kingston-Mornington,Masterton Railway,96.598,2.457
 Kingston-Mornington,Masterton West,96.566,2.451
 Kingston-Mornington,Maungakotukutuku,64.33,1.925
-Kingston-Mornington,Maungaraki,,
+Kingston-Mornington,Maungaraki,21.828,0.9919444444444444
 Kingston-Mornington,Maupuia,11.09,1.731
 Kingston-Mornington,Melling,23.39,1.54
 Kingston-Mornington,Melrose-Houghton Bay-Southgate,7.728,0.724
@@ -17211,7 +17279,7 @@ Kingston-Mornington,Ngaumutawa,96.785,2.503
 Kingston-Mornington,Ngauranga East,11.978,0.753
 Kingston-Mornington,Ngauranga West,12.462,0.884
 Kingston-Mornington,Nireaha-Tiraumea,210.595,4.538
-Kingston-Mornington,Normandale,,
+Kingston-Mornington,Normandale,23.639,1.1011111111111112
 Kingston-Mornington,Norsewood-Herbertville,,
 Kingston-Mornington,Northland,10.003,1.061
 Kingston-Mornington,Northland North,9.986,1.399
@@ -17234,7 +17302,7 @@ Kingston-Mornington,Paraparaumu Beach North,61.607,9.03
 Kingston-Mornington,Paraparaumu Beach South,59.985,9.008
 Kingston-Mornington,Paraparaumu Central,56.158,2.977
 Kingston-Mornington,Paremata-Postgate,31.289,1.723
-Kingston-Mornington,Parkway,,
+Kingston-Mornington,Parkway,29.345,1.1491666666666667
 Kingston-Mornington,Pauatahanui,46.861,1.724
 Kingston-Mornington,Peka Peka,68.98,2.071
 Kingston-Mornington,Pencarrow,46.569,2.59
@@ -17270,7 +17338,7 @@ Kingston-Mornington,Te Kainga,16.053,1.686
 Kingston-Mornington,Te Marua,48.013,2.051
 Kingston-Mornington,Te Wharau,,
 Kingston-Mornington,Thorndon-Tinakori Road,8.91,0.844
-Kingston-Mornington,Tirohanga,,
+Kingston-Mornington,Tirohanga,21.755,1.3419444444444444
 Kingston-Mornington,Titahi Bay North,31.704,2.381
 Kingston-Mornington,Titahi Bay South,34.464,2.666
 Kingston-Mornington,Totara Park,41.955,1.802
@@ -17287,10 +17355,10 @@ Kingston-Mornington,Waikanae Park,65.894,9.168
 Kingston-Mornington,Waikanae West,63.621,3.086
 Kingston-Mornington,Waingawa,97.457,3.884
 Kingston-Mornington,Waitangirua,41.327,2.631
-Kingston-Mornington,Waiwhetu North,,
-Kingston-Mornington,Waiwhetu South,,
+Kingston-Mornington,Waiwhetu North,23.332,1.0916666666666666
+Kingston-Mornington,Waiwhetu South,22.345,1.0533333333333332
 Kingston-Mornington,Wallaceville,38.05,2.363
-Kingston-Mornington,Waterloo East,,
+Kingston-Mornington,Waterloo East,22.969,1.005
 Kingston-Mornington,Waterloo West,23.859,1.703
 Kingston-Mornington,Whareama,,
 Kingston-Mornington,Wilford,21.753,1.48
@@ -18240,7 +18308,7 @@ Linden,Karori Park,22.22,0.996
 Linden,Karori South,24.019,1.398
 Linden,Kelburn,17.182,0.857
 Linden,Kelson,,
-Linden,Khandallah Park-Broadmeadows,,
+Linden,Khandallah Park-Broadmeadows,13.21,1.196388888888889
 Linden,Kilbirnie East,21.681,0.874
 Linden,Kilbirnie West-Hataitai South,21.946,0.95
 Linden,Kingston-Mornington,22.41,1.672
@@ -18283,13 +18351,13 @@ Linden,Naenae North,36.944,1.441
 Linden,Naenae South,34.847,1.117
 Linden,Newlands East,26.816,1.742
 Linden,Newlands North,10.42,0.717
-Linden,Newlands South,,
+Linden,Newlands South,14.868,1.0138888888888888
 Linden,Newtown East,21.74,1.298
 Linden,Newtown West,20.82,1.177
 Linden,Ngaio South,21.591,1.758
 Linden,Ngaumutawa,105.621,2.486
-Linden,Ngauranga East,,
-Linden,Ngauranga West,,
+Linden,Ngauranga East,13.23,0.5411111111111111
+Linden,Ngauranga West,13.953,0.7222222222222222
 Linden,Nireaha-Tiraumea,187.006,3.898
 Linden,Normandale,36.815,1.559
 Linden,Norsewood-Herbertville,,
@@ -18325,7 +18393,7 @@ Linden,Poets Block,50.333,1.447
 Linden,Porirua Central,2.134,0.483
 Linden,Porirua East,4.255,0.395
 Linden,Pukerua Bay,16.82,0.654
-Linden,Rangoon Heights,,
+Linden,Rangoon Heights,13.683,0.9686111111111111
 Linden,Ranui Heights,4.755,0.512
 Linden,Raroa,10.439,0.612
 Linden,Raumati Beach,36.51,1.015
@@ -18467,7 +18535,7 @@ Lyall Bay-Airport-Moa Point,Lansdowne,101.562,2.994
 Lyall Bay-Airport-Moa Point,Linden,26.472,1.215
 Lyall Bay-Airport-Moa Point,Lyall Bay-Airport-Moa Point,0.0,0.0
 Lyall Bay-Airport-Moa Point,Maidstone,42.016,3.167
-Lyall Bay-Airport-Moa Point,Makara-Ohariu,,
+Lyall Bay-Airport-Moa Point,Makara-Ohariu,21.877,1.3494444444444444
 Lyall Bay-Airport-Moa Point,Mana Island,35.98,1.657
 Lyall Bay-Airport-Moa Point,Mana-Camborne,35.437,1.567
 Lyall Bay-Airport-Moa Point,Mangaroa,57.449,2.373
@@ -18624,7 +18692,7 @@ Maidstone,Cloustonville,15.436,0.599
 Maidstone,Crofton Downs,39.377,1.672
 Maidstone,Dannevirke East,208.504,4.767
 Maidstone,Dannevirke West,209.479,4.981
-Maidstone,Delaney,,
+Maidstone,Delaney,14.068,0.8883333333333333
 Maidstone,Discovery,58.035,2.433
 Maidstone,Eastbourne,32.966,1.528
 Maidstone,Ebdentown,2.482,0.494
@@ -18688,7 +18756,7 @@ Maidstone,Mana Island,57.653,2.077
 Maidstone,Mana-Camborne,57.11,1.986
 Maidstone,Mangaroa,,
 Maidstone,Mangatainoka,208.863,4.257
-Maidstone,Manuka,,
+Maidstone,Manuka,15.276,1.0138888888888888
 Maidstone,Maoribank,6.468,0.664
 Maidstone,Mara,,
 Maidstone,Martinborough,44.488,1.01
@@ -18707,7 +18775,7 @@ Maidstone,Miramar South,41.267,2.03
 Maidstone,Miramar West,42.858,2.141
 Maidstone,Mitchelltown,37.253,1.895
 Maidstone,Moera,19.763,0.781
-Maidstone,Moonshine Valley,,
+Maidstone,Moonshine Valley,13.926,0.7019444444444445
 Maidstone,Mt Cook-Wallace Street,36.411,1.338
 Maidstone,Mt Holdsworth,,
 Maidstone,Mt Victoria West,36.388,1.342
@@ -18924,7 +18992,7 @@ Makara-Ohariu,Miramar West,22.685,1.153
 Makara-Ohariu,Mitchelltown,,
 Makara-Ohariu,Moera,29.472,1.254
 Makara-Ohariu,Moonshine Valley,58.258,2.318
-Makara-Ohariu,Mt Cook-Wallace Street,,
+Makara-Ohariu,Mt Cook-Wallace Street,16.885,0.8108333333333333
 Makara-Ohariu,Mt Holdsworth,,
 Makara-Ohariu,Mt Victoria West,16.984,0.991
 Makara-Ohariu,Naenae North,39.18,1.535
@@ -19115,7 +19183,7 @@ Mana Island,Lansdowne,118.069,3.859
 Mana Island,Linden,11.818,0.547
 Mana Island,Lyall Bay-Airport-Moa Point,32.886,1.753
 Mana Island,Maidstone,57.521,1.742
-Mana Island,Makara-Ohariu,,
+Mana Island,Makara-Ohariu,38.135,1.8902777777777777
 Mana Island,Mana Island,0.0,0.0
 Mana Island,Mana-Camborne,13.152,1.234
 Mana Island,Mangaroa,73.401,2.156
@@ -19129,7 +19197,7 @@ Mana Island,Masterton East,119.783,4.603
 Mana Island,Masterton Railway,114.766,3.428
 Mana Island,Masterton West,114.734,3.422
 Mana Island,Maungakotukutuku,46.877,1.573
-Mana Island,Maungaraki,,
+Mana Island,Maungaraki,39.996,1.415
 Mana Island,Maupuia,36.832,1.975
 Mana Island,Melling,38.665,1.44
 Mana Island,Melrose-Houghton Bay-Southgate,33.522,1.579
@@ -19193,7 +19261,7 @@ Mana Island,Rangoon Heights,24.19,1.666
 Mana Island,Ranui Heights,8.872,0.823
 Mana Island,Raroa,21.775,1.06
 Mana Island,Raumati Beach,37.409,1.52
-Mana Island,Raumati South,,
+Mana Island,Raumati South,43.998,1.9294444444444445
 Mana Island,Resolution,18.64,1.222
 Mana Island,Riverstone Terraces,59.732,2.88
 Mana Island,Roseneath,30.25,1.664
@@ -19508,14 +19576,14 @@ Mangaroa,Gracefield,40.495,1.441
 Mangaroa,Greenacres,64.84,1.749
 Mangaroa,Grenada North,62.705,1.868
 Mangaroa,Grenada Village,60.941,2.218
-Mangaroa,Greytown,,
+Mangaroa,Greytown,59.059,1.4777777777777779
 Mangaroa,Happy Valley-Owhiro Bay,58.246,2.21
 Mangaroa,Hataitai North,53.297,1.614
 Mangaroa,Haywards-Manor Park,,
 Mangaroa,Heretaunga,,
 Mangaroa,Heretaunga-Silverstream,,
 Mangaroa,Holborn,,
-Mangaroa,Homebush-Te Ore Ore,,
+Mangaroa,Homebush-Te Ore Ore,82.266,4.1738888888888885
 Mangaroa,Homedale East,42.713,1.561
 Mangaroa,Homedale West,47.166,1.521
 Mangaroa,Horokiwi,41.432,1.739
@@ -19555,7 +19623,7 @@ Mangaroa,Mangatainoka,222.143,5.151
 Mangaroa,Manuka,,
 Mangaroa,Maoribank,,
 Mangaroa,Mara,,
-Mangaroa,Martinborough,,
+Mangaroa,Martinborough,60.376,1.4825
 Mangaroa,Masterton Central,75.745,2.237
 Mangaroa,Masterton East,75.798,13.533
 Mangaroa,Masterton Railway,73.798,2.107
@@ -19612,7 +19680,7 @@ Mangaroa,Paraparaumu Central,98.983,2.638
 Mangaroa,Paremata-Postgate,71.834,1.904
 Mangaroa,Parkway,40.475,1.303
 Mangaroa,Pauatahanui,,
-Mangaroa,Peka Peka,,
+Mangaroa,Peka Peka,111.126,11.304166666666667
 Mangaroa,Pencarrow,48.276,1.544
 Mangaroa,Petone Central,38.649,1.029
 Mangaroa,Pinehaven,,
@@ -19799,7 +19867,7 @@ Mangatainoka,Newlands South,182.118,4.533
 Mangatainoka,Newtown East,179.211,5.007
 Mangatainoka,Newtown West,178.372,4.812
 Mangatainoka,Ngaio South,172.801,4.317
-Mangatainoka,Ngaumutawa,,
+Mangatainoka,Ngaumutawa,73.856,12.979444444444445
 Mangatainoka,Ngauranga East,178.999,4.378
 Mangatainoka,Ngauranga West,179.409,4.491
 Mangatainoka,Nireaha-Tiraumea,46.095,0.791
@@ -19808,7 +19876,7 @@ Mangatainoka,Norsewood-Herbertville,,
 Mangatainoka,Northland,178.24,5.004
 Mangatainoka,Northland North,180.394,4.915
 Mangatainoka,Onepoto,166.801,4.811
-Mangatainoka,Opaki-Fernridge,,
+Mangatainoka,Opaki-Fernridge,75.26,13.950555555555555
 Mangatainoka,Oriental Bay,177.081,4.665
 Mangatainoka,Otaihanga,133.744,14.855
 Mangatainoka,Otaki,108.159,3.144
@@ -19875,7 +19943,7 @@ Mangatainoka,Vogeltown West,179.372,4.692
 Mangatainoka,Wadestown,176.535,4.439
 Mangatainoka,Waikanae Beach,224.056,24.826
 Mangatainoka,Waikanae East,122.856,3.333
-Mangatainoka,Waikanae Park,,
+Mangatainoka,Waikanae Park,221.357,18.960277777777776
 Mangatainoka,Waikanae West,122.998,3.293
 Mangatainoka,Waingawa,74.922,12.276
 Mangatainoka,Waitangirua,162.174,4.368
@@ -19957,7 +20025,7 @@ Manuka,Island Bay West,36.375,1.872
 Manuka,Johnsonville Central,37.121,1.274
 Manuka,Johnsonville East,36.937,1.358
 Manuka,Johnsonville North,37.638,1.401
-Manuka,Kahutara,,
+Manuka,Kahutara,77.593,2.2055555555555557
 Manuka,Kaitawa,93.946,2.355
 Manuka,Kaiwharawhara,30.617,1.136
 Manuka,Kapiti Island,,
@@ -20163,7 +20231,7 @@ Maoribank,Haywards-Manor Park,14.658,0.688
 Maoribank,Heretaunga,10.447,0.727
 Maoribank,Heretaunga-Silverstream,10.447,0.481
 Maoribank,Holborn,16.822,0.904
-Maoribank,Homebush-Te Ore Ore,,
+Maoribank,Homebush-Te Ore Ore,70.969,3.9555555555555557
 Maoribank,Homedale East,31.416,1.343
 Maoribank,Homedale West,35.869,1.302
 Maoribank,Horokiwi,30.135,1.521
@@ -20173,7 +20241,7 @@ Maoribank,Island Bay West,45.822,1.657
 Maoribank,Johnsonville Central,46.71,1.692
 Maoribank,Johnsonville East,46.526,1.768
 Maoribank,Johnsonville North,47.707,1.793
-Maoribank,Kahutara,,
+Maoribank,Kahutara,49.77,1.1575
 Maoribank,Kaitawa,103.547,2.601
 Maoribank,Kaiwharawhara,40.067,1.171
 Maoribank,Kapiti Island,,
@@ -20550,7 +20618,7 @@ Martinborough,Ascot Park,102.549,2.355
 Martinborough,Avalon East,65.374,1.589
 Martinborough,Avalon West,61.001,1.613
 Martinborough,Awarua,84.434,2.208
-Martinborough,Belmont,,
+Martinborough,Belmont,81.187,2.8725
 Martinborough,Berhampore East,84.556,2.234
 Martinborough,Berhampore West,84.398,2.206
 Martinborough,Boulcott,63.676,1.751
@@ -20564,7 +20632,7 @@ Martinborough,Carterton,40.422,1.146
 Martinborough,Churton Park North,90.858,2.474
 Martinborough,Churton Park South,92.563,2.475
 Martinborough,Clouston Park,48.416,1.285
-Martinborough,Cloustonville,,
+Martinborough,Cloustonville,59.361,1.675
 Martinborough,Crofton Downs,84.181,2.38
 Martinborough,Dannevirke East,250.771,18.841
 Martinborough,Dannevirke West,251.746,19.056
@@ -20640,7 +20708,7 @@ Martinborough,Masterton Central,55.639,1.471
 Martinborough,Masterton East,56.043,1.517
 Martinborough,Masterton Railway,56.956,1.668
 Martinborough,Masterton West,56.394,1.551
-Martinborough,Maungakotukutuku,,
+Martinborough,Maungakotukutuku,135.619,2.953611111111111
 Martinborough,Maungaraki,72.034,1.708
 Martinborough,Maupuia,89.953,2.469
 Martinborough,Melling,65.568,1.716
@@ -20717,7 +20785,7 @@ Martinborough,Strathmore Park,88.734,2.27
 Martinborough,Taita North,56.248,1.498
 Martinborough,Taita South,57.832,1.677
 Martinborough,Taitville,82.705,2.011
-Martinborough,Takapu,,
+Martinborough,Takapu,103.36,3.424166666666667
 Martinborough,Tawa Central,92.424,2.084
 Martinborough,Tawa South,90.55,2.058
 Martinborough,Tawhai,57.273,1.846
@@ -20955,7 +21023,7 @@ Masterton Central,Vogeltown West,98.207,2.577
 Masterton Central,Wadestown,95.362,2.362
 Masterton Central,Waikanae Beach,154.167,3.932
 Masterton Central,Waikanae East,148.999,3.514
-Masterton Central,Waikanae Park,,
+Masterton Central,Waikanae Park,151.447,3.566666666666667
 Masterton Central,Waikanae West,149.195,3.485
 Masterton Central,Waingawa,7.636,0.584
 Masterton Central,Waitangirua,114.804,2.807
@@ -20996,7 +21064,7 @@ Masterton East,Carterton,16.464,0.58
 Masterton East,Churton Park North,224.398,5.207
 Masterton East,Churton Park South,226.043,5.156
 Masterton East,Clouston Park,260.216,6.503
-Masterton East,Cloustonville,,
+Masterton East,Cloustonville,80.266,3.901388888888889
 Masterton East,Crofton Downs,227.096,5.475
 Masterton East,Dannevirke East,99.478,1.986
 Masterton East,Dannevirke West,100.453,2.2
@@ -21171,7 +21239,7 @@ Masterton East,Vogeltown West,232.157,5.591
 Masterton East,Wadestown,229.32,5.339
 Masterton East,Waikanae Beach,157.211,4.122
 Masterton East,Waikanae East,175.641,4.232
-Masterton East,Waikanae Park,,
+Masterton East,Waikanae Park,158.068,5.362777777777778
 Masterton East,Waikanae West,175.783,4.193
 Masterton East,Waingawa,8.059,0.679
 Masterton East,Waitangirua,214.959,5.267
@@ -21387,7 +21455,7 @@ Masterton Railway,Vogeltown West,96.259,2.441
 Masterton Railway,Wadestown,93.414,2.227
 Masterton Railway,Waikanae Beach,152.219,3.797
 Masterton Railway,Waikanae East,147.051,3.378
-Masterton Railway,Waikanae Park,,
+Masterton Railway,Waikanae Park,149.499,3.431111111111111
 Masterton Railway,Waikanae West,147.247,3.349
 Masterton Railway,Waingawa,8.886,0.836
 Masterton Railway,Waitangirua,112.856,2.672
@@ -21476,7 +21544,7 @@ Masterton West,Kapiti Island,,
 Masterton West,Karaka Bay-Worser Bay,101.555,2.756
 Masterton West,Karori East,95.789,2.588
 Masterton West,Karori North,95.431,2.432
-Masterton West,Karori Park,,
+Masterton West,Karori Park,96.978,2.4072222222222224
 Masterton West,Karori South,98.777,2.809
 Masterton West,Kelburn,93.193,2.246
 Masterton West,Kelson,,
@@ -21603,7 +21671,7 @@ Masterton West,Vogeltown West,96.227,2.439
 Masterton West,Wadestown,93.382,2.224
 Masterton West,Waikanae Beach,152.187,3.794
 Masterton West,Waikanae East,147.019,3.376
-Masterton West,Waikanae Park,,
+Masterton West,Waikanae Park,149.467,3.428611111111111
 Masterton West,Waikanae West,147.215,3.347
 Masterton West,Waingawa,8.236,0.707
 Masterton West,Waitangirua,112.824,2.669
@@ -21685,7 +21753,7 @@ Maungakotukutuku,Island Bay West,66.0,2.024
 Maungakotukutuku,Johnsonville Central,51.881,1.376
 Maungakotukutuku,Johnsonville East,51.632,1.467
 Maungakotukutuku,Johnsonville North,51.729,1.466
-Maungakotukutuku,Kahutara,,
+Maungakotukutuku,Kahutara,134.948,3.0875
 Maungakotukutuku,Kaitawa,,
 Maungakotukutuku,Kaiwharawhara,60.461,1.517
 Maungakotukutuku,Kapiti Island,,
@@ -23309,7 +23377,7 @@ Miramar South,Strathmore Park,1.504,0.327
 Miramar South,Taita North,29.387,1.168
 Miramar South,Taita South,29.009,1.299
 Miramar South,Taitville,10.969,0.749
-Miramar South,Takapu,,
+Miramar South,Takapu,33.898,8.5125
 Miramar South,Tawa Central,31.789,1.181
 Miramar South,Tawa South,22.439,1.254
 Miramar South,Tawhai,33.854,1.448
@@ -24177,7 +24245,7 @@ Moonshine Valley,Takapu,65.971,3.236
 Moonshine Valley,Tawa Central,55.035,1.95
 Moonshine Valley,Tawa South,53.161,1.924
 Moonshine Valley,Tawhai,19.799,1.165
-Moonshine Valley,Te Horo,,
+Moonshine Valley,Te Horo,114.049,16.00138888888889
 Moonshine Valley,Te Kainga,48.381,1.635
 Moonshine Valley,Te Marua,20.267,1.49
 Moonshine Valley,Te Wharau,,
@@ -24884,7 +24952,7 @@ Naenae North,Carterton,67.443,1.847
 Naenae North,Churton Park North,34.041,1.311
 Naenae North,Churton Park South,35.746,1.312
 Naenae North,Clouston Park,25.327,1.105
-Naenae North,Cloustonville,,
+Naenae North,Cloustonville,42.501,8.551944444444445
 Naenae North,Crofton Downs,27.364,1.218
 Naenae North,Dannevirke East,197.599,4.429
 Naenae North,Dannevirke West,198.574,4.643
@@ -24925,7 +24993,7 @@ Naenae North,Island Bay West,29.836,1.498
 Naenae North,Johnsonville Central,30.22,0.95
 Naenae North,Johnsonville East,30.036,1.033
 Naenae North,Johnsonville North,30.737,1.077
-Naenae North,Kahutara,,
+Naenae North,Kahutara,67.302,1.7147222222222223
 Naenae North,Kaitawa,87.402,8.481
 Naenae North,Kaiwharawhara,24.078,0.826
 Naenae North,Kapiti Island,,
@@ -25100,7 +25168,7 @@ Naenae South,Carterton,66.021,1.847
 Naenae South,Churton Park North,32.619,1.311
 Naenae South,Churton Park South,34.324,1.312
 Naenae South,Clouston Park,18.693,0.932
-Naenae South,Cloustonville,,
+Naenae South,Cloustonville,30.264,7.929722222222222
 Naenae South,Crofton Downs,25.942,1.217
 Naenae South,Dannevirke East,196.177,4.428
 Naenae South,Dannevirke West,197.152,4.643
@@ -25141,7 +25209,7 @@ Naenae South,Island Bay West,28.052,1.547
 Naenae South,Johnsonville Central,28.798,0.95
 Naenae South,Johnsonville East,28.614,1.033
 Naenae South,Johnsonville North,29.315,1.076
-Naenae South,Kahutara,,
+Naenae South,Kahutara,65.88,1.7144444444444444
 Naenae South,Kaitawa,85.751,2.042
 Naenae South,Kaiwharawhara,22.301,0.909
 Naenae South,Kapiti Island,,
@@ -26787,7 +26855,7 @@ Ngaumutawa,Vogeltown West,96.445,2.48
 Ngaumutawa,Wadestown,93.6,2.265
 Ngaumutawa,Waikanae Beach,152.405,3.836
 Ngaumutawa,Waikanae East,147.237,3.417
-Ngaumutawa,Waikanae Park,,
+Ngaumutawa,Waikanae Park,149.685,3.4697222222222224
 Ngaumutawa,Waikanae West,147.433,3.388
 Ngaumutawa,Waingawa,25.327,1.439
 Ngaumutawa,Waitangirua,113.042,2.71
@@ -27291,7 +27359,7 @@ Nireaha-Tiraumea,Haywards-Manor Park,227.703,6.071
 Nireaha-Tiraumea,Heretaunga,231.177,5.836
 Nireaha-Tiraumea,Heretaunga-Silverstream,228.804,5.619
 Nireaha-Tiraumea,Holborn,228.687,5.959
-Nireaha-Tiraumea,Homebush-Te Ore Ore,,
+Nireaha-Tiraumea,Homebush-Te Ore Ore,53.279,12.821388888888889
 Nireaha-Tiraumea,Homedale East,226.98,5.919
 Nireaha-Tiraumea,Homedale West,231.426,5.874
 Nireaha-Tiraumea,Horokiwi,216.161,5.585
@@ -27359,7 +27427,7 @@ Nireaha-Tiraumea,Newlands South,210.756,5.056
 Nireaha-Tiraumea,Newtown East,207.849,5.531
 Nireaha-Tiraumea,Newtown West,207.01,5.335
 Nireaha-Tiraumea,Ngaio South,201.439,4.84
-Nireaha-Tiraumea,Ngaumutawa,,
+Nireaha-Tiraumea,Ngaumutawa,53.06,12.669166666666667
 Nireaha-Tiraumea,Ngauranga East,207.637,4.901
 Nireaha-Tiraumea,Ngauranga West,208.047,5.014
 Nireaha-Tiraumea,Nireaha-Tiraumea,0.0,0.0
@@ -27435,7 +27503,7 @@ Nireaha-Tiraumea,Vogeltown West,208.01,5.215
 Nireaha-Tiraumea,Wadestown,205.173,4.962
 Nireaha-Tiraumea,Waikanae Beach,203.26,24.516
 Nireaha-Tiraumea,Waikanae East,151.494,3.856
-Nireaha-Tiraumea,Waikanae Park,,
+Nireaha-Tiraumea,Waikanae Park,200.561,18.65
 Nireaha-Tiraumea,Waikanae West,151.636,3.816
 Nireaha-Tiraumea,Waingawa,54.126,11.966
 Nireaha-Tiraumea,Waitangirua,190.812,4.891
@@ -28351,7 +28419,7 @@ Onepoto,Ebdentown,61.746,2.663
 Onepoto,Eketahuna,182.499,4.526
 Onepoto,Elderslea,60.725,2.646
 Onepoto,Elsdon-Takapuwahia,12.171,1.472
-Onepoto,Emerald Hill,,
+Onepoto,Emerald Hill,69.179,8.839722222222223
 Onepoto,Endeavour,21.319,1.328
 Onepoto,Epuni East,40.917,1.881
 Onepoto,Epuni West,40.436,1.773
@@ -28731,7 +28799,7 @@ Opaki-Fernridge,Vogeltown West,100.008,2.386
 Opaki-Fernridge,Wadestown,97.163,2.171
 Opaki-Fernridge,Waikanae Beach,155.968,3.742
 Opaki-Fernridge,Waikanae East,150.8,3.323
-Opaki-Fernridge,Waikanae Park,,
+Opaki-Fernridge,Waikanae Park,153.248,3.3758333333333335
 Opaki-Fernridge,Waikanae West,150.996,3.294
 Opaki-Fernridge,Waingawa,28.89,1.345
 Opaki-Fernridge,Waitangirua,116.605,2.616
@@ -29204,7 +29272,7 @@ Otaki,Carterton,174.271,14.564
 Otaki,Churton Park North,66.662,1.772
 Otaki,Churton Park South,68.367,1.772
 Otaki,Clouston Park,104.039,2.765
-Otaki,Cloustonville,,
+Otaki,Cloustonville,115.61,11.345555555555556
 Otaki,Crofton Downs,75.007,2.178
 Otaki,Dannevirke East,112.078,2.722
 Otaki,Dannevirke West,113.053,2.936
@@ -30097,7 +30165,7 @@ Paekakariki Hill,Happy Valley-Owhiro Bay,51.608,1.668
 Paekakariki Hill,Hataitai North,44.603,1.163
 Paekakariki Hill,Haywards-Manor Park,,
 Paekakariki Hill,Heretaunga,,
-Paekakariki Hill,Heretaunga-Silverstream,,
+Paekakariki Hill,Heretaunga-Silverstream,66.86,1.4825
 Paekakariki Hill,Holborn,65.557,1.805
 Paekakariki Hill,Homebush-Te Ore Ore,138.511,5.157
 Paekakariki Hill,Homedale East,65.02,2.11
@@ -30109,7 +30177,7 @@ Paekakariki Hill,Island Bay West,48.428,1.625
 Paekakariki Hill,Johnsonville Central,35.884,1.211
 Paekakariki Hill,Johnsonville East,35.255,1.293
 Paekakariki Hill,Johnsonville North,35.352,1.292
-Paekakariki Hill,Kahutara,,
+Paekakariki Hill,Kahutara,117.328,2.5919444444444446
 Paekakariki Hill,Kaitawa,56.934,1.108
 Paekakariki Hill,Kaiwharawhara,42.841,0.988
 Paekakariki Hill,Kapiti Island,,
@@ -30383,7 +30451,7 @@ Pahiatua,Newlands South,174.089,4.449
 Pahiatua,Newtown East,171.182,4.924
 Pahiatua,Newtown West,170.343,4.728
 Pahiatua,Ngaio South,164.772,4.233
-Pahiatua,Ngaumutawa,,
+Pahiatua,Ngaumutawa,65.827,12.895833333333334
 Pahiatua,Ngauranga East,170.97,4.294
 Pahiatua,Ngauranga West,171.38,4.407
 Pahiatua,Nireaha-Tiraumea,38.066,0.707
@@ -30392,7 +30460,7 @@ Pahiatua,Norsewood-Herbertville,,
 Pahiatua,Northland,170.211,4.92
 Pahiatua,Northland North,172.365,4.831
 Pahiatua,Onepoto,158.772,4.727
-Pahiatua,Opaki-Fernridge,,
+Pahiatua,Opaki-Fernridge,67.231,13.866944444444444
 Pahiatua,Oriental Bay,169.052,4.582
 Pahiatua,Otaihanga,125.715,14.771
 Pahiatua,Otaki,100.13,3.061
@@ -30459,7 +30527,7 @@ Pahiatua,Vogeltown West,171.343,4.608
 Pahiatua,Wadestown,168.506,4.356
 Pahiatua,Waikanae Beach,216.027,24.742
 Pahiatua,Waikanae East,114.827,3.249
-Pahiatua,Waikanae Park,,
+Pahiatua,Waikanae Park,213.328,18.876666666666665
 Pahiatua,Waikanae West,114.969,3.209
 Pahiatua,Waingawa,66.893,12.192
 Pahiatua,Waitangirua,154.145,4.284
@@ -30500,7 +30568,7 @@ Papakowhai North,Carterton,101.007,2.646
 Papakowhai North,Churton Park North,19.819,1.189
 Papakowhai North,Churton Park South,17.909,1.039
 Papakowhai North,Clouston Park,58.888,1.904
-Papakowhai North,Cloustonville,,
+Papakowhai North,Cloustonville,70.475,8.850833333333334
 Papakowhai North,Crofton Downs,29.311,1.379
 Papakowhai North,Dannevirke East,164.828,3.598
 Papakowhai North,Dannevirke West,165.803,3.812
@@ -30716,7 +30784,7 @@ Papakowhai South,Carterton,99.537,3.118
 Papakowhai South,Churton Park North,18.894,1.153
 Papakowhai South,Churton Park South,16.984,1.003
 Papakowhai South,Clouston Park,57.418,1.794
-Papakowhai South,Cloustonville,,
+Papakowhai South,Cloustonville,67.586,9.024722222222222
 Papakowhai South,Crofton Downs,28.402,1.393
 Papakowhai South,Dannevirke East,163.903,3.699
 Papakowhai South,Dannevirke West,164.878,3.913
@@ -31539,7 +31607,7 @@ Papatawa,Vogeltown West,165.705,3.734
 Papatawa,Wadestown,162.868,3.481
 Papatawa,Waikanae Beach,110.725,2.868
 Papatawa,Waikanae East,109.189,2.375
-Papatawa,Waikanae Park,,
+Papatawa,Waikanae Park,108.026,3.0025
 Papatawa,Waikanae West,109.331,2.335
 Papatawa,Waingawa,86.814,12.318
 Papatawa,Waitangirua,148.507,3.41
@@ -31670,9 +31738,9 @@ Paraparaumu Beach North,Moera,72.765,1.986
 Paraparaumu Beach North,Moonshine Valley,110.692,3.514
 Paraparaumu Beach North,Mt Cook-Wallace Street,57.876,1.709
 Paraparaumu Beach North,Mt Holdsworth,,
-Paraparaumu Beach North,Mt Victoria West,,
-Paraparaumu Beach North,Naenae North,,
-Paraparaumu Beach North,Naenae South,,
+Paraparaumu Beach North,Mt Victoria West,58.131,1.6411111111111112
+Paraparaumu Beach North,Naenae North,76.058,2.234722222222222
+Paraparaumu Beach North,Naenae South,74.131,2.1991666666666667
 Paraparaumu Beach North,Newlands East,50.286,1.908
 Paraparaumu Beach North,Newlands North,49.229,1.678
 Paraparaumu Beach North,Newlands South,53.042,1.917
@@ -31883,7 +31951,7 @@ Paraparaumu Beach South,Miramar South,61.437,1.811
 Paraparaumu Beach South,Miramar West,62.877,1.941
 Paraparaumu Beach South,Mitchelltown,57.775,1.743
 Paraparaumu Beach South,Moera,71.27,1.974
-Paraparaumu Beach South,Moonshine Valley,,
+Paraparaumu Beach South,Moonshine Valley,97.134,8.955
 Paraparaumu Beach South,Mt Cook-Wallace Street,56.381,1.696
 Paraparaumu Beach South,Mt Holdsworth,,
 Paraparaumu Beach South,Mt Victoria West,56.636,1.629
@@ -33049,7 +33117,7 @@ Peka Peka,Upper Hutt Central,115.754,3.322
 Peka Peka,Vogeltown,87.755,2.943
 Peka Peka,Vogeltown West,89.014,3.706
 Peka Peka,Wadestown,86.177,2.953
-Peka Peka,Waikanae Beach,,
+Peka Peka,Waikanae Beach,12.876,0.9616666666666667
 Peka Peka,Waikanae East,7.71,0.774
 Peka Peka,Waikanae Park,35.109,2.058
 Peka Peka,Waikanae West,7.949,0.731
@@ -33133,7 +33201,7 @@ Pencarrow,Island Bay West,37.266,1.766
 Pencarrow,Johnsonville Central,41.71,1.514
 Pencarrow,Johnsonville East,41.526,1.591
 Pencarrow,Johnsonville North,42.707,1.616
-Pencarrow,Kahutara,,
+Pencarrow,Kahutara,75.101,1.9666666666666666
 Pencarrow,Kaitawa,94.837,2.25
 Pencarrow,Kaiwharawhara,32.615,1.224
 Pencarrow,Kapiti Island,,
@@ -33665,7 +33733,7 @@ Pinehaven,Rangoon Heights,39.786,1.852
 Pinehaven,Ranui Heights,50.337,2.185
 Pinehaven,Raroa,40.943,1.83
 Pinehaven,Raumati Beach,81.556,2.867
-Pinehaven,Raumati South,,
+Pinehaven,Raumati South,91.923,13.081666666666667
 Pinehaven,Resolution,76.952,3.641
 Pinehaven,Riverstone Terraces,12.825,0.694
 Pinehaven,Roseneath,34.883,1.676
@@ -33997,7 +34065,7 @@ Poets Block,Island Bay West,41.338,1.895
 Poets Block,Johnsonville Central,41.102,1.552
 Poets Block,Johnsonville East,40.918,1.629
 Poets Block,Johnsonville North,42.099,1.654
-Poets Block,Kahutara,,
+Poets Block,Kahutara,47.649,1.6086111111111112
 Poets Block,Kaitawa,99.092,2.436
 Poets Block,Kaiwharawhara,35.58,1.075
 Poets Block,Kapiti Island,,
@@ -34388,7 +34456,7 @@ Porirua East,Carterton,97.329,2.527
 Porirua East,Churton Park North,16.667,1.241
 Porirua East,Churton Park South,14.757,1.091
 Porirua East,Clouston Park,55.21,1.784
-Porirua East,Cloustonville,,
+Porirua East,Cloustonville,66.797,8.731111111111112
 Porirua East,Crofton Downs,25.376,1.361
 Porirua East,Dannevirke East,162.021,3.608
 Porirua East,Dannevirke West,162.996,3.822
@@ -35036,7 +35104,7 @@ Ranui Heights,Carterton,97.051,2.637
 Ranui Heights,Churton Park North,16.843,1.255
 Ranui Heights,Churton Park South,14.933,1.105
 Ranui Heights,Clouston Park,54.932,1.894
-Ranui Heights,Cloustonville,,
+Ranui Heights,Cloustonville,66.519,8.841111111111111
 Ranui Heights,Crofton Downs,25.916,1.473
 Ranui Heights,Dannevirke East,162.221,3.647
 Ranui Heights,Dannevirke West,163.196,3.862
@@ -35670,7 +35738,7 @@ Raumati South,Ascot Park,44.52,1.453
 Raumati South,Avalon East,73.886,2.017
 Raumati South,Avalon West,75.005,2.244
 Raumati South,Awarua,61.965,1.84
-Raumati South,Belmont,,
+Raumati South,Belmont,73.463,12.666666666666666
 Raumati South,Berhampore East,62.087,2.082
 Raumati South,Berhampore West,61.929,2.054
 Raumati South,Boulcott,72.907,2.122
@@ -35815,7 +35883,7 @@ Raumati South,Pauatahanui,52.942,2.16
 Raumati South,Peka Peka,21.108,1.25
 Raumati South,Pencarrow,82.832,2.994
 Raumati South,Petone Central,66.799,1.791
-Raumati South,Pinehaven,,
+Raumati South,Pinehaven,89.083,12.678611111111111
 Raumati South,Plimmerton,32.531,1.424
 Raumati South,Poets Block,85.035,2.616
 Raumati South,Porirua Central,40.819,1.597
@@ -36157,7 +36225,7 @@ Riverstone Terraces,Island Bay West,43.706,2.402
 Riverstone Terraces,Johnsonville Central,42.417,1.935
 Riverstone Terraces,Johnsonville East,42.378,1.951
 Riverstone Terraces,Johnsonville North,42.9,2.062
-Riverstone Terraces,Kahutara,,
+Riverstone Terraces,Kahutara,53.697,2.285
 Riverstone Terraces,Kaitawa,107.33,3.668
 Riverstone Terraces,Kaiwharawhara,37.948,1.583
 Riverstone Terraces,Kapiti Island,,
@@ -36183,7 +36251,7 @@ Riverstone Terraces,Makara-Ohariu,48.671,2.209
 Riverstone Terraces,Mana Island,59.825,2.587
 Riverstone Terraces,Mana-Camborne,59.329,2.353
 Riverstone Terraces,Mangaroa,,
-Riverstone Terraces,Mangatainoka,,
+Riverstone Terraces,Mangatainoka,137.26,47.70583333333333
 Riverstone Terraces,Manuka,21.165,1.571
 Riverstone Terraces,Maoribank,12.34,1.014
 Riverstone Terraces,Mara,,
@@ -36232,7 +36300,7 @@ Riverstone Terraces,Otaki Forks,,
 Riverstone Terraces,Owahanga,,
 Riverstone Terraces,Paekakariki,75.917,2.507
 Riverstone Terraces,Paekakariki Hill,,
-Riverstone Terraces,Pahiatua,,
+Riverstone Terraces,Pahiatua,128.682,47.60194444444444
 Riverstone Terraces,Papakowhai North,58.48,2.363
 Riverstone Terraces,Papakowhai South,56.659,2.281
 Riverstone Terraces,Paparangi,44.439,2.206
@@ -36701,7 +36769,7 @@ Seatoun,Strathmore Park,1.251,0.227
 Seatoun,Taita North,33.162,1.424
 Seatoun,Taita South,31.576,1.529
 Seatoun,Taitville,14.744,1.012
-Seatoun,Takapu,,
+Seatoun,Takapu,36.466,8.730277777777777
 Seatoun,Tawa Central,35.564,1.437
 Seatoun,Tawa South,26.214,1.51
 Seatoun,Tawhai,36.206,1.681
@@ -36917,7 +36985,7 @@ Seatoun Tunnel West,Strathmore Park,1.377,0.239
 Seatoun Tunnel West,Taita North,30.535,1.201
 Seatoun Tunnel West,Taita South,30.373,1.344
 Seatoun Tunnel West,Taitville,12.117,0.79
-Seatoun Tunnel West,Takapu,,
+Seatoun Tunnel West,Takapu,35.262,8.548055555555555
 Seatoun Tunnel West,Tawa Central,32.937,1.214
 Seatoun Tunnel West,Tawa South,23.587,1.287
 Seatoun Tunnel West,Tawhai,35.002,1.48
@@ -37155,7 +37223,7 @@ Solway North,Vogeltown West,95.145,2.456
 Solway North,Wadestown,92.3,2.242
 Solway North,Waikanae Beach,151.105,3.812
 Solway North,Waikanae East,145.937,3.393
-Solway North,Waikanae Park,,
+Solway North,Waikanae Park,148.385,3.446388888888889
 Solway North,Waikanae West,146.133,3.364
 Solway North,Waingawa,5.558,0.558
 Solway North,Waitangirua,111.742,2.687
@@ -37182,7 +37250,7 @@ Solway South,Ascot Park,115.378,3.003
 Solway South,Avalon East,78.203,2.217
 Solway South,Avalon West,73.829,2.241
 Solway South,Awarua,97.263,2.856
-Solway South,Belmont,,
+Solway South,Belmont,106.142,5.429444444444444
 Solway South,Berhampore East,97.385,2.882
 Solway South,Berhampore West,97.227,2.854
 Solway South,Boulcott,76.504,2.378
@@ -37349,7 +37417,7 @@ Solway South,Strathmore Park,103.339,2.841
 Solway South,Taita North,69.076,2.125
 Solway South,Taita South,70.66,2.304
 Solway South,Taitville,95.534,2.659
-Solway South,Takapu,,
+Solway South,Takapu,128.315,5.981111111111111
 Solway South,Tawa Central,105.253,2.732
 Solway South,Tawa South,103.379,2.706
 Solway South,Tawhai,76.391,2.589
@@ -37371,7 +37439,7 @@ Solway South,Vogeltown West,96.751,2.79
 Solway South,Wadestown,93.906,2.576
 Solway South,Waikanae Beach,152.711,4.146
 Solway South,Waikanae East,147.543,3.727
-Solway South,Waikanae Park,,
+Solway South,Waikanae Park,149.991,3.7802777777777776
 Solway South,Waikanae West,147.739,3.698
 Solway South,Waingawa,6.366,0.667
 Solway South,Waitangirua,113.348,3.021
@@ -37565,7 +37633,7 @@ Strathmore Park,Strathmore Park,0.0,0.0
 Strathmore Park,Taita North,31.065,1.342
 Strathmore Park,Taita South,30.728,1.47
 Strathmore Park,Taitville,12.647,0.931
-Strathmore Park,Takapu,,
+Strathmore Park,Takapu,35.617,8.675833333333333
 Strathmore Park,Tawa Central,33.467,1.355
 Strathmore Park,Tawa South,24.117,1.428
 Strathmore Park,Tawhai,35.532,1.614
@@ -37628,7 +37696,7 @@ Taita North,Carterton,56.21,1.46
 Taita North,Churton Park North,35.671,1.274
 Taita North,Churton Park South,37.376,1.274
 Taita North,Clouston Park,14.519,0.747
-Taita North,Cloustonville,,
+Taita North,Cloustonville,26.784,7.663888888888889
 Taita North,Crofton Downs,28.994,1.18
 Taita North,Dannevirke East,199.234,4.407
 Taita North,Dannevirke West,200.209,4.622
@@ -37669,7 +37737,7 @@ Taita North,Island Bay West,31.104,1.51
 Taita North,Johnsonville Central,31.85,0.912
 Taita North,Johnsonville East,31.666,0.996
 Taita North,Johnsonville North,32.367,1.039
-Taita North,Kahutara,,
+Taita North,Kahutara,56.07,1.4269444444444443
 Taita North,Kaitawa,88.675,1.993
 Taita North,Kaiwharawhara,25.346,0.724
 Taita North,Kapiti Island,,
@@ -37844,7 +37912,7 @@ Taita South,Carterton,58.959,1.583
 Taita South,Churton Park North,34.956,1.531
 Taita South,Churton Park South,36.661,1.531
 Taita South,Clouston Park,16.753,0.791
-Taita South,Cloustonville,,
+Taita South,Cloustonville,28.324,7.7877777777777775
 Taita South,Crofton Downs,26.758,1.22
 Taita South,Dannevirke East,196.987,4.364
 Taita South,Dannevirke West,197.962,4.579
@@ -37885,7 +37953,7 @@ Taita South,Island Bay West,28.868,1.434
 Taita South,Johnsonville Central,32.205,1.169
 Taita South,Johnsonville East,32.021,1.245
 Taita South,Johnsonville North,33.202,1.27
-Taita South,Kahutara,,
+Taita South,Kahutara,66.781,1.5338888888888889
 Taita South,Kaitawa,88.533,2.227
 Taita South,Kaiwharawhara,23.11,0.796
 Taita South,Kapiti Island,,
@@ -38300,7 +38368,7 @@ Takapu,Gracefield,32.86,1.971
 Takapu,Greenacres,11.63,1.377
 Takapu,Grenada North,,
 Takapu,Grenada Village,18.547,1.663
-Takapu,Greytown,,
+Takapu,Greytown,100.812,3.222777777777778
 Takapu,Happy Valley-Owhiro Bay,37.1,2.314
 Takapu,Hataitai North,29.999,1.858
 Takapu,Haywards-Manor Park,52.981,2.568
@@ -38317,7 +38385,7 @@ Takapu,Island Bay West,33.936,2.164
 Takapu,Johnsonville Central,19.68,1.339
 Takapu,Johnsonville East,19.431,1.43
 Takapu,Johnsonville North,19.528,1.429
-Takapu,Kahutara,,
+Takapu,Kahutara,102.82,3.120833333333333
 Takapu,Kaitawa,55.892,2.304
 Takapu,Kaiwharawhara,28.218,1.532
 Takapu,Kapiti Island,,
@@ -38347,7 +38415,7 @@ Takapu,Mangatainoka,164.897,26.458
 Takapu,Manuka,53.507,2.607
 Takapu,Maoribank,63.739,2.916
 Takapu,Mara,,
-Takapu,Martinborough,,
+Takapu,Martinborough,102.129,3.2275
 Takapu,Masterton Central,117.479,18.044
 Takapu,Masterton East,215.689,27.337
 Takapu,Masterton Railway,115.532,17.914
@@ -38424,7 +38492,7 @@ Takapu,Roseneath,31.593,2.008
 Takapu,Seatoun,37.222,2.553
 Takapu,Seatoun Tunnel West,36.082,2.154
 Takapu,Solway North,114.427,17.925
-Takapu,Solway South,,
+Takapu,Solway South,115.747,15.324722222222222
 Takapu,Strathmore Park,36.379,2.446
 Takapu,Taita North,47.009,2.209
 Takapu,Taita South,45.628,2.387
@@ -38453,7 +38521,7 @@ Takapu,Waikanae Beach,49.545,2.825
 Takapu,Waikanae East,46.744,2.373
 Takapu,Waikanae Park,46.846,2.959
 Takapu,Waikanae West,46.94,2.344
-Takapu,Waingawa,,
+Takapu,Waingawa,116.391,5.041666666666667
 Takapu,Waitangirua,6.636,0.983
 Takapu,Waiwhetu North,45.786,2.281
 Takapu,Waiwhetu South,45.067,2.28
@@ -38965,7 +39033,7 @@ Tawhai,Island Bay West,38.765,1.878
 Tawhai,Johnsonville Central,35.872,1.691
 Tawhai,Johnsonville East,35.688,1.767
 Tawhai,Johnsonville North,36.869,1.792
-Tawhai,Kahutara,,
+Tawhai,Kahutara,56.698,2.0519444444444446
 Tawhai,Kaitawa,92.598,2.278
 Tawhai,Kaiwharawhara,33.007,1.058
 Tawhai,Kapiti Island,,
@@ -39250,7 +39318,7 @@ Te Horo,Northland North,69.033,2.185
 Te Horo,Onepoto,56.587,2.818
 Te Horo,Opaki-Fernridge,161.46,4.683
 Te Horo,Oriental Bay,66.861,2.173
-Te Horo,Otaihanga,,
+Te Horo,Otaihanga,23.918,1.5566666666666666
 Te Horo,Otaki,9.177,0.546
 Te Horo,Otaki Forks,,
 Te Horo,Owahanga,,
@@ -39603,7 +39671,7 @@ Te Marua,Haywards-Manor Park,18.914,0.849
 Te Marua,Heretaunga,14.703,0.889
 Te Marua,Heretaunga-Silverstream,14.703,0.643
 Te Marua,Holborn,21.078,1.066
-Te Marua,Homebush-Te Ore Ore,,
+Te Marua,Homebush-Te Ore Ore,75.225,4.1175
 Te Marua,Homedale East,35.672,1.504
 Te Marua,Homedale West,40.125,1.464
 Te Marua,Horokiwi,34.391,1.683
@@ -39613,7 +39681,7 @@ Te Marua,Island Bay West,50.078,1.819
 Te Marua,Johnsonville Central,50.824,1.555
 Te Marua,Johnsonville East,50.64,1.638
 Te Marua,Johnsonville North,51.341,1.681
-Te Marua,Kahutara,,
+Te Marua,Kahutara,54.026,1.3194444444444444
 Te Marua,Kaitawa,107.802,2.975
 Te Marua,Kaiwharawhara,44.323,1.333
 Te Marua,Kapiti Island,,
@@ -39694,8 +39762,8 @@ Te Marua,Papakowhai South,63.984,1.698
 Te Marua,Paparangi,52.894,1.623
 Te Marua,Paparangi West,52.147,1.609
 Te Marua,Papatawa,199.904,9.276
-Te Marua,Paraparaumu Beach North,,
-Te Marua,Paraparaumu Beach South,,
+Te Marua,Paraparaumu Beach North,96.093,3.0194444444444444
+Te Marua,Paraparaumu Beach South,93.529,3.0105555555555554
 Te Marua,Paraparaumu Central,91.387,2.906
 Te Marua,Paremata-Postgate,64.793,1.848
 Te Marua,Parkway,33.423,1.474
@@ -39725,7 +39793,7 @@ Te Marua,Strathmore Park,52.524,2.111
 Te Marua,Taita North,20.0,0.802
 Te Marua,Taita South,22.619,0.982
 Te Marua,Taitville,46.495,1.619
-Te Marua,Takapu,,
+Te Marua,Takapu,67.178,11.911944444444444
 Te Marua,Tawa Central,56.211,1.526
 Te Marua,Tawa South,54.337,1.499
 Te Marua,Tawhai,25.357,1.266
@@ -39749,7 +39817,7 @@ Te Marua,Waikanae Beach,103.822,3.463
 Te Marua,Waikanae East,98.654,3.044
 Te Marua,Waikanae Park,,
 Te Marua,Waikanae West,98.85,3.015
-Te Marua,Waingawa,,
+Te Marua,Waingawa,64.579,13.59361111111111
 Te Marua,Waitangirua,64.306,1.815
 Te Marua,Waiwhetu North,27.391,1.117
 Te Marua,Waiwhetu South,28.316,1.24
@@ -40436,7 +40504,7 @@ Titahi Bay North,Carterton,101.539,3.252
 Titahi Bay North,Churton Park North,20.921,1.499
 Titahi Bay North,Churton Park South,19.011,1.349
 Titahi Bay North,Clouston Park,59.436,2.292
-Titahi Bay North,Cloustonville,,
+Titahi Bay North,Cloustonville,71.007,8.956388888888888
 Titahi Bay North,Crofton Downs,30.404,1.689
 Titahi Bay North,Dannevirke East,165.9,3.833
 Titahi Bay North,Dannevirke West,166.875,4.047
@@ -40447,7 +40515,7 @@ Titahi Bay North,Ebdentown,57.734,2.23
 Titahi Bay North,Eketahuna,178.486,4.093
 Titahi Bay North,Elderslea,56.713,2.213
 Titahi Bay North,Elsdon-Takapuwahia,8.159,1.039
-Titahi Bay North,Emerald Hill,,
+Titahi Bay North,Emerald Hill,65.167,8.406666666666666
 Titahi Bay North,Endeavour,17.306,0.895
 Titahi Bay North,Epuni East,41.503,1.789
 Titahi Bay North,Epuni West,41.022,1.681
@@ -40567,7 +40635,7 @@ Titahi Bay North,Pauatahanui,19.304,0.87
 Titahi Bay North,Peka Peka,50.969,1.893
 Titahi Bay North,Pencarrow,54.669,2.404
 Titahi Bay North,Petone Central,35.835,1.236
-Titahi Bay North,Pinehaven,,
+Titahi Bay North,Pinehaven,60.92,8.471944444444444
 Titahi Bay North,Plimmerton,14.766,1.367
 Titahi Bay North,Poets Block,56.813,2.084
 Titahi Bay North,Porirua Central,9.456,0.857
@@ -40652,7 +40720,7 @@ Titahi Bay South,Carterton,101.011,3.245
 Titahi Bay South,Churton Park North,20.953,1.159
 Titahi Bay South,Churton Park South,19.043,1.009
 Titahi Bay South,Clouston Park,57.864,2.335
-Titahi Bay South,Cloustonville,,
+Titahi Bay South,Cloustonville,69.435,8.998888888888889
 Titahi Bay South,Crofton Downs,26.811,1.699
 Titahi Bay South,Dannevirke East,165.421,3.826
 Titahi Bay South,Dannevirke West,166.396,4.041
@@ -40718,7 +40786,7 @@ Titahi Bay South,Maidstone,56.337,1.704
 Titahi Bay South,Makara-Ohariu,36.951,1.869
 Titahi Bay South,Mana Island,1.198,0.233
 Titahi Bay South,Mana-Camborne,11.968,1.012
-Titahi Bay South,Mangaroa,,
+Titahi Bay South,Mangaroa,72.058,2.598611111111111
 Titahi Bay South,Mangatainoka,162.293,3.95
 Titahi Bay South,Manuka,51.557,2.182
 Titahi Bay South,Maoribank,60.745,2.374
@@ -40783,7 +40851,7 @@ Titahi Bay South,Pauatahanui,18.825,0.813
 Titahi Bay South,Peka Peka,50.323,1.553
 Titahi Bay South,Pencarrow,53.097,2.446
 Titahi Bay South,Petone Central,26.889,1.164
-Titahi Bay South,Pinehaven,,
+Titahi Bay South,Pinehaven,59.348,8.514444444444445
 Titahi Bay South,Plimmerton,14.12,1.028
 Titahi Bay South,Poets Block,56.285,2.244
 Titahi Bay South,Porirua Central,9.488,0.684
@@ -40899,7 +40967,7 @@ Totara Park,Haywards-Manor Park,12.668,0.683
 Totara Park,Heretaunga,8.013,0.611
 Totara Park,Heretaunga-Silverstream,8.457,0.477
 Totara Park,Holborn,14.185,1.034
-Totara Park,Homebush-Te Ore Ore,,
+Totara Park,Homebush-Te Ore Ore,70.801,3.944722222222222
 Totara Park,Homedale East,29.426,1.321
 Totara Park,Homedale West,33.879,1.281
 Totara Park,Horokiwi,29.967,1.793
@@ -40909,7 +40977,7 @@ Totara Park,Island Bay West,45.657,1.93
 Totara Park,Johnsonville Central,44.4,1.086
 Totara Park,Johnsonville East,44.216,1.169
 Totara Park,Johnsonville North,44.917,1.213
-Totara Park,Kahutara,,
+Totara Park,Kahutara,47.78,1.2197222222222222
 Totara Park,Kaitawa,101.757,2.619
 Totara Park,Kaiwharawhara,37.896,0.879
 Totara Park,Kapiti Island,,
@@ -41125,7 +41193,7 @@ Trentham North,Island Bay West,39.025,1.75
 Trentham North,Johnsonville Central,40.78,1.49
 Trentham North,Johnsonville East,40.596,1.566
 Trentham North,Johnsonville North,41.777,1.591
-Trentham North,Kahutara,,
+Trentham North,Kahutara,49.025,1.3502777777777777
 Trentham North,Kaitawa,96.596,2.233
 Trentham North,Kaiwharawhara,33.267,0.964
 Trentham North,Kapiti Island,,
@@ -41341,7 +41409,7 @@ Trentham South,Island Bay West,38.784,1.93
 Trentham South,Johnsonville Central,39.53,1.332
 Trentham South,Johnsonville East,39.346,1.416
 Trentham South,Johnsonville North,40.047,1.459
-Trentham South,Kahutara,,
+Trentham South,Kahutara,50.024,1.5494444444444444
 Trentham South,Kaitawa,96.355,2.413
 Trentham South,Kaiwharawhara,33.026,1.144
 Trentham South,Kapiti Island,,
@@ -41773,7 +41841,7 @@ Upper Hutt Central,Island Bay West,41.489,1.471
 Upper Hutt Central,Johnsonville Central,42.238,1.14
 Upper Hutt Central,Johnsonville East,42.054,1.223
 Upper Hutt Central,Johnsonville North,42.755,1.267
-Upper Hutt Central,Kahutara,,
+Upper Hutt Central,Kahutara,45.437,0.9213888888888889
 Upper Hutt Central,Kaitawa,99.063,2.221
 Upper Hutt Central,Kaiwharawhara,35.731,0.9
 Upper Hutt Central,Kapiti Island,,
@@ -42317,7 +42385,7 @@ Vogeltown West,Strathmore Park,8.292,0.903
 Vogeltown West,Taita North,27.959,1.061
 Vogeltown West,Taita South,25.71,1.043
 Vogeltown West,Taitville,8.157,0.631
-Vogeltown West,Takapu,,
+Vogeltown West,Takapu,31.108,8.460277777777778
 Vogeltown West,Tawa Central,29.429,1.202
 Vogeltown West,Tawa South,20.079,1.275
 Vogeltown West,Tawhai,31.494,1.51
@@ -43460,7 +43528,7 @@ Waingawa,Carterton,12.196,0.668
 Waingawa,Churton Park North,103.822,2.959
 Waingawa,Churton Park South,105.468,2.98
 Waingawa,Clouston Park,61.427,1.904
-Waingawa,Cloustonville,,
+Waingawa,Cloustonville,72.372,4.6561111111111115
 Waingawa,Crofton Downs,97.192,2.816
 Waingawa,Dannevirke East,263.782,19.493
 Waingawa,Dannevirke West,264.757,19.707
@@ -43536,7 +43604,7 @@ Waingawa,Masterton Central,7.694,0.586
 Waingawa,Masterton East,8.923,0.664
 Waingawa,Masterton Railway,8.958,0.694
 Waingawa,Masterton West,8.308,0.561
-Waingawa,Maungakotukutuku,,
+Waingawa,Maungakotukutuku,148.63,5.934722222222222
 Waingawa,Maungaraki,85.045,2.41
 Waingawa,Maupuia,102.964,3.121
 Waingawa,Melling,78.579,2.28
@@ -43547,7 +43615,7 @@ Waingawa,Miramar South,99.282,2.697
 Waingawa,Miramar West,100.873,2.822
 Waingawa,Mitchelltown,95.686,2.758
 Waingawa,Moera,80.32,2.239
-Waingawa,Moonshine Valley,,
+Waingawa,Moonshine Valley,99.526,15.261666666666667
 Waingawa,Mt Cook-Wallace Street,94.226,2.481
 Waingawa,Mt Holdsworth,,
 Waingawa,Mt Victoria West,94.373,2.504
@@ -43591,7 +43659,7 @@ Waingawa,Pauatahanui,123.85,6.78
 Waingawa,Peka Peka,170.126,18.315
 Waingawa,Pencarrow,90.444,2.697
 Waingawa,Petone Central,80.814,2.027
-Waingawa,Pinehaven,,
+Waingawa,Pinehaven,70.943,14.632222222222222
 Waingawa,Plimmerton,117.077,3.394
 Waingawa,Poets Block,60.975,2.053
 Waingawa,Porirua Central,108.62,3.15
@@ -43603,7 +43671,7 @@ Waingawa,Raroa,100.855,2.756
 Waingawa,Raumati Beach,141.465,3.876
 Waingawa,Raumati South,145.615,16.408
 Waingawa,Resolution,122.482,7.168
-Waingawa,Riverstone Terraces,,
+Waingawa,Riverstone Terraces,66.582,15.136944444444444
 Waingawa,Roseneath,96.382,2.559
 Waingawa,Seatoun,102.588,3.013
 Waingawa,Seatoun Tunnel West,101.448,2.771
@@ -43613,7 +43681,7 @@ Waingawa,Strathmore Park,101.745,2.922
 Waingawa,Taita North,69.259,2.046
 Waingawa,Taita South,72.006,2.195
 Waingawa,Taitville,94.123,2.928
-Waingawa,Takapu,,
+Waingawa,Takapu,116.371,6.405277777777778
 Waingawa,Tawa Central,105.435,2.886
 Waingawa,Tawa South,103.561,2.859
 Waingawa,Tawhai,70.284,2.828
@@ -43676,7 +43744,7 @@ Waitangirua,Carterton,100.451,2.654
 Waitangirua,Churton Park North,19.789,1.367
 Waitangirua,Churton Park South,17.879,1.218
 Waitangirua,Clouston Park,58.332,1.911
-Waitangirua,Cloustonville,,
+Waitangirua,Cloustonville,69.919,8.858055555555556
 Waitangirua,Crofton Downs,29.316,1.524
 Waitangirua,Dannevirke East,165.143,3.735
 Waitangirua,Dannevirke West,166.118,3.949
@@ -44365,7 +44433,7 @@ Wallaceville,Island Bay West,40.211,1.663
 Wallaceville,Johnsonville Central,40.957,1.065
 Wallaceville,Johnsonville East,40.773,1.149
 Wallaceville,Johnsonville North,41.474,1.192
-Wallaceville,Kahutara,,
+Wallaceville,Kahutara,46.151,1.0525
 Wallaceville,Kaitawa,97.782,2.146
 Wallaceville,Kaiwharawhara,34.453,0.877
 Wallaceville,Kapiti Island,,
@@ -44732,7 +44800,7 @@ Waterloo East,Woburn North,5.749,0.431
 Waterloo East,Woburn South,4.62,0.495
 Waterloo East,Woodridge,30.194,1.433
 Waterloo East,Woodville,168.127,3.791
-Waterloo West,Adelaide,,
+Waterloo West,Adelaide,20.579,1.0347222222222223
 Waterloo West,Adventure,38.81,1.229
 Waterloo West,Akatarawa,26.005,1.466
 Waterloo West,Alicetown,3.722,0.245
@@ -46659,7 +46727,7 @@ Woodville,Vogeltown West,157.946,3.651
 Woodville,Wadestown,155.109,3.398
 Woodville,Waikanae Beach,102.966,2.785
 Woodville,Waikanae East,101.43,2.291
-Woodville,Waikanae Park,,
+Woodville,Waikanae Park,100.267,2.9191666666666665
 Woodville,Waikanae West,101.572,2.252
 Woodville,Waingawa,79.055,12.235
 Woodville,Waitangirua,140.748,3.326

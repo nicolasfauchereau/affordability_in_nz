@@ -243,7 +243,7 @@ def makeMap():
         'maxZoom': 13,
         'maxBounds': maxBounds,
     })
-    //tiles = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
+    //tiles = 'http://{s}.tiles.mapbox.com/v3/key/{z}/{x}/{y}.png'
     // Define map base layers, one of which can be selected at a time
     //L.tileLayer(tiles).addTo(map)
 
