@@ -12,9 +12,9 @@ def main():
             'here,'
         'and contributors are welcome.'
         'Thanks heaps to ' 
-        a(href='http://www.mrcagney.com'):
+        a(href='http://www.mrcagney.co.nz'):
             'MRCagney'
-        'for donating to this project!'
+        'for funding this project!'
     p:
         'Regarding data sources:'  
         ul:
@@ -29,9 +29,9 @@ def main():
             li:
                 'Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.'
             li:
-                'The commute distances and times used are those between area unit centroids and are calculated through the street network. For now, the public transport data is via bus only and its distances are car distances, but that will be improved upon soon. Also the distance from a centroid to itself is currently zero, which will also be improved upon soon.'
+                'The commute distances and times used are those between area unit centroids and are calculated through the street network  using ArcGIS.  But the Auckland public transport mode data needs improving: for now the distances are via bus only and its distances are car distances. That will be improved upon soon using the Google Maps API. Also the distance from a centroid to itself for all travel modes is currently zero, which will be improved upon eventually.'
             li:
-                'Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218).' 
+                'Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218). It would be better to use fare zone information for the public transport costs. Stay tuned.' 
             li:
                 'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'      
     p: 
