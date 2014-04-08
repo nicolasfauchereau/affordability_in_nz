@@ -6,7 +6,7 @@ import json, csv
 import pyproj
 import shapely
 
-MASTER_SHAPES_FILE = 'data/au_shapes_simplified.geojson'
+MASTER_SHAPES_FILE = 'data/au_shapes.geojson'
 MASTER_RENTS_FILE = 'data/au_rents.csv'
 REGIONS = {'auckland', 'wellington'}
 MODES = ['walk', 'bicycle', 'car', 'transit']
@@ -234,10 +234,12 @@ def get_polygon_and_centroid_by_au_name(collection, name_field='AU2013_NAM'):
         pc_by_name[name] = (polygon, polygon.centroid)
     return pc_by_name
 
-def create_centroids(region, name_field='AU2013_NAM', digits=5):
+def create_centroids(region=None, name_field='AU2013_NAM', digits=5):
     """
     Create a GeoJSON and CSV file containing the centroids of the area
     units for a given region from ``REGIONS``.
+    If ``region is None``, then create the two centroid files for all
+    of New Zealand.
 
     For the CSV file create a header row and data rows with the following
     columns:
@@ -255,7 +257,10 @@ def create_centroids(region, name_field='AU2013_NAM', digits=5):
     a precision on the ground of about 1 meter; see
     `here <https://en.wikipedia.org/wiki/Decimal_degrees>`_ . 
     """
-    prefix = 'data/%s/' % region
+    if region is not None:
+        prefix = 'data/%s/' % region
+    else:
+        prefix = 'data/'
 
     collection = load_json(prefix + 'au_shapes.geojson')
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, 
@@ -523,11 +528,11 @@ def create_commutes(region):
                 o_name, d_name, distance, time = row
                 # Convert distance to km and time to h 
                 if distance:
-                    distance = float(distance)
+                    distance = round(float(distance), 1)
                 else:
                     distance = None
                 if time:
-                    time = float(time)
+                    time = round(float(time), 1)
                 else:
                     time = None
                 # Save to matrix
@@ -539,37 +544,33 @@ def create_commutes(region):
     dump_json(data, prefix + 'commutes.json')
        
 # TODO: delete this function when no longer necessary
-def format_commutes(region):
+def reformat_commute(filename):
     """
-    Assuming CSV commute distances in meters and times in minutes,
-    convert them to kilometer and hours, respectively.
-    Save to new CSV files.
+    Given a CSV of commutes with distances in meters and times in minutes,
+    convert them to kilometers and hours, respectively.
+    Save to new CSV file.
     """ 
-    prefix = 'data/%s/' % region
-
     # Assign distance and time values from CSVs
-    for mode in MODES: 
-        filename = prefix + mode + '_commutes.csv'
-        with open(filename, 'rb') as f:
-            reader = csv.reader(f)
-            M = list(reader)
-        filename = prefix + mode + '_commutes_new.csv'
-        with open(filename, 'w') as f:
-            writer = csv.writer(f)
-            writer.writerow(['origin area unit', 'destination area unit',
-              'distance (kilometers)', 'time (hours)'])
-            for row in sorted(M[1:]):
-                o_name, d_name, distance, time = row
-                # Convert distance to km and time to h 
-                if distance:
-                    distance = round(float(distance)/1000, 3)
-                else:
-                    distance = None
-                if time:
-                    time = round(float(time)/60, 3)
-                else:
-                    time = None
-                writer.writerow([o_name, d_name, distance, time])
+    with open(filename, 'rb') as f:
+        reader = csv.reader(f)
+        M = list(reader)
+    filename = filename + '.new'
+    with open(filename, 'w') as f:
+        writer = csv.writer(f)
+        writer.writerow(['origin area unit', 'destination area unit',
+          'distance (kilometers)', 'time (hours)'])
+        for row in sorted(M[1:]):
+            o_name, d_name, distance, time = row
+            # Convert distance to km and time to h 
+            if distance:
+                distance = round(float(distance)/1000, 3)
+            else:
+                distance = None
+            if time:
+                time = round(float(time)/60, 3)
+            else:
+                time = None
+            writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
     region = 'wellington'
@@ -579,9 +580,9 @@ if __name__ == '__main__':
     # print('  Rents...')
     # create_rents(region)
     # print('  Centroids...')
-    # create_centroids(region)
+    create_centroids()
     # print('  Sample points...')
     # create_sample_points(region)
     # print('  Fake commutes...')
     # create_fake_commutes(region)
-    convert_units_in_commutes(region)
+    #create_commutes(regionp)
