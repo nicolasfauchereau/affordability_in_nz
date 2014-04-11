@@ -25,11 +25,12 @@ Notes
 - The median gross annual incomes of employed Aucklanders, Wellingtonians, etc. come from Statistics New Zealand from the June 2013 income survey `here <http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx>`_. 
 - The 2013 census rent data comes from Stats NZ from a custom data request and is licensed under the Creative Commons Attribution 3.0 New Zealand license.
 - Distances and times between area unit centroids are calculated through the street network for walking, bicycling, and driving modes using ArcGIS. Transit distances and times are calculated using the Google Maps API for 13 March 2013 around 08:30. 
-- Auckland 2013 area unit names and codes come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/auckland.aspx>`_.  I excluded water area units.
-- Auckland transit times distances are car distances for now. Still running the Google Maps queries...
-- Wellington 2013 area unit codes and names come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/wellington.aspx>`_. I excluded water area units.
-- Canterbury 2013 area unit names and codes come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/canterbury.aspx>`_.
-- Waikato 2013 area unit names and codes come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/waikato.aspx>`_.
+- 2013 area unit names and codes by region come from Stats NZ from the following links. I exclude water area units.
+    - `Auckland <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/auckland.aspx>`_
+    - `Canterbury <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/canterbury.aspx>`_ 
+    - `Wellington <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/wellington.aspx>`_
+    - `Waikato <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/waikato.aspx>`_
+- Auckland transit distances are car distances for now. Still running the Google Maps queries.
 
 Resources
 ============
