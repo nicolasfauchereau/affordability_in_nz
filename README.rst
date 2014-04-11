@@ -2,7 +2,8 @@ Affordability in New Zealand
 ********************************
 Web maps of affordability for various New Zealand (NZ) cities.
 Focused on rent, commute, parking, and car ownership costs relative to income.
-Live site coming soon...
+
+Thanks heaps to the `MRCagney <http://www.mrcagney.co.nz>`_ for donating to this projet!
 
 Requirements
 ============
@@ -24,30 +25,22 @@ Notes
 - The median gross annual incomes of employed Aucklanders, Wellingtonians, etc. comes from Statistics New Zealand from the June 2013 income survey (grouped by regional council) `here <http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx>`_. 
 - The 2013 census rent data comes from Stats NZ from a custom data request and is licensed under the Creative Commons Attribution 3.0 New Zealand license.
 - Distances and times between area unit centroids were calculated through the Open Stree Map network for walking, bicycling, and driving modes using ArcGIS. Public transport times were calculated using the Google Maps API. All calculation are for 13 March 2013 around 08:30. 
-- Thanks heaps to the `MRCagney <http://www.mrcagney.co.nz>`_ for donating to this projet!
+- Auckland 2013 area unit names and codes come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/auckland.aspx>`_.  I excluded water area units.
+- Auckland transit times distances are car distances for now. Still running the Google Maps queries...
+- Wellington 2013 area unit codes and names come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/wellington.aspx>`_. I excluded water area units.
+- Canterbury 2013 area unit names and codes come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/canterbury.aspx>`_.
+- Waikato 2013 area unit names and codes come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/waikato.aspx>`_.
 
 Resources
 ============
-- `GeoJSONLint <http://geojsonlint.com/>`_ for validating and visualizing GeoJSON.
-
-Notes on Auckland
-==================
-- Auckland 2013 area unit codes and names come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/auckland.aspx>`_.  I excluded water area units.
-- Public transport times distances are car distances for now. Still running the Google Maps queries...
-
-Notes on Wellington
-====================
-- Wellington 2013 area unit codes and names come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/wellington.aspx>`_. I excluded water area units.
-
-Notes on Canterbury
-====================
-- Canterbury 2013 area unit names and codes come from Stats NZ from `here <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/canterbury.aspx>`_.
+- `GeoJSONLint <http://geojsonlint.com/>`_ for validating and visualizing GeoJSON online.
 
 Todo
 ====
-- Improve public transport cost estimates, possibly using fare zones.
-- Replace the zero distance of a centroid to itself with the median distance of N >= 100 points to the centroid, where the points are sampled uniformly at random from the area unit in question.
 - Make the app useable by couples by adding optional questions for the partner's commute and parking costs
+- Replace the zero distance of a centroid to itself with the median distance of N >= 100 points to the centroid, where the points are sampled uniformly at random from the area unit in question.
+- Improve transit cost estimates, possibly using fare zones. 
+- Improve driving and transit times by factoring in traffic somehom.  
 
 Authors
 ========
