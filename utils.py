@@ -8,15 +8,15 @@ import shapely
 
 MASTER_SHAPES_FILE = 'data/au_shapes.geojson'
 MASTER_RENTS_FILE = 'data/au_rents.csv'
-REGIONS = {'auckland', 'wellington'}
+REGIONS = {'auckland', 'wellington', 'canterbury'}
 MODES = ['walk', 'bicycle', 'car', 'transit']
 
 def get_au_names(filename, header=True):
     """
     Given a CSV file with initial columns
     
-    1. area unit code 
-    2. area unit name,
+    1. area unit name
+    2. area unit code 
 
     return the set of all area unit names.
     If ``header == True``, then skip the first line 
@@ -29,7 +29,7 @@ def get_au_names(filename, header=True):
             # Skip header row
             reader.next() 
         for row in reader:
-            au_names.add(row[1])
+            au_names.add(row[0])
     return au_names
             
 def load_json(filename):
@@ -86,7 +86,7 @@ def create_shapes(region, name_field='AU2013_NAM'):
     A = au_names
     B = get_prop_set(new_collection, 'AU2013_NAM')
     success = (A == B)
-    print('Got shapes for each AU?', success)
+    print('  Got shapes for each AU?', success)
     if not success:
         print('  Missing geodata for', A - B)
 
@@ -141,7 +141,7 @@ def create_rents(region, max_bedrooms=5, header=True):
     A = au_names
     B = set(rent_by_num_bedrooms_by_au_name.keys())
     success = (A == B)
-    print('Got rents for each AU?', success)
+    print('  Got rents for each AU?', success)
     if not success:
         print('  Missing rents for', A - B)
 
@@ -573,16 +573,16 @@ def reformat_commute(filename):
             writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
-    region = 'wellington'
-    # print('Creating files for %s...' % region)
-    # print('  Shapes...')
-    # create_shapes(region)
-    # print('  Rents...')
-    # create_rents(region)
-    # print('  Centroids...')
-    # create_centroids(region)
+    region = 'canterbury'
+    print('Creating files for %s...' % region)
+    print('  Shapes...')
+    create_shapes(region)
+    print('  Rents...')
+    create_rents(region)
+    print('  Centroids...')
+    create_centroids(region)
     # print('  Sample points...')
     # create_sample_points(region)
-    # print('  Fake commutes...')
-    # create_fake_commutes(region)
-    create_commutes(region)
+    print('  Fake commutes...')
+    create_fake_commutes(region)
+    #create_commutes(region)

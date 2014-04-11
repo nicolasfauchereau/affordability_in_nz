@@ -13,14 +13,12 @@ rentByNbedroomsByAu = None
 MIndexByAu = None
 M = None
 aus = None
-centroids = None
 
 spinner = new Spinner().spin($("#map").get(0))
 $.when(
     $.getJSON(data['ausFile']),
     $.getJSON(data['rentsFile']),
     $.getJSON(data['commutesFile'])
-    // $.getJSON(data['centroidsFile'])
 ).done(def(a, b, c): 
     nonlocal aus
     aus = a[0]    
@@ -33,9 +31,6 @@ $.when(
     MIndexByAu = c[0]['index_by_name']
     M = c[0]['matrix']
 
-    // nonlocal centroids
-    // centroids = d[0]    
-    
     spinner.stop()
     makeMap()
 )
@@ -398,30 +393,7 @@ def makeMap():
         'style': style,
         'onEachFeature': onEachFeature
     }).addTo(map)
-
-    centroidStyle = {
-        'radius': 6,
-        'fillColor': "#ff7800",
-        'color': "#000",
-        'weight': 1,
-        'opacity': 1,
-        'fillOpacity': 0.8,
-    }
-    def onEachCentroidFeature(feature, layer):
-        if feature.properties and feature.properties.AU2013_NAM: 
-            html = feature.properties.AU2013_NAM + ' centroid<br/>' +\
-                layer.getLatLng()  
-            layer.bindPopup(html)
     
-    // nonlocal centroids
-    // centroids = L.geoJson(centroids, {
-    //     'pointToLayer': def(feature, latlng):
-    //         return L.circleMarker(latlng)
-    //     ,
-    //     'onEachFeature': onEachCentroidFeature,
-    //     'style': centroidStyle,
-    // }).addTo(map)
-
     // Feature style functions
     def getColor(x):
         for (i, grade) in enumerate(BINS):
