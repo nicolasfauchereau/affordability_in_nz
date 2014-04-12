@@ -32,3 +32,4 @@ def page($page_name):
                     a(href='about.html' id='nav-about'):
                         'About'
         main()
+        

@@ -63,7 +63,7 @@
         for funding this project!
     </p>
     <p>
-        Regarding data sources:
+        Regarding data sources and methodology:
         <ul>
             <li>
                 The area units displayed are simplified versions of the 2013 census area units, the full versions of which come from Statistics New Zealand from
@@ -81,7 +81,7 @@
                 Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.
             </li>
             <li>
-                The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS using freeflow (no traffic) time. For public transport, they were calculated with the Google Maps API, which uses scheduled time, i think. We plan to improve driving time estimates by using the Google Maps API, which takes traffic into consideration. We also plan to improve the distance estimate for an area unit to itself, which is currently zero for all travel modes.
+                The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions. Also distance estimates for an area unit to itself are currently zero for all travel modes.
             </li>
             <li>
                 Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218). It would be better to use fare zone information for the public transport costs. Stay tuned.

@@ -76,6 +76,9 @@ def map_tool($income_note):
                             '3'
                     br()
                 
+    p:
+        'Beware! Commute times are computed in traffic-free conditions. So driving and public transport times are probably underestimated.'
+
     data()
     script(src='js/jquery-1.11.0/jquery.min.js')
     script(src='js/jquery-ui-1.10.3/jquery-ui.min.js')

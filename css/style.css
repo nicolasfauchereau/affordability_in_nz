@@ -54,6 +54,7 @@ ol {
   color: black;
   width: 100%;
   border: 1px solid #ddd;
+  margin: 1em 0;
   padding: 10px;
   background-color: white;
   overflow: hidden; }
