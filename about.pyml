@@ -29,7 +29,7 @@ def main():
             li:
                 'Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.'
             li:
-                'The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions. Also distance estimates for an area unit to itself are currently zero for all travel modes.'
+                'The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions. Also, distance estimates for an area unit to itself are currently zero for all travel modes.'
             li:
                 'Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218). It would be better to use fare zone information for the public transport costs. Stay tuned.' 
             li:
