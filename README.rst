@@ -38,13 +38,6 @@ Resources
 ============
 - `GeoJSONLint <http://geojsonlint.com/>`_ for validating and visualizing GeoJSON online.
 
-Todo
-====
-- Make the app useable by couples by adding and extra map marker and optional questions for the partner's commute and parking costs.
-- Replace the zero distance of a centroid to itself with the median distance of N >= 100 points to the centroid, where the points are sampled uniformly at random from the area unit in question.
-- Improve transit cost estimates, possibly using fare zones. 
-- Improve driving and transit times by factoring in traffic somehow.  
-
 Authors
 ========
 - Saeid Adli

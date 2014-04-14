@@ -35,14 +35,16 @@ def main():
         li:
             'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'      
     h2:
-        'Todos'
+        'Todo'
     ul:
         li: 
-            'Make a two-commuter version of the app'
+            'Allow for two-commuter families'
         li:
             'Improve public transport cost estimates by using fare zones where possible'
         li:
             'Include all regions of New Zealand'
+        li:
+            'Make the app mobile-friendly'
         li:
             'Improve driving time estimates by incorporating a traffic model'
     h2: 
