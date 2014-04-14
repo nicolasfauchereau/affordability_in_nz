@@ -62,40 +62,59 @@
         </a>
         for funding this project!
     </p>
-    <p>
-        Regarding data sources and methodology:
-        <ul>
-            <li>
-                The area units displayed are simplified versions of the 2013 census area units, the full versions of which come from Statistics New Zealand from
-                <a href='http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx'>
-                    here.
-                </a>
-            </li>
-            <li>
-                The median gross annual incomes of employed Aucklanders, Wellingtonians, etc. comes from Statistics New Zealand from the June 2013 income survey (grouped by regional council)
-                <a href='http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx'>
-                    here.
-                </a>
-            </li>
-            <li>
-                Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.
-            </li>
-            <li>
-                The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions. Also, distance estimates for an area unit to itself are currently zero for all travel modes.
-            </li>
-            <li>
-                Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218). It would be better to use fare zone information for the public transport costs. Stay tuned.
-            </li>
-            <li>
-                Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.
-            </li>
-        </ul>
-    </p>
-    <p>
+    <h2>
+        Data and Methodology
+    </h2>
+    <ul>
+        <li>
+            The area units displayed are simplified versions of the 2013 census area units, the full versions of which come from Statistics New Zealand from
+            <a href='http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx'>
+                here.
+            </a>
+        </li>
+        <li>
+            The median gross annual incomes of employed Aucklanders, Wellingtonians, etc. comes from Statistics New Zealand from the June 2013 income survey (grouped by regional council)
+            <a href='http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx'>
+                here.
+            </a>
+        </li>
+        <li>
+            Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.
+        </li>
+        <li>
+            The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions. Also, distance estimates for an area unit to itself are currently zero for all travel modes.
+        </li>
+        <li>
+            Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218). It would be better to use fare zone information for the public transport costs. Stay tuned.
+        </li>
+        <li>
+            Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.
+        </li>
+    </ul>
+    <h2>
+        Todos
+    </h2>
+    <ul>
+        <li>
+            Make a two-commuter version of the app
+        </li>
+        <li>
+            Improve public transport cost estimates by using fare zones where possible
+        </li>
+        <li>
+            Include all regions of New Zealand
+        </li>
+        <li>
+            Improve driving time estimates by incorporating a traffic model
+        </li>
+    </ul>
+    <h2>
         Feedback?
+    </h2>
+    <p>
+        This application is a work in progress and your feedback will help make it better.
         <a href='mailto:araichev@affordability.org.nz'>
             Email Alex.
         </a>
-        This application is a work in progress and your feedback will help make it better.
     </p>
 </body>

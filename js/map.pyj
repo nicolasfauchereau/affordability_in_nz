@@ -61,7 +61,7 @@ def makeMap():
             'orientation': 'horizontal',
             'range': 'min',
             'min': 100,
-            'max': 100000,
+            'max': 150000,
             'value': medianAnnualIncome,
             'step': 100,
             'slide': def(event, ui): 
