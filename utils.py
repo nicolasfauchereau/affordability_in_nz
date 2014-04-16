@@ -526,6 +526,9 @@ def create_commutes(region):
             reader.next() 
             for row in reader:
                 o_name, d_name, distance, time = row
+                if (o_name not in index_by_name) or\
+                  (d_name not in index_by_name):
+                    continue
                 # Convert distance to km and time to h 
                 if distance:
                     distance = round(float(distance), 1)
