@@ -32,11 +32,13 @@ Notes
     - `Wellington <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/wellington.aspx>`_
     - `Waikato <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/waikato.aspx>`_
 
-- Auckland transit distances are car distances for now. Still running the Google Maps queries.
-
 Resources
 ============
 - `GeoJSONLint <http://geojsonlint.com/>`_ for validating and visualizing GeoJSON online.
+
+Todo
+=====
+- Separate the source RapydScript etc. files from the built JavaScript etc. files. Keeping them together is confusing.
 
 Authors
 ========
