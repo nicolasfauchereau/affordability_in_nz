@@ -586,6 +586,6 @@ if __name__ == '__main__':
     create_centroids(region)
     # print('  Sample points...')
     # create_sample_points(region)
-    print('  Fake commutes...')
-    create_fake_commutes(region)
+    # print('  Fake commutes...')
+    # create_fake_commutes(region)
     #create_commutes(region)
