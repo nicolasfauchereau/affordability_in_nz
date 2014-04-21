@@ -45,24 +45,44 @@ def map_tool($income_note):
                     'Where will you work? Move the red map marker.'
                 li:
                     'How will you commute?'
-                    ul(id='mode')
+                    ul(id='mode0')
                         li(class='ui-state-default icon-walk' id='walk' title='walk')
                         li(class='ui-state-default icon-bicycle' id='bicycle' title='bicycle')
                         li(class='ui-state-default icon-bus' id='transit' title='public transport')
                         li(class='ui-state-default icon-car' id='car' title='car')
+                        li:
+                            'You' 
+                    br()
+                    ul(id='mode1')
+                        li(class='ui-state-default icon-walk' id='walk' title='walk')
+                        li(class='ui-state-default icon-bicycle' id='bicycle' title='bicycle')
+                        li(class='ui-state-default icon-bus' id='transit' title='public transport')
+                        li(class='ui-state-default icon-car' id='car' title='car')
+                        li:
+                            'Partner'
                     br()
                 li:
-                    label(for='num-workdays'):
+                    label(for='num-workdays0'):
                         'How many days a week will you commute?'
                     br()
-                    input(type='text' id='num-workdays' readonly)
-                    div(id='num-workdays-slider')
+                    input(type='text' id='num-workdays0' readonly)
+                    div(id='num-workdays-slider0')
+                    'You'
+                    br()
+                    input(type='text' id='num-workdays1' readonly)
+                    div(id='num-workdays-slider1')
+                    'Partner'
                 li:
-                    label(for='parking'):
+                    label(for='parking0'):
                         'How much will daily work parking cost?'
                     br()
-                    input(type='text' id='parking' readonly)
-                    div(id='parking-cost-slider')        
+                    input(type='text' id='parking0' readonly)
+                    div(id='parking-slider0')     
+                    'You'   
+                    br()
+                    input(type='text' id='parking1' readonly)
+                    div(id='parking-slider1')    
+                    'Partner'    
                 li:
                     'How many cars will you own?'
                     ul(id='num-cars'):

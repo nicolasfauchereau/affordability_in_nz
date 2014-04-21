@@ -5,7 +5,7 @@ data = $.parseJSON($('#data').html())
 lon = data['lon']
 lat = data['lat']
 maxBounds = data['maxBounds']
-markerLatLon = data['markerLatLon']
+markerLatLon0, markerLatLon1 = data['markerLatLons']
 medianAnnualIncome = data['medianAnnualIncome']
     
 // Load data files and then make map
@@ -32,8 +32,21 @@ $.when(
     M = c[0]['matrix']
 
     spinner.stop()
-    makeMap()
+    makeUI()
 )
+
+def sum(a, b):
+    // Return the sum of the possibly null numbers a and b,
+    // with the convention that x + None = x and None + None = None.
+    if a is not None and b is not None:
+        result = a + b 
+    elif a is not None:
+        result = a
+    elif b is not None:
+        result = b
+    else:
+        result = None
+    return result
 
 def numToDollarStr(x, inverse=False):
     // Given a float `x`, round it to the nearest integer,
@@ -53,8 +66,14 @@ def numToDollarStr(x, inverse=False):
             return None
         return int(x.replace('$', '').replace(',',''))
 
-def makeMap():    
-    // Make sidebar
+def makeUI():  
+    // ------------------------------------------------------------------------
+    // Make form 
+
+    COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
+      'transit': 0.218}
+    WEEKLY_CAR_OWN_COST = 2228/52
+
     // Add an income slider widget
     $(def():
         $( "#income-slider" ).slider({
@@ -70,7 +89,7 @@ def makeMap():
             ,
             'stop': def(event, ui):
                 // Recolor aus
-                aus.setStyle(style)
+                aus.setStyle(auStyle)
         })
         // Initialize slider 
         sv = $('#income-slider')
@@ -114,7 +133,7 @@ def makeMap():
                 // Adjust number of bedrooms to rent accordingly
                 adjustNumBedroomsRent()
                 // Recolor aus
-                aus.setStyle(style)
+                aus.setStyle(auStyle)
         })
     )
     // Initialize selector
@@ -130,7 +149,7 @@ def makeMap():
                 // Update nuber of bedrooms
                 $('#num-bedrooms-rent').val(ui.selected.value)
                 // Recolor aus
-                aus.setStyle(style)
+                aus.setStyle(auStyle)
         })
     )
     // Initialize selector
@@ -138,38 +157,96 @@ def makeMap():
     item.addClass('ui-selected')
     $('#num-bedrooms-rent').val(item[0].value)
 
-    // Add a parking cost slider widget
-    PARKING_DEFAULT = 0
-    $(def():
-        $( "#parking-cost-slider" ).slider({
-            'orientation': 'horizontal',
-            'range': 'min',
-            'min': 0,
-            'max': 30,
-            'value': PARKING_DEFAULT,
-            'step': 1,
-            'slide': def(event, ui): 
-                // Update income display
-                $('#parking').val(numToDollarStr(ui.value))
-            ,
-            'stop': def(event, ui):
-                // Recolor aus
-                aus.setStyle(style)
-        })
-        // Initialize slider 
-        s = $('#parking-cost-slider')
-        $('#parking').val(numToDollarStr(s.slider('value')))
-    )
+    // Add mode selector widgets
+    for k in range(2):
+        modeId = '#mode' + str(k)
+        parkingId = '#parking' + str(k)
+        parkingSliderId = '#parking-slider' + str(k)
+        $(def():
+            $(modeId).selectable({
+                'selected': def(event, ui):
+                    // Update nuber of bedrooms
+                    $(modeId).val(ui.selected.id)
+                    mode = $(modeId).val()
+                    if mode != 'car':
+                        // Zero parking cost
+                        $(parkingId).val('$0')
+                        $(parkingSliderId).slider('value', 0)
+                    else:
+                        // Set car ownership to 1 car if it's 0
+                        item = $('#num-cars li.ui-selected')
+                        if item.val() == 0:
+                            item.removeClass('ui-selected')
+                            $('#num-cars li:eq(1)').addClass('ui-selected')
+                            $('#num-cars').val(1)
+                    // Recolor aus
+                    aus.setStyle(auStyle)
+            })
+        )
+        // Initialize selector
+        item = $(modeId + ' li:eq(1)')
+        item.addClass('ui-selected')
+        $(modeId).val(item[0].id)
+
+    // Add a number-of-workdays sliders
+    for k in range(2):
+        nwId = '#num-workdays' + str(k)
+        nwSliderId = '#num-workdays-slider' + str(k)
+        $(def():
+            $(nwSliderId).slider({
+                'orientation': 'horizontal',
+                'range': 'min',
+                'min': 0,
+                'max': 7,
+                'value': 5,
+                'step': 1,
+                'slide': def(event, ui): 
+                    // Update income display
+                    $(nwId).val(ui.value)
+                ,
+                'stop': def(event, ui):
+                    // Recolor aus
+                    aus.setStyle(auStyle)
+            })
+            // Initialize slider 
+            s = $(nwSliderId)
+            $(nwId).val(s.slider('value'))
+        )
+
+
+    // Add parking cost slider widgets
+    for k in range(2):
+        parkingId = '#parking' + str(k)
+        parkingSliderId = '#parking-slider' + str(k)
+        $(def():
+            $(parkingSliderId).slider({
+                'orientation': 'horizontal',
+                'range': 'min',
+                'min': 0,
+                'max': 30,
+                'value': 0,
+                'step': 1,
+                'slide': def(event, ui): 
+                    // Update parking cost display
+                    $(parkingId).val(numToDollarStr(ui.value))
+                ,
+                'stop': def(event, ui):
+                    // Recolor aus
+                    aus.setStyle(auStyle)
+            })
+            // Initialize slider 
+            s = $(parkingSliderId)
+            $(parkingId).val(numToDollarStr(s.slider('value')))
+        )
 
     // Add a number-of-cars select widget
-    WEEKLY_CAR_OWN_COST = 2228/52
     $(def():
         $("#num-cars").selectable({
             'selected': def(event, ui):
                 // Update nuber of bedrooms
                 $('#num-cars').val(ui.selected.value)
                 // Recolor aus
-                aus.setStyle(style)
+                aus.setStyle(auStyle)
         })
     )
     // Initialize selector
@@ -177,60 +254,9 @@ def makeMap():
     item.addClass('ui-selected')
     $('#num-cars').val(item[0].value)
 
-    // Add a mode mode selector widget
-    COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
-      'transit': 0.218}
-    $(def():
-        $("#mode").selectable({
-            'selected': def(event, ui):
-                // Update nuber of bedrooms
-                $('#mode').val(ui.selected.id)
-                mode = $('#mode').val()
-                if mode != 'car':
-                    // Zero parking cost
-                    $('#parking').val('$0')
-                    $('#parking-cost-slider').slider('value', 0)
-                else:
-                    // Set car ownership to 1 car if it's 0
-                    item = $('#num-cars li.ui-selected')
-                    if item.val() == 0:
-                        item.removeClass('ui-selected')
-                        $('#num-cars li:eq(1)').addClass('ui-selected')
-                        $('#num-cars').val(1)
-                // Recolor aus
-                aus.setStyle(style)
-        })
-    )
-    // Initialize selector
-    item = $('#mode li:eq(1)')
-    item.addClass('ui-selected')
-    $('#mode').val(item[0].id)
+    // ------------------------------------------------------------------------
+    // Make map 
 
-    // Add a number-of-workdays slider
-    // Add a parking cost slider widget
-    $(def():
-        $( "#num-workdays-slider" ).slider({
-            'orientation': 'horizontal',
-            'range': 'min',
-            'min': 0,
-            'max': 7,
-            'value': 5,
-            'step': 1,
-            'slide': def(event, ui): 
-                // Update income display
-                $('#num-workdays').val(ui.value)
-            ,
-            'stop': def(event, ui):
-                // Recolor aus
-                aus.setStyle(style)
-        })
-        // Initialize slider 
-        s = $('#num-workdays-slider')
-        $('#num-workdays').val(s.slider('value'))
-    )
-
-
-    // Create map 
     map = L.map('map', {
         'center': [lat, lon],
         'zoom': 10,
@@ -347,23 +373,33 @@ def makeMap():
     
     info.addTo(map)
 
-    workMarker = L.marker(markerLatLon, {
+    workMarker0 = L.marker(markerLatLon0, {
         'draggable': True,
         'icon': L.mapbox.marker.icon({
             'marker-color': COLORS[-2], //'#9370DB',
+            'marker-symbol': 'circle-stroked',
         })
     }).addTo(map)
-    workMarker.bindPopup('Move this marker to where you work')
-    workMarker.on('drag', def(e):
-        // In marker popup display the name of the area unit 
-        // being hovered over
-        setWorkPopup(this)
-    )
-    workMarker.on('dragend', def(e):
-        // setWorkPopup(this)
-        // Recolor aus
-        aus.setStyle(style)
-    )
+    workMarker1 = L.marker(markerLatLon1, {
+        'draggable': True,
+        'icon': L.mapbox.marker.icon({
+            'marker-color': COLORS[-2], //'#9370DB',
+            'marker-symbol': 'triangle-stroked',
+        })
+    }).addTo(map)
+    workMarkers = [workMarker0, workMarker1]
+    for marker in workMarkers:
+        marker.bindPopup('Move this marker to where you work')
+        marker.on('drag', def(e):
+            // In marker popup display the name of the area unit 
+            // being hovered over
+            setWorkPopup(this)
+        )
+        marker.on('dragend', def(e):
+            // setWorkPopup(this)
+            // Recolor aus
+            aus.setStyle(auStyle)
+        )
 
     def getWorkAuName(marker):
         latLon = marker.getLatLng()
@@ -390,7 +426,7 @@ def makeMap():
     // Add features/aus to map
     nonlocal aus
     aus = L.geoJson(aus, {
-        'style': style,
+        'style': auStyle,
         'onEachFeature': onEachFeature
     }).addTo(map)
     
@@ -401,7 +437,7 @@ def makeMap():
                 return COLORS[i]
         return COLORS[0]
     
-    def style(feature):
+    def auStyle(feature):
         c = getColor(getWeeklyTotalCostFraction(feature))
         return {
           'fillColor': c,
@@ -468,6 +504,7 @@ def makeMap():
             'click': zoomToFeature,
         })
 
+    // ------------------------------------------------------------------------
     // Accounting functions
     def getWeeklyIncome():
         income = $('#income').val() // Formatted string
@@ -490,39 +527,52 @@ def makeMap():
         return rent
 
     def getWeeklyCommuteCostAndTime(feature):
-        mode = $('#mode').val() 
-        console.log('mode', mode)
         // Get commute distance and time from this feature to work
         auName = feature.properties.AU2013_NAM
         i = MIndexByAu[auName]
-        workAuName = getWorkAuName(workMarker)
-        if workAuName is None:
+
+        modes = []
+        distances_and_times = []
+        numWorkdays = []
+        for k in range(2):
+            workAuName = getWorkAuName(workMarkers[k])
+            if workAuName is None:
+                continue
+            mode = $('#mode' + str(k)).val()
+            modes.append(mode)
+            j = MIndexByAu[workAuName]
+            distances_and_times.append(M[mode][i][j])
+            numWorkdays.append(int($('#num-workdays' + str(k)).val()))
+        if not distances_and_times:
             return 0, 0
-        j = MIndexByAu[workAuName]
-        distance, time = M[mode][i][j]
-        numWorkdays = int($('#num-workdays').val())
-        // Get weekly cost of mode
-        if distance is not None:
-            cost = distance*COMMUTE_COST_PER_KM_PER_MODE[mode]*numWorkdays*2
-            time = time*numWorkdays*2
-        else:
-            cost = None
-            time = None
-        return cost, time
+        
+        // Get weekly cost of commute
+        total_cost = 0
+        total_time = 0
+        for k, distance_and_time in enumerate(distances_and_times):
+            distance, time = distance_and_time
+            total_cost += distance*COMMUTE_COST_PER_KM_PER_MODE[modes[k]]*\
+              numWorkdays[k]*2
+            total_time = time*numWorkdays[k]*2
+        return total_cost, total_time
 
     def getWeeklyCarOwnCost():
         numCars = int($('#num-cars').val())
         return numCars*WEEKLY_CAR_OWN_COST
 
     def getWeeklyParkingCost():
-        parking = $('#parking').val() // Formatted string
-        numWorkdays = int($('#num-workdays').val())
-        return numToDollarStr(parking, True)*numWorkdays
+        total_cost = 0
+        for k in range(2):
+            parking = $('#parking' + str(k)).val()
+            parking = numToDollarStr(parking, True)
+            numWorkdays = int($('#num-workdays' + str(k)).val())
+            total_cost += parking*numWorkdays 
+        return total_cost
 
     def getWeeklyTotalCost(feature):
         // Return the total cost for living in this au/feature
         rent = getWeeklyRent(feature)
-        cc = getWeeklyCommuteCostAndTime(feature)[0]
+        cc = getWeeklyCommuteCostAndTime(feature)[0] 
         if rent is not None and cc is not None:
             total = rent +\
               cc +\
