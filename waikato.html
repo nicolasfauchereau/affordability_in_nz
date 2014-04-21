@@ -44,7 +44,7 @@
         </ul>
     </div>
     <p>
-        You just got a job in Waikato. Now where to live?
+        You and your partner, if you have one, just got a job in Waikato. Now where to live?
         <br />
         This application color codes Waikato's area units by their affordability to you. Here affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below.
     </p>
@@ -55,7 +55,7 @@
             <ol>
                 <li>
                     <label for='income'>
-                        What will your gross annual income be?
+                        What will your combined gross annual income be?
                         <br />
                     </label>
                     <input type='text' id='income' readonly />
@@ -86,7 +86,6 @@
                             5
                         </li>
                     </ul>
-                    <br />
                 </li>
                 <li>
                     For how many of these bedrooms will you pay rent?
@@ -107,38 +106,60 @@
                             5
                         </li>
                     </ul>
-                    <br />
                 </li>
                 <li>
-                    Where will you work? Move the red map marker.
+                    Where will you work? Move the map markers.
                 </li>
                 <li>
                     How will you commute?
-                    <ul id='mode'>
+                    <ul id='mode0'>
                         <li class='ui-state-default icon-walk' id='walk' title='walk' />
                         <li class='ui-state-default icon-bicycle' id='bicycle' title='bicycle' />
                         <li class='ui-state-default icon-bus' id='transit' title='public transport' />
                         <li class='ui-state-default icon-car' id='car' title='car' />
+                        <li>
+                            You
+                        </li>
                     </ul>
-                    <br />
+                    <ul id='mode1'>
+                        <li class='ui-state-default icon-walk' id='walk' title='walk' />
+                        <li class='ui-state-default icon-bicycle' id='bicycle' title='bicycle' />
+                        <li class='ui-state-default icon-bus' id='transit' title='public transport' />
+                        <li class='ui-state-default icon-car' id='car' title='car' />
+                        <li>
+                            Partner
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <label for='num-workdays'>
+                    <label for='num-workdays0'>
                         How many days a week will you commute?
                     </label>
                     <br />
-                    <input type='text' id='num-workdays' readonly />
-                    <div id='num-workdays-slider'>
+                    <input type='text' id='num-workdays0' readonly />
+                    <div id='num-workdays-slider0'>
                     </div>
+                    You
+                    <br />
+                    <input type='text' id='num-workdays1' readonly />
+                    <div id='num-workdays-slider1'>
+                    </div>
+                    Partner
                 </li>
                 <li>
-                    <label for='parking'>
+                    <label for='parking0'>
                         How much will daily work parking cost?
                     </label>
                     <br />
-                    <input type='text' id='parking' readonly />
-                    <div id='parking-cost-slider'>
+                    <input type='text' id='parking0' readonly />
+                    <div id='parking-slider0'>
                     </div>
+                    You
+                    <br />
+                    <input type='text' id='parking1' readonly />
+                    <div id='parking-slider1'>
+                    </div>
+                    Partner
                 </li>
                 <li>
                     How many cars will you own?
@@ -156,12 +177,13 @@
                             3
                         </li>
                     </ul>
-                    <br />
                 </li>
             </ol>
         </div>
     </div>
     <p>
+        Hint! To ignore your partner, cast his/her map marker into the sea or zero his/her commute days.
+        <br />
         Beware! Commute times are computed in traffic-free conditions, so driving times are probably underestimated.
     </p>
     <script type="application/json" id="data">
@@ -173,7 +195,7 @@
         "lon": 175.28,
         "lat": -37.78,
         "maxBounds": [[-40 , 173], [-35, 178]],
-        "markerLatLon": [-37.78, 174.8],
+        "markerLatLons": [[-37.79, 174.78], [-37.79, 174.82]],
         "medianAnnualIncome": 40976
       }
     </script>

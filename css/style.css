@@ -149,7 +149,7 @@ section {
     padding: 0; }
     #num-bedrooms li, #num-bedrooms-rent li, #mode0 li, #mode1 li, #num-cars li {
       display: inline-block;
-      margin: 0em 0.2em 0.2em 0em;
+      margin: 0em 0em 0.2em 0em;
       padding: 0.2em 0.4em;
       height: 1.2em;
       text-align: center;
@@ -166,6 +166,9 @@ section {
         #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode0 .blocked,
         #mode1 .blocked, #num-cars .blocked {
           opacity: 0; }
+
+#mode0 li, #mode1 li {
+  margin: 0em 0.3em 0.2em 0em; }
 
 #num-workdays0, #num-workdays1, #parking0, #parking1 {
   border: 0;
