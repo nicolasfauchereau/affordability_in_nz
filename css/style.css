@@ -62,7 +62,7 @@ ol {
   #map {
     float: left;
     width: 75%;
-    min-height: 550px; }
+    min-height: 570px; }
 
     #sidebar {
       float: right;
@@ -83,9 +83,9 @@ ol {
         font-size: 9pt;
         line-height: 1.2;
         color: black;
-        width: 190px;
+        width: 180px;
         padding-bottom: 1em;
-        min-height: 135px; }
+        min-height: 150px; }
         .info h4 {
           margin: 0 0 0.5em 0;
           font-weight: bold; }

@@ -401,35 +401,47 @@ def makeUI():
     info.update = def(feature=None):
         // TODO: Optimize this. Too many total cost calculations! 
         if feature:
-            if getWeeklyTotalCostFraction(feature) is None:
-                wtcf = 'n/a'
+            income = getWeeklyIncome()
+            numBedrooms = $('#num-bedrooms').val()
+            numBedroomsRent = $('#num-bedrooms-rent').val()
+            rent = getWeeklyRent(feature)
+            commuteCost, commuteTime = getWeeklyCommuteCostAndTime(feature)
+            park = getWeeklyParkingCost()
+            car = getWeeklyCarOwnCost()
+            // Format quantities
+            if commuteTime is not None:
+                commuteTime = commuteTime.toFixed(1) + '&nbsp;h'
             else:
-                wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(1) + '%'
-            nb = $('#num-bedrooms').val()
-            nbr = $('#num-bedrooms-rent').val()
-            wcc, wct = getWeeklyCommuteCostAndTime(feature)
-            if wct is not None:
-                wct = wct.toFixed(1) + '&nbsp;h'
+                commuteTime = 'n/a'
+            if rent is not None and commuteCost is not None:
+                total = rent + commuteCost + park + car
+                fraction = total/income
+                percent = (fraction*100).toFixed(1) + '%'
             else:
-                wct = 'n/a'
+                total = None
+                fraction = None
+                percent = 'n/a'
             message = '<h4>' + feature.properties.AU2013_NAM + '</h4>' +\
                 '<table>' +\
-                '<tr><td>Rent per week (' + nbr + ' of ' + nb + ' bd)</td><td>' +\
-                numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
+                '<tr><td>Income per week</td><td>' +\
+                numToDollarStr(income, False) + '</td>' +\
+                '<tr><td>Rent per week (' + numBedroomsRent +\
+                ' of ' + numBedrooms + ' bd)</td><td>' +\
+                numToDollarStr(rent, False) + '</td></tr>' +\
                 '<tr><td>Commute cost per week</td><td>' +\
-                numToDollarStr(wcc, False) + '</td></tr>' +\
+                numToDollarStr(commuteCost, False) + '</td></tr>' +\
                 '<tr><td>Commute time per week</td><td>' +\
-                wct + '</td></tr>' +\
+                commuteTime + '</td></tr>' +\
                 '<tr><td>Parking cost per week</td><td>' +\
-                numToDollarStr(getWeeklyParkingCost(), False) +\
+                numToDollarStr(park, False) +\
                 '</td></tr>' +\
                 '<tr><td>Car cost per week</td><td>' +\
-                numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
+                numToDollarStr(car, False) + '</td></tr>' +\
                 '<tr><td>Total cost per week</td><td>' +\
-                numToDollarStr(getWeeklyTotalCost(feature), False) +\
+                numToDollarStr(total, False) +\
                 '</td></tr>' +\
                 '<tr><td>% of weekly income</td><td>' +\
-                wtcf +\
+                percent +\
                 '</td></tr>' +\
                 '</table>'
         else:
@@ -441,6 +453,7 @@ def makeUI():
 
     workMarker0 = L.marker(markerLatLon0, {
         'draggable': True,
+        'title': 'Your Work',
         'icon': L.mapbox.marker.icon({
             'marker-color': COLORS[-2], //'#9370DB',
             'marker-symbol': 'y',
@@ -448,6 +461,7 @@ def makeUI():
     }).addTo(map)
     workMarker1 = L.marker(markerLatLon1, {
         'draggable': True,
+        'title': "Partner's Work",
         'icon': L.mapbox.marker.icon({
             'marker-color': COLORS[-2], //'#9370DB',
             'marker-symbol': 'p',
@@ -455,7 +469,7 @@ def makeUI():
     }).addTo(map)
     workMarkers = [workMarker0, workMarker1]
     for marker in workMarkers:
-        marker.bindPopup('Move this marker to where you work')
+        marker.bindPopup('<h4>' + marker.options.title + '</h4>Undefined')
         marker.on('drag', def(e):
             // In marker popup display the name of the area unit 
             // being hovered over
@@ -481,7 +495,7 @@ def makeUI():
 
     def setWorkPopup(marker):
         auName = getWorkAuName(marker)
-        text = '<h4>Work</h4>'
+        text = '<h4>' + marker.options.title + '</h4>'
         if auName:
             text += auName
         else:
@@ -596,30 +610,26 @@ def makeUI():
         // Get commute distance and time from this feature to work
         auName = feature.properties.AU2013_NAM
         i = MIndexByAu[auName]
-
-        modes = []
-        distances_and_times = []
-        numWorkdays = []
-        for k in range(2):
-            workAuName = getWorkAuName(workMarkers[k])
-            if workAuName is None:
-                continue
-            mode = $('#mode' + str(k)).val()
-            modes.append(mode)
-            j = MIndexByAu[workAuName]
-            distances_and_times.append(M[mode][i][j])
-            numWorkdays.append(int($('#num-workdays' + str(k)).val()))
-        if not distances_and_times:
-            return 0, 0
-        
-        // Get weekly cost of commute
         total_cost = 0
         total_time = 0
-        for k, distance_and_time in enumerate(distances_and_times):
-            distance, time = distance_and_time
-            total_cost += distance*COMMUTE_COST_PER_KM_PER_MODE[modes[k]]*\
-              numWorkdays[k]*2
-            total_time += time*numWorkdays[k]*2
+        for k in range(2):
+            numWorkdays = int($('#num-workdays' + str(k)).val())
+            if not numWorkdays:
+                // Doesn't contribute to total cost and time
+                continue
+            mode = $('#mode' + str(k)).val()
+            workAuName = getWorkAuName(workMarkers[k])
+            if workAuName is None:
+                // Doesn't contribute to total cost and time
+                continue
+            j = MIndexByAu[workAuName]
+            distance, time = M[mode][i][j]
+            if distance is None:
+                // Can't get to work from this feature via this mode
+                return None, None
+            total_cost += numWorkdays*2*distance*\
+              COMMUTE_COST_PER_KM_PER_MODE[mode]
+            total_time += numWorkdays*2*time            
         return total_cost, total_time
 
     def getWeeklyCarOwnCost():
@@ -640,10 +650,7 @@ def makeUI():
         rent = getWeeklyRent(feature)
         cc = getWeeklyCommuteCostAndTime(feature)[0] 
         if rent is not None and cc is not None:
-            total = rent +\
-              cc +\
-              getWeeklyCarOwnCost() +\
-              getWeeklyParkingCost()                
+            total = rent + cc + getWeeklyCarOwnCost() + getWeeklyParkingCost()
         else:
             total = None
         return total

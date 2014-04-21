@@ -92,6 +92,8 @@ def map_tool($income_note):
                             '3'
                 
     p:
+        'Hint! To ignore your partner, cast his/her map marker into the sea or zero his/her commute days.'
+        br() 
         'Beware! Commute times are computed in traffic-free conditions, so driving times are probably underestimated.'
 
     data()

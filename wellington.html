@@ -44,7 +44,7 @@
         </ul>
     </div>
     <p>
-        You, and your partner if you have one, just got a job in Wellington. Now where to live?
+        You and your partner, if you have one, just got a job in Wellington. Now where to live?
         <br />
         This application color codes Wellington's area units by their affordability to you. Here affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below.
     </p>
@@ -86,7 +86,6 @@
                             5
                         </li>
                     </ul>
-                    <br />
                 </li>
                 <li>
                     For how many of these bedrooms will you pay rent?
@@ -107,10 +106,9 @@
                             5
                         </li>
                     </ul>
-                    <br />
                 </li>
                 <li>
-                    Where will you work? Move the red map marker.
+                    Where will you work? Move the map markers.
                 </li>
                 <li>
                     How will you commute?
@@ -123,7 +121,6 @@
                             You
                         </li>
                     </ul>
-                    <br />
                     <ul id='mode1'>
                         <li class='ui-state-default icon-walk' id='walk' title='walk' />
                         <li class='ui-state-default icon-bicycle' id='bicycle' title='bicycle' />
@@ -133,7 +130,6 @@
                             Partner
                         </li>
                     </ul>
-                    <br />
                 </li>
                 <li>
                     <label for='num-workdays0'>
@@ -181,12 +177,13 @@
                             3
                         </li>
                     </ul>
-                    <br />
                 </li>
             </ol>
         </div>
     </div>
     <p>
+        Hint! To ignore your partner, cast his/her map marker into the sea or zero his/her commute days.
+        <br />
         Beware! Commute times are computed in traffic-free conditions, so driving times are probably underestimated.
     </p>
     <script type="application/json" id="data">
@@ -198,7 +195,7 @@
         "lon": 174.95,
         "lat": -41.2,
         "maxBounds": [[-42.0 , 174.17], [-39.65, 176.97]],
-        "markerLatLon": [-41.2, 174.6],
+        "markerLatLons": [[-41.2, 174.6], [-41.2, 174.64]],
         "medianAnnualIncome": 47892
       }
     </script>
