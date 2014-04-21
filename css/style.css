@@ -83,7 +83,7 @@ ol {
         font-size: 9pt;
         line-height: 1.2;
         color: black;
-        width: 180px;
+        width: 190px;
         padding-bottom: 1em;
         min-height: 135px; }
         .info h4 {
@@ -145,13 +145,12 @@ section {
 
   #num-bedrooms, #num-bedrooms-rent, #mode0, #mode1, #num-cars {
     list-style-type: none;
-    margin: 0.5em 0em 2em 0em;
+    margin: 0.5em 0em 0.5em 0em;
     padding: 0; }
     #num-bedrooms li, #num-bedrooms-rent li, #mode0 li, #mode1 li, #num-cars li {
-      display: inline;
+      display: inline-block;
       margin: 0em 0.2em 0.2em 0em;
       padding: 0.2em 0.4em;
-      float: left;
       height: 1.2em;
       text-align: center;
       vertical-align: middle;

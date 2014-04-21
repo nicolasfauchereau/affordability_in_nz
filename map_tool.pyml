@@ -5,7 +5,7 @@ def map_tool($income_note):
             ol:
                 li:
                     label(for='income'):
-                        'What will your gross annual income be?'
+                        'What will your combined gross annual income be?'
                         br()
                     input(type='text' id='income' readonly)
                     div(id='income-slider')
@@ -26,7 +26,6 @@ def map_tool($income_note):
                             '4'
                         li(class='ui-state-default' value='5'):
                             '5'
-                    br()
                 li:
                     'For how many of these bedrooms will you pay rent?'
                     ul(id='num-bedrooms-rent'):
@@ -40,9 +39,8 @@ def map_tool($income_note):
                             '4'
                         li(class='ui-state-default' value='5'):
                             '5'
-                    br()
                 li:
-                    'Where will you work? Move the red map marker.'
+                    'Where will you work? Move the map markers.'
                 li:
                     'How will you commute?'
                     ul(id='mode0')
@@ -52,7 +50,6 @@ def map_tool($income_note):
                         li(class='ui-state-default icon-car' id='car' title='car')
                         li:
                             'You' 
-                    br()
                     ul(id='mode1')
                         li(class='ui-state-default icon-walk' id='walk' title='walk')
                         li(class='ui-state-default icon-bicycle' id='bicycle' title='bicycle')
@@ -60,7 +57,6 @@ def map_tool($income_note):
                         li(class='ui-state-default icon-car' id='car' title='car')
                         li:
                             'Partner'
-                    br()
                 li:
                     label(for='num-workdays0'):
                         'How many days a week will you commute?'
@@ -94,7 +90,6 @@ def map_tool($income_note):
                             '2'
                         li(class='ui-state-default' value='3'):
                             '3'
-                    br()
                 
     p:
         'Beware! Commute times are computed in traffic-free conditions, so driving times are probably underestimated.'

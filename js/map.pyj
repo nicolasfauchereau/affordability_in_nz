@@ -80,7 +80,7 @@ def makeUI():
             'orientation': 'horizontal',
             'range': 'min',
             'min': 100,
-            'max': 150000,
+            'max': 200000,
             'value': medianAnnualIncome,
             'step': 100,
             'slide': def(event, ui): 
@@ -157,87 +157,153 @@ def makeUI():
     item.addClass('ui-selected')
     $('#num-bedrooms-rent').val(item[0].value)
 
-    // Add mode selector widgets
-    for k in range(2):
-        modeId = '#mode' + str(k)
-        parkingId = '#parking' + str(k)
-        parkingSliderId = '#parking-slider' + str(k)
-        $(def():
-            $(modeId).selectable({
-                'selected': def(event, ui):
-                    // Update nuber of bedrooms
-                    $(modeId).val(ui.selected.id)
-                    mode = $(modeId).val()
-                    if mode != 'car':
-                        // Zero parking cost
-                        $(parkingId).val('$0')
-                        $(parkingSliderId).slider('value', 0)
-                    else:
-                        // Set car ownership to 1 car if it's 0
-                        item = $('#num-cars li.ui-selected')
-                        if item.val() == 0:
-                            item.removeClass('ui-selected')
-                            $('#num-cars li:eq(1)').addClass('ui-selected')
-                            $('#num-cars').val(1)
+
+    // Add a mode selector widgets
+    $(def():
+        $("#mode0").selectable({
+            'selected': def(event, ui):
+                // Update nuber of bedrooms
+                $('#mode0').val(ui.selected.id)
+                mode = $('#mode0').val()
+                if mode != 'car':
+                    // Zero parking cost
+                    $('#parking0').val('$0')
+                    $('#parking-slider0').slider('value', 0)
+                else:
+                    // Set car ownership to 1 car if it's 0
+                    item = $('#num-cars li.ui-selected')
+                    if item.val() == 0:
+                        item.removeClass('ui-selected')
+                        $('#num-cars li:eq(1)').addClass('ui-selected')
+                        $('#num-cars').val(1)
+                numWorkdays = int($('#num-workdays0').val())
+                if numWorkdays:
                     // Recolor aus
                     aus.setStyle(auStyle)
-            })
-        )
-        // Initialize selector
-        item = $(modeId + ' li:eq(1)')
-        item.addClass('ui-selected')
-        $(modeId).val(item[0].id)
+        })
+    )
+    // Initialize selector
+    item = $('#mode0 li:eq(1)')
+    item.addClass('ui-selected')
+    $('#mode0').val(item[0].id)
+
+    $(def():
+        $("#mode1").selectable({
+            'selected': def(event, ui):
+                // Update nuber of bedrooms
+                $('#mode1').val(ui.selected.id)
+                mode = $('#mode1').val()
+                if mode != 'car':
+                    // Zero parking cost
+                    $('#parking1').val('$0')
+                    $('#parking-slider1').slider('value', 0)
+                else:
+                    // Set car ownership to 1 car if it's 0
+                    item = $('#num-cars li.ui-selected')
+                    if item.val() == 0:
+                        item.removeClass('ui-selected')
+                        $('#num-cars li:eq(1)').addClass('ui-selected')
+                        $('#num-cars').val(1)
+                numWorkdays = int($('#num-workdays1').val())
+                if numWorkdays:
+                    // Recolor aus
+                    aus.setStyle(auStyle)
+        })
+    )
+    // Initialize selector
+    item = $('#mode1 li:eq(1)')
+    item.addClass('ui-selected')
+    $('#mode1').val(item[0].id)
 
     // Add a number-of-workdays sliders
-    for k in range(2):
-        nwId = '#num-workdays' + str(k)
-        nwSliderId = '#num-workdays-slider' + str(k)
-        $(def():
-            $(nwSliderId).slider({
-                'orientation': 'horizontal',
-                'range': 'min',
-                'min': 0,
-                'max': 7,
-                'value': 5,
-                'step': 1,
-                'slide': def(event, ui): 
-                    // Update income display
-                    $(nwId).val(ui.value)
-                ,
-                'stop': def(event, ui):
-                    // Recolor aus
-                    aus.setStyle(auStyle)
-            })
-            // Initialize slider 
-            s = $(nwSliderId)
-            $(nwId).val(s.slider('value'))
-        )
+    $(def():
+        $( "#num-workdays-slider0" ).slider({
+            'orientation': 'horizontal',
+            'range': 'min',
+            'min': 0,
+            'max': 7,
+            'value': 5,
+            'step': 1,
+            'slide': def(event, ui): 
+                // Update income display
+                $('#num-workdays0').val(ui.value)
+            ,
+            'stop': def(event, ui):
+                // Recolor aus
+                aus.setStyle(auStyle)
+        })
+        // Initialize slider 
+        s = $('#num-workdays-slider0')
+        $('#num-workdays0').val(s.slider('value'))
+    )
 
+    $(def():
+        $( "#num-workdays-slider1" ).slider({
+            'orientation': 'horizontal',
+            'range': 'min',
+            'min': 0,
+            'max': 7,
+            'value': 0,
+            'step': 1,
+            'slide': def(event, ui): 
+                // Update income display
+                $('#num-workdays1').val(ui.value)
+            ,
+            'stop': def(event, ui):
+                // Recolor aus
+                aus.setStyle(auStyle)
+        })
+        // Initialize slider 
+        s = $('#num-workdays-slider1')
+        $('#num-workdays1').val(s.slider('value'))
+    )
 
     // Add parking cost slider widgets
-    for k in range(2):
-        parkingId = '#parking' + str(k)
-        parkingSliderId = '#parking-slider' + str(k)
-        $(def():
-            $(parkingSliderId).slider({
-                'orientation': 'horizontal',
-                'range': 'min',
-                'min': 0,
-                'max': 30,
-                'value': 0,
-                'step': 1,
-                'slide': def(event, ui): 
-                    // Update parking cost display
-                    $(parkingId).val(numToDollarStr(ui.value))
-                ,
-                'stop': def(event, ui):
+    $(def():
+        $( "#parking-slider0" ).slider({
+            'orientation': 'horizontal',
+            'range': 'min',
+            'min': 0,
+            'max': 30,
+            'value': 0,
+            'step': 1,
+            'slide': def(event, ui): 
+                // Update income display
+                $('#parking0').val(numToDollarStr(ui.value))
+            ,
+            'stop': def(event, ui):
+                numWorkdays = int($('#num-workdays0').val())
+                if numWorkdays:
                     // Recolor aus
                     aus.setStyle(auStyle)
-            })
-            // Initialize slider 
-            s = $(parkingSliderId)
-            $(parkingId).val(numToDollarStr(s.slider('value')))
-        )
+        })
+        // Initialize slider 
+        s = $('#parking-slider0')
+        $('#parking0').val(numToDollarStr(s.slider('value')))
+    )
+
+    $(def():
+        $( "#parking-slider1" ).slider({
+            'orientation': 'horizontal',
+            'range': 'min',
+            'min': 0,
+            'max': 30,
+            'value': 0,
+            'step': 1,
+            'slide': def(event, ui): 
+                // Update income display
+                $('#parking1').val(numToDollarStr(ui.value))
+            ,
+            'stop': def(event, ui):
+                numWorkdays = int($('#num-workdays1').val())
+                if numWorkdays:
+                    // Recolor aus
+                    aus.setStyle(auStyle)
+        })
+        // Initialize slider 
+        s = $('#parking-slider1')
+        $('#parking1').val(numToDollarStr(s.slider('value')))
+    )
 
     // Add a number-of-cars select widget
     $(def():
@@ -377,14 +443,14 @@ def makeUI():
         'draggable': True,
         'icon': L.mapbox.marker.icon({
             'marker-color': COLORS[-2], //'#9370DB',
-            'marker-symbol': 'circle-stroked',
+            'marker-symbol': 'y',
         })
     }).addTo(map)
     workMarker1 = L.marker(markerLatLon1, {
         'draggable': True,
         'icon': L.mapbox.marker.icon({
             'marker-color': COLORS[-2], //'#9370DB',
-            'marker-symbol': 'triangle-stroked',
+            'marker-symbol': 'p',
         })
     }).addTo(map)
     workMarkers = [workMarker0, workMarker1]
@@ -553,7 +619,7 @@ def makeUI():
             distance, time = distance_and_time
             total_cost += distance*COMMUTE_COST_PER_KM_PER_MODE[modes[k]]*\
               numWorkdays[k]*2
-            total_time = time*numWorkdays[k]*2
+            total_time += time*numWorkdays[k]*2
         return total_cost, total_time
 
     def getWeeklyCarOwnCost():
