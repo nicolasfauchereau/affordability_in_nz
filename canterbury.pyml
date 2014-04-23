@@ -3,7 +3,7 @@ import map_tool
 
 def main():
     p:
-        'You just got a job in Canterbury. Now where to live?' 
+        'You and your partner, if you have one, just got a job in Canterbury. Now where to live?' 
         br()
         "This application color codes Canterbury's area units by their affordability to you. Here affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below."
     map_tool('employed Canterburians ($43,316)')
@@ -18,7 +18,7 @@ def data():
           "lon": 172.62,
           "lat": -43.53,
           "maxBounds": [[-46 , 169], [-41.8, 175]],
-          "markerLatLon": [-43.5, 172.8],
+          "markerLatLons": [[-43.5, 172.8], [-43.5, 172.84]],
           "medianAnnualIncome": 43316
         }
 

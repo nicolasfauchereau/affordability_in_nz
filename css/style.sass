@@ -72,7 +72,7 @@ ol
 #map
     float: left
     width: 75%
-    min-height: 550px
+    min-height: 570px
 #sidebar
     float: right
     width: 23%
@@ -82,7 +82,7 @@ ol
     @include font($small-font-size, 1.2)
     width: 180px
     padding-bottom: 1em
-    min-height: 135px
+    min-height: 150px
 .legend
     @include box
     @include font($small-font-size, 1.2)
@@ -117,27 +117,29 @@ section
     width: 180px
     margin: 1.1em 0em 1em 2em
     font-size: $tiny-font-size
-#num-bedrooms, #num-bedrooms-rent, #mode, #num-cars
+#num-bedrooms, #num-bedrooms-rent, #mode0, #mode1, #num-cars
     list-style-type: none 
-    margin: 0.5em 0em 2em 0em
+    margin: 0.5em 0em 0.5em 0em
     padding: 0 
     li
-        display: inline
-        margin: 0em 0.2em 0.2em 0em
-        padding: 0.2em 0.4em 
-        float: left 
+        display: inline-block
+        margin: 0em 0em 0.2em 0em
+        padding: 0.2em 0.4em
         height: 1.2em
         text-align: center 
         vertical-align: middle
         border-radius: $border-radius
-        color: inherit
+        color: inherit 
     .ui-selected, .ui-selecting  
         background: $highlight-color 
         opacity: $opacity
         color: white 
     .blocked
         opacity: 0
-#num-workdays, #parking
+#mode0, #mode1
+    li
+        margin: 0em 0.3em 0.2em 0em
+#num-workdays0, #num-workdays1, #parking0, #parking1
     border:0 
     width: 2.3em
     color: $highlight-color 
@@ -145,7 +147,7 @@ section
     font-size: 150%
     font-weight: bold
     background-color: $background-color
-#num-workdays-slider, #parking-cost-slider 
+#num-workdays-slider0, #num-workdays-slider1, #parking-slider0, #parking-slider1  
     width: 100px 
     display:inline-block
 

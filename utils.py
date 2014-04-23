@@ -576,16 +576,16 @@ def reformat_commute(filename):
             writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
-    region = 'waikato'
-    print('Creating files for %s...' % region)
-    print('  Shapes...')
-    create_shapes(region)
-    print('  Rents...')
-    create_rents(region)
-    print('  Centroids...')
-    create_centroids(region)
+    region = 'auckland'
+    # print('Creating files for %s...' % region)
+    # print('  Shapes...')
+    # create_shapes(region)
+    # print('  Rents...')
+    # create_rents(region)
+    # print('  Centroids...')
+    # create_centroids(region)
     # print('  Sample points...')
     # create_sample_points(region)
     # print('  Fake commutes...')
     # create_fake_commutes(region)
-    #create_commutes(region)
+    create_commutes(region)

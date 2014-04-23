@@ -62,7 +62,7 @@ ol {
   #map {
     float: left;
     width: 75%;
-    min-height: 550px; }
+    min-height: 570px; }
 
     #sidebar {
       float: right;
@@ -85,7 +85,7 @@ ol {
         color: black;
         width: 180px;
         padding-bottom: 1em;
-        min-height: 135px; }
+        min-height: 150px; }
         .info h4 {
           margin: 0 0 0.5em 0;
           font-weight: bold; }
@@ -143,15 +143,14 @@ section {
   margin: 1.1em 0em 1em 2em;
   font-size: 7pt; }
 
-  #num-bedrooms, #num-bedrooms-rent, #mode, #num-cars {
+  #num-bedrooms, #num-bedrooms-rent, #mode0, #mode1, #num-cars {
     list-style-type: none;
-    margin: 0.5em 0em 2em 0em;
+    margin: 0.5em 0em 0.5em 0em;
     padding: 0; }
-    #num-bedrooms li, #num-bedrooms-rent li, #mode li, #num-cars li {
-      display: inline;
-      margin: 0em 0.2em 0.2em 0em;
+    #num-bedrooms li, #num-bedrooms-rent li, #mode0 li, #mode1 li, #num-cars li {
+      display: inline-block;
+      margin: 0em 0em 0.2em 0em;
       padding: 0.2em 0.4em;
-      float: left;
       height: 1.2em;
       text-align: center;
       vertical-align: middle;
@@ -159,16 +158,19 @@ section {
       color: inherit; }
       #num-bedrooms .ui-selected, #num-bedrooms .ui-selecting,
       #num-bedrooms-rent .ui-selected, #num-bedrooms-rent .ui-selecting,
-      #mode .ui-selected, #mode .ui-selecting, #num-cars .ui-selected,
-      #num-cars .ui-selecting {
+      #mode0 .ui-selected, #mode0 .ui-selecting, #mode1 .ui-selected,
+      #mode1 .ui-selecting, #num-cars .ui-selected, #num-cars .ui-selecting {
         background: #d53e4f;
         opacity: 1;
         color: white; }
-        #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode .blocked,
-        #num-cars .blocked {
+        #num-bedrooms .blocked, #num-bedrooms-rent .blocked, #mode0 .blocked,
+        #mode1 .blocked, #num-cars .blocked {
           opacity: 0; }
 
-#num-workdays, #parking {
+#mode0 li, #mode1 li {
+  margin: 0em 0.3em 0.2em 0em; }
+
+#num-workdays0, #num-workdays1, #parking0, #parking1 {
   border: 0;
   width: 2.3em;
   color: #d53e4f;
@@ -177,7 +179,7 @@ section {
   font-weight: bold;
   background-color: white; }
 
-  #num-workdays-slider, #parking-cost-slider {
+  #num-workdays-slider0, #num-workdays-slider1, #parking-slider0, #parking-slider1 {
     width: 100px;
     display: inline-block; }
 
