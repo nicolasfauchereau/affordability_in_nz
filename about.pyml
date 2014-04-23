@@ -31,16 +31,14 @@ def main():
         li:
             'The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions. Also, distance estimates for an area unit to itself are currently zero for all travel modes.'
         li:
-            'Commute costs per km come from [MaMo2014, Table 2] and are (walk, bicycle, car, public transport) = (0, 0, $0.274, $0.218).' 
+            'Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274).' 
         li:
             'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'      
     h2:
         'Todo'
     ul:
-        li: 
-            'Allow for two-commuter families'
         li:
-            'Improve public transport cost estimates by using fare zones where possible'
+            'Improve public transport cost estimates by using fare data where available'
         li:
             'Include all regions of New Zealand'
         li:
