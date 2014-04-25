@@ -29,8 +29,9 @@ Notes
 
     - `Auckland <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/auckland.aspx>`_
     - `Canterbury <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/canterbury.aspx>`_ 
-    - `Wellington <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/wellington.aspx>`_
+    - `Nelson <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/nelson.aspx>`_
     - `Waikato <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/waikato.aspx>`_
+    - `Wellington <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/wellington.aspx>`_
 
 Resources
 ============

@@ -1,0 +1,730 @@
+origin (2013 area unit name),destination,distance (kilometers),time (hours)
+Atawhai,Atawhai,0.0,0.0
+Atawhai,Atmore,,
+Atawhai,Britannia,,
+Atawhai,Broads,,
+Atawhai,Bronte,,
+Atawhai,Clifton,,
+Atawhai,Enner Glynn,15.787,0.3288888888888889
+Atawhai,Grampians,8.705,0.7563888888888889
+Atawhai,Isel Park,14.668,0.8744444444444445
+Atawhai,Kirks,,
+Atawhai,Langbein,12.834,0.445
+Atawhai,Maitai,,
+Atawhai,Maitlands,12.733,0.4475
+Atawhai,Nayland,13.064,0.4886111111111111
+Atawhai,Nelson Airport,15.051,0.8936111111111111
+Atawhai,Ngawhatu,15.153,0.3211111111111111
+Atawhai,Port Nelson,4.814,0.9641666666666666
+Atawhai,Saxton,13.784,0.6313888888888889
+Atawhai,Saxton Island,15.125,0.31666666666666665
+Atawhai,Tahuna Hills,9.339,0.4841666666666667
+Atawhai,Tahunanui,8.823,0.3111111111111111
+Atawhai,The Brook,,
+Atawhai,The Wood,3.567,0.7097222222222223
+Atawhai,Toi Toi,,
+Atawhai,Trafalgar,4.552,0.9169444444444445
+Atawhai,Washington,,
+Atawhai,Whangamoa,14.769,0.25916666666666666
+Atmore,Atawhai,,
+Atmore,Atmore,0.0,0.0
+Atmore,Britannia,,
+Atmore,Broads,4.893,0.9666666666666667
+Atmore,Bronte,3.254,0.63
+Atmore,Clifton,9.798,0.6255555555555555
+Atmore,Enner Glynn,10.411,0.7733333333333333
+Atmore,Grampians,,
+Atmore,Isel Park,14.429,0.9413888888888889
+Atmore,Kirks,3.98,0.7786111111111111
+Atmore,Langbein,12.595,0.5119444444444444
+Atmore,Maitai,3.006,0.5305555555555556
+Atmore,Maitlands,12.494,0.5144444444444445
+Atmore,Nayland,12.825,0.5555555555555556
+Atmore,Nelson Airport,,
+Atmore,Ngawhatu,14.914,0.38805555555555554
+Atmore,Port Nelson,4.911,0.9505555555555556
+Atmore,Saxton,13.545,0.6983333333333334
+Atmore,Saxton Island,14.886,0.3836111111111111
+Atmore,Tahuna Hills,,
+Atmore,Tahunanui,8.584,0.37805555555555553
+Atmore,The Brook,,
+Atmore,The Wood,3.291,0.605
+Atmore,Toi Toi,,
+Atmore,Trafalgar,3.239,0.6038888888888889
+Atmore,Washington,,
+Atmore,Whangamoa,19.839,0.3597222222222222
+Britannia,Atawhai,10.084,0.5119444444444444
+Britannia,Atmore,,
+Britannia,Britannia,0.0,0.0
+Britannia,Broads,3.138,0.6486111111111111
+Britannia,Bronte,2.777,0.5916666666666667
+Britannia,Clifton,8.721,0.9233333333333333
+Britannia,Enner Glynn,9.845,1.19
+Britannia,Grampians,5.688,0.9991666666666666
+Britannia,Isel Park,,
+Britannia,Kirks,2.016,0.425
+Britannia,Langbein,11.432,0.7763888888888889
+Britannia,Maitai,4.152,0.8533333333333334
+Britannia,Maitlands,11.331,0.7788888888888889
+Britannia,Nayland,11.662,0.82
+Britannia,Nelson Airport,,
+Britannia,Ngawhatu,13.751,0.6525
+Britannia,Port Nelson,1.736,0.33666666666666667
+Britannia,Saxton,12.382,0.9627777777777777
+Britannia,Saxton Island,13.723,0.6480555555555556
+Britannia,Tahuna Hills,3.28,0.7425
+Britannia,Tahunanui,3.169,0.6541666666666667
+Britannia,The Brook,,
+Britannia,The Wood,2.77,0.43027777777777776
+Britannia,Toi Toi,3.439,0.7558333333333334
+Britannia,Trafalgar,1.854,0.38555555555555554
+Britannia,Washington,1.733,0.405
+Britannia,Whangamoa,18.761,0.6575
+Broads,Atawhai,10.844,0.655
+Broads,Atmore,,
+Broads,Britannia,3.139,0.6727777777777778
+Broads,Broads,0.0,0.0
+Broads,Bronte,1.579,0.3377777777777778
+Broads,Clifton,9.481,1.0663888888888888
+Broads,Enner Glynn,4.102,0.9197222222222222
+Broads,Grampians,2.256,0.5258333333333334
+Broads,Isel Park,14.147,1.5719444444444444
+Broads,Kirks,2.091,0.43583333333333335
+Broads,Langbein,12.313,1.1425
+Broads,Maitai,4.093,0.8319444444444445
+Broads,Maitlands,4.089,0.8722222222222222
+Broads,Nayland,4.644,0.9605555555555556
+Broads,Nelson Airport,,
+Broads,Ngawhatu,14.632,1.0186111111111111
+Broads,Port Nelson,3.449,0.6961111111111111
+Broads,Saxton,13.263,1.3288888888888888
+Broads,Saxton Island,14.604,1.0141666666666667
+Broads,Tahuna Hills,4.263,0.9472222222222222
+Broads,Tahunanui,4.211,0.9069444444444444
+Broads,The Brook,,
+Broads,The Wood,3.53,0.5733333333333334
+Broads,Toi Toi,2.079,0.4816666666666667
+Broads,Trafalgar,2.357,0.47
+Broads,Washington,2.246,0.5197222222222222
+Broads,Whangamoa,19.522,0.8005555555555556
+Bronte,Atawhai,9.636,0.39694444444444443
+Bronte,Atmore,3.255,0.8361111111111111
+Bronte,Britannia,2.777,0.6008333333333333
+Bronte,Broads,1.557,0.3227777777777778
+Bronte,Bronte,0.0,0.0
+Bronte,Clifton,8.273,0.8083333333333333
+Bronte,Enner Glynn,7.448,0.6844444444444444
+Bronte,Grampians,3.326,0.7402777777777778
+Bronte,Isel Park,12.818,1.0908333333333333
+Bronte,Kirks,1.58,0.3283333333333333
+Bronte,Langbein,10.984,0.6613888888888889
+Bronte,Maitai,2.7,0.5347222222222222
+Bronte,Maitlands,10.883,0.6638888888888889
+Bronte,Nayland,11.214,0.705
+Bronte,Nelson Airport,13.201,1.11
+Bronte,Ngawhatu,13.303,0.5375
+Bronte,Port Nelson,2.699,0.5416666666666666
+Bronte,Saxton,11.934,0.8477777777777777
+Bronte,Saxton Island,13.275,0.5330555555555555
+Bronte,Tahuna Hills,7.489,0.7005555555555556
+Bronte,Tahunanui,6.973,0.5275
+Bronte,The Brook,3.6,0.7822222222222223
+Bronte,The Wood,2.322,0.31527777777777777
+Bronte,Toi Toi,2.76,0.6361111111111111
+Bronte,Trafalgar,1.06,0.195
+Bronte,Washington,2.869,0.6427777777777778
+Bronte,Whangamoa,18.313,0.5425
+Clifton,Atawhai,,
+Clifton,Atmore,13.185,1.0852777777777778
+Clifton,Britannia,,
+Clifton,Broads,,
+Clifton,Bronte,10.913,1.2241666666666666
+Clifton,Clifton,0.0,0.0
+Clifton,Enner Glynn,15.58,1.0866666666666667
+Clifton,Grampians,,
+Clifton,Isel Park,,
+Clifton,Kirks,,
+Clifton,Langbein,,
+Clifton,Maitai,,
+Clifton,Maitlands,,
+Clifton,Nayland,,
+Clifton,Nelson Airport,,
+Clifton,Ngawhatu,,
+Clifton,Port Nelson,,
+Clifton,Saxton,,
+Clifton,Saxton Island,,
+Clifton,Tahuna Hills,,
+Clifton,Tahunanui,,
+Clifton,The Brook,14.209,1.1077777777777778
+Clifton,The Wood,11.11,1.2313888888888889
+Clifton,Toi Toi,,
+Clifton,Trafalgar,9.852,0.98
+Clifton,Washington,,
+Clifton,Whangamoa,16.041,1.0533333333333332
+Enner Glynn,Atawhai,,
+Enner Glynn,Atmore,,
+Enner Glynn,Britannia,,
+Enner Glynn,Broads,4.103,0.8044444444444444
+Enner Glynn,Bronte,,
+Enner Glynn,Clifton,13.103,0.7886111111111112
+Enner Glynn,Enner Glynn,0.0,0.0
+Enner Glynn,Grampians,3.742,0.7938888888888889
+Enner Glynn,Isel Park,,
+Enner Glynn,Kirks,,
+Enner Glynn,Langbein,4.713,0.9177777777777778
+Enner Glynn,Maitai,,
+Enner Glynn,Maitlands,2.562,0.4986111111111111
+Enner Glynn,Nayland,3.473,0.6636111111111112
+Enner Glynn,Nelson Airport,4.577,0.9019444444444444
+Enner Glynn,Ngawhatu,,
+Enner Glynn,Port Nelson,,
+Enner Glynn,Saxton,,
+Enner Glynn,Saxton Island,,
+Enner Glynn,Tahuna Hills,4.361,0.9191666666666667
+Enner Glynn,Tahunanui,4.803,0.9358333333333333
+Enner Glynn,The Brook,,
+Enner Glynn,The Wood,,
+Enner Glynn,Toi Toi,,
+Enner Glynn,Trafalgar,,
+Enner Glynn,Washington,,
+Enner Glynn,Whangamoa,23.144,0.5227777777777778
+Grampians,Atawhai,,
+Grampians,Atmore,,
+Grampians,Britannia,5.832,1.1488888888888888
+Grampians,Broads,2.256,0.43277777777777776
+Grampians,Bronte,3.326,0.6586111111111111
+Grampians,Clifton,11.257,2.6108333333333333
+Grampians,Enner Glynn,3.742,0.8163888888888889
+Grampians,Grampians,0.0,0.0
+Grampians,Isel Park,,
+Grampians,Kirks,4.219,0.8413888888888889
+Grampians,Langbein,14.055,1.4638888888888888
+Grampians,Maitai,,
+Grampians,Maitlands,3.729,0.7686111111111111
+Grampians,Nayland,4.284,0.8569444444444444
+Grampians,Nelson Airport,,
+Grampians,Ngawhatu,,
+Grampians,Port Nelson,5.727,1.0858333333333334
+Grampians,Saxton,15.005,1.6502777777777777
+Grampians,Saxton Island,,
+Grampians,Tahuna Hills,,
+Grampians,Tahunanui,10.044,1.33
+Grampians,The Brook,,
+Grampians,The Wood,5.307,1.0844444444444445
+Grampians,Toi Toi,4.337,0.9127777777777778
+Grampians,Trafalgar,4.113,0.7955555555555556
+Grampians,Washington,4.504,0.9508333333333333
+Grampians,Whangamoa,21.298,2.345
+Isel Park,Atawhai,14.445,0.8566666666666667
+Isel Park,Atmore,15.005,1.0333333333333334
+Isel Park,Britannia,11.366,1.1380555555555556
+Isel Park,Broads,11.85,0.9727777777777777
+Isel Park,Bronte,12.041,0.9713888888888889
+Isel Park,Clifton,,
+Isel Park,Enner Glynn,,
+Isel Park,Grampians,,
+Isel Park,Isel Park,0.0,0.0
+Isel Park,Kirks,10.581,0.9486111111111111
+Isel Park,Langbein,3.902,0.7641666666666667
+Isel Park,Maitai,,
+Isel Park,Maitlands,3.351,0.6869444444444445
+Isel Park,Nayland,4.326,0.8483333333333334
+Isel Park,Nelson Airport,,
+Isel Park,Ngawhatu,3.44,0.6894444444444444
+Isel Park,Port Nelson,11.261,1.075
+Isel Park,Saxton,4.264,0.8333333333333334
+Isel Park,Saxton Island,,
+Isel Park,Tahuna Hills,8.345,1.0255555555555556
+Isel Park,Tahunanui,7.829,0.8525
+Isel Park,The Brook,15.383,1.0344444444444445
+Isel Park,The Wood,11.044,1.0122222222222221
+Isel Park,Toi Toi,,
+Isel Park,Trafalgar,9.786,0.7608333333333334
+Isel Park,Washington,,
+Isel Park,Whangamoa,,
+Kirks,Atawhai,9.525,0.38333333333333336
+Kirks,Atmore,4.008,0.9994444444444445
+Kirks,Britannia,2.016,0.44472222222222224
+Kirks,Broads,2.091,0.43166666666666664
+Kirks,Bronte,1.581,0.3397222222222222
+Kirks,Clifton,8.162,0.7947222222222222
+Kirks,Enner Glynn,8.649,0.9380555555555555
+Kirks,Grampians,4.219,0.93
+Kirks,Isel Park,12.708,1.0772222222222223
+Kirks,Kirks,0.0,0.0
+Kirks,Langbein,10.874,0.6477777777777778
+Kirks,Maitai,3.105,0.6272222222222222
+Kirks,Maitlands,10.773,0.6502777777777777
+Kirks,Nayland,11.104,0.6913888888888889
+Kirks,Nelson Airport,13.091,1.0963888888888889
+Kirks,Ngawhatu,13.193,0.5238888888888888
+Kirks,Port Nelson,2.326,0.4683333333333333
+Kirks,Saxton,11.824,0.8341666666666666
+Kirks,Saxton Island,13.165,0.5194444444444445
+Kirks,Tahuna Hills,7.379,0.6869444444444445
+Kirks,Tahunanui,6.863,0.5138888888888888
+Kirks,The Brook,,
+Kirks,The Wood,2.211,0.3016666666666667
+Kirks,Toi Toi,2.786,0.6236111111111111
+Kirks,Trafalgar,1.038,0.2
+Kirks,Washington,2.108,0.48694444444444446
+Kirks,Whangamoa,18.203,0.5288888888888889
+Langbein,Atawhai,12.611,0.5219444444444444
+Langbein,Atmore,13.171,0.6986111111111111
+Langbein,Britannia,9.532,0.8033333333333333
+Langbein,Broads,10.016,0.6380555555555556
+Langbein,Bronte,10.207,0.6366666666666667
+Langbein,Clifton,,
+Langbein,Enner Glynn,,
+Langbein,Grampians,11.786,1.056111111111111
+Langbein,Isel Park,3.902,0.8586111111111111
+Langbein,Kirks,8.747,0.6138888888888889
+Langbein,Langbein,0.0,0.0
+Langbein,Maitai,,
+Langbein,Maitlands,2.159,0.47055555555555556
+Langbein,Nayland,1.251,0.25305555555555553
+Langbein,Nelson Airport,2.572,0.5161111111111111
+Langbein,Ngawhatu,4.155,0.8802777777777778
+Langbein,Port Nelson,9.427,0.7402777777777778
+Langbein,Saxton,1.805,0.3630555555555556
+Langbein,Saxton Island,2.357,0.46805555555555556
+Langbein,Tahuna Hills,4.074,0.9147222222222222
+Langbein,Tahunanui,4.246,0.8566666666666667
+Langbein,The Brook,13.549,0.6997222222222222
+Langbein,The Wood,9.21,0.6775
+Langbein,Toi Toi,11.22,0.9533333333333334
+Langbein,Trafalgar,7.952,0.4261111111111111
+Langbein,Washington,7.039,0.7725
+Langbein,Whangamoa,,
+Maitai,Atawhai,9.841,0.5797222222222222
+Maitai,Atmore,3.006,0.8205555555555556
+Maitai,Britannia,4.153,0.9027777777777778
+Maitai,Broads,4.072,0.8677777777777778
+Maitai,Bronte,2.7,0.5877777777777777
+Maitai,Clifton,8.478,0.9911111111111112
+Maitai,Enner Glynn,14.228,0.7613888888888889
+Maitai,Grampians,,
+Maitai,Isel Park,,
+Maitai,Kirks,3.105,0.6680555555555555
+Maitai,Langbein,11.275,0.8775
+Maitai,Maitai,0.0,0.0
+Maitai,Maitlands,11.174,0.88
+Maitai,Nayland,11.505,0.9211111111111111
+Maitai,Nelson Airport,,
+Maitai,Ngawhatu,13.594,0.7536111111111111
+Maitai,Port Nelson,4.033,0.8369444444444445
+Maitai,Saxton,12.225,1.0638888888888889
+Maitai,Saxton Island,13.566,0.7491666666666666
+Maitai,Tahuna Hills,7.78,0.9166666666666666
+Maitai,Tahunanui,7.264,0.7436111111111111
+Maitai,The Brook,,
+Maitai,The Wood,2.298,0.4683333333333333
+Maitai,Toi Toi,,
+Maitai,Trafalgar,2.36,0.49027777777777776
+Maitai,Washington,4.394,0.9825
+Maitai,Whangamoa,18.519,0.7252777777777778
+Maitlands,Atawhai,12.51,0.4736111111111111
+Maitlands,Atmore,13.07,0.6502777777777777
+Maitlands,Britannia,9.431,0.755
+Maitlands,Broads,4.09,0.8525
+Maitlands,Bronte,10.106,0.5883333333333334
+Maitlands,Clifton,,
+Maitlands,Enner Glynn,2.562,0.5955555555555555
+Maitlands,Grampians,3.729,0.8416666666666667
+Maitlands,Isel Park,3.352,0.73
+Maitlands,Kirks,8.646,0.5655555555555556
+Maitlands,Langbein,2.159,0.4197222222222222
+Maitlands,Maitai,,
+Maitlands,Maitlands,0.0,0.0
+Maitlands,Nayland,1.458,0.2763888888888889
+Maitlands,Nelson Airport,3.203,0.6319444444444444
+Maitlands,Ngawhatu,3.872,0.8055555555555556
+Maitlands,Port Nelson,9.326,0.6919444444444445
+Maitlands,Saxton,3.109,0.6061111111111112
+Maitlands,Saxton Island,4.45,0.8730555555555556
+Maitlands,Tahuna Hills,3.315,0.7477777777777778
+Maitlands,Tahunanui,3.757,0.7644444444444445
+Maitlands,The Brook,13.448,0.6513888888888889
+Maitlands,The Wood,9.109,0.6291666666666667
+Maitlands,Toi Toi,11.119,0.905
+Maitlands,Trafalgar,7.851,0.37777777777777777
+Maitlands,Washington,6.938,0.7241666666666666
+Maitlands,Whangamoa,,
+Nayland,Atawhai,12.841,0.5613888888888889
+Nayland,Atmore,13.401,0.7380555555555556
+Nayland,Britannia,9.762,0.8427777777777777
+Nayland,Broads,4.645,0.9880555555555556
+Nayland,Bronte,10.437,0.6761111111111111
+Nayland,Clifton,,
+Nayland,Enner Glynn,3.473,0.8105555555555556
+Nayland,Grampians,4.284,0.9772222222222222
+Nayland,Isel Park,4.326,0.9394444444444444
+Nayland,Kirks,8.977,0.6533333333333333
+Nayland,Langbein,1.251,0.25
+Nayland,Maitai,,
+Nayland,Maitlands,1.459,0.32555555555555554
+Nayland,Nayland,0.0,0.0
+Nayland,Nelson Airport,1.987,0.405
+Nayland,Ngawhatu,4.646,0.9791666666666666
+Nayland,Port Nelson,9.657,0.7797222222222222
+Nayland,Saxton,2.337,0.47
+Nayland,Saxton Island,3.648,0.7283333333333334
+Nayland,Tahuna Hills,2.823,0.6619444444444444
+Nayland,Tahunanui,2.995,0.6038888888888889
+Nayland,The Brook,13.779,0.7391666666666666
+Nayland,The Wood,9.44,0.7169444444444445
+Nayland,Toi Toi,11.45,0.9927777777777778
+Nayland,Trafalgar,8.182,0.46555555555555556
+Nayland,Washington,7.269,0.8119444444444445
+Nayland,Whangamoa,,
+Nelson Airport,Atawhai,14.829,0.9783333333333334
+Nelson Airport,Atmore,15.389,1.155
+Nelson Airport,Britannia,,
+Nelson Airport,Broads,12.234,1.0944444444444446
+Nelson Airport,Bronte,12.425,1.0930555555555554
+Nelson Airport,Clifton,,
+Nelson Airport,Enner Glynn,,
+Nelson Airport,Grampians,,
+Nelson Airport,Isel Park,,
+Nelson Airport,Kirks,10.965,1.0702777777777779
+Nelson Airport,Langbein,2.572,0.5247222222222222
+Nelson Airport,Maitai,,
+Nelson Airport,Maitlands,3.204,0.6933333333333334
+Nelson Airport,Nayland,1.988,0.41694444444444445
+Nelson Airport,Nelson Airport,0.0,0.0
+Nelson Airport,Ngawhatu,,
+Nelson Airport,Port Nelson,,
+Nelson Airport,Saxton,4.205,0.8525
+Nelson Airport,Saxton Island,3.305,0.6641666666666667
+Nelson Airport,Tahuna Hills,3.465,0.8011111111111111
+Nelson Airport,Tahunanui,2.785,0.5719444444444445
+Nelson Airport,The Brook,15.767,1.156111111111111
+Nelson Airport,The Wood,11.428,1.133888888888889
+Nelson Airport,Toi Toi,,
+Nelson Airport,Trafalgar,10.17,0.8825
+Nelson Airport,Washington,,
+Nelson Airport,Whangamoa,,
+Ngawhatu,Atawhai,,
+Ngawhatu,Atmore,,
+Ngawhatu,Britannia,,
+Ngawhatu,Broads,,
+Ngawhatu,Bronte,,
+Ngawhatu,Clifton,17.63,2.3577777777777778
+Ngawhatu,Enner Glynn,,
+Ngawhatu,Grampians,,
+Ngawhatu,Isel Park,3.44,0.7347222222222223
+Ngawhatu,Kirks,,
+Ngawhatu,Langbein,4.155,0.8311111111111111
+Ngawhatu,Maitai,,
+Ngawhatu,Maitlands,3.872,0.8080555555555555
+Ngawhatu,Nayland,4.644,0.9311111111111111
+Ngawhatu,Nelson Airport,,
+Ngawhatu,Ngawhatu,0.0,0.0
+Ngawhatu,Port Nelson,,
+Ngawhatu,Saxton,2.508,0.49527777777777776
+Ngawhatu,Saxton Island,,
+Ngawhatu,Tahuna Hills,,
+Ngawhatu,Tahunanui,,
+Ngawhatu,The Brook,,
+Ngawhatu,The Wood,,
+Ngawhatu,Toi Toi,,
+Ngawhatu,Trafalgar,,
+Ngawhatu,Washington,,
+Ngawhatu,Whangamoa,27.671,2.0919444444444446
+Port Nelson,Atawhai,9.324,0.4533333333333333
+Port Nelson,Atmore,,
+Port Nelson,Britannia,1.812,0.3983333333333333
+Port Nelson,Broads,3.449,0.7441666666666666
+Port Nelson,Bronte,2.7,0.6033333333333334
+Port Nelson,Clifton,7.961,0.8647222222222222
+Port Nelson,Enner Glynn,13.088,0.5683333333333334
+Port Nelson,Grampians,5.584,0.995
+Port Nelson,Isel Park,11.969,1.113888888888889
+Port Nelson,Kirks,2.326,0.5202777777777777
+Port Nelson,Langbein,10.135,0.6844444444444444
+Port Nelson,Maitai,4.032,0.8458333333333333
+Port Nelson,Maitlands,10.034,0.6869444444444445
+Port Nelson,Nayland,10.365,0.7280555555555556
+Port Nelson,Nelson Airport,12.352,1.1330555555555555
+Port Nelson,Ngawhatu,12.454,0.5605555555555556
+Port Nelson,Port Nelson,0.0,0.0
+Port Nelson,Saxton,11.085,0.8708333333333333
+Port Nelson,Saxton Island,12.426,0.5561111111111111
+Port Nelson,Tahuna Hills,6.64,0.7236111111111111
+Port Nelson,Tahunanui,4.523,0.9475
+Port Nelson,The Brook,,
+Port Nelson,The Wood,1.929,0.40055555555555555
+Port Nelson,Toi Toi,3.778,0.8597222222222223
+Port Nelson,Trafalgar,1.818,0.39166666666666666
+Port Nelson,Washington,2.903,0.6741666666666667
+Port Nelson,Whangamoa,18.001,0.5988888888888889
+Saxton,Atawhai,13.562,0.7138888888888889
+Saxton,Atmore,14.122,0.8905555555555555
+Saxton,Britannia,10.483,0.9952777777777778
+Saxton,Broads,10.967,0.83
+Saxton,Bronte,11.158,0.8286111111111111
+Saxton,Clifton,,
+Saxton,Enner Glynn,,
+Saxton,Grampians,,
+Saxton,Isel Park,4.264,0.9336111111111111
+Saxton,Kirks,9.698,0.8058333333333333
+Saxton,Langbein,1.805,0.3688888888888889
+Saxton,Maitai,,
+Saxton,Maitlands,3.11,0.6625
+Saxton,Nayland,2.337,0.47888888888888886
+Saxton,Nelson Airport,4.205,0.85
+Saxton,Ngawhatu,2.508,0.55
+Saxton,Port Nelson,10.378,0.9322222222222222
+Saxton,Saxton,0.0,0.0
+Saxton,Saxton Island,3.99,0.8022222222222222
+Saxton,Tahuna Hills,7.462,0.8827777777777778
+Saxton,Tahunanui,6.946,0.7097222222222223
+Saxton,The Brook,14.5,0.8916666666666667
+Saxton,The Wood,10.161,0.8694444444444445
+Saxton,Toi Toi,12.171,1.1452777777777778
+Saxton,Trafalgar,8.903,0.6180555555555556
+Saxton,Washington,7.99,0.9644444444444444
+Saxton,Whangamoa,,
+Saxton Island,Atawhai,,
+Saxton Island,Atmore,,
+Saxton Island,Britannia,,
+Saxton Island,Broads,,
+Saxton Island,Bronte,,
+Saxton Island,Clifton,17.571,2.3425
+Saxton Island,Enner Glynn,,
+Saxton Island,Grampians,,
+Saxton Island,Isel Park,,
+Saxton Island,Kirks,,
+Saxton Island,Langbein,2.357,0.48305555555555557
+Saxton Island,Maitai,,
+Saxton Island,Maitlands,4.45,0.9391666666666667
+Saxton Island,Nayland,3.648,0.7469444444444444
+Saxton Island,Nelson Airport,3.305,0.6705555555555556
+Saxton Island,Ngawhatu,,
+Saxton Island,Port Nelson,,
+Saxton Island,Saxton,3.99,0.8111111111111111
+Saxton Island,Saxton Island,0.0,0.0
+Saxton Island,Tahuna Hills,,
+Saxton Island,Tahunanui,,
+Saxton Island,The Brook,,
+Saxton Island,The Wood,,
+Saxton Island,Toi Toi,,
+Saxton Island,Trafalgar,,
+Saxton Island,Washington,,
+Saxton Island,Whangamoa,27.612,2.0766666666666667
+Tahuna Hills,Atawhai,9.116,0.47638888888888886
+Tahuna Hills,Atmore,9.676,0.6530555555555555
+Tahuna Hills,Britannia,3.28,0.7197222222222223
+Tahuna Hills,Broads,4.26,0.9066666666666666
+Tahuna Hills,Bronte,6.712,0.5911111111111111
+Tahuna Hills,Clifton,,
+Tahuna Hills,Enner Glynn,4.36,0.9738888888888889
+Tahuna Hills,Grampians,8.291,1.0105555555555557
+Tahuna Hills,Isel Park,8.345,1.0355555555555556
+Tahuna Hills,Kirks,5.252,0.5683333333333334
+Tahuna Hills,Langbein,4.072,0.8194444444444444
+Tahuna Hills,Maitai,,
+Tahuna Hills,Maitlands,3.314,0.7055555555555556
+Tahuna Hills,Nayland,2.822,0.5694444444444444
+Tahuna Hills,Nelson Airport,3.466,0.6994444444444444
+Tahuna Hills,Ngawhatu,8.83,0.4822222222222222
+Tahuna Hills,Port Nelson,5.932,0.6947222222222222
+Tahuna Hills,Saxton,7.461,0.7925
+Tahuna Hills,Saxton Island,,
+Tahuna Hills,Tahuna Hills,0.0,0.0
+Tahuna Hills,Tahunanui,1.827,0.3397222222222222
+Tahuna Hills,The Brook,10.054,0.6541666666666667
+Tahuna Hills,The Wood,5.715,0.6319444444444444
+Tahuna Hills,Toi Toi,4.451,0.9897222222222222
+Tahuna Hills,Trafalgar,4.457,0.38055555555555554
+Tahuna Hills,Washington,3.075,0.685
+Tahuna Hills,Whangamoa,,
+Tahunanui,Atawhai,8.6,0.40555555555555556
+Tahunanui,Atmore,9.16,0.5822222222222222
+Tahunanui,Britannia,3.169,0.7183333333333334
+Tahunanui,Broads,4.209,0.8888888888888888
+Tahunanui,Bronte,6.196,0.5202777777777777
+Tahunanui,Clifton,,
+Tahunanui,Enner Glynn,,
+Tahunanui,Grampians,7.775,0.9397222222222222
+Tahunanui,Isel Park,7.829,0.9647222222222223
+Tahunanui,Kirks,4.736,0.4975
+Tahunanui,Langbein,4.246,0.8694444444444445
+Tahunanui,Maitai,,
+Tahunanui,Maitlands,3.756,0.8286111111111111
+Tahunanui,Nayland,2.996,0.6194444444444445
+Tahunanui,Nelson Airport,2.785,0.5763888888888888
+Tahunanui,Ngawhatu,8.314,0.4113888888888889
+Tahunanui,Port Nelson,4.523,0.9536111111111111
+Tahunanui,Saxton,6.945,0.7216666666666667
+Tahunanui,Saxton Island,,
+Tahunanui,Tahuna Hills,1.827,0.46111111111111114
+Tahunanui,Tahunanui,0.0,0.0
+Tahunanui,The Brook,9.538,0.5833333333333334
+Tahunanui,The Wood,5.199,0.5611111111111111
+Tahunanui,Toi Toi,4.4,0.9719444444444445
+Tahunanui,Trafalgar,3.941,0.30972222222222223
+Tahunanui,Washington,3.024,0.6675
+Tahunanui,Whangamoa,,
+The Brook,Atawhai,,
+The Brook,Atmore,,
+The Brook,Britannia,,
+The Brook,Broads,,
+The Brook,Bronte,3.6,0.74
+The Brook,Clifton,10.987,0.6605555555555556
+The Brook,Enner Glynn,10.814,0.7816666666666666
+The Brook,Grampians,,
+The Brook,Isel Park,16.136,1.4444444444444444
+The Brook,Kirks,,
+The Brook,Langbein,14.302,1.015
+The Brook,Maitai,4.803,0.9661111111111111
+The Brook,Maitlands,,
+The Brook,Nayland,,
+The Brook,Nelson Airport,,
+The Brook,Ngawhatu,,
+The Brook,Port Nelson,,
+The Brook,Saxton,15.252,1.2013888888888888
+The Brook,Saxton Island,,
+The Brook,Tahuna Hills,,
+The Brook,Tahunanui,10.291,0.8811111111111111
+The Brook,The Brook,0.0,0.0
+The Brook,The Wood,4.439,0.885
+The Brook,Toi Toi,,
+The Brook,Trafalgar,4.294,0.8527777777777777
+The Brook,Washington,,
+The Brook,Whangamoa,21.028,0.3947222222222222
+The Wood,Atawhai,7.543,0.11166666666666666
+The Wood,Atmore,3.292,0.8738888888888889
+The Wood,Britannia,2.824,0.6233333333333333
+The Wood,Broads,3.512,0.7527777777777778
+The Wood,Bronte,2.239,0.4925
+The Wood,Clifton,6.18,0.5230555555555556
+The Wood,Enner Glynn,9.307,1.0908333333333333
+The Wood,Grampians,5.368,0.9352777777777778
+The Wood,Isel Park,10.811,0.8388888888888889
+The Wood,Kirks,2.328,0.5086111111111111
+The Wood,Langbein,8.977,0.40944444444444444
+The Wood,Maitai,2.298,0.47805555555555557
+The Wood,Maitlands,8.876,0.41194444444444445
+The Wood,Nayland,9.207,0.45305555555555554
+The Wood,Nelson Airport,11.194,0.8580555555555556
+The Wood,Ngawhatu,11.296,0.28555555555555556
+The Wood,Port Nelson,1.93,0.4011111111111111
+The Wood,Saxton,9.927,0.5958333333333333
+The Wood,Saxton Island,11.268,0.2811111111111111
+The Wood,Tahuna Hills,5.482,0.4486111111111111
+The Wood,Tahunanui,4.966,0.27555555555555555
+The Wood,The Brook,4.44,0.9877777777777778
+The Wood,The Wood,0.0,0.0
+The Wood,Toi Toi,4.051,0.9133333333333333
+The Wood,Trafalgar,1.284,0.26805555555555555
+The Wood,Washington,3.184,0.73
+The Wood,Whangamoa,16.221,0.25722222222222224
+Toi Toi,Atawhai,,
+Toi Toi,Atmore,,
+Toi Toi,Britannia,3.44,0.7036111111111111
+Toi Toi,Broads,2.079,0.4063888888888889
+Toi Toi,Bronte,2.76,0.5641666666666667
+Toi Toi,Clifton,10.691,2.517777777777778
+Toi Toi,Enner Glynn,,
+Toi Toi,Grampians,4.337,0.93
+Toi Toi,Isel Park,,
+Toi Toi,Kirks,2.786,0.5516666666666666
+Toi Toi,Langbein,8.417,1.0372222222222223
+Toi Toi,Maitai,,
+Toi Toi,Maitlands,8.316,1.0397222222222222
+Toi Toi,Nayland,8.647,1.0808333333333333
+Toi Toi,Nelson Airport,,
+Toi Toi,Ngawhatu,10.736,0.9133333333333333
+Toi Toi,Port Nelson,3.777,0.7352777777777778
+Toi Toi,Saxton,14.439,1.5572222222222223
+Toi Toi,Saxton Island,10.708,0.9088888888888889
+Toi Toi,Tahuna Hills,4.454,0.955
+Toi Toi,Tahunanui,4.402,0.9147222222222222
+Toi Toi,The Brook,,
+Toi Toi,The Wood,4.05,0.7880555555555555
+Toi Toi,Toi Toi,0.0,0.0
+Toi Toi,Trafalgar,3.021,0.5858333333333333
+Toi Toi,Washington,2.437,0.5275
+Toi Toi,Whangamoa,20.732,2.2519444444444443
+Trafalgar,Atawhai,8.576,0.20194444444444445
+Trafalgar,Atmore,3.24,0.8591666666666666
+Trafalgar,Britannia,1.939,0.44472222222222224
+Trafalgar,Broads,2.335,0.5005555555555555
+Trafalgar,Bronte,1.061,0.24444444444444444
+Trafalgar,Clifton,7.213,0.6133333333333333
+Trafalgar,Enner Glynn,8.129,0.8427777777777777
+Trafalgar,Grampians,4.113,0.9225
+Trafalgar,Isel Park,11.758,0.8958333333333334
+Trafalgar,Kirks,1.038,0.23833333333333334
+Trafalgar,Langbein,9.924,0.4663888888888889
+Trafalgar,Maitai,2.36,0.48638888888888887
+Trafalgar,Maitlands,9.823,0.4688888888888889
+Trafalgar,Nayland,10.154,0.51
+Trafalgar,Nelson Airport,12.141,0.915
+Trafalgar,Ngawhatu,12.243,0.3425
+Trafalgar,Port Nelson,1.819,0.37916666666666665
+Trafalgar,Saxton,10.874,0.6527777777777778
+Trafalgar,Saxton Island,12.215,0.33805555555555555
+Trafalgar,Tahuna Hills,6.429,0.5055555555555555
+Trafalgar,Tahunanui,5.913,0.3325
+Trafalgar,The Brook,4.294,0.9397222222222222
+Trafalgar,The Wood,1.262,0.12027777777777778
+Trafalgar,Toi Toi,3.021,0.6969444444444445
+Trafalgar,Trafalgar,0.0,0.0
+Trafalgar,Washington,2.154,0.5144444444444445
+Trafalgar,Whangamoa,17.253,0.3475
+Washington,Atawhai,10.476,0.5816666666666667
+Washington,Atmore,,
+Washington,Britannia,1.733,0.37972222222222224
+Washington,Broads,2.246,0.4661111111111111
+Washington,Bronte,2.869,0.6141666666666666
+Washington,Clifton,9.113,0.9930555555555556
+Washington,Enner Glynn,9.937,1.2125
+Washington,Grampians,4.504,0.9897222222222222
+Washington,Isel Park,,
+Washington,Kirks,2.108,0.4475
+Washington,Langbein,7.039,0.7647222222222222
+Washington,Maitai,4.393,0.9016666666666666
+Washington,Maitlands,6.938,0.7672222222222222
+Washington,Nayland,7.269,0.8083333333333333
+Washington,Nelson Airport,,
+Washington,Ngawhatu,9.358,0.6408333333333334
+Washington,Port Nelson,2.903,0.5825
+Washington,Saxton,7.989,0.9511111111111111
+Washington,Saxton Island,9.33,0.6363888888888889
+Washington,Tahuna Hills,3.075,0.6825
+Washington,Tahunanui,3.024,0.6422222222222222
+Washington,The Brook,,
+Washington,The Wood,3.162,0.5
+Washington,Toi Toi,2.437,0.5491666666666667
+Washington,Trafalgar,2.154,0.43444444444444447
+Washington,Washington,0.0,0.0
+Washington,Whangamoa,19.153,0.7272222222222222
+Whangamoa,Atawhai,14.762,0.4855555555555556
+Whangamoa,Atmore,20.583,0.6630555555555555
+Whangamoa,Britannia,18.83,0.935
+Whangamoa,Broads,19.343,1.0097222222222222
+Whangamoa,Bronte,18.311,0.8019444444444445
+Whangamoa,Clifton,13.399,0.8969444444444444
+Whangamoa,Enner Glynn,22.978,0.6644444444444444
+Whangamoa,Grampians,,
+Whangamoa,Isel Park,,
+Whangamoa,Kirks,18.045,0.7455555555555555
+Whangamoa,Langbein,,
+Whangamoa,Maitai,,
+Whangamoa,Maitlands,,
+Whangamoa,Nayland,,
+Whangamoa,Nelson Airport,,
+Whangamoa,Ngawhatu,,
+Whangamoa,Port Nelson,18.725,0.8719444444444444
+Whangamoa,Saxton,,
+Whangamoa,Saxton Island,,
+Whangamoa,Tahuna Hills,,
+Whangamoa,Tahunanui,,
+Whangamoa,The Brook,21.607,0.6855555555555556
+Whangamoa,The Wood,18.508,0.8091666666666667
+Whangamoa,Toi Toi,,
+Whangamoa,Trafalgar,17.25,0.5577777777777778
+Whangamoa,Washington,19.129,1.0169444444444444
+Whangamoa,Whangamoa,0.0,0.0

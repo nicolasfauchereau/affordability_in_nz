@@ -19,6 +19,7 @@ def data():
           "lat": -37.78,
           "maxBounds": [[-40 , 173], [-35, 178]],
           "markerLatLons": [[-37.79, 174.78], [-37.79, 174.82]],
+          "zoom": 10,
           "medianAnnualIncome": 40976
         }
 

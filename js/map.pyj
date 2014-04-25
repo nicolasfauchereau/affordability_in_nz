@@ -7,7 +7,8 @@ lat = data['lat']
 maxBounds = data['maxBounds']
 markerLatLon0, markerLatLon1 = data['markerLatLons']
 medianAnnualIncome = data['medianAnnualIncome']
-    
+zoom = data['zoom']
+
 // Load data files and then make map
 rentByNbedroomsByAu = None
 MIndexByAu = None
@@ -325,7 +326,7 @@ def makeUI():
 
     map = L.map('map', {
         'center': [lat, lon],
-        'zoom': 10,
+        'zoom': zoom,
         'minZoom': 8,
         'maxZoom': 13,
         'maxBounds': maxBounds,

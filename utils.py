@@ -8,7 +8,7 @@ import shapely
 
 MASTER_SHAPES_FILE = 'data/au_shapes.geojson'
 MASTER_RENTS_FILE = 'data/au_rents.csv'
-REGIONS = {'auckland', 'canterbury', 'waikato', 'wellington', }
+REGIONS = {'auckland', 'canterbury', 'nelson', 'waikato', 'wellington', }
 MODES = ['walk', 'bicycle', 'car', 'transit']
 
 def get_au_names(filename, header=True):
@@ -576,16 +576,16 @@ def reformat_commute(filename):
             writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
-    region = 'auckland'
-    # print('Creating files for %s...' % region)
-    # print('  Shapes...')
-    # create_shapes(region)
-    # print('  Rents...')
-    # create_rents(region)
-    # print('  Centroids...')
-    # create_centroids(region)
+    region = 'nelson'
+    print('Creating files for %s...' % region)
+    print('  Shapes...')
+    create_shapes(region)
+    print('  Rents...')
+    create_rents(region)
+    print('  Centroids...')
+    create_centroids(region)
     # print('  Sample points...')
     # create_sample_points(region)
-    # print('  Fake commutes...')
-    # create_fake_commutes(region)
-    create_commutes(region)
+    print('  Fake commutes...')
+    create_fake_commutes(region)
+    #create_commutes(region)
