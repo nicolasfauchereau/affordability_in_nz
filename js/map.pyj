@@ -328,10 +328,9 @@ def makeUI():
         'maxZoom': 13,
         'maxBounds': maxBounds,
     })
-    // Create tile layer
-    tiles = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
+    //tiles = 'http://{s}.tiles.mapbox.com/v3/key/{z}/{x}/{y}.png'
     // Define map base layers, one of which can be selected at a time
-    L.tileLayer(tiles).addTo(map)
+    //L.tileLayer(tiles).addTo(map)
 
     // Disable zoom-by-scroll
     map.scrollWheelZoom.disable()
@@ -520,9 +519,9 @@ def makeUI():
         c = getColor(getWeeklyTotalCostFraction(feature))
         return {
           'fillColor': c,
-          'fillOpacity': 0.3,
-          'color': c,
-          'weight': 1,
+          'fillOpacity': 1,
+          'color': 'black',
+          'weight': 0.5,
           'opacity': 1,
         }
 
