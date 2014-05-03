@@ -30,6 +30,7 @@ Notes
     - `Auckland <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/auckland.aspx>`_
     - `Canterbury <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/canterbury.aspx>`_ 
     - `Nelson <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/nelson.aspx>`_
+    - `Otago <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/otago.aspx>`_
     - `Waikato <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/waikato.aspx>`_
     - `Wellington <http://www.stats.govt.nz/Census/2013-census/data-tables/population-dwelling-tables/wellington.aspx>`_
 
@@ -39,7 +40,7 @@ Resources
 
 Todo
 =====
-- Separate the source RapydScript etc. files from the built JavaScript etc. files. Keeping them together is confusing.
+- Separate the source files (.pyj, .pyml, .sass) from the built compiled files (.js, .html, .css). Keeping them together can be confusing.
 
 Authors
 ========
