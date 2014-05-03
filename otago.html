@@ -1,0 +1,215 @@
+<!-- This page has been auto-generated using RapydML (http://www.pyjeon.com) -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Affordability in New Zealand
+        </title>
+        <meta charset='utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <link rel='stylesheet' href='js/jquery-ui-1.10.3/jquery-ui.css' />
+        <link rel='stylesheet' href='js/leaflet-0.7.2/leaflet.css' />
+        <link rel='stylesheet' href='fonts/Open-Sans/stylesheet.css' />
+        <link rel='stylesheet' href='css/transit-icons/style.css' />
+        <link rel='stylesheet' href='css/style.css' />
+    </head>
+</html>
+<body id='otago'>
+    <h1>
+        Affordability in New Zealand
+    </h1>
+    <div id='nav'>
+        <ul>
+            <li>
+                <a href='index.html' id='nav-index'>
+                    Auckland
+                </a>
+            </li>
+            <li>
+                /
+            </li>
+            <li>
+                <a href='wellington.html' id='nav-wellington'>
+                    Wellington
+                </a>
+            </li>
+            <li>
+                //
+            </li>
+            <li>
+                <a href='about.html' id='nav-about'>
+                    About
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>
+        You and your partner, if you have one, just got a job in Otago. Now where to live?
+        <br />
+        This application color codes Otago's area units by their affordability to you. Here affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below.
+    </p>
+    <div id='wrap'>
+        <div id='map'>
+        </div>
+        <div id='sidebar'>
+            <ol>
+                <li>
+                    <label for='income'>
+                        What will your combined gross annual income be?
+                        <br />
+                    </label>
+                    <input type='text' id='income' readonly />
+                    <div id='income-slider'>
+                    </div>
+                    <div id='income-note'>
+                        Median gross annual income of
+                        <br )br( />
+                        employed Otagons ($42,120)
+                    </div>
+                </li>
+                <li>
+                    How many bedrooms will your dwelling have?
+                    <ul id='num-bedrooms'>
+                        <li class='ui-state-default' value='1'>
+                            1
+                        </li>
+                        <li class='ui-state-default' value='2'>
+                            2
+                        </li>
+                        <li class='ui-state-default' value='3'>
+                            3
+                        </li>
+                        <li class='ui-state-default' value='4'>
+                            4
+                        </li>
+                        <li class='ui-state-default' value='5'>
+                            5
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    For how many of these bedrooms will you pay rent?
+                    <ul id='num-bedrooms-rent'>
+                        <li class='ui-state-default' value='1'>
+                            1
+                        </li>
+                        <li class='ui-state-default' value='2'>
+                            2
+                        </li>
+                        <li class='ui-state-default' value='3'>
+                            3
+                        </li>
+                        <li class='ui-state-default' value='4'>
+                            4
+                        </li>
+                        <li class='ui-state-default' value='5'>
+                            5
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Where will you work? Move the map markers.
+                </li>
+                <li>
+                    How will you commute?
+                    <ul id='mode0'>
+                        <li class='ui-state-default icon-walk' id='walk' title='walk' />
+                        <li class='ui-state-default icon-bicycle' id='bicycle' title='bicycle' />
+                        <li class='ui-state-default icon-bus' id='transit' title='public transport' />
+                        <li class='ui-state-default icon-car' id='car' title='car' />
+                        <li>
+                            You
+                        </li>
+                    </ul>
+                    <ul id='mode1'>
+                        <li class='ui-state-default icon-walk' id='walk' title='walk' />
+                        <li class='ui-state-default icon-bicycle' id='bicycle' title='bicycle' />
+                        <li class='ui-state-default icon-bus' id='transit' title='public transport' />
+                        <li class='ui-state-default icon-car' id='car' title='car' />
+                        <li>
+                            Partner
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <label for='num-workdays0'>
+                        How many days a week will you commute?
+                    </label>
+                    <br />
+                    <input type='text' id='num-workdays0' readonly />
+                    <div id='num-workdays-slider0'>
+                    </div>
+                    You
+                    <br />
+                    <input type='text' id='num-workdays1' readonly />
+                    <div id='num-workdays-slider1'>
+                    </div>
+                    Partner
+                </li>
+                <li>
+                    <label for='parking0'>
+                        How much will daily work parking cost?
+                    </label>
+                    <br />
+                    <input type='text' id='parking0' readonly />
+                    <div id='parking-slider0'>
+                    </div>
+                    You
+                    <br />
+                    <input type='text' id='parking1' readonly />
+                    <div id='parking-slider1'>
+                    </div>
+                    Partner
+                </li>
+                <li>
+                    How many cars will you own?
+                    <ul id='num-cars'>
+                        <li class='ui-state-default' value='0'>
+                            0
+                        </li>
+                        <li class='ui-state-default' value='1'>
+                            1
+                        </li>
+                        <li class='ui-state-default' value='2'>
+                            2
+                        </li>
+                        <li class='ui-state-default' value='3'>
+                            3
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <p>
+        Hint: To ignore your partner, cast his/her map marker out to sea or zero his/her commute days.
+        <br />
+        Beware: Commute times are computed in traffic-free conditions, so driving times are probably underestimated.
+    </p>
+    <script type="application/json" id="data">
+      {
+        "ausFile": "data/otago/au_shapes.geojson",
+        "centroidsFile": "data/otago/au_centroids.geojson",
+        "rentsFile": "data/otago/au_rents.json",
+        "commuteCostsFile": "data/otago/fake_commute_costs.json",
+        "lon": 170.3,
+        "lat": -45.84,
+        "maxBounds": [[-47, 167], [-43.8, 172]],
+        "markerLatLons": [[-46.02, 170.35], [-46.02, 170.39]],
+        "zoom": 10,
+        "medianAnnualIncome": 42120
+      }
+    </script>
+    <script src='js/jquery-1.11.0/jquery.min.js'>
+    </script>
+    <script src='js/jquery-ui-1.10.3/jquery-ui.min.js'>
+    </script>
+    <script src='js/mapbox-1.6.2/mapbox.min.js'>
+    </script>
+    <script src='js/leaflet-pip.min.js'>
+    </script>
+    <script src='js/spinner.min.js'>
+    </script>
+    <script src='js/map.js'>
+    </script>
+</body>
