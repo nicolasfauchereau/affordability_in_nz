@@ -386,11 +386,11 @@ def distance(lon1, lat1, lon2, lat2):
 def get_bird_distance_and_time(a, b):
     """
     Given a list of pairs WGS84 longitude-latitude points ``a`` and ``b``, 
-    return the distance and time of the quickest path from  ``a`` to ``b``
-    as the bird flies (at 40 kph).
+    return the distance in kilometers and time in hours of the quickest 
+    path from  ``a`` to ``b`` as the bird flies (at 40 kph).
     """
     d = distance(a[0], a[1], b[0], b[1])
-    return my_round((d, d/40), 2)
+    return d, d/40
 
 def my_round(x, digits=5):
     """
@@ -461,15 +461,15 @@ def create_fake_commute_costs(region, name_field='AU2013_NAM',
 
     collection = load_json(prefix + 'au_shapes.geojson')
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, name_field)
+    names = pc_by_name.keys()
     centroids_wgs84 = [pj_nztm(*point_to_tuple(pc[1]), inverse=True)
       for pc in pc_by_name.itervalues()]
-    names = pc_by_name.keys()
     index_by_name = {name: i for (i, name) in enumerate(names)}
     n = len(names)
 
     # Initialize matrix
-    M = {mode: [[(None, None) for j in range(n)] 
-      for i in range(n)] for mode in MODES}
+    M = {mode: [[(None, None) for j in range(n)] for i in range(n)] 
+      for mode in MODES}
 
     # Calculate M
     for i in range(n):
@@ -486,13 +486,13 @@ def create_fake_commute_costs(region, name_field='AU2013_NAM',
                 distances, times = zip(*[get_bird_distance_and_time(point, a)
                   for point in sample_points])
                 distance, time = (median(list(distances)), median(list(times)))
-            # Create matrix entry M[mode]_ij
-            M['walk'][i].append((distance, time*15))
-            M['bicycle'][i].append((distance, time*4))
-            M['car'][i].append((distance, time))
-            M['transit'][i].append((distance, time))
+            distance = round(distance, 2)
+            time = round(time, 2)
+            M['walk'][i][j] = (distance, time*15)
+            M['bicycle'][i][j] = (distance, time*4)
+            M['car'][i][j] = (distance, time)
+            M['transit'][i][j] = (distance, time)
 
-    print('M', M)
     # Create a cost lower-half-matrix from M
     MM = {mode: [[(None, None) for j in range(i + 1)] for i in range(n)] 
       for mode in MODES}
