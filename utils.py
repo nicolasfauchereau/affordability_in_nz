@@ -8,8 +8,11 @@ import shapely
 
 MASTER_SHAPES_FILE = 'data/au_shapes.geojson'
 MASTER_RENTS_FILE = 'data/au_rents.csv'
-REGIONS = {'auckland', 'canterbury', 'nelson', 'waikato', 'wellington', }
+REGIONS = {'auckland', 'canterbury', 'nelson', 'otago', 'waikato', 
+  'wellington'}
 MODES = ['walk', 'bicycle', 'car', 'transit']
+COMMUTE_COST_PER_KM_BY_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
+  'transit': 0.218}
 
 def get_au_names(filename, header=True):
     """
@@ -353,7 +356,7 @@ def create_sample_points(region, name_field='AU2013_NAM', n=100, digits=5):
         writer.writerow(['2013 area unit name', 
           'WGS84 longitude of a sample point in the area unit',
           'WGS84 latitude of sample point'])
-        for name, pc in pc_by_name.items():
+        for name, pc in sorted(pc_by_name.items()):
             sample_points = get_sample_points(pc[0], n)
             for p in sample_points:
                 pp = my_round(pj_nztm(*point_to_tuple(p), inverse=True),
@@ -365,7 +368,7 @@ def distance(lon1, lat1, lon2, lat2):
     """
     Given two (longitude, latitude) points in degrees, 
     compute their great circle distance in km on a spherical Earth of 
-    radius 6137 km.  
+    radius 6371 km.  
     Use the haversine formula.
     """
     from math import radians, sin, cos, sqrt, asin
@@ -383,11 +386,11 @@ def distance(lon1, lat1, lon2, lat2):
 def get_bird_distance_and_time(a, b):
     """
     Given a list of pairs WGS84 longitude-latitude points ``a`` and ``b``, 
-    return the distance and time of the quickest path from  ``a`` to ``b``
-    as the bird flies (at 40 kph).
+    return the distance in kilometers and time in hours of the quickest 
+    path from  ``a`` to ``b`` as the bird flies (at 40 kph).
     """
     d = distance(a[0], a[1], b[0], b[1])
-    return my_round((d, d/40), 2)
+    return d, d/40
 
 def my_round(x, digits=5):
     """
@@ -425,44 +428,53 @@ def median(s):
     else:
         return (s[n//2] + s[n//2 - 1])/2.0
 
-def create_fake_commutes(region, name_field='AU2013_NAM',
+def create_fake_commute_costs(region, name_field='AU2013_NAM',
   n=100):
     """
-    Given a region in ``REGIONS``, get the regions decoded GeoJSON 
-    feature collection of (multi)polygons in WGS84 coordinates, 
-    each of which has a name specified in 
-    ``feature['properties']['name_field']``, and return the output pair 
-    ``(index_by_name, M)``, where ``M`` is a nested
-    dictionary/matrix such that ``M[mode][i][j]`` equals a fake distance in km
-    and a fake time in hours that it takes to travel from the centroid of 
-    polygon with index ``i >= 0`` to the centroid of polygon with index 
-    ``j >= 0``.
-    The distance used ('walk', 'bicycle', 'car', 'transit') = (d, d, d, d)
-    and the time used is (t*15, t*4, t, t), where d and t come from
-    ``get_bird_distance_and_time()``
-    The dictionary ``index_by_name`` maps polygon names to their indices. 
-    ``M[i][i]`` is obtained by choosing ``n`` points uniformly at random 
-    from polygon ``i`` and taking the median of the distances and times 
-    from each of these points to the polygon's centroid.
+    Generate fake commute distance and time information for this region and 
+    convert it into one JSON master file of daily commute costs and times. 
+    More specifically, write to ``data/<region>/fake_commute_costs.json`` 
+    the data ``{'index_by_name': index_by_name, 'matrix': M}``, where 
+    ``index_by_name`` is a dictionary with structure
+    area unit name -> row/column index in the lower-triangular half-matrix 
+    ``M``, where ``M`` is encoded by a dictionary with structure
+    mode -> list of lists of cost-time pairs 
+    such that ``M[mode][i][j]`` equals the cost in dollars
+    and the time in hours that it takes to travel round-trip by the given mode
+    (specified in the list ``MODES``)
+    from the centroid of the area unit with index ``i >= 0`` 
+    to the centroid of the area unit with index ``j <= i``.
+    
+    The commute distance used is 
+    ('walk', 'bicycle', 'car', 'transit') = (d, d, d, d)
+    and the commute time used is (t*15, t*4, t, t), 
+    where d and t come from ``get_bird_distance_and_time()``
+
+    The ``name_field`` input is used to call 
+    ``get_polygon_and_centroid_by_au_name()``.
+    The ``n`` input is used to compute ``M[mode][i][i]`` by choosing 
+    ``n`` points uniformly at random 
+    from the polygon for area unit ``i`` and taking the median of the
+    distances and times from each of these points to the polygon's centroid.
     """
     prefix = 'data/%s/' % region
 
     collection = load_json(prefix + 'au_shapes.geojson')
     pc_by_name = get_polygon_and_centroid_by_au_name(collection, name_field)
     names = pc_by_name.keys()
-    N = len(names)
     centroids_wgs84 = [pj_nztm(*point_to_tuple(pc[1]), inverse=True)
-      for pc in pc_by_name.values()]
+      for pc in pc_by_name.itervalues()]
     index_by_name = {name: i for (i, name) in enumerate(names)}
-    M = {m: [] for m in MODES}
+    n = len(names)
+
+    # Initialize matrix
+    M = {mode: [[(None, None) for j in range(n)] for i in range(n)] 
+      for mode in MODES}
 
     # Calculate M
-    for i in range(N):
+    for i in range(n):
         a = centroids_wgs84[i]
-        # Create matrix row M[mode]_i
-        for m in MODES:
-            M[m].append([])
-        for j in range(N):
+        for j in range(n):
             if j != i:
                 b = centroids_wgs84[j] 
                 distance, time = get_bird_distance_and_time(a, b)
@@ -474,30 +486,48 @@ def create_fake_commutes(region, name_field='AU2013_NAM',
                 distances, times = zip(*[get_bird_distance_and_time(point, a)
                   for point in sample_points])
                 distance, time = (median(list(distances)), median(list(times)))
-            # Create matrix entry M[mode]_ij
-            M['walk'][i].append((distance, time*15))
-            M['bicycle'][i].append((distance, time*4))
-            M['car'][i].append((distance, time))
-            M['transit'][i].append((distance, time))
+            distance = round(distance, 2)
+            time = round(time, 2)
+            M['walk'][i][j] = (distance, time*15)
+            M['bicycle'][i][j] = (distance, time*4)
+            M['car'][i][j] = (distance, time)
+            M['transit'][i][j] = (distance, time)
 
-    data = {'index_by_name': index_by_name, 'matrix': M}
-    dump_json(data, prefix + 'fake_commutes.json')
+    # Create a cost lower-half-matrix from M
+    MM = {mode: [[(None, None) for j in range(i + 1)] for i in range(n)] 
+      for mode in MODES}
+    for mode in MODES:
+        for i in range(n):
+            for j in range(i + 1):
+                try:
+                    distance = M[mode][i][j][0] + M[mode][j][i][0]
+                    time = M[mode][i][j][1] + M[mode][j][i][1]
+                    MM[mode][i][j] = (
+                      round(COMMUTE_COST_PER_KM_BY_MODE[mode]*distance, 2),
+                      round(time, 1)
+                      )
+                except TypeError:
+                    # Defaults to MM[mode][i][j] = (None, None) 
+                    pass 
 
-def create_commutes(region):
+    data = {'index_by_name': index_by_name, 'matrix': MM}
+    dump_json(data, prefix + 'fake_commute_costs.json')
+
+def create_commute_costs(region):
     """
     Take the data in the commute CSV files for this region and 
-    convert it into one JSON master file. 
-    More specifically, write to ``data/<region>/commutes.json`` 
-    ``{'index_by_name': index_by_name, 'matrix': M}``, where 
+    convert it into one JSON master file of daily commute cost and time. 
+    More specifically, write to ``data/<region>/commute_costs.json`` 
+    the data ``{'index_by_name': index_by_name, 'matrix': M}``, where 
     ``index_by_name`` is a dictionary with structure
-    area unit name -> row/column index in matrix and where 
-    ``M`` is a matrix (encoded by a dictionary with structure
-    mode -> list of lists of distance-time pairs) 
-    such that ``M[mode][i][j]`` equals the distance in km
-    and the time in hours that it takes to travel by the given mode
+    area unit name -> row/column index in the lower-triangular half-matrix 
+    ``M``, where ``M`` is encoded by a dictionary with structure
+    mode -> list of lists of cost-time pairs 
+    such that ``M[mode][i][j]`` equals the cost in dollars
+    and the time in hours that it takes to travel round-trip by the given mode
     (specified in the list ``MODES``)
     from the centroid of the area unit with index ``i >= 0`` 
-    to the centroid of the area unit with index ``j >= 0``.
+    to the centroid of the area unit with index ``j <= i``.
     """
     prefix = 'data/%s/' % region
 
@@ -514,8 +544,8 @@ def create_commutes(region):
     n = len(names)
 
     # Initialize matrix
-    M = {mode: [[(None, None) for j in range(n)] 
-      for i in range(n)] for mode in MODES}
+    M = {mode: [[(None, None) for j in range(n)] for i in range(n)] 
+      for mode in MODES}
 
     # Assign distance and time values from CSVs
     for mode in MODES:
@@ -529,25 +559,41 @@ def create_commutes(region):
                 if (o_name not in index_by_name) or\
                   (d_name not in index_by_name):
                     continue
-                # Convert distance to km and time to h 
                 if distance:
-                    distance = round(float(distance), 1)
+                    distance = float(distance)
                 else:
                     distance = None
                 if time:
-                    time = round(float(time), 1)
+                    time = float(time)
                 else:
                     time = None
                 # Save to matrix
                 M[mode][index_by_name[o_name]][index_by_name[d_name]] =\
                   (distance, time)
 
+    # Create a cost lower-triangular half-matrix from M
+    MM = {mode: [[(None, None) for j in range(i + 1)] for i in range(n)] 
+      for mode in MODES}
+    for mode in MODES:
+        for i in range(n):
+            for j in range(i + 1):
+                try:
+                    distance = M[mode][i][j][0] + M[mode][j][i][0]
+                    time = M[mode][i][j][1] + M[mode][j][i][1]
+                    MM[mode][i][j] = (
+                      round(COMMUTE_COST_PER_KM_BY_MODE[mode]*distance, 2),
+                      round(time, 2)
+                      )
+                except TypeError:
+                    # Defaults to MM[mode][i][j] = (None, None) 
+                    pass 
+
     # Write to file
-    data = {'index_by_name': index_by_name, 'matrix': M}
-    dump_json(data, prefix + 'commutes.json')
+    data = {'index_by_name': index_by_name, 'matrix': MM}
+    dump_json(data, prefix + 'commute_costs.json')
        
 # TODO: delete this function when no longer necessary
-def reformat_commute(filename):
+def reformat_commutes(filename):
     """
     Given a CSV of commutes with distances in meters and times in minutes,
     convert them to kilometers and hours, respectively.
@@ -576,7 +622,7 @@ def reformat_commute(filename):
             writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
-    region = 'nelson'
+    region = 'otago'
     print('Creating files for %s...' % region)
     print('  Shapes...')
     create_shapes(region)
@@ -586,6 +632,7 @@ if __name__ == '__main__':
     create_centroids(region)
     # print('  Sample points...')
     # create_sample_points(region)
-    print('  Fake commutes...')
-    create_fake_commutes(region)
-    #create_commutes(region)
+    print('  Fake commute costs...')
+    create_fake_commute_costs(region)
+    # print('  Commute costs...')
+    # create_commute_costs(region)

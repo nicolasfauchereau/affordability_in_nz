@@ -11,15 +11,15 @@ zoom = data['zoom']
 
 // Load data files and then make map
 rentByNbedroomsByAu = None
-MIndexByAu = None
-M = None
+M = None // Daily commute cost matrix by mode
+MIndexByAu = None // Row/column index in M[mode] by AU name 
 aus = None
 
 spinner = new Spinner().spin($("#map").get(0))
 $.when(
     $.getJSON(data['ausFile']),
     $.getJSON(data['rentsFile']),
-    $.getJSON(data['commutesFile'])
+    $.getJSON(data['commuteCostsFile'])
 ).done(def(a, b, c): 
     nonlocal aus
     aus = a[0]    
@@ -70,9 +70,6 @@ def numToDollarStr(x, inverse=False):
 def makeUI():  
     // ------------------------------------------------------------------------
     // Make form 
-
-    COMMUTE_COST_PER_KM_PER_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
-      'transit': 0.218}
     WEEKLY_CAR_OWN_COST = 2228/52
 
     // Add an income slider widget
@@ -624,13 +621,15 @@ def makeUI():
                 // Doesn't contribute to total cost and time
                 continue
             j = MIndexByAu[workAuName]
-            distance, time = M[mode][i][j]
-            if distance is None:
+            // Remember that M[mode] is a lower-triangular half-matrix
+            if j > i:
+                i, j = j, i
+            cost, time = M[mode][i][j]
+            if cost is None:
                 // Can't get to work from this feature via this mode
                 return None, None
-            total_cost += numWorkdays*2*distance*\
-              COMMUTE_COST_PER_KM_PER_MODE[mode]
-            total_time += numWorkdays*2*time            
+            total_cost += numWorkdays*cost
+            total_time += numWorkdays*time            
         return total_cost, total_time
 
     def getWeeklyCarOwnCost():
