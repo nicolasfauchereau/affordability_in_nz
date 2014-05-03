@@ -328,9 +328,10 @@ def makeUI():
         'maxZoom': 13,
         'maxBounds': maxBounds,
     })
-    //tiles = 'http://{s}.tiles.mapbox.com/v3/key/{z}/{x}/{y}.png'
+    // Create tile layer
+    tiles = 'http://{s}.tiles.mapbox.com/v3/github.map-xgq2svrz/{z}/{x}/{y}.png'
     // Define map base layers, one of which can be selected at a time
-    //L.tileLayer(tiles).addTo(map)
+    L.tileLayer(tiles).addTo(map)
 
     // Disable zoom-by-scroll
     map.scrollWheelZoom.disable()
@@ -519,9 +520,9 @@ def makeUI():
         c = getColor(getWeeklyTotalCostFraction(feature))
         return {
           'fillColor': c,
-          'fillOpacity': 1,
-          'color': 'black',
-          'weight': 0.5,
+          'fillOpacity': 0.3,
+          'color': c,
+          'weight': 1,
           'opacity': 1,
         }
 
@@ -608,8 +609,8 @@ def makeUI():
         // Get commute distance and time from this feature to work
         auName = feature.properties.AU2013_NAM
         i = MIndexByAu[auName]
-        total_cost = 0
-        total_time = 0
+        totalCost = 0
+        totalTime = 0
         for k in range(2):
             numWorkdays = int($('#num-workdays' + str(k)).val())
             if not numWorkdays:
@@ -628,22 +629,22 @@ def makeUI():
             if cost is None:
                 // Can't get to work from this feature via this mode
                 return None, None
-            total_cost += numWorkdays*cost
-            total_time += numWorkdays*time            
-        return total_cost, total_time
+            totalCost += numWorkdays*cost
+            totalTime += numWorkdays*time            
+        return totalCost, totalTime
 
     def getWeeklyCarOwnCost():
         numCars = int($('#num-cars').val())
         return numCars*WEEKLY_CAR_OWN_COST
 
     def getWeeklyParkingCost():
-        total_cost = 0
+        totalCost = 0
         for k in range(2):
             parking = $('#parking' + str(k)).val()
             parking = numToDollarStr(parking, True)
             numWorkdays = int($('#num-workdays' + str(k)).val())
-            total_cost += parking*numWorkdays 
-        return total_cost
+            totalCost += parking*numWorkdays 
+        return totalCost
 
     def getWeeklyTotalCost(feature):
         // Return the total cost for living in this au/feature
