@@ -25,23 +25,27 @@ body {
 body#index a#nav-index, body#canterbury a#nav-canterbury,
 body#wellington a#nav-wellington, body#about a#nav-about {
   color: inherit; }
-
-  a {
-    color: royalblue;
+  body#index a#nav-index:hover, body#index a#nav-index:active,
+  body#canterbury a#nav-canterbury:hover, body#canterbury a#nav-canterbury:active,
+  body#wellington a#nav-wellington:hover, body#wellington a#nav-wellington:active,
+  body#about a#nav-about:hover, body#about a#nav-about:active {
     text-decoration: none; }
 
-    a:hover, a:active {
-      text-decoration: underline; }
+a {
+  color: royalblue;
+  text-decoration: none; }
+  a:hover, a:active {
+    text-decoration: underline; }
 
-      p {
-        margin: 0 0 1.2em 0; }
+p {
+  margin: 0 0 1.2em 0; }
 
-        table {
-          border-collapse: collapse;
-          width: 100%;
-          font: inherit; }
-          table td + td {
-            text-align: right; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font: inherit; }
+    table td + td {
+      text-align: right; }
 
 ol {
   border: 0px solid black; }
