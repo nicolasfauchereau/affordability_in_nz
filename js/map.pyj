@@ -329,16 +329,13 @@ def makeUI():
         'maxBounds': maxBounds,
     })
     tiles = 'http://{s}.tiles.mapbox.com/v3/araichev.i759b65k/{z}/{x}/{y}.png'
-    // Define map base layers, one of which can be selected at a time
-    // Here is where the magic happens: Manipulate the z-index of tile layers,
-    // this makes sure our vector data shows up above the background map and
+    // Manipulate the z-index of tile layer to ensure that 
+    // our vector data shows up above the background map and
     // under roads and labels.
     topPane = map._createPane('leaflet-top-pane', map.getPanes().mapPane)
-    topLayer = L.tileLayer(tiles, {'opacity': 1}).addTo(map)
+    topLayer = L.tileLayer(tiles).addTo(map)
     topPane.appendChild(topLayer.getContainer())
     topLayer.setZIndex(4)
-
-    //L.control.layers({}, {'Streets': topLayer}).addTo(map)
 
     // Disable zoom-by-scroll
     map.scrollWheelZoom.disable()
