@@ -24,6 +24,11 @@ def page($page_name):
                         'Auckland'
                 li:
                     '/'
+                li:
+                    a(href='canterbury.html' id='nav-canterbury'):
+                        'Canterbury'
+                li:
+                    '/'
                 li: 
                     a(href='wellington.html' id='nav-wellington'):
                         'Wellington'

@@ -22,7 +22,8 @@ body {
           display: inline;
           margin-left: 0; }
 
-body#index a#nav-index, body#wellington a#nav-wellington, body#about a#nav-about {
+body#index a#nav-index, body#canterbury a#nav-canterbury,
+body#wellington a#nav-wellington, body#about a#nav-about {
   color: inherit; }
 
   a {
@@ -104,7 +105,7 @@ ol {
   font-size: 9pt;
   line-height: 1.2;
   color: black;
-  height: 200px;
+  height: 205px;
   width: 67px;
   padding-bottom: 1em; }
   .legend h4 {

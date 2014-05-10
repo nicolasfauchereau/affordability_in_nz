@@ -622,7 +622,7 @@ def reformat_commutes(filename):
             writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
-    region = 'otago'
+    region = 'canterbury'
     print('Creating files for %s...' % region)
     print('  Shapes...')
     create_shapes(region)
@@ -632,7 +632,7 @@ if __name__ == '__main__':
     create_centroids(region)
     # print('  Sample points...')
     # create_sample_points(region)
-    print('  Fake commute costs...')
-    create_fake_commute_costs(region)
-    # print('  Commute costs...')
-    # create_commute_costs(region)
+    # print('  Fake commute costs...')
+    # create_fake_commute_costs(region)
+    print('  Commute costs...')
+    create_commute_costs(region)

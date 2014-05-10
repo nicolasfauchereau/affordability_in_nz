@@ -40,7 +40,7 @@ Resources
 
 Todo
 =====
-- Separate the source files (.pyj, .pyml, .sass) from the built compiled files (.js, .html, .css). Keeping them together can be confusing.
+- Separate the source files (.pyj, .pyml, .sass) from the built compiled files (.js, .html, .css). Keeping them together can be confusing. Use Paver.
 
 Authors
 ========

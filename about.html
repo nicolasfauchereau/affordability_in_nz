@@ -29,6 +29,14 @@
                 /
             </li>
             <li>
+                <a href='canterbury.html' id='nav-canterbury'>
+                    Canterbury
+                </a>
+            </li>
+            <li>
+                /
+            </li>
+            <li>
                 <a href='wellington.html' id='nav-wellington'>
                     Wellington
                 </a>
@@ -63,7 +71,7 @@
         for funding this project!
     </p>
     <h2>
-        Data and Methodology
+        Data, Methodology, and Limitations
     </h2>
     <ul>
         <li>
@@ -82,10 +90,10 @@
             Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.
         </li>
         <li>
-            The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions. Also, distance estimates for an area unit to itself are currently zero for all travel modes.
+            The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions.  Also, distance estimates for an area unit to itself are currently zero for all travel modes. Because the data does not incorporate a traffic model, the driving mode times are probably underestimates.
         </li>
         <li>
-            Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274).
+            Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274). These figures were derived for Auckland, so the public transport mode figure probably does not apply to other regions of New Zealand, and maybe not even to Auckland!
         </li>
         <li>
             Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.
@@ -96,7 +104,7 @@
     </h2>
     <ul>
         <li>
-            Improve public transport cost estimates by using fare data where available
+            Improve public transport cost estimates by using regional fare data where available
         </li>
         <li>
             Include all regions of New Zealand

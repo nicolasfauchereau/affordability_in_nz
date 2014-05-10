@@ -8,7 +8,7 @@
         <meta charset='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <link rel='stylesheet' href='js/jquery-ui-1.10.3/jquery-ui.css' />
-        <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+        <link rel='stylesheet' href='js/leaflet-0.7.2/leaflet.css' />
         <link rel='stylesheet' href='fonts/Open-Sans/stylesheet.css' />
         <link rel='stylesheet' href='css/transit-icons/style.css' />
         <link rel='stylesheet' href='css/style.css' />
@@ -23,6 +23,14 @@
             <li>
                 <a href='index.html' id='nav-index'>
                     Auckland
+                </a>
+            </li>
+            <li>
+                /
+            </li>
+            <li>
+                <a href='canterbury.html' id='nav-canterbury'>
+                    Canterbury
                 </a>
             </li>
             <li>
@@ -183,8 +191,6 @@
     </div>
     <p>
         Hint: To ignore your partner, cast his/her map marker out to sea or zero his/her commute days.
-        <br />
-        Beware: Commute times are computed in traffic-free conditions, so driving times are probably underestimated.
     </p>
     <script type="application/json" id="data">
       {
