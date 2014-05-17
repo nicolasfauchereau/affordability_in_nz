@@ -38,11 +38,9 @@ def main():
         'Todo'
     ul:
         li:
-            'Improve public transport cost estimates by using regional fare data where available'
-        li:
-            'Include all regions of New Zealand'
-        li:
             'Make the app mobile-friendly'
+        li:
+            'Improve public transport cost estimates by using regional fare data where available'
         li:
             'Improve driving time estimates by incorporating a traffic model'
     h2: 
