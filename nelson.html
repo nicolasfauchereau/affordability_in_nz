@@ -6,9 +6,9 @@
             Affordability in New Zealand
         </title>
         <meta charset='utf-8' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <link rel='stylesheet' href='js/jquery-ui-1.10.3/jquery-ui.css' />
-        <link rel='stylesheet' href='js/leaflet-0.7.2/leaflet.css' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+        <link rel='stylesheet' href='lib/jquery-ui-1.10.3/jquery-ui.css' />
+        <link rel='stylesheet' href='lib/leaflet-0.7.2/leaflet.css' />
         <link rel='stylesheet' href='fonts/Open-Sans/stylesheet.css' />
         <link rel='stylesheet' href='css/transit-icons/style.css' />
         <link rel='stylesheet' href='css/style.css' />
@@ -23,6 +23,14 @@
             <li>
                 <a href='index.html' id='nav-index'>
                     Auckland
+                </a>
+            </li>
+            <li>
+                /
+            </li>
+            <li>
+                <a href='canterbury.html' id='nav-canterbury'>
+                    Canterbury
                 </a>
             </li>
             <li>
@@ -183,8 +191,6 @@
     </div>
     <p>
         Hint: To ignore your partner, cast his/her map marker out to sea or zero his/her commute days.
-        <br />
-        Beware: Commute times are computed in traffic-free conditions, so driving times are probably underestimated.
     </p>
     <script type="application/json" id="data">
       {
@@ -200,15 +206,17 @@
         "medianAnnualIncome": 39000
       }
     </script>
-    <script src='js/jquery-1.11.0/jquery.min.js'>
+    <script src='lib/jquery-1.11.0/jquery.min.js'>
     </script>
-    <script src='js/jquery-ui-1.10.3/jquery-ui.min.js'>
+    <script src='lib/jquery-ui-1.10.3/jquery-ui.min.js'>
     </script>
-    <script src='js/mapbox-1.6.2/mapbox.min.js'>
+    <script src='lib/jquery-ui-touch-punch-0.2.3/jquery.ui.touch-punch.min.js'>
     </script>
-    <script src='js/leaflet-pip.min.js'>
+    <script src='lib/mapbox-1.6.2/mapbox.min.js'>
     </script>
-    <script src='js/spinner.min.js'>
+    <script src='lib/leaflet-pip.min.js'>
+    </script>
+    <script src='lib/spinner.min.js'>
     </script>
     <script src='js/map.js'>
     </script>
