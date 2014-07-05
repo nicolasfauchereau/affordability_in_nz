@@ -1,6 +1,6 @@
 import stdlib
 
-// Get data embedded in webpage
+# Get data embedded in webpage
 data = $.parseJSON($('#data').html())
 lon = data['lon']
 lat = data['lat']
@@ -9,10 +9,10 @@ markerLatLon0, markerLatLon1 = data['markerLatLons']
 medianAnnualIncome = data['medianAnnualIncome']
 zoom = data['zoom']
 
-// Load data files and then make map
+# Load data files and then make map
 rentByNbedroomsByAu = None
-M = None // Daily commute cost matrix by mode
-MIndexByAu = None // Row/column index in M[mode] by AU name 
+M = None # Daily commute cost matrix by mode
+MIndexByAu = None # Row/column index in M[mode] by AU name 
 aus = None
 
 spinner = new Spinner().spin($("#map").get(0))
@@ -37,8 +37,8 @@ $.when(
 )
 
 def sum(a, b):
-    // Return the sum of the possibly null numbers a and b,
-    // with the convention that x + None = x and None + None = None.
+    # Return the sum of the possibly null numbers a and b,
+    # with the convention that x + None = x and None + None = None.
     if a is not None and b is not None:
         result = a + b 
     elif a is not None:
@@ -50,16 +50,16 @@ def sum(a, b):
     return result
 
 def numToDollarStr(x, inverse=False):
-    // Given a float `x`, round it to the nearest integer,
-    // convert it into a string with commas as
-    // thousands separators and prepend a dollar sign.
-    // If `inverse` is True, then assume `x` has the output format
-    // mentioned above, and convert it back to an integer.
+    # Given a float `x`, round it to the nearest integer,
+    # convert it into a string with commas as
+    # thousands separators and prepend a dollar sign.
+    # If `inverse` is True, then assume `x` has the output format
+    # mentioned above, and convert it back to an integer.
     if not inverse:
         if x is None:
             return 'n/a'
         dollars = x.toFixed(0)
-        // Insert separating commas
+        # Insert separating commas
         dollars = dollars.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         return '$' + dollars 
     else:
@@ -68,11 +68,11 @@ def numToDollarStr(x, inverse=False):
         return int(x.replace('$', '').replace(',',''))
 
 def makeUI():  
-    // ------------------------------------------------------------------------
-    // Make form 
+    # ------------------------------------------------------------------------
+    # Make form 
     WEEKLY_CAR_OWN_COST = 2228/52
 
-    // Add an income slider widget
+    # Add an income slider widget
     $(def():
         $( "#income-slider" ).slider({
             'orientation': 'horizontal',
@@ -82,17 +82,17 @@ def makeUI():
             'value': medianAnnualIncome,
             'step': 100,
             'slide': def(event, ui): 
-                // Update income display
+                # Update income display
                 $('#income').val(numToDollarStr(ui.value))
             ,
             'stop': def(event, ui):
-                // Recolor aus
+                # Recolor aus
                 aus.setStyle(auStyle)
         })
-        // Initialize slider 
+        # Initialize slider 
         sv = $('#income-slider')
         $('#income').val(numToDollarStr(sv.slider('value')))
-        // Label the median annual income point on slider
+        # Label the median annual income point on slider
         min = sv.slider( "option", "min" )
         range = sv.slider( "option", "max" ) - min
         el = $('<label>&#9650;</label><br>').css('left', 
@@ -102,8 +102,8 @@ def makeUI():
 
     def adjustNumBedroomsRent():
         nb = $('#num-bedrooms').val()
-        // Block and possibly reset the appropriate 
-        // number of bedrooms to rent
+        # Block and possibly reset the appropriate 
+        # number of bedrooms to rent
         group = $('#num-bedrooms-rent')
         nbr = group.val()
         if nbr > nb:
@@ -122,53 +122,53 @@ def makeUI():
                 cancel: '.blocked'
             })
 
-    // Add a number-of-bedrooms selector widget
+    # Add a number-of-bedrooms selector widget
     $(def():
         $("#num-bedrooms").selectable({
             'selected': def(event, ui):
-                // Update number of bedrooms
+                # Update number of bedrooms
                 $('#num-bedrooms').val(ui.selected.value)
-                // Adjust number of bedrooms to rent accordingly
+                # Adjust number of bedrooms to rent accordingly
                 adjustNumBedroomsRent()
-                // Recolor aus
+                # Recolor aus
                 aus.setStyle(auStyle)
         })
     )
-    // Initialize selector
+    # Initialize selector
     item = $('#num-bedrooms li:eq(1)')
     item.addClass('ui-selected')
     $('#num-bedrooms').val(item[0].value)
     adjustNumBedroomsRent()
 
-    // Add a number-of-bedrooms-to-rent selector widget
+    # Add a number-of-bedrooms-to-rent selector widget
     $(def():
         $("#num-bedrooms-rent").selectable({
             'selected': def(event, ui):
-                // Update nuber of bedrooms
+                # Update nuber of bedrooms
                 $('#num-bedrooms-rent').val(ui.selected.value)
-                // Recolor aus
+                # Recolor aus
                 aus.setStyle(auStyle)
         })
     )
-    // Initialize selector
+    # Initialize selector
     item = $('#num-bedrooms-rent li:eq(0)')
     item.addClass('ui-selected')
     $('#num-bedrooms-rent').val(item[0].value)
 
 
-    // Add a mode selector widgets
+    # Add a mode selector widgets
     $(def():
         $("#mode0").selectable({
             'selected': def(event, ui):
-                // Update nuber of bedrooms
+                # Update nuber of bedrooms
                 $('#mode0').val(ui.selected.id)
                 mode = $('#mode0').val()
                 if mode != 'car':
-                    // Zero parking cost
+                    # Zero parking cost
                     $('#parking0').val('$0')
                     $('#parking-slider0').slider('value', 0)
                 else:
-                    // Set car ownership to 1 car if it's 0
+                    # Set car ownership to 1 car if it's 0
                     item = $('#num-cars li.ui-selected')
                     if item.val() == 0:
                         item.removeClass('ui-selected')
@@ -176,11 +176,11 @@ def makeUI():
                         $('#num-cars').val(1)
                 numWorkdays = int($('#num-workdays0').val())
                 if numWorkdays:
-                    // Recolor aus
+                    # Recolor aus
                     aus.setStyle(auStyle)
         })
     )
-    // Initialize selector
+    # Initialize selector
     item = $('#mode0 li:eq(1)')
     item.addClass('ui-selected')
     $('#mode0').val(item[0].id)
@@ -188,15 +188,15 @@ def makeUI():
     $(def():
         $("#mode1").selectable({
             'selected': def(event, ui):
-                // Update nuber of bedrooms
+                # Update nuber of bedrooms
                 $('#mode1').val(ui.selected.id)
                 mode = $('#mode1').val()
                 if mode != 'car':
-                    // Zero parking cost
+                    # Zero parking cost
                     $('#parking1').val('$0')
                     $('#parking-slider1').slider('value', 0)
                 else:
-                    // Set car ownership to 1 car if it's 0
+                    # Set car ownership to 1 car if it's 0
                     item = $('#num-cars li.ui-selected')
                     if item.val() == 0:
                         item.removeClass('ui-selected')
@@ -204,16 +204,16 @@ def makeUI():
                         $('#num-cars').val(1)
                 numWorkdays = int($('#num-workdays1').val())
                 if numWorkdays:
-                    // Recolor aus
+                    # Recolor aus
                     aus.setStyle(auStyle)
         })
     )
-    // Initialize selector
+    # Initialize selector
     item = $('#mode1 li:eq(1)')
     item.addClass('ui-selected')
     $('#mode1').val(item[0].id)
 
-    // Add a number-of-workdays sliders
+    # Add a number-of-workdays sliders
     $(def():
         $( "#num-workdays-slider0" ).slider({
             'orientation': 'horizontal',
@@ -223,14 +223,14 @@ def makeUI():
             'value': 5,
             'step': 1,
             'slide': def(event, ui): 
-                // Update income display
+                # Update income display
                 $('#num-workdays0').val(ui.value)
             ,
             'stop': def(event, ui):
-                // Recolor aus
+                # Recolor aus
                 aus.setStyle(auStyle)
         })
-        // Initialize slider 
+        # Initialize slider 
         s = $('#num-workdays-slider0')
         $('#num-workdays0').val(s.slider('value'))
     )
@@ -244,19 +244,19 @@ def makeUI():
             'value': 0,
             'step': 1,
             'slide': def(event, ui): 
-                // Update income display
+                # Update income display
                 $('#num-workdays1').val(ui.value)
             ,
             'stop': def(event, ui):
-                // Recolor aus
+                # Recolor aus
                 aus.setStyle(auStyle)
         })
-        // Initialize slider 
+        # Initialize slider 
         s = $('#num-workdays-slider1')
         $('#num-workdays1').val(s.slider('value'))
     )
 
-    // Add parking cost slider widgets
+    # Add parking cost slider widgets
     $(def():
         $( "#parking-slider0" ).slider({
             'orientation': 'horizontal',
@@ -266,16 +266,16 @@ def makeUI():
             'value': 0,
             'step': 1,
             'slide': def(event, ui): 
-                // Update income display
+                # Update income display
                 $('#parking0').val(numToDollarStr(ui.value))
             ,
             'stop': def(event, ui):
                 numWorkdays = int($('#num-workdays0').val())
                 if numWorkdays:
-                    // Recolor aus
+                    # Recolor aus
                     aus.setStyle(auStyle)
         })
-        // Initialize slider 
+        # Initialize slider 
         s = $('#parking-slider0')
         $('#parking0').val(numToDollarStr(s.slider('value')))
     )
@@ -289,37 +289,37 @@ def makeUI():
             'value': 0,
             'step': 1,
             'slide': def(event, ui): 
-                // Update income display
+                # Update income display
                 $('#parking1').val(numToDollarStr(ui.value))
             ,
             'stop': def(event, ui):
                 numWorkdays = int($('#num-workdays1').val())
                 if numWorkdays:
-                    // Recolor aus
+                    # Recolor aus
                     aus.setStyle(auStyle)
         })
-        // Initialize slider 
+        # Initialize slider 
         s = $('#parking-slider1')
         $('#parking1').val(numToDollarStr(s.slider('value')))
     )
 
-    // Add a number-of-cars select widget
+    # Add a number-of-cars select widget
     $(def():
         $("#num-cars").selectable({
             'selected': def(event, ui):
-                // Update nuber of bedrooms
+                # Update nuber of bedrooms
                 $('#num-cars').val(ui.selected.value)
-                // Recolor aus
+                # Recolor aus
                 aus.setStyle(auStyle)
         })
     )
-    // Initialize selector
+    # Initialize selector
     item = $('#num-cars li:eq(0)')
     item.addClass('ui-selected')
     $('#num-cars').val(item[0].value)
 
-    // ------------------------------------------------------------------------
-    // Make map 
+    # ------------------------------------------------------------------------
+    # Make map 
 
     map = L.map('map', {
         'center': [lat, lon],
@@ -328,33 +328,33 @@ def makeUI():
         'maxZoom': 13,
         'maxBounds': maxBounds,
     })
-    //tiles = 'http://{s}.tiles.mapbox.com/v3/key/{z}/{x}/{y}.png'
-    // Define map base layers, one of which can be selected at a time
-    //L.tileLayer(tiles).addTo(map)
+    #tiles = 'http://{s}.tiles.mapbox.com/v3/key/{z}/{x}/{y}.png'
+    # Define map base layers, one of which can be selected at a time
+    #L.tileLayer(tiles).addTo(map)
 
-    // Disable zoom-by-scroll
+    # Disable zoom-by-scroll
     map.scrollWheelZoom.disable()
     
-    // Remove 'Leaflet' link from corner of map  
+    # Remove 'Leaflet' link from corner of map  
     map.attributionControl.setPrefix('')
 
-    // Add a geocoder
-    //L.mapbox.geocoderControl('examples.map-vyofok3q').addTo(map)
+    # Add a geocoder
+    #L.mapbox.geocoderControl('examples.map-vyofok3q').addTo(map)
 
-    // Define data bins and labels.
-    // Assume no-data entries map to nonpositive numbers.
+    # Define data bins and labels.
+    # Assume no-data entries map to nonpositive numbers.
     BINS = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 10e9]
     LABELS = ['n/a', '10%', '20%', '30%', '40%', '50%', '60%', '70%', 
       '80%', '90%', '100%+']
-    // Define color scheme using http://colorbrewer2.org/js/. 
-    // Order colors least-to-most intense, but begin with gray, 
-    // the no-data color.
+    # Define color scheme using http://colorbrewer2.org/js/. 
+    # Order colors least-to-most intense, but begin with gray, 
+    # the no-data color.
     OPACITY = 1
     COLORS_RGB = reversed([[158, 1, 66],[213, 62, 79],[244, 109, 67],
         [253, 174, 97],[254, 224, 139],[230, 245, 152],[171, 221, 164],
         [102, 194, 165],[50, 136, 189], [94, 79, 162], [200, 200, 200]])
-    //COLORS_RGB = reversed([[215, 25, 28], [253, 174, 97], [171, 221, 164], 
-    //  [43, 131, 186], [200, 200, 200]])
+    #COLORS_RGB = reversed([[215, 25, 28], [253, 174, 97], [171, 221, 164], 
+    #  [43, 131, 186], [200, 200, 200]])
     COLORS = []
     for c in COLORS_RGB:
         c.append(OPACITY)
@@ -371,7 +371,7 @@ def makeUI():
             result += h
         return result
 
-    // Add a legend to the map
+    # Add a legend to the map
     legend = L.control({'position': 'bottomleft'});
     legend.onAdd = def(map):
         div = L.DomUtil.create('div', 'legend')
@@ -385,11 +385,11 @@ def makeUI():
     
     legend.addTo(map)
 
-    // Add a scale display to the map
+    # Add a scale display to the map
     L.control.scale({'imperial': False, 'position': 'topleft'}).addTo(map);
 
 
-    // Add a info box to the map
+    # Add a info box to the map
     info = L.control({position: 'bottomright'})
     info.onAdd = def(map):
         this._div = L.DomUtil.create('div', 'info')
@@ -397,7 +397,7 @@ def makeUI():
         return this._div
 
     info.update = def(feature=None):
-        // TODO: Optimize this. Too many total cost calculations! 
+        # TODO: Optimize this. Too many total cost calculations! 
         if feature:
             income = getWeeklyIncome()
             numBedrooms = $('#num-bedrooms').val()
@@ -406,7 +406,7 @@ def makeUI():
             commuteCost, commuteTime = getWeeklyCommuteCostAndTime(feature)
             park = getWeeklyParkingCost()
             car = getWeeklyCarOwnCost()
-            // Format quantities
+            # Format quantities
             if commuteTime is not None:
                 commuteTime = commuteTime.toFixed(1) + '&nbsp;h'
             else:
@@ -444,7 +444,7 @@ def makeUI():
                 '</table>'
         else:
             message = '<h4>Info box</h4>Hover over an area unit'
-        // Update the control based on feature properties passed
+        # Update the control based on feature properties passed
         this._div.innerHTML = message
     
     info.addTo(map)
@@ -453,7 +453,7 @@ def makeUI():
         'draggable': True,
         'title': 'Your Work',
         'icon': L.mapbox.marker.icon({
-            'marker-color': COLORS[-2], //'#9370DB',
+            'marker-color': COLORS[-2], #'#9370DB',
             'marker-symbol': 'y',
         })
     }).addTo(map)
@@ -461,7 +461,7 @@ def makeUI():
         'draggable': True,
         'title': "Partner's Work",
         'icon': L.mapbox.marker.icon({
-            'marker-color': COLORS[-2], //'#9370DB',
+            'marker-color': COLORS[-2], #'#9370DB',
             'marker-symbol': 'p',
         })
     }).addTo(map)
@@ -469,13 +469,13 @@ def makeUI():
     for marker in workMarkers:
         marker.bindPopup('<h4>' + marker.options.title + '</h4>Undefined')
         marker.on('drag', def(e):
-            // In marker popup display the name of the area unit 
-            // being hovered over
+            # In marker popup display the name of the area unit 
+            # being hovered over
             setWorkPopup(this)
         )
         marker.on('dragend', def(e):
-            // setWorkPopup(this)
-            // Recolor aus
+            # setWorkPopup(this)
+            # Recolor aus
             aus.setStyle(auStyle)
         )
 
@@ -501,14 +501,14 @@ def makeUI():
         marker.setPopupContent(text)
         marker.openPopup()
 
-    // Add features/aus to map
+    # Add features/aus to map
     nonlocal aus
     aus = L.geoJson(aus, {
         'style': auStyle,
         'onEachFeature': onEachFeature
     }).addTo(map)
     
-    // Feature style functions
+    # Feature style functions
     def getColor(x):
         for (i, grade) in enumerate(BINS):
             if x <= grade:
@@ -525,7 +525,7 @@ def makeUI():
           'opacity': 1,
         }
 
-    // Define suburb mouseover etc.
+    # Define suburb mouseover etc.
     def highlightFeature(e):
         layer = e.target
         layer.setStyle({
@@ -534,37 +534,37 @@ def makeUI():
         if not L.Browser.ie and not L.Browser.opera:
             layer.bringToFront()
         info.update(layer.feature)
-        // if getWeeklyTotalCostFraction(feature) is None:
-        //     wtcf = 'n/a'
-        // else:
-        //     wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(0) + '%'
-        // nb = $('#num-bedrooms').val()
-        // nbr = $('#num-bedrooms-rent').val()
-        // wcc, wct = getWeeklyCommuteCostAndTime(feature)
-        // popupContent = '<h4>' + feature.properties.AU2013_NAM + '</h4>' +\
-        //     '<table>' +\
-        //     '<tr><td>Rent per week (for ' + nbr + ' of ' + nb + ' bedrooms)</td><td>' +\
-        //     numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
-        //     '<tr><td>Commute cost per week</td><td>' +\
-        //     numToDollarStr(wcc, False) + '</td></tr>' +\
-        //     '<tr><td>Commute time per week</td><td>' +\
-        //     wct.toFixed(1) + ' h </td></tr>' +\
-        //     '<tr><td>Parking cost per week</td><td>' +\
-        //     numToDollarStr(getWeeklyParkingCost(), False) +\
-        //     '</td></tr>' +\
-        //     '<tr><td>Car cost per week</td><td>' +\
-        //     numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
-        //     '<tr><td>Total cost per week</td><td>' +\
-        //     numToDollarStr(getWeeklyTotalCost(feature), False) +\
-        //     '</td></tr>' +\
-        //     '<tr><td>Fraction of income per week</td><td>' +\
-        //     wtcf +\
-        //     '</td></tr>' +\
-        //     '</table>'
-        // layer.bindPopup(popupContent, {
-        //     'offset': L.point(0, 200),
-        //     'closeButton': False,
-        // }).openPopup()
+        # if getWeeklyTotalCostFraction(feature) is None:
+        #     wtcf = 'n/a'
+        # else:
+        #     wtcf = (getWeeklyTotalCostFraction(feature)*100).toFixed(0) + '%'
+        # nb = $('#num-bedrooms').val()
+        # nbr = $('#num-bedrooms-rent').val()
+        # wcc, wct = getWeeklyCommuteCostAndTime(feature)
+        # popupContent = '<h4>' + feature.properties.AU2013_NAM + '</h4>' +\
+        #     '<table>' +\
+        #     '<tr><td>Rent per week (for ' + nbr + ' of ' + nb + ' bedrooms)</td><td>' +\
+        #     numToDollarStr(getWeeklyRent(feature), False) + '</td></tr>' +\
+        #     '<tr><td>Commute cost per week</td><td>' +\
+        #     numToDollarStr(wcc, False) + '</td></tr>' +\
+        #     '<tr><td>Commute time per week</td><td>' +\
+        #     wct.toFixed(1) + ' h </td></tr>' +\
+        #     '<tr><td>Parking cost per week</td><td>' +\
+        #     numToDollarStr(getWeeklyParkingCost(), False) +\
+        #     '</td></tr>' +\
+        #     '<tr><td>Car cost per week</td><td>' +\
+        #     numToDollarStr(getWeeklyCarOwnCost(), False) + '</td></tr>' +\
+        #     '<tr><td>Total cost per week</td><td>' +\
+        #     numToDollarStr(getWeeklyTotalCost(feature), False) +\
+        #     '</td></tr>' +\
+        #     '<tr><td>Fraction of income per week</td><td>' +\
+        #     wtcf +\
+        #     '</td></tr>' +\
+        #     '</table>'
+        # layer.bindPopup(popupContent, {
+        #     'offset': L.point(0, 200),
+        #     'closeButton': False,
+        # }).openPopup()
 
     def resetHighlight(e):
         layer = e.target
@@ -582,17 +582,17 @@ def makeUI():
             'click': zoomToFeature,
         })
 
-    // ------------------------------------------------------------------------
-    // Accounting functions
+    # ------------------------------------------------------------------------
+    # Accounting functions
     def getWeeklyIncome():
-        income = $('#income').val() // Formatted string
+        income = $('#income').val() # Formatted string
         return numToDollarStr(income, True)/52
 
     def getWeeklyRent(feature):
-        // Return the weekly rent for this au/feature based on
-        // the currently selected property type and number of bedrooms.
-        // If the given feature has undefined rent,
-        // then return None. 
+        # Return the weekly rent for this au/feature based on
+        # the currently selected property type and number of bedrooms.
+        # If the given feature has undefined rent,
+        # then return None. 
         numBedrooms = $('#num-bedrooms').val()
         numBedroomsRent = $('#num-bedrooms-rent').val()
         auName = feature.properties.AU2013_NAM         
@@ -605,7 +605,7 @@ def makeUI():
         return rent
 
     def getWeeklyCommuteCostAndTime(feature):
-        // Get commute distance and time from this feature to work
+        # Get commute distance and time from this feature to work
         auName = feature.properties.AU2013_NAM
         i = MIndexByAu[auName]
         totalCost = 0
@@ -613,20 +613,20 @@ def makeUI():
         for k in range(2):
             numWorkdays = int($('#num-workdays' + str(k)).val())
             if not numWorkdays:
-                // Doesn't contribute to total cost and time
+                # Doesn't contribute to total cost and time
                 continue
             mode = $('#mode' + str(k)).val()
             workAuName = getWorkAuName(workMarkers[k])
             if workAuName is None:
-                // Doesn't contribute to total cost and time
+                # Doesn't contribute to total cost and time
                 continue
             j = MIndexByAu[workAuName]
-            // Remember that M[mode] is a lower-triangular half-matrix
+            # Remember that M[mode] is a lower-triangular half-matrix
             if j > i:
                 i, j = j, i
             cost, time = M[mode][i][j]
             if cost is None:
-                // Can't get to work from this feature via this mode
+                # Can't get to work from this feature via this mode
                 return None, None
             totalCost += numWorkdays*cost
             totalTime += numWorkdays*time            
@@ -646,7 +646,7 @@ def makeUI():
         return totalCost
 
     def getWeeklyTotalCost(feature):
-        // Return the total cost for living in this au/feature
+        # Return the total cost for living in this au/feature
         rent = getWeeklyRent(feature)
         cc = getWeeklyCommuteCostAndTime(feature)[0] 
         if rent is not None and cc is not None:
