@@ -34,7 +34,12 @@ def main():
         li:
             'The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions.  Also, distance estimates for an area unit to itself are currently zero for all travel modes. Because the data does not incorporate a traffic model, the driving mode times are probably underestimates.'
         li:
-            'Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274). These figures were derived for Auckland, so the public transport mode figure probably does not apply to other regions of New Zealand, and maybe not even to Auckland!' 
+            'Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274). These figures were derived for Auckland, so the public transport mode figure probably does not apply to other regions of New Zealand, and maybe not even to Auckland!'
+        li:
+            'In the special case of Auckland, commute cost by public transport are calculated based on' 
+            a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
+                'the current AT Hop monthly pass costs'
+            'when applicable.  Otherwise, the per kilometer public transport cost above is used. For example, a daily roundtrip commute between area units in zones A and B costs ($190/30.41)*2 ~ $12.49.' 
         li:
             'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'     
     h2:
@@ -46,6 +51,15 @@ def main():
             'Make the app mobile-friendly'
         li:
             'Improve driving time estimates by incorporating a traffic model'
+    h2:
+        'Changelog'
+    ul:
+        li: 
+            '2014-03-20: Public release'
+        li:
+            '2014-07-20: Improved Auckland public transport cost estimates by using'
+            a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
+                'the current AT Hop monthly pass costs.'
     h2: 
         'Feedback?'
     p:  

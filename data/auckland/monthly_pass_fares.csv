@@ -1,0 +1,17 @@
+origin zone, destination zone, monthly fare in NZD for unlimited travel
+A,A,140
+B,A,190
+C,A,250
+W,A,
+A,B,190
+B,B,140
+C,B,190
+W,B,
+A,C,250
+B,C,190
+C,C,140
+W,C,
+A,W,
+B,W,
+C,W,
+W,W,140

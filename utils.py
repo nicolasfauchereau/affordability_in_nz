@@ -630,6 +630,64 @@ def create_commute_costs(region):
     # Write to file
     data = {'index_by_name': index_by_name, 'matrix': MM}
     dump_json(data, prefix + 'commute_costs.json')
+
+def improve_auckland_transit_commute_costs():
+    """
+    Assume ``commute_costs.json`` has been created for the Auckland region
+    and improve its transit mode cost estimates by using monthly pass fares.
+    """
+    prefix = 'data/auckland/'
+
+    # Load original commute costs
+    cc = load_json(prefix + 'commute_costs.json')
+    M = cc['matrix']
+    index_by_name = cc['index_by_name']
+    name_by_index = {index_by_name[name]: name for name in index_by_name}
+
+    # Get fare zone by AU name
+    zone_by_name = {}
+    with open(prefix + 'au_centroids.csv') as f:
+        reader = csv.reader(f)
+        # Skip header
+        reader.next()
+        for row in reader:
+            name, lon, lat, zone = row
+            if zone == '':
+                zone = None
+            zone_by_name[name] = zone
+
+    # Get one-way daily cost by origin zone and destination zone
+    cost_by_od = {}
+    with open(prefix + 'monthly_pass_fares.csv') as f:
+        reader = csv.reader(f)
+        # Skip header
+        reader.next()
+        for row in reader:
+            origin, destination, monthly_cost = row
+            if monthly_cost != '':
+                daily_cost = float(monthly_cost)/(365/12)
+            else:
+                daily_cost = None
+            cost_by_od[(origin, destination)] = daily_cost
+
+    # Update M['transit'] cost (but not time)
+    n = len(M['transit'])
+    for i in range(n):
+        i_zone = zone_by_name[name_by_index[i]]
+        for j in range(i + 1):
+            j_zone = zone_by_name[name_by_index[j]] 
+            # Update roundtrip daily cost if the original cost is not None or 0
+            try:
+                cost = round(cost_by_od[(i_zone, j_zone)] +\
+                    cost_by_od[(j_zone, i_zone)], 2)
+            except (KeyError, TypeError):
+                cost = None
+            if cost is not None and M['transit'][i][j][0] not in [None, 0]:
+                M['transit'][i][j][0] = cost 
+
+    # Write to file
+    data = {'index_by_name': index_by_name, 'matrix': M}
+    dump_json(data, prefix + 'commute_costs.json')
        
 # TODO: delete this function when no longer necessary
 def reformat_commutes(filename):
@@ -669,10 +727,12 @@ if __name__ == '__main__':
     # create_rents(region)
     # print('  Centroids...')
     # create_centroids(region)
-    add_fare_zones(region)
     # print('  Sample points...')
     # create_sample_points(region)
     # print('  Fake commute costs...')
     # create_fake_commute_costs(region)
     # print('  Commute costs...')
     # create_commute_costs(region)
+    if region == 'auckland':
+        add_fare_zones(region)
+        improve_auckland_transit_commute_costs()
