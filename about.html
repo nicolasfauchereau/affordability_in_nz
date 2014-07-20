@@ -96,6 +96,13 @@
             Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274). These figures were derived for Auckland, so the public transport mode figure probably does not apply to other regions of New Zealand, and maybe not even to Auckland!
         </li>
         <li>
+            In the special case of Auckland, commute cost by public transport are calculated based on
+            <a href="docs/auckland_monthly_pass_fare_zones.pdf">
+                the current AT Hop monthly pass costs
+            </a>
+            when applicable.  Otherwise, the per kilometer public transport cost above is used. For example, a daily roundtrip commute between area units in zones A and B costs ($190/30.41)*2 ~ $12.49.
+        </li>
+        <li>
             Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.
         </li>
     </ul>
@@ -111,6 +118,20 @@
         </li>
         <li>
             Improve driving time estimates by incorporating a traffic model
+        </li>
+    </ul>
+    <h2>
+        Changelog
+    </h2>
+    <ul>
+        <li>
+            2014-03-20: Public release
+        </li>
+        <li>
+            2014-07-20: Improved Auckland public transport cost estimates by using
+            <a href="docs/auckland_monthly_pass_fare_zones.pdf">
+                the current AT Hop monthly pass costs.
+            </a>
         </li>
     </ul>
     <h2>

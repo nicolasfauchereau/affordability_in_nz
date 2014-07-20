@@ -38,10 +38,6 @@ Resources
 ============
 - `GeoJSONLint <http://geojsonlint.com/>`_ for validating and visualizing GeoJSON online.
 
-Todo
-=====
-- Separate the source files (.pyj, .pyml, .sass) from the built compiled files (.js, .html, .css). Keeping them together can be confusing. Use Paver.
-
 Authors
 ========
 - Saeid Adli
