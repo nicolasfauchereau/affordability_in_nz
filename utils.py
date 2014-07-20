@@ -5,6 +5,9 @@ import json, csv
 
 import pyproj
 import shapely
+from shapely.geometry import Point, Polygon, MultiPolygon
+from shapely.geometry.polygon import LinearRing
+from shapely.ops import unary_union
 
 MASTER_SHAPES_FILE = 'data/au_shapes.geojson'
 MASTER_RENTS_FILE = 'data/au_rents.csv'
@@ -182,9 +185,6 @@ def coords_to_polygon(coords, proj=None):
     first via the projection ``proj``.
     For example, ``proj`` could be ``pj_nztm``.
     """
-    from shapely.geometry import Polygon
-    from shapely.geometry.polygon import LinearRing
-
     if not coords:
         return Polygon()
     exterior = coords.pop(0)
@@ -215,9 +215,6 @@ def get_polygon_and_centroid_by_au_name(collection, name_field='AU2013_NAM'):
      centroid of polygon as a Shapely point in NZTM coordinates))
     for all polygons in the collection.  
     """
-    from shapely.geometry import Polygon, MultiPolygon
-    from shapely.ops import unary_union
-
     pc_by_name = {}
     for feature in collection['features']:
         name = feature['properties'][name_field]
@@ -298,12 +295,54 @@ def create_centroids(region=None, name_field='AU2013_NAM', digits=5):
     geojson = features_to_feature_collection(features)
     dump_json(geojson, prefix + 'au_centroids.geojson')
 
+def add_fare_zones(region=None):
+    """
+    Add a fare zone column to the centroids CSV file of the given region.
+    Currently, only ``region == 'auckland'`` is implemented.
+    """
+    assert region == 'auckland',\
+      "Only 'region' == 'auckland' is implemented"
+
+    prefix = 'data/%s/' % region
+
+    # Read in fare zones and convert to Shapely polygons
+    fare_zones = load_json(prefix + 'monthly_pass_fare_zones.geojson')
+    polygon_by_zone = {}
+    for feature in fare_zones['features']:
+        zone = feature['properties']['fare_zone']
+        poly = coords_to_polygon(feature['geometry']['coordinates'])
+        old_poly = polygon_by_zone.get(zone, Polygon())
+        poly = unary_union([old_poly, poly])
+        polygon_by_zone[zone] = poly
+
+    # Read in each centroid and find the fare zone containing it
+    new_rows = []
+    with open(prefix + 'au_centroids.csv', 'rb') as f:
+        reader = csv.reader(f)
+        header = reader.next()[:3]
+        header.append('fare zone')
+        new_rows.append(header)
+        for row in reader:            
+            # Find the fare zone containing the point
+            name, lon, lat = row[:3]
+            point = Point(float(row[1]), float(row[2]))
+            zone = None
+            for z, poly in polygon_by_zone.iteritems():
+                if poly.intersects(point):
+                    zone = z
+                    break
+            new_rows.append([name, lon, lat, zone])
+    
+    # Write new centroids file with fare zone column
+    with open(prefix + 'au_centroids.csv', 'w') as f:
+        writer = csv.writer(f)
+        writer.writerows(new_rows)
+
 def get_sample_points(polygon, n):
     """
     Return ``n`` Shapely points chosen uniformly at random from the 
     given Shapely polygon object.
     """
-    from shapely.geometry import Point
     from random import uniform
 
     minx, miny, maxx, maxy = polygon.bounds
@@ -622,17 +661,18 @@ def reformat_commutes(filename):
             writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
-    region = 'canterbury'
-    print('Creating files for %s...' % region)
-    print('  Shapes...')
-    create_shapes(region)
-    print('  Rents...')
-    create_rents(region)
-    print('  Centroids...')
-    create_centroids(region)
+    region = 'auckland'
+    # print('Creating files for %s...' % region)
+    # print('  Shapes...')
+    # create_shapes(region)
+    # print('  Rents...')
+    # create_rents(region)
+    # print('  Centroids...')
+    # create_centroids(region)
+    add_fare_zones(region)
     # print('  Sample points...')
     # create_sample_points(region)
     # print('  Fake commute costs...')
     # create_fake_commute_costs(region)
-    print('  Commute costs...')
-    create_commute_costs(region)
+    # print('  Commute costs...')
+    # create_commute_costs(region)
