@@ -28,7 +28,7 @@ def get_au_names(filename, header=True):
     of the CSV.
     """
     au_names = set()
-    with open(filename, 'rb') as f:
+    with open(filename, 'r') as f:
         reader = csv.reader(f)
         if header:
             # Skip header row
@@ -42,7 +42,7 @@ def load_json(filename):
     Read the JSON file with the given filename, 
     decode its contents into a Python dictionary, and return the result.
     """
-    with open(filename, 'rb') as f:
+    with open(filename, 'r') as f:
         return json.loads(f.read())
 
 def dump_json(json_dict, filename):
@@ -122,7 +122,7 @@ def create_rents(region, max_bedrooms=5, header=True):
     rent_by_num_bedrooms_by_au_name =\
       {au_name: {i: None for i in range(1, max_bedrooms + 1)} 
       for au_name in au_names}
-    with open(MASTER_RENTS_FILE, 'rb') as f:
+    with open(MASTER_RENTS_FILE, 'r') as f:
         reader = csv.reader(f)
         if header:
             # Skip header row
@@ -316,7 +316,7 @@ def add_fare_zones(region=None):
 
     # Read in each centroid and find the fare zone containing it
     new_rows = []
-    with open(prefix + 'au_centroids.csv', 'rb') as f:
+    with open(prefix + 'au_centroids.csv', 'r') as f:
         reader = csv.reader(f)
         header = reader.next()[:3]
         header.append('fare zone')
@@ -588,7 +588,7 @@ def create_commute_costs(region):
     # Assign distance and time values from CSVs
     for mode in MODES:
         filename = prefix + mode + '_commutes.csv'
-        with open(filename, 'rb') as f:
+        with open(filename, 'r') as f:
             reader = csv.reader(f)
             # Skip header row
             next(reader) 
@@ -696,7 +696,7 @@ def reformat_commutes(filename):
     Save to new CSV file.
     """ 
     # Assign distance and time values from CSVs
-    with open(filename, 'rb') as f:
+    with open(filename, 'r') as f:
         reader = csv.reader(f)
         M = list(reader)
     filename = filename + '.new'
@@ -718,20 +718,20 @@ def reformat_commutes(filename):
             writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
-    region = 'auckland'
-    # print('Creating files for %s...' % region)
-    # print('  Shapes...')
-    # create_shapes(region)
-    # print('  Rents...')
-    # create_rents(region)
-    # print('  Centroids...')
-    # create_centroids(region)
-    # print('  Sample points...')
-    # create_sample_points(region)
-    # print('  Fake commute costs...')
-    # create_fake_commute_costs(region)
-    # print('  Commute costs...')
-    # create_commute_costs(region)
-    if region == 'auckland':
-        add_fare_zones(region)
-        improve_auckland_transit_commute_costs()
+    region = 'nelson'
+    print('Creating files for %s...' % region)
+    print('  Shapes...')
+    create_shapes(region)
+    print('  Rents...')
+    create_rents(region)
+    print('  Centroids...')
+    create_centroids(region)
+    print('  Sample points...')
+    create_sample_points(region)
+    print('  Fake commute costs...')
+    create_fake_commute_costs(region)
+    print('  Commute costs...')
+    create_commute_costs(region)
+    # if region == 'auckland':
+    #     add_fare_zones(region)
+    #     improve_auckland_transit_commute_costs()
