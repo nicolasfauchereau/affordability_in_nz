@@ -1,0 +1,334 @@
+from __future__ import division
+import csv
+import json
+
+def open_url(url, use_tor=True):
+    """
+    Open the given URL with urllib2.
+    If ``use_tor == True``, then go through Tor,
+    assuming you have it running.
+    """
+    import urllib2
+    import socks # from PySocks module
+    from sockshandler import SocksiPyHandler
+
+    if use_tor:
+        opener = urllib2.build_opener(SocksiPyHandler(
+          socks.PROXY_TYPE_SOCKS5, "localhost", 9150))
+        return opener.open(url)
+    else:
+        return urllib2.urlopen(url)
+
+def get_new_ip_address():
+    """
+    Assuming you have Tor running, switch to a new Tor IP address.
+    """
+    from stem import Signal
+    from stem.control import Controller
+    import time
+
+    with Controller.from_port(port=9151) as controller:
+      controller.authenticate()
+      controller.signal(Signal.NEWNYM)
+
+    # Print IP address
+    time.sleep(10) # Delay while Tor updates
+    ip_address = json.load(open_url('https://httpbin.org/ip'))[
+      'origin']
+    print('IP address', ip_address)
+
+def query_repeatedly(max_num_fails=3):
+    import functools
+
+    def actual_decorator(f):
+        @functools.wraps(f)
+        def wrapper(*args, **kwargs):
+            result = f(*args, **kwargs)
+            use_tor = kwargs.get('use_tor', False)
+            num_fails = 0
+            while result == (-1, -1) and num_fails <= max_num_fails:
+                num_fails += 1
+                if num_fails < max_num_fails:
+                    # Try again
+                    result = f(*args, **kwargs)
+                else:
+                    # Now num_fails == max_num_fails.
+                    # We've probably hit the API limit, 
+                    # so get a new IP address and try once more
+                    if use_tor:
+                        print('Failed to get data %s times.' % max_num_fails +\
+                          'Getting new IP address and trying once more.')
+                        get_new_ip_address()
+                    result = f(*args, **kwargs)    
+            return result
+        return wrapper
+    return actual_decorator
+
+@query_repeatedly(3)
+def get_mapquest_distance_and_time(a, b, mode='car', use_tor=True):
+    """
+    Given WGS84 longitude-latitude points ``a`` and ``b``,
+    return the distance in kilometers and the time in minutes of the
+    quickest path from ``a`` to ``b`` in the Mapquest road network for
+    the specified mode of transit; mode options are 'walk', 'bicycle',
+    'car', and 'public_transport'.
+    Computed with the `Mapquest API <http://www.mapquestapi.com/directions/#advancedrouting>`_.
+    """
+
+    if mode == 'walk':
+        mode = 'pedestrian'
+    elif mode == 'bicycle':
+        pass
+    elif mode == 'public_transport':
+        mode = 'multimodal'
+    else:
+        mode = 'fastest'
+
+    url = 'http://www.mapquestapi.com/directions/v2/route?key=Fmjtd|luur2l622u%2C2n%3Do5-90ya0y&from='
+    url += '{!s},{!s}&to={!s},{!s}'.format(a[1], a[0], b[1], b[0])
+    url += '&routeType=' + mode
+    url += '&unit=k&doReverseGeocode=false&narrativeType=none'
+    url += '&isoLocal=2014-04-11T20:00'
+    url += '&timeType=3'
+    url += '&useTraffic=true'
+    # Send query and retrieve data
+    try:
+        data = json.load(open_url(url, use_tor=use_tor))
+    except:
+        return (-1, -1)
+
+    result = json.load(open_url(url))
+    return result['route']['distance'], result['route']['time']/60
+
+
+@query_repeatedly(3)
+def get_google_distance_and_time(a, b, mode='transit', use_tor=True):
+    """
+    Given WGS84 longitude-latitude points ``a`` and ``b``,
+    return (distance in kilometers, time in hours) of the 
+    quickest path from ``a`` to ``b`` in the Google road network for 
+    the specified mode of transit; mode options are 'walk', 'bicycle', 
+    'car', and 'transit'.
+    If there is no path, then return (None, None).
+
+    Computed with the `Google API <https://developers.google.com/maps/documentation/directions/>`_.
+    If ``use_tor == True``, then perform API calls through Tor,
+    assuming you have it running.
+
+    If the URL request fails for whatever reason, then return (-1, -1).
+    """
+    if mode == 'walk':
+        mode = 'walking'
+    elif mode == 'bicycle':
+        mode = 'bicycling'
+    elif mode == 'transit':
+        # Get route arriving by 08:30 13 Mar 2014 Auckland time, aka,
+        # 19:30 12 Mar 2014 GMT. 
+        # Used http://www.onlineconversion.com/unix_time.htm
+        mode = 'transit&arrival_time=1394652600' 
+    else:
+        mode = 'driving'
+
+    url = 'http://maps.googleapis.com/maps/api/directions/json?origin='
+    url += '{!s},{!s}&destination={!s},{!s}'.format(a[1], a[0], b[1], b[0])
+    url += '&mode=' + mode + '&sensor=false'
+    
+    # Send query and retrieve data
+    try:
+        data = json.load(open_url(url, use_tor=use_tor))
+    except:
+        return (-1, -1)
+    
+    # Parse data
+    if data['status'] == 'OK':
+        distance = sum(leg['distance']['value'] 
+          for leg in data['routes'][0]['legs'])
+        time = sum(leg['duration']['value'] 
+          for leg in data['routes'][0]['legs'])
+        # Convert distance from meters to kilometers and
+        # time from seconds to hours
+        result = distance/1000, time/3600
+    elif data['status'] == 'ZERO_RESULTS':
+        result = (None, None)
+    else:
+        # Fail
+        result = (-1, -1)
+    return result
+
+def get_google_distance_and_time_matrix(origins, destinations, mode='driving',
+  use_tor=True):
+    """
+    Given a list of origins as WGS84 longitude-latitude pairs,
+    a list of destinations of the same length and form,
+    and a mode of transport ('driving', 'bicycling', or 'walking'), 
+    return the origin-destination matrix computed by the Google Maps API; see
+    `here <https://developers.google.com/maps/documentation/distancematrix/>`_.
+
+    The output matrix ``M`` is of size ``len(origins)*len(destinations)`` and 
+    contains distance-time pairs with distance in kilometers and time in hours.
+    The matrix is encoded as a dictionary with structure 
+    (i, j) -> (distance for route from origins[i] to destinations[j], 
+    time for route).
+    If there is no route for (i, j), then the corresponding entry is 
+    ``(None, None)``.
+
+    If ``use_tor == True``, then perform API calls through Tor,
+    assuming you have it running.
+
+    If the URL request fails for whatever reason, then return (-1, -1).
+    """
+    # Create query url
+    url = 'http://maps.googleapis.com/maps/api/distancematrix/json?origins='
+    for (lon, lat) in origins:
+        url += '{:.5f},{:.5f}|'.format(lat, lon)
+    # Remove trailing '|'
+    url = url[:-1]
+    url += '&destinations='
+    for (lon, lat) in destinations:
+        url += '{:.5f},{:.5f}|'.format(lat, lon)
+    url = url[:-1]
+    url += '&mode=' + mode + '&sensor=false'
+
+    # Send query and retrieve data
+    try:
+        data = json.load(open_url(url, use_tor=use_tor))
+    except:
+        return (-1, -1)
+
+    # Parse data 
+    if data['status'] == 'OK':
+        M = {}
+        for i in range(len(data['rows'])):
+            for j in range(len(data['rows'][i]['elements'])):
+                v = data['rows'][i]['elements'][j]
+                if v['status'] == 'ZERO_RESULTS':
+                    # No route, so set to None
+                    M[(i, j)] = (None, None) 
+                else:
+                    M[(i, j)] = (v['distance']['value']/1000, 
+                      v['duration']['value']/3600)
+    elif data['status'] == 'ZERO_RESULTS':
+        M = {}
+    else:
+        # Fail
+        M = (-1, -1)
+    return M
+
+def create_transit_commutes(region, use_tor=True):
+    """
+    For the given region, create a transit commutes CSV file, 
+    where each row contains:
+
+    1. origin area unit name
+    2. destination area unit name
+    3. distance in kilometers
+    4. time in hours
+
+    Use ``get_google_distance_and_time(*, *, use_tor=use_tor)``.
+    """
+    prefix = 'data/%s/' % region
+
+    # Read centroids data and build a list of items 
+    # (AU name, longitude-latitude coordinate pair of AU centroid)
+    names_and_centroids = []
+    with open(prefix + 'au_centroids.csv', 'rb') as f:
+        reader = csv.reader(f)
+        # Skip header row
+        reader.next()
+        for row in reader:
+            formatted_row = (row[0], (float(row[1]), float(row[2])))
+            names_and_centroids.append(formatted_row)
+
+    # Write commutes data CSV 
+    with open(prefix + 'transit_commutes.csv', 'a') as f:
+        writer = csv.writer(f)
+        writer.writerow(['origin (2013 area unit name)', 
+          'destination', 'distance (kilometers)', 'time (hours)'])
+        for o_name, o_centroid in names_and_centroids:
+            for d_name, d_centroid in names_and_centroids:
+                row = [o_name, d_name]
+                g = get_google_distance_and_time(o_centroid, d_centroid,
+                  mode='transit', use_tor=use_tor)
+                row.extend(list(g))
+                print(row)
+                writer.writerow(row)
+    # for o_name, o_centroid in names_and_centroids:
+    #     # Get distance and time data for this row of M
+    #     for i in range(0, len(names_and_centroids), k):
+    #     #for d_names_and_d_centroids in names_and_centroids[::k]:
+    #         d_names_and_d_centroids = names_and_centroids[i:i+k]
+    #         # Break row into chunks of size at most k
+    #         # so that we don't exceed the API limit
+    #         d_names, d_centroids = zip(*d_names_and_d_centroids)
+    #         print('Calling Google...')
+    #         g = get_google_distance_matrix([o_centroid], d_centroids)
+
+def patch_transit_commutes(region, use_tor=True):
+    """
+    For the given region, create a new transit commutes file called
+    ``transit_commutes_new.csv``, which has the same format as
+    ``transit_commutes.csv``.  
+    To build the first file, copy all the good entries from the second file,
+    and for the bad, the ones with distance = -1 and time = -1, 
+    try to recompute these, again using 
+    ``get_google_distance_and_time(*, *, use_tor=use_tor)``.
+
+    Can be useful in case your internet went down in the middle of 
+    creating the original transit commutes file and you need to fill in 
+    some failed data requests.
+    """
+    prefix = 'data/%s/' % region
+
+    # Read centroids data and build a list of items 
+    # (AU name, longitude-latitude coordinate pair of AU centroid)
+    centroid_by_name = {}
+    with open(prefix + 'au_centroids.csv', 'rb') as f:
+        reader = csv.reader(f)
+        # Skip header row
+        reader.next()
+        for row in reader:
+            centroid_by_name[row[0]] = (float(row[1]), float(row[2]))
+
+    # Read old transit commutes file
+    old_commutes = []
+    with open(prefix + 'transit_commutes.csv', 'rb') as f:
+        reader = csv.reader(f)
+        # Skip header row
+        old_commutes = list(reader)
+
+    # Write new file commutes data CSV 
+    with open(prefix + 'transit_commutes_new.csv', 'a') as f:
+        writer = csv.writer(f)
+        writer.writerow(['origin (2013 area unit name)', 
+          'destination', 'distance (kilometers)', 'time (hours)'])
+        for row in old_commutes:
+            if row[2]:
+                new_row = row
+            else:
+                # Query Google
+                o_centroid = centroid_by_name[row[0]]
+                d_centroid = centroid_by_name[row[1]] 
+                g = get_google_distance_and_time(o_centroid, d_centroid,
+                  mode='transit', use_tor=use_tor)
+                new_row = row[:2] + list(g)
+                print(new_row)
+            writer.writerow(new_row)
+
+def test_mapquest(use_tor=True):
+    a = [174.78209,-41.30701]
+    b = [174.89262,-41.13399]
+    print(get_mapquest_distance_and_time(a, b))
+
+def test_google_matrix(use_tor=True):
+    a = [174.78209,-41.30701]
+    b = [174.89262,-41.13399]
+    origins = [a, b]
+    destinations = [a, b]    
+    M = get_google_distance_and_time_matrix(origins, destinations, 
+      use_tor=use_tor)
+    print(M)
+
+if __name__ == '__main__':
+    region = 'canterbury'
+    # create_transit_commutes(region)
+    patch_transit_commutes(region)
