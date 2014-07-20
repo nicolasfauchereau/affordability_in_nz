@@ -39,7 +39,7 @@ def main():
             'In the special case of Auckland, commute cost by public transport are calculated based on' 
             a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
                 'the current AT Hop monthly pass costs'
-            'when applicable.  Otherwise, the per kilometer public transport cost above is used. For example, a daily roundtrip commute between area units in zones A and B costs ($190/30.41)*2 ~ $12.49.' 
+            'when applicable.  Otherwise, the per kilometer public transport cost above is used. For example, a daily roundtrip commute between area units in zones A and B costs $190/30.41 ~ $6.25.' 
         li:
             'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'     
     h2:

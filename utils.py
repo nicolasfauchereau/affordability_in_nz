@@ -318,7 +318,7 @@ def add_fare_zones(region=None):
     new_rows = []
     with open(prefix + 'au_centroids.csv', 'r') as f:
         reader = csv.reader(f)
-        header = reader.next()[:3]
+        header = next(reader)[:3]
         header.append('fare zone')
         new_rows.append(header)
         for row in reader:            
@@ -677,8 +677,7 @@ def improve_auckland_transit_commute_costs():
             j_zone = zone_by_name[name_by_index[j]] 
             # Update roundtrip daily cost if the original cost is not None or 0
             try:
-                cost = round(cost_by_od[(i_zone, j_zone)] +\
-                    cost_by_od[(j_zone, i_zone)], 2)
+                cost = round(cost_by_od[(i_zone, j_zone)], 2)
             except (KeyError, TypeError):
                 cost = None
             if cost is not None and M['transit'][i][j][0] not in [None, 0]:
@@ -718,20 +717,20 @@ def reformat_commutes(filename):
             writer.writerow([o_name, d_name, distance, time])
 
 if __name__ == '__main__':
-    region = 'nelson'
-    print('Creating files for %s...' % region)
-    print('  Shapes...')
-    create_shapes(region)
-    print('  Rents...')
-    create_rents(region)
-    print('  Centroids...')
-    create_centroids(region)
-    print('  Sample points...')
-    create_sample_points(region)
-    print('  Fake commute costs...')
-    create_fake_commute_costs(region)
-    print('  Commute costs...')
-    create_commute_costs(region)
-    # if region == 'auckland':
-    #     add_fare_zones(region)
-    #     improve_auckland_transit_commute_costs()
+    region = 'auckland'
+    # print('Creating files for %s...' % region)
+    # print('  Shapes...')
+    # create_shapes(region)
+    # print('  Rents...')
+    # create_rents(region)
+    # print('  Centroids...')
+    # create_centroids(region)
+    # print('  Sample points...')
+    # create_sample_points(region)
+    # print('  Fake commute costs...')
+    # create_fake_commute_costs(region)
+    # print('  Commute costs...')
+    # create_commute_costs(region)
+    if region == 'auckland':
+        add_fare_zones(region)
+        improve_auckland_transit_commute_costs()
