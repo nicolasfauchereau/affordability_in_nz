@@ -1,0 +1,70 @@
+import base
+
+def main():
+    p:
+        'This application is created by Saeid Adli and Alex Raichev and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey' 
+        a(href='docs/MaMo2014.pdf'):
+            '[MaMo2014]'
+        '.'
+        # a(href='http://www.sciencedirect.com/science/article/pii/S0264275114000134'):
+        #     '[MaMo2014]'
+        # '(pay-walled).'
+    p:
+        'This application is open-source. Its data and code can be found on Github' 
+        a(href='https://github.com/araichev/affordability_in_nz'):
+            'here,'
+        'and contributors are welcome.'
+        'Thanks heaps to ' 
+        a(href='http://www.mrcagney.co.nz'):
+            'MRCagney'
+        'for funding this project!'
+    h2:
+        'Data, Methodology, and Limitations'
+    ul:
+        li: 
+            "The area units displayed are simplified versions of the 2013 census area units, the full versions of which come from Statistics New Zealand from" 
+            a(href='http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx'):
+                'here.'
+        li:
+            'The median gross annual incomes of employed Aucklanders, Wellingtonians, etc. comes from Statistics New Zealand from the June 2013 income survey (grouped by regional council)'
+            a(href='http://www.stats.govt.nz/browse_for_stats/income-and-work/Income/nz-income-survey-info-releases.aspx'):
+                'here.'
+        li:
+            'Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.'
+        li:
+            'The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions.  Also, distance estimates for an area unit to itself are currently zero for all travel modes. Because the data does not incorporate a traffic model, the driving mode times are probably underestimates.'
+        li:
+            'Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274). These figures were derived for Auckland, so the public transport mode figure probably does not apply to other regions of New Zealand, and maybe not even to Auckland!'
+        li:
+            'In the special case of Auckland, commute cost by public transport are calculated based on' 
+            a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
+                'the current AT Hop monthly pass costs'
+            'when applicable.  Otherwise, the per kilometer public transport cost above is used. For example, a daily roundtrip commute between area units in zones A and B costs ($190/30.41)*2 ~ $12.49.' 
+        li:
+            'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'     
+    h2:
+        'Todo'
+    ul:
+        li:
+            'Improve public transport cost estimates by using regional fare data where available'
+        li:
+            'Make the app mobile-friendly'
+        li:
+            'Improve driving time estimates by incorporating a traffic model'
+    h2:
+        'Changelog'
+    ul:
+        li: 
+            '2014-03-20: Public release'
+        li:
+            '2014-07-20: Improved Auckland public transport cost estimates by using'
+            a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
+                'the current AT Hop monthly pass costs.'
+    h2: 
+        'Feedback?'
+    p:  
+        'This application is a work in progress and your feedback will help make it better.'
+        a(href='mailto:araichev@affordability.org.nz'):
+            'Email Alex.'
+        
+page('about')
