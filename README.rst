@@ -7,11 +7,10 @@ Thanks heaps to the `MRCagney <http://www.mrcagney.co.nz>`_ for donating to this
 
 Requirements
 ============
+- Python >= 3.4 along with the Python modules in ``requirements.txt``; for data processing
 - `RapydML <https://bitbucket.org/pyjeon/rapydml>`_ for compiling RapydML (.pyml) files to HTML
 - `RapydCSS <https://bitbucket.org/pyjeon/rapydcss>`_ for compiling RapydCSS (.sass) files to CSS
 - `RapydScript <https://bitbucket.org/pyjeon/rapydscript>`_ for compiling RapydScript (.pyj) files to JavaScript
-- Python >= 2.7 for data processing in ``utils.py``
-- `Shapely <http://toblerity.org/shapely/>`_ for geodata processing in ``utils.py``
 
 Instructions
 =============
