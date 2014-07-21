@@ -36,10 +36,10 @@ def main():
         li:
             'Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274). These figures were derived for Auckland, so the public transport mode figure probably does not apply to other regions of New Zealand, and maybe not even to Auckland!'
         li:
-            'In the special case of Auckland, commute cost by public transport are calculated based on' 
+            'In the special case of Auckland, commute cost by public transport is calculated as' 
             a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
-                'the current AT Hop monthly pass costs'
-            'when applicable.  Otherwise, the per kilometer public transport cost above is used. For example, a daily roundtrip commute between area units in zones A and B costs $190/30.41 ~ $6.25.' 
+                'the cost of an appropriate AT Hop monthly pass'
+            'divided by the average number of weekdays in a month. For example, a daily roundtrip commute between area units in zones A and B costs $190/(52*5/12) ~ $8.77.  For ferry rides, the cost defaults back to the public transport per kilometer cost above.' 
         li:
             'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'     
     h2:
@@ -57,9 +57,9 @@ def main():
         li: 
             '2014-03-20: Public release'
         li:
-            '2014-07-20: Improved Auckland public transport cost estimates by using'
+            '2014-07-20: Recalculated Auckland public transport cost estimates using'
             a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
-                'the current AT Hop monthly pass costs.'
+                'the AT Hop monthly pass costs.'
     h2: 
         'Feedback?'
     p:  

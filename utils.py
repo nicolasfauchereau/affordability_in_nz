@@ -664,7 +664,7 @@ def improve_auckland_transit_commute_costs():
         for row in reader:
             origin, destination, monthly_cost = row
             if monthly_cost != '':
-                daily_cost = float(monthly_cost)/(365/12)
+                daily_cost = float(monthly_cost)/(52*5/12)
             else:
                 daily_cost = None
             cost_by_od[(origin, destination)] = daily_cost
