@@ -106,6 +106,34 @@ def my_round(x, digits=5):
             result = tuple(result)
     return result 
 
+def distance(lon1, lat1, lon2, lat2):
+    """
+    Given two (longitude, latitude) points in degrees, 
+    compute their great circle distance in km on a spherical Earth of 
+    radius 6371 km.  
+    Use the haversine formula.
+    """
+    from math import radians, sin, cos, sqrt, asin
+
+    R = 6371
+    lat1 = radians(lat1)
+    lat2 = radians(lat2)
+    lon1 = radians(lon1)
+    lon2 = radians(lon2)
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    h = sin(dlat/2)**2 + cos(lat1)*cos(lat2)*sin(dlon/2)**2
+    return 2*R*asin(sqrt(h))
+
+def get_bird_distance_and_time(a, b):
+    """
+    Given a list of pairs WGS84 longitude-latitude points ``a`` and ``b``, 
+    return the distance in kilometers and time in hours of the quickest 
+    path from  ``a`` to ``b`` as the bird flies (at 40 kph).
+    """
+    d = distance(a[0], a[1], b[0], b[1])
+    return d, d/40
+
 
 class Region(object):
     """
@@ -301,17 +329,17 @@ class Region(object):
     # TODO: Finish this
     def create_fake_commute_costs(self, n=100):
         """
-        Generate fake commute distance and time information for this region and 
-        convert it into one JSON master file of daily commute costs and times. 
-        More specifically, write to ``data/<region>/fake_commute_costs.json`` 
-        the data ``{'index_by_name': index_by_name, 'matrix': M}``, where 
+        Generate fake commute distance and time information for 
+        this region and save it to a JSON file.
+        The file data is a dictionary 
+        ``{'index_by_name': index_by_name, 'matrix': M}``, where 
         ``index_by_name`` is a dictionary with structure
         area unit name -> row/column index in the lower-triangular half-matrix 
         ``M``, where ``M`` is encoded by a dictionary with structure
         mode -> list of lists of cost-time pairs 
         such that ``M[mode][i][j]`` equals the cost in dollars
-        and the time in hours that it takes to travel round-trip by the given mode
-        (specified in the list ``MODES``)
+        and the time in hours that it takes to travel round-trip by the 
+        given mode (specified in the list ``MODES``)
         from the centroid of the area unit with index ``i >= 0`` 
         to the centroid of the area unit with index ``j <= i``.
         
@@ -319,40 +347,27 @@ class Region(object):
         ('walk', 'bicycle', 'car', 'transit') = (d, d, d, d)
         and the commute time used is (t*15, t*4, t, t), 
         where d and t come from ``get_bird_distance_and_time()``
-
-        The ``name_field`` input is used to call 
-        ``get_polygon_and_centroid_by_au_name()``.
-        The ``n`` input is used to compute ``M[mode][i][i]`` by choosing 
-        ``n`` points uniformly at random 
-        from the polygon for area unit ``i`` and taking the median of the
-        distances and times from each of these points to the polygon's centroid.
         """
         path = os.path.join(self.path, 'fake_commute_costs.json')
         
-        centroid_by_area_unit = self.get_centroids()
-        names = list(centroid_by_area_unit.keys())
+        centroid_by_name = self.get_centroids()
+        names = list(centroid_by_name.keys())
         index_by_name = {name: i for (i, name) in enumerate(names)}
+        name_by_index = {i: name for (i, name) in enumerate(names)}
         n = len(names)
 
-        # Initialize matrix
+        # Initialize matrix M
         M = {mode: [[(None, None) for j in range(n)] for i in range(n)] 
           for mode in MODES}
 
         # Calculate M
         for i in range(n):
-            a = centroids_wgs84[i]
+            i_name = name_by_index[i]
+            a = centroid_by_name[i_name]
             for j in range(n):
-                if j != i:
-                    b = centroids_wgs84[j] 
-                    distance, time = get_bird_distance_and_time(a, b)
-                else:
-                    # Get sample points in polyon
-                    polygon = pc_by_name[names[i]][0]
-                    sample_points = [pj_nztm(*point_to_tuple(point), 
-                      inverse=True) for point in get_sample_points(polygon, n=n)]
-                    distances, times = list(zip(*[get_bird_distance_and_time(point, a)
-                      for point in sample_points]))
-                    distance, time = (median(list(distances)), median(list(times)))
+                j_name = name_by_index[j]
+                b = centroid_by_name[j_name] 
+                distance, time = get_bird_distance_and_time(a, b)
                 distance = round(distance, 2)
                 time = round(time, 2)
                 M['walk'][i][j] = (distance, time*15)
@@ -377,8 +392,9 @@ class Region(object):
                         # Defaults to MM[mode][i][j] = (None, None) 
                         pass 
 
+        # Save
         data = {'index_by_name': index_by_name, 'matrix': MM}
-        dump_json(data, prefix + 'fake_commute_costs.json')
+        dump_json(data, path)
 
 
 if __name__ == '__main__':
@@ -390,9 +406,8 @@ if __name__ == '__main__':
     region.create_rents()
     print('  Centroids...')
     region.create_centroids()
-    print(region.get_centroids())
-    # print('  Fake commute costs...')
-    # region.create_fake_commute_costs()
+    print('  Fake commute costs...')
+    region.create_fake_commute_costs()
     # print('  Commute costs...')
     # region.create_commute_costs()
     # if region == 'auckland':
