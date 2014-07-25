@@ -78,12 +78,6 @@ def pj_nztm(u, v, inverse=False):
         x, y = pyproj.transform(nztm, wgs84, u, v)
     return x, y
 
-def point_to_tuple(p):
-    """
-    Convert the given Shapely point to an (x, y) tuple.
-    """
-    return (p.x, p.y)
-
 def my_round(x, digits=5):
     """
     Round the floating point number or list/tuple of floating point
