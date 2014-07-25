@@ -257,14 +257,7 @@ class Region(object):
     def create_centroids(self, digits=5):
         """
         Calculate the centroids of the area units of this region and 
-        save them to a GeoJSON file and a CSV file.
-
-        For the CSV file create a header row and data rows with the following
-        columns:
-
-        1. area unit name
-        2. WGS84 longitude of area unit
-        3. WGS84 latitude of area unit.
+        save them to a GeoJSON file.
 
         Round all longitude and latitude entries to ``digits``
         decimal places.
@@ -272,8 +265,7 @@ class Region(object):
         a precision on the ground of about 1 meter; see
         `here <https://en.wikipedia.org/wiki/Decimal_degrees>`_ . 
         """
-        geojson_path = os.path.join(self.path, 'centroids.geojson')
-        csv_path = os.path.join(self.path, 'centroids.csv')
+        path = os.path.join(self.path, 'centroids.geojson')
 
         collection = self.get_shapes()
         centroid_by_area_unit = {}
@@ -289,32 +281,23 @@ class Region(object):
             area_unit = f['properties'][NAME_FIELD]
             centroid_by_area_unit[area_unit] = centroid
 
-        # Write CSV and collect GeoJSON features
-        features = []
-        with open(csv_path, 'w') as f:
-            writer = csv.writer(f)
-            writer.writerow(['2013 area unit name', 
-              'WGS84 longitude of centroid of area unit',
-              'WGS84 latitude of centroid of area unit'])
-            for area_unit, centroid in sorted(centroid_by_area_unit.items()):
-                # CSV row
-                writer.writerow([area_unit, centroid[0], centroid[1]])
-                # GeoJSON point feature for later
-                feature = {
-                  'type': 'Feature',
-                  'geometry': {
-                    'type': "Point",
-                    'coordinates': centroid,
-                   },
-                  'properties': {
-                    NAME_FIELD: area_unit,
-                  }
-                }
-                features.append(feature)
+        # Collect GeoJSON features
+        features = [
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': "Point",
+              'coordinates': centroid,
+             },
+            'properties': {
+              NAME_FIELD: area_unit,
+            }
+          }
+          for area_unit, centroid in centroid_by_area_unit.items()]
 
         # Combine GeoJSON features and write to file
         geojson = make_feature_collection(features)
-        dump_json(geojson, geojson_path)
+        dump_json(geojson, path)
 
     def get_centroids(self):
         """
@@ -326,8 +309,7 @@ class Region(object):
         return {f['properties'][NAME_FIELD]: f['geometry']['coordinates']
           for f in collection['features']}
 
-    # TODO: Finish this
-    def create_fake_commute_costs(self, n=100):
+    def create_fake_commute_costs(self):
         """
         Generate fake commute distance and time information for 
         this region and save it to a JSON file.
@@ -396,6 +378,100 @@ class Region(object):
         data = {'index_by_name': index_by_name, 'matrix': MM}
         dump_json(data, path)
 
+    def get_commutes(self, mode='walk'):
+        """
+        Read the CSV file that stores the commute data for this
+        region and the given mode (which lies in ``MODES``) and
+        return a dictionary with the structure
+
+        (origin area unit, destination area unit) -> (distance, time).
+
+        The distance and time are measured in the same units 
+        as those in the file, namely kilometers and hours,
+        respectively.
+
+        Return ``None`` if the commutes file does not exist.
+        """
+        assert mode in MODES,\
+          "Mode must be in {!s}".format(MODES)
+
+        path = os.path.join(self.path, mode + '_commutes.csv')
+        if not os.path.isfile(path):
+            return None
+
+        M = {}
+        with open(path, 'r') as f:
+            reader = csv.reader(f)
+            # Skip header row
+            next(reader) 
+            for row in reader:
+                o_name, d_name, distance, time = row
+                if distance:
+                    distance = float(distance)
+                else:
+                    distance = None
+                if time:
+                    time = float(time)
+                else:
+                    time = None
+                M[(o_name, d_name)] = (distance, time)
+        return M
+
+    def create_commute_costs(self):
+        """
+        Consolidate the data in the commute CSV files for this region and 
+        save it into one JSON master file of daily commute cost and time. 
+        More specifically, save the dictionary 
+        ``{'index_by_name': index_by_name, 'matrix': M}``, where 
+        ``index_by_name`` is a dictionary with structure
+        area unit name -> row/column index in the lower-triangular half-matrix 
+        ``M``, where ``M`` is encoded by a dictionary with structure
+        mode -> list of lists of cost-time pairs 
+        such that ``M[mode][i][j]`` equals the cost in dollars
+        and the time in hours that it takes to travel round-trip by the 
+        given mode (specified in the list ``MODES``)
+        from the centroid of the area unit with index ``i >= 0`` 
+        to the centroid of the area unit with index ``j <= i``.
+        """
+        path = self.path + 'commute_costs.json'
+    
+        # Get area units
+        names = self.get_area_units()
+        index_by_name = {name: i for (i, name) in enumerate(names)}
+        n = len(names)
+
+        # Create a commutes matrix M
+        M = {mode: [[(None, None) for j in range(n)] for i in range(n)] 
+          for mode in MODES}
+        for mode in MODES:
+            commutes = self.get_commutes(mode)
+            if commutes is None:
+                continue
+            for (o_name, d_name), (distance, time) in commutes.items():
+                # Save to matrix
+                M[mode][index_by_name[o_name]][index_by_name[d_name]] =\
+                  (distance, time)
+
+        # Use M to create a cost lower-triangular half-matrix MM
+        MM = {mode: [[(None, None) for j in range(i + 1)] for i in range(n)] 
+          for mode in MODES}
+        for mode in MODES:
+            for i in range(n):
+                for j in range(i + 1):
+                    try:
+                        distance = M[mode][i][j][0] + M[mode][j][i][0]
+                        time = M[mode][i][j][1] + M[mode][j][i][1]
+                        MM[mode][i][j] = (
+                          round(COMMUTE_COST_PER_KM_BY_MODE[mode]*distance, 2),
+                          round(time, 2)
+                          )
+                    except TypeError:
+                        # Defaults to MM[mode][i][j] = (None, None) 
+                        pass 
+
+        # Write to file
+        data = {'index_by_name': index_by_name, 'matrix': MM}
+        dump_json(data, path)
 
 if __name__ == '__main__':
     region = Region(path='data/nelson/')
@@ -408,8 +484,8 @@ if __name__ == '__main__':
     region.create_centroids()
     print('  Fake commute costs...')
     region.create_fake_commute_costs()
-    # print('  Commute costs...')
-    # region.create_commute_costs()
+    print('  Commute costs...')
+    region.create_commute_costs()
     # if region == 'auckland':
     #     add_fare_zones(region)
     #     improve_auckland_transit_commute_costs()
