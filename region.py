@@ -612,7 +612,7 @@ class Region(object):
         dump_json(data, path)
 
 if __name__ == '__main__':
-    region = Region(path='data/waikato/')
+    region = Region(path='data/auckland/')
     print('-'*40)
     print(region)
     print('-'*40)
@@ -623,8 +623,8 @@ if __name__ == '__main__':
     region.create_rents()
     print('  Centroids...')
     region.create_centroids()
-    print('  Fake commute costs...')
-    region.create_fake_commute_costs()
+    # print('  Fake commute costs...')
+    # region.create_fake_commute_costs()
     print('  Commute costs...')
     region.create_commute_costs()
     if region.name == 'auckland':
