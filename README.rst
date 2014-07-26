@@ -1,6 +1,6 @@
 Affordability in New Zealand 
 ********************************
-Web maps of affordability for some New Zealand (NZ) cities.
+Web maps of affordability for some regions in New Zealand (NZ).
 Focused on rent, commute, parking, and car ownership costs relative to income.
 
 Requirements
@@ -12,7 +12,7 @@ Requirements
 
 Instructions
 =============
-- To view the Auckland map locally, run ``python -m SimpleHTTPServer 8001`` in your cloned version of this repository and point your browser to ``localhost:8001``.
+- To view the website locally, run ``python -m SimpleHTTPServer 8001`` in your cloned version of this repository and point your browser to ``localhost:8001``.
 - For auto-compiling RapydScript files, `this Gist <https://gist.github.com/araichev/8923682>`_ is useful.
 
 Notes
