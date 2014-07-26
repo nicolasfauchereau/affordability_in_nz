@@ -1,15 +1,31 @@
 """
+``region.py``
+
+This module contains the functions that create most of data files for 
+a particular region ``R`` of New Zealand.
+It assumes that you have the created the following files for ``R`` already::
+
+    |- region.py
+    |- rents.csv
+    |- shapes.geojson
+    |- data/
+        |- R/
+            |- area_units.csv
+            |- walk_commutes.csv
+            |- bicycle_commutes.csv
+            |- car_commutes.csv
+            |- transit_commutes.csv
+
 TODO:
 
-- Finish
-- Move checks to test file
+- Add automated tests
 """
 import json
 import csv
 import os
 
-from shapely.geometry import shape
-from shapely.ops import transform
+from shapely.geometry import shape, Polygon
+from shapely.ops import transform, unary_union
 import pyproj
 
 MASTER_SHAPES_FILE = 'data/shapes.geojson'
@@ -23,19 +39,23 @@ MODES = ['walk', 'bicycle', 'car', 'transit']
 COMMUTE_COST_PER_KM_BY_MODE = {'walk': 0, 'bicycle': 0, 'car': 0.274, 
   'transit': 0.218}
 
-def load_json(filename):
+def assert_file_exists(path):
+    assert os.path.isfile(path),\
+      "The file {!s} does not exist".format(path)
+
+def load_json(path):
     """
-    Read the JSON file with the given filename, 
-    decode its contents into a Python dictionary, and return the result.
+    Load the JSON file at the given path and return the result
+    (as a Python dictionary).
     """
-    with open(filename, 'r') as f:
+    with open(path, 'r') as f:
         return json.load(f)
 
-def dump_json(json_dict, filename):
+def dump_json(json_dict, path):
     """
-    Write the given decoded JSON dictionary to a JSON file with the given name.
+    Write the given decoded JSON dictionary to a JSON file at the given path.
     """
-    with open(filename, 'w') as f:
+    with open(path, 'w') as f:
         json.dump(json_dict, f)
 
 def make_feature_collection(features):
@@ -44,7 +64,7 @@ def make_feature_collection(features):
       'features': features,
     }
 
-def filter(collection, prop, values):
+def get_slice(collection, prop, values):
     """
     Given a (decoded) GeoJSON feature collection, return a new 
     feature collection that comprises the features f for which
@@ -82,7 +102,7 @@ def my_round(x, digits=5):
     """
     Round the floating point number or list/tuple of floating point
     numbers to ``digits`` number of digits.
-    Calls Python's ``round()`` function.
+    Uses Python's ``round()`` function.
 
     EXAMPLES::
 
@@ -99,6 +119,48 @@ def my_round(x, digits=5):
         if isinstance(x, tuple):
             result = tuple(result)
     return result 
+
+def get_centroids(collection, proj=pj_nztm, digits=5):
+    """
+    Given a decoded GeoJSON feature collection, 
+    return a decoded GeoJSON feature collection of
+    point features representing the centroids of the input features.
+    Copy each input feature's 'properties' value over to the output.
+    
+    Use the given projection function to project each input feature from 
+    from WGS84 coordinates to an appropriate distance-preserving 
+    coordinate system, then calculate the centroid, and 
+    then project back to WGS84.
+    For example, use ``proj=pj_nztm`` when operating on New Zealand
+    features.
+    Assume ``proj`` has an inverse flag like in ``pj_nztm()``.
+
+    Round all longitude and latitude entries to ``digits`` decimal places.
+    Note that 5 decimal places in longitude and latitude degrees gives
+    a precision on the ground of about 1 meter; see
+    `here <https://en.wikipedia.org/wiki/Decimal_degrees>`_ . 
+    """
+    new_features = []
+    for f in collection['features']:
+        # Convert to Shapely object with NZTM coords
+        poly = transform(proj, shape(f['geometry']))
+        # Get centroid and convert to WGS84 coords
+        centroid = transform(lambda x, y: proj(x, y, inverse=True),
+          poly.centroid)
+        # Round
+        centroid = my_round(centroid.coords[0], digits)
+        new_features.append(
+          {
+            'type': 'Feature',
+            'geometry': {
+              'type': "Point",
+              'coordinates': centroid,
+              },
+            'properties': f['properties'],
+          }
+        )
+    # Combine GeoJSON features and write to file
+    return make_feature_collection(new_features)
 
 def distance(lon1, lat1, lon2, lat2):
     """
@@ -128,10 +190,102 @@ def get_bird_distance_and_time(a, b):
     d = distance(a[0], a[1], b[0], b[1])
     return d, d/40
 
+def add_auckland_fare_zones():
+    """
+    Assume Auckland's centroids GeoJSON file exists.
+    Add a 'fare_zone' property to it which records the 
+    monthly pass fare zone ('A', 'B', 'C', 'W') 
+    that each centroid lies in.
+    """
+    auckland = Region('data/auckland/')
+
+    # Read in the fare zones and convert them to Shapely polygons
+    fare_zones = load_json(auckland.path + 'monthly_pass_fare_zones.geojson')
+    polygon_by_zone = {}
+    for f in fare_zones['features']:
+        poly = shape(f['geometry'])
+        zone = f['properties']['fare_zone']
+        # Merge this polygon with polygons in the same fare zone
+        old_poly = polygon_by_zone.get(zone, Polygon())
+        poly = unary_union([old_poly, poly])
+        polygon_by_zone[zone] = poly
+
+    # Add fare zones to centroids file
+    centroids_path = auckland.path_by_data['centroids']
+    centroids = load_json(centroids_path)
+    for (i, f) in enumerate(centroids['features']):
+        centroid = shape(f['geometry'])
+        # Find zone containing centroid
+        zone = None
+        for z, poly in polygon_by_zone.items():
+            if poly.intersects(centroid):
+                zone = z
+                break
+        # Add zone to properties
+        centroids['features'][i]['properties']['fare_zone'] =\
+          zone
+    
+    # Save
+    dump_json(centroids, centroids_path)
+
+def improve_auckland_transit_commute_costs():
+    """
+    Assume Auckland's centroids file contains fare zones and that
+    Auckland's commute costs file exists.
+    Improve the latter's transit mode cost estimates by using 
+    monthly pass fares.
+    """
+    auckland = Region('data/auckland/')
+
+    # Get fare zone by area unit name
+    centroids = load_json(auckland.path_by_data['centroids'])
+    zone_by_name = {f['properties'][NAME_FIELD]: f['properties']['fare_zone']
+      for f in centroids['features']}
+
+    # Get one-way daily cost by origin zone and destination zone
+    cost_by_od = {}
+    with open(auckland.path + 'monthly_pass_fares.csv') as f:
+        reader = csv.reader(f)
+        # Skip header
+        next(reader)
+        for row in reader:
+            origin, destination, monthly_cost = row
+            if monthly_cost != '':
+                daily_cost = float(monthly_cost)/(365/12)
+            else:
+                daily_cost = None
+            cost_by_od[(origin, destination)] = daily_cost
+
+    # Load original commute costs
+    cc_path = auckland.path_by_data['commute_costs']
+    cc = load_json(cc_path)
+    M = cc['matrix']
+    index_by_name = cc['index_by_name']
+    name_by_index = {index_by_name[name]: name for name in index_by_name}
+
+    # Update M['transit'] cost (but not time)
+    n = len(M['transit'])
+    for i in range(n):
+        i_zone = zone_by_name[name_by_index[i]]
+        for j in range(i + 1):
+            j_zone = zone_by_name[name_by_index[j]] 
+            # Update roundtrip daily cost if the original cost is not None or 0
+            try:
+                cost = round(cost_by_od[(i_zone, j_zone)] +\
+                    cost_by_od[(j_zone, i_zone)], 2)
+            except (KeyError, TypeError):
+                cost = None
+            if cost is not None and M['transit'][i][j][0] not in [None, 0]:
+                M['transit'][i][j][0] = cost 
+
+    # Save
+    data = {'index_by_name': index_by_name, 'matrix': M}
+    dump_json(data, cc_path)
+
 
 class Region(object):
     """
-    Represents a region of New Zealand (NZ).
+    Represents a region of New Zealand.
     """
     def __init__(self, path, name=None):
         """
@@ -149,18 +303,37 @@ class Region(object):
             self.name = path.rstrip('/').split('/')[-1]
         else:
             self.name = name
+        # Set the paths of data files for this region,
+        # the files that exist and those that will be created
+        path_by_data = {
+          'area_units': 'area_units.csv',
+          'shapes': 'shapes.geojson',
+          'centroids': 'centroids.geojson',
+          'rents': 'rents.json',
+          'fake_commute_costs': 'fake_commute_costs.json',
+          'commute_costs': 'commute_costs.json',
+        }
+        for mode in MODES:
+            path_by_data[mode + '_commutes'] =\
+              mode + '_commutes.csv'
+        for k, v in path_by_data.items():
+            path_by_data[k] = os.path.join(self.path, v)
+        self.path_by_data = path_by_data
 
     def __repr__(self):
         result = []
-        for k, v in self.__dict__.items():
+        for k, v in sorted(self.__dict__.items()):
             result.append('{!s}: {!s}'.format(k, v))
         return '\n'.join(result)
 
     def get_area_units(self):
         """
-        Return the set of area unit names of this region.
+        Assume the area units file for this region exists. 
+        Read it and return the set of area unit names it contains.
         """
-        path = os.path.join(self.path, 'area_units.csv')
+        path = self.path_by_data['area_units']
+        assert_file_exists(path)
+
         area_units = set()
         with open(path, 'r') as f:
             reader = csv.reader(f)
@@ -172,14 +345,15 @@ class Region(object):
 
     def create_shapes(self):
         """
-        Create a GeoJSON feature collection of the shapes  
-        (polygons and multipolygons) of the area units of this region
-        and save it to the file system.
+        Assume ``MASTER_SHAPES_FILE`` exists.
+        Read it, get from it the shapes of the area units of this region,
+        and save it in this region's directory.
         """
-        path = os.path.join(self.path, 'shapes.geojson')
+        path = self.path_by_data['shapes']
+
         collection = load_json(MASTER_SHAPES_FILE)
         area_units = self.get_area_units()
-        new_collection = filter(collection, NAME_FIELD, area_units)
+        new_collection = get_slice(collection, NAME_FIELD, area_units)
         dump_json(new_collection, path)
 
         # # Little check
@@ -193,24 +367,26 @@ class Region(object):
     def get_shapes(self):
         """
         Return a decoded GeoJSON feature collection of the shapes  
-        (polygons and multipolygons) of the area units of this region.
+        of the area units of this region.
         """
-        path = os.path.join(self.path, 'shapes.geojson')
+        path = self.path_by_data['shapes']
+        assert_file_exists(path)
+
         with open(path, 'r') as f:
             return json.loads(f.read())
 
     def create_rents(self, max_bedrooms=5):
         """
-        Read in the ``MASTER_RENTS_FILE``, get the section of it
+        Read in ``MASTER_RENTS_FILE``, get the section of it
         pertaining to this region, convert it to a nested dictionary,
-        and save it as a JSON file.
+        and save it to a JSON file.
 
         The dictionary structure is 
         area unit name -> number of bedrooms -> median weekly rent
         
         Only get data for dwellings with at most ``max_bedrooms`` bedrooms.
         """
-        path = os.path.join(self.path, 'rents.json')
+        path = self.path_by_data['rents']
 
         # Initialize dictionary
         area_units = self.get_area_units()
@@ -252,53 +428,23 @@ class Region(object):
         """
         Calculate the centroids of the area units of this region and 
         save them to a GeoJSON file.
-
-        Round all longitude and latitude entries to ``digits``
-        decimal places.
-        Note that 5 decimal places in longitude and latitude degrees gives
-        a precision on the ground of about 1 meter; see
-        `here <https://en.wikipedia.org/wiki/Decimal_degrees>`_ . 
+        Uses ``get_centroids(*, digits=digits)``.
         """
-        path = os.path.join(self.path, 'centroids.geojson')
+        path = self.path_by_data['centroids']
+        centroids = get_centroids(self.get_shapes())
+        dump_json(centroids, path)
 
-        collection = self.get_shapes()
-        centroid_by_area_unit = {}
-        for f in collection['features']:
-            # Convert to Shapely object with NZTM coords
-            poly = transform(pj_nztm, shape(f['geometry']))
-            # Get centroid and convert to WGS84 coords
-            centroid = transform(lambda x, y: pj_nztm(x, y, inverse=True),
-              poly.centroid)
-            # Round
-            centroid = my_round(centroid.coords[0], digits)
-            # Save
-            area_unit = f['properties'][NAME_FIELD]
-            centroid_by_area_unit[area_unit] = centroid
-
-        # Collect GeoJSON features
-        features = [
-          {
-            'type': 'Feature',
-            'geometry': {
-              'type': "Point",
-              'coordinates': centroid,
-             },
-            'properties': {
-              NAME_FIELD: area_unit,
-            }
-          }
-          for area_unit, centroid in centroid_by_area_unit.items()]
-
-        # Combine GeoJSON features and write to file
-        geojson = make_feature_collection(features)
-        dump_json(geojson, path)
-
-    def get_centroids(self):
+    def get_centroids_dict(self):
         """
-        Return a dictionary with structure
+        Read the GeoJSON centroids file for this region and 
+        return a dictionary with structure
         area unit -> WGS84 (lon, lat) coordinates of centroid.
+
+        If the file does not exist, then return ``None``.
         """
-        path = os.path.join(self.path, 'centroids.geojson')
+        path = self.path_by_data['centroids']
+        assert_file_exists(path)
+
         collection = load_json(path)
         return {f['properties'][NAME_FIELD]: f['geometry']['coordinates']
           for f in collection['features']}
@@ -324,12 +470,12 @@ class Region(object):
         and the commute time used is (t*15, t*4, t, t), 
         where d and t come from ``get_bird_distance_and_time()``
         """
-        path = os.path.join(self.path, 'fake_commute_costs.json')
+        path = self.path_by_data['fake_commute_costs']
         
-        centroid_by_name = self.get_centroids()
-        names = list(centroid_by_name.keys())
-        index_by_name = {name: i for (i, name) in enumerate(names)}
-        name_by_index = {i: name for (i, name) in enumerate(names)}
+        centroid_by_name = self.get_centroids_dict()
+        names = self.get_area_units()
+        index_by_name = {name: i for (i, name) in enumerate(sorted(names))}
+        name_by_index = {i: name for (i, name) in enumerate(sorted(names))}
         n = len(names)
 
         # Initialize matrix M
@@ -372,10 +518,10 @@ class Region(object):
         data = {'index_by_name': index_by_name, 'matrix': MM}
         dump_json(data, path)
 
-    def get_commutes(self, mode='walk'):
+    def get_commutes_dict(self, mode='walk'):
         """
         Read the CSV file that stores the commute data for this
-        region and the given mode (which lies in ``MODES``) and
+        region for the given mode (which lies in ``MODES``) and
         return a dictionary with the structure
 
         (origin area unit, destination area unit) -> (distance, time).
@@ -388,10 +534,8 @@ class Region(object):
         """
         assert mode in MODES,\
           "Mode must be in {!s}".format(MODES)
-
-        path = os.path.join(self.path, mode + '_commutes.csv')
-        if not os.path.isfile(path):
-            return None
+        path = self.path_by_data[mode + '_commutes']
+        assert_file_exists(path)
 
         M = {}
         with open(path, 'r') as f:
@@ -427,21 +571,21 @@ class Region(object):
         from the centroid of the area unit with index ``i >= 0`` 
         to the centroid of the area unit with index ``j <= i``.
         """
-        path = self.path + 'commute_costs.json'
+        path = self.path_by_data['commute_costs']
     
         # Get area units
         names = self.get_area_units()
-        index_by_name = {name: i for (i, name) in enumerate(names)}
+        index_by_name = {name: i for (i, name) in enumerate(sorted(names))}
         n = len(names)
 
         # Create a commutes matrix M
         M = {mode: [[(None, None) for j in range(n)] for i in range(n)] 
           for mode in MODES}
         for mode in MODES:
-            commutes = self.get_commutes(mode)
-            if commutes is None:
-                continue
+            commutes = self.get_commutes_dict(mode)
             for (o_name, d_name), (distance, time) in commutes.items():
+                if o_name not in names or d_name not in names:
+                    continue
                 # Save to matrix
                 M[mode][index_by_name[o_name]][index_by_name[d_name]] =\
                   (distance, time)
@@ -468,7 +612,10 @@ class Region(object):
         dump_json(data, path)
 
 if __name__ == '__main__':
-    region = Region(path='data/nelson/')
+    region = Region(path='data/waikato/')
+    print('-'*40)
+    print(region)
+    print('-'*40)
     print('Creating files for region {!s}...'.format(region.name))
     print('  Shapes...')
     region.create_shapes()
@@ -480,6 +627,7 @@ if __name__ == '__main__':
     region.create_fake_commute_costs()
     print('  Commute costs...')
     region.create_commute_costs()
-    # if region == 'auckland':
-    #     add_fare_zones(region)
-    #     improve_auckland_transit_commute_costs()
+    if region.name == 'auckland':
+        print('Improving Auckland transit commute costs...')
+        add_auckland_fare_zones()
+        improve_auckland_transit_commute_costs()

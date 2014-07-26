@@ -369,7 +369,7 @@
     MIndexByAu = null;
     aus = null;
     spinner = new Spinner().spin($("#map").get(0));
-    $.when($.getJSON(data["ausFile"]), $.getJSON(data["rentsFile"]), $.getJSON(data["commuteCostsFile"])).done(function(a, b, c) {
+    $.when($.getJSON(data["shapesFile"]), $.getJSON(data["rentsFile"]), $.getJSON(data["commuteCostsFile"])).done(function(a, b, c) {
         aus = a[0];
         rentByNbedroomsByAu = b[0];
         MIndexByAu = c[0]["index_by_name"];

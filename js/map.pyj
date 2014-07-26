@@ -17,7 +17,7 @@ aus = None
 
 spinner = new Spinner().spin($("#map").get(0))
 $.when(
-    $.getJSON(data['ausFile']),
+    $.getJSON(data['shapesFile']),
     $.getJSON(data['rentsFile']),
     $.getJSON(data['commuteCostsFile'])
 ).done(def(a, b, c): 

@@ -11,9 +11,8 @@ def main():
 def data():
     json:
         {
-          "ausFile": "data/wellington/au_shapes.geojson",
-          "centroidsFile": "data/wellington/au_centroids.geojson",
-          "rentsFile": "data/wellington/au_rents.json",
+          "shapesFile": "data/wellington/shapes.geojson",
+          "rentsFile": "data/wellington/rents.json",
           "commuteCostsFile": "data/wellington/commute_costs.json",
           "lon": 174.8,
           "lat": -41.25,

@@ -11,9 +11,8 @@ def main():
 def data():
     json:
         {
-          "ausFile": "data/otago/au_shapes.geojson",
-          "centroidsFile": "data/otago/au_centroids.geojson",
-          "rentsFile": "data/otago/au_rents.json",
+          "shapesFile": "data/otago/shapes.geojson",
+          "rentsFile": "data/otago/rents.json",
           "commuteCostsFile": "data/otago/fake_commute_costs.json",
           "lon": 170.3,
           "lat": -45.84,
