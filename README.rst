@@ -3,8 +3,6 @@ Affordability in New Zealand
 Web maps of affordability for various New Zealand (NZ) cities.
 Focused on rent, commute, parking, and car ownership costs relative to income.
 
-Thanks heaps to the `MRCagney <http://www.mrcagney.co.nz>`_ for donating to this projet!
-
 Requirements
 ============
 - Python >= 3.4 along with the Python modules in ``requirements.txt``; for data processing
