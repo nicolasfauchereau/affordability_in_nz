@@ -92,7 +92,7 @@ def map_tool($income_note):
                             '3'
                 
     p:
-        'Hint: To ignore your partner, cast his/her map marker out to sea or zero his/her commute days.'
+        'To ignore your partner, cast his/her map marker out to sea or zero his/her commute days.'
 
     data()
     script(src='lib/jquery-1.11.0/jquery.min.js')
