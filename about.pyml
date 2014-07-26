@@ -2,7 +2,7 @@ import base
 
 def main():
     p:
-        'This application is created by Saeid Adli and Alex Raichev and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey' 
+        'This website is created by Saeid Adli and Alex Raichev and inspired in part by the article "Housing and transport expenditure: Socio-spatial indicators of affordability in Auckland" by K. Mattingly and J. Morrissey' 
         a(href='docs/MaMo2014.pdf'):
             '[MaMo2014]'
         '.'
@@ -10,19 +10,19 @@ def main():
         #     '[MaMo2014]'
         # '(pay-walled).'
     p:
-        'This application is open-source. Its data and code can be found on Github' 
+        'This website is open-source. Its data and code can be found on Github' 
         a(href='https://github.com/araichev/affordability_in_nz'):
             'here,'
         'and contributors are welcome.'
         'Thanks heaps to ' 
         a(href='http://www.mrcagney.co.nz'):
             'MRCagney'
-        'for funding this project!'
+        'for partially funding this project!'
     h2:
         'Data, Methodology, and Limitations'
     ul:
         li: 
-            "The area units displayed are simplified versions of the 2013 census area units, the full versions of which come from Statistics New Zealand from" 
+            "The area units displayed are low resolution versions of the 2013 census area units available from Statistics New Zealand from" 
             a(href='http://www.stats.govt.nz/browse_for_stats/people_and_communities/Geographic-areas/digital-boundary-files.aspx'):
                 'here.'
         li:
@@ -32,19 +32,21 @@ def main():
         li:
             'Rents come from the 2013 census via a custom data request from Statistics New Zealand.  They are median rents per area unit per dwelling size.'
         li:
-            'The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions.  Also, distance estimates for an area unit to itself are currently zero for all travel modes. Because the data does not incorporate a traffic model, the driving mode times are probably underestimates.'
+            'The commute distances and times used are those of the quickest paths through the street network between area unit centroids. For walking, bicycling, and driving modes, these were calculated with ArcGIS in traffic-free conditions. For public transport, they were calculated with the Google Maps API in traffic-free conditions.  Also, distance estimates for an area unit to itself are currently zero for all travel modes. Because the data does not incorporate a traffic model, the driving mode times are probably underestimated.'
         li:
-            'Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274). These figures were derived for Auckland, so the public transport mode figure probably does not apply to other regions of New Zealand, and maybe not even to Auckland!'
+            'Commute costs per kilometer come from [MaMo2014, Table 2] and are (walk, bicycle, public transport, car) = (0, 0, $0.218, $0.274). These numbers were derived for Auckland, so the public transport mode number probably does not apply to other regions of New Zealand, and maybe not even to Auckland!'
         li:
-            'In the special case of Auckland, commute cost by public transport is calculated as' 
+            'For Auckland, commute cost by public transport is calculated as' 
             a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
                 'the cost of an appropriate AT Hop monthly pass'
-            'divided by the average number of weekdays in a month. For example, a daily roundtrip commute between area units in zones A and B costs $190/(52*5/12) ~ $8.77.  For ferry rides, the cost defaults back to the public transport per kilometer cost above.' 
+            'divided by the average number of weekdays in a month. For example, a daily roundtrip commute between area units in zones A and B costs $190/(52*5/12) ~ $8.77. For ferry rides, the cost defaults back to the public transport per kilometer cost above.' 
         li:
             'Car ownership cost per car per year comes from [MaMo2014, Table 3] and is $2228.'     
     h2:
         'Todo'
     ul:
+        li:
+            'Add Waikato'
         li:
             'Improve public transport cost estimates by using regional fare data where available'
         li:
@@ -59,11 +61,11 @@ def main():
         li:
             '2014-07-20: Recalculated Auckland public transport cost estimates using'
             a(href="docs/auckland_monthly_pass_fare_zones.pdf"):
-                'the AT Hop monthly pass costs.'
+                'AT Hop monthly pass costs'
     h2: 
         'Feedback?'
     p:  
-        'This application is a work in progress and your feedback will help make it better.'
+        'This project is a work in progress and your feedback can help make it better.'
         a(href='mailto:araichev@affordability.org.nz'):
             'Email Alex.'
         

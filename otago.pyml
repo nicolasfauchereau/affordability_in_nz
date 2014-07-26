@@ -5,15 +5,14 @@ def main():
     p:
         'You and your partner, if you have one, just got a job in Otago. Now where to live?' 
         br()
-        "This application color codes Otago's area units by their affordability to you. Here affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below."
+        "This page color codes Otago's area units by their affordability to you. Here affordability is based on rent, commute, parking, and car ownership cost estimates determined by your answers to the questions below."
     map_tool('employed Otagons ($42,120)')
 
 def data():
     json:
         {
-          "ausFile": "data/otago/au_shapes.geojson",
-          "centroidsFile": "data/otago/au_centroids.geojson",
-          "rentsFile": "data/otago/au_rents.json",
+          "shapesFile": "data/otago/shapes.geojson",
+          "rentsFile": "data/otago/rents.json",
           "commuteCostsFile": "data/otago/fake_commute_costs.json",
           "lon": 170.3,
           "lat": -45.84,
